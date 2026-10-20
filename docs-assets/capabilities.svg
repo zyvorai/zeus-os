@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 420" role="img" aria-label="Zeus OS capabilities: Operate, Observe, Secure, Govern">
+<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0b0f1a"/><stop offset="1" stop-color="#0a1424"/></linearGradient></defs>
+<rect width="1280" height="420" rx="24" fill="url(#g)"/>
+<g font-family="-apple-system,BlinkMacSystemFont,'SF Pro Display',Helvetica,Arial,sans-serif" fill="#f5f5f7">
+<text x="48" y="64" font-size="30" font-weight="700">One control plane for the whole VM lifecycle</text>
+<g transform="translate(48,100)">
+<rect width="280" height="270" rx="18" fill="#12182a" stroke="#2997ff" stroke-opacity=".45"/><text x="24" y="46" font-size="22" font-weight="700" fill="#64d2ff">Operate</text>
+<g font-size="15" fill="#c7cbd6"><text x="24" y="84">VM create, power, clone</text><text x="24" y="112">Live migration and DRS</text><text x="24" y="140">Hot-plug and Hardware Studio</text><text x="24" y="168">Snapshots, backups, schedules</text><text x="24" y="196">Browser VNC and serial</text><text x="24" y="224">Native RDP and SSH</text></g></g>
+<g transform="translate(348,100)">
+<rect width="280" height="270" rx="18" fill="#12182a" stroke="#30d158" stroke-opacity=".45"/><text x="24" y="46" font-size="22" font-weight="700" fill="#30d158">Observe</text>
+<g font-size="15" fill="#c7cbd6"><text x="24" y="84">Attention feed, ranked</text><text x="24" y="112">VM and node metrics</text><text x="24" y="140">Topology and flows</text><text x="24" y="168">Cluster DVR flight recorder</text><text x="24" y="196">Events and alerting</text><text x="24" y="224">Capacity forecasts</text></g></g>
+<g transform="translate(648,100)">
+<rect width="280" height="270" rx="18" fill="#12182a" stroke="#bf5af2" stroke-opacity=".45"/><text x="24" y="46" font-size="22" font-weight="700" fill="#bf5af2">Secure</text>
+<g font-size="15" fill="#c7cbd6"><text x="24" y="84">OIDC, SAML, LDAP, local</text><text x="24" y="112">SCIM v2 provisioning</text><text x="24" y="140">WebAuthn second factor</text><text x="24" y="168">RBAC and tenant scoping</text><text x="24" y="196">Zero-trust namespaces</text><text x="24" y="224">Preview-then-apply gates</text></g></g>
+<g transform="translate(948,100)">
+<rect width="284" height="270" rx="18" fill="#12182a" stroke="#ff9f0a" stroke-opacity=".45"/><text x="24" y="46" font-size="22" font-weight="700" fill="#ff9f0a">Govern</text>
+<g font-size="15" fill="#c7cbd6"><text x="24" y="84">One FinOps price model</text><text x="24" y="112">Measured cost history</text><text x="24" y="140">Budgets and alerts</text><text x="24" y="168">Waste cleanup, dry run first</text><text x="24" y="196">Audit trail on actions</text><text x="24" y="224">Maintenance windows</text></g></g>
+</g></svg>
