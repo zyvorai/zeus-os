@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Getting Started — Zeus OS</title>
+<style>
+  @page { size: A4; margin: 15mm 16mm 16mm; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; color: #1f2937; background: #fff; line-height: 1.58; font-size: 10.5pt; }
+  .cover { height: 262mm; margin: -15mm -16mm 0; background: linear-gradient(135deg,#0a0a1a,#1e3a5f,#0d1b2a); color: #fff; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; position: relative; overflow: hidden; page-break-after: always; }
+  .cover::before { content:''; position:absolute; top:-50%; left:-50%; width:200%; height:200%; background: radial-gradient(circle at 30% 38%, rgba(59,130,246,.20) 0%, transparent 45%), radial-gradient(circle at 72% 80%, rgba(99,102,241,.13) 0%, transparent 50%); }
+  .cover .kicker { position:relative; font-size:1em; letter-spacing:5px; text-transform:uppercase; opacity:.72; margin-bottom:1.4em; }
+  .cover h1 { position:relative; font-size:3.4em; font-weight:800; letter-spacing:-2px; margin-bottom:.14em; }
+  .cover h1 span { color:#3b82f6; }
+  .cover .sub { position:relative; font-size:1.35em; font-weight:300; opacity:.93; margin-bottom:1.4em; max-width:24em; }
+  .cover .tagline { position:relative; font-size:1.02em; opacity:.72; max-width:40em; }
+  .cover .badge { display:inline-block; background:rgba(59,130,246,.2); border:1px solid rgba(59,130,246,.45); padding:8px 22px; border-radius:20px; font-size:.9em; margin-top:2.2em; }
+  .cover .foot { position:absolute; bottom:34px; font-size:.82em; opacity:.6; }
+  main { padding: 0; }
+  h1 { margin: 0 0 .5em; font-size: 1.9em; color: #12203a; }
+  h2 { page-break-before: always; padding-top: 2mm; margin: 0 0 .35em; font-size: 1.55em; font-weight: 750; letter-spacing:-.5px; color: #12203a; border-bottom: 2px solid #e5edfb; padding-bottom: .28em; }
+  h2:first-of-type { page-break-before: avoid; }
+  h3 { margin: 1.1em 0 .4em; font-size: 1.12em; font-weight: 700; color: #1e293b; }
+  h4 { margin: .9em 0 .3em; font-size: 1.02em; font-weight: 650; }
+  p { margin: .5em 0; }
+  ul, ol { margin: .5em 0 .9em 1.4em; } li { margin: .22em 0; }
+  a { color: #2563eb; text-decoration: none; }
+  code { background:#eef2f7; padding:1px 6px; border-radius:4px; font-size:.86em; font-family:'SF Mono',ui-monospace,Menlo,monospace; color:#0f172a; word-break: break-word; }
+  pre { background:#0f172a; color:#e2e8f0; padding:12px 15px; border-radius:9px; overflow-x:auto; margin:.8em 0; page-break-inside:avoid; }
+  pre code { background:none; color:inherit; padding:0; font-size:9pt; }
+  table { width: 100%; border-collapse: collapse; margin: .8em 0 1.1em; font-size: 9.5pt; page-break-inside: avoid; }
+  th, td { border: 1px solid #e5e7eb; padding: 6px 8px; text-align: left; vertical-align: top; }
+  th { background: #f1f5f9; color: #0f172a; font-weight: 650; }
+  hr { border: none; border-top: 1px solid #e5e7eb; margin: 1.2em 0; }
+  blockquote { border-left: 3px solid #3b82f6; margin: .8em 0; padding: .4em 0 .4em .9em; color: #334155; background: #f8fafc; }
+  .doc-break { page-break-before: always; }
+</style>
+</head>
+<body>
+<section class="cover">
+        <div class="kicker">ZyvorAI Labs · Customer Documentation</div>
+        <h1>Zeus <span>OS</span></h1>
+        <div class="sub">Getting Started</div>
+        <div class="tagline">Visual day-2 control plane for KubeVirt and Kubernetes</div>
+        <div class="badge">2026-09-26</div>
+        <div class="foot">zyvor.dev · Confidential — for licensed customers</div>
+      </section>
+<main>
+<p>This guide gets a customer from “I have a URL” to first useful work in the web dashboard.</p>
+<h2>What you need</h2>
+<table>
+<thead>
+<tr>
+<th>Requirement</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Kubernetes cluster with <strong>KubeVirt</strong> installed</td>
+<td>Zeus is day-2 ops — it does not bootstrap the cluster</td>
+</tr>
+<tr>
+<td>Reachable Zeus OS URL</td>
+<td>Often <code>https://&lt;host&gt;:30050</code> (NodePort) or <code>https://&lt;host&gt;:5050</code></td>
+</tr>
+<tr>
+<td>Login credentials</td>
+<td>Provided by your platform admin (local / LDAP / SAML / OIDC)</td>
+</tr>
+<tr>
+<td>Browser</td>
+<td>Modern Chromium, Firefox, or Safari. <strong>HTTPS required for in-browser VNC</strong></td>
+</tr>
+</tbody></table>
+<p>Optional: <code>kubectl</code> access is not required for normal UI work.</p>
+<h2>1. Open the dashboard</h2>
+<ol>
+<li>Open the URL your admin shared (example: <code>https://cluster.example:30050</code>).</li>
+<li>If the browser warns about a self-signed certificate, confirm with your admin, then proceed (or install the org CA).</li>
+<li>You should land on login, or directly on <strong>Home</strong> (<code>/</code>) if auth is disabled in a lab.</li>
+</ol>
+<p><strong>Common mistake:</strong> Port <strong>5092</strong> is GuestKit / Machina territory on some Zyvor stacks — not Zeus OS. Prefer the URL that ends in the Zeus NodePort (often <strong>30050</strong>) or the documented ingress host.</p>
+<h2>2. Sign in</h2>
+<p>Auth depends on how the deployment is configured:</p>
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>What you do</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Local users</td>
+<td>Username + password from your admin</td>
+</tr>
+<tr>
+<td>LDAP / Active Directory</td>
+<td>Corporate directory credentials</td>
+</tr>
+<tr>
+<td>SAML / OIDC</td>
+<td>“Sign in with …” → identity provider</td>
+</tr>
+<tr>
+<td>Lab only</td>
+<td><code>ZEUS_OS_NO_AUTH</code> — no login (never use in production)</td>
+</tr>
+</tbody></table>
+<p>API automation uses bearer tokens / API keys from <strong>Settings → API access</strong> or Identity Center — not the guest OS password.</p>
+<p>Windows <strong>RDP</strong> prompts for the <strong>guest</strong> credentials, not your Zeus login.</p>
+<h2>3. Orient yourself (60 seconds)</h2>
+<ol>
+<li><strong>Home</strong> (<code>/</code>) — chapter pulse, <strong>Get the highlights</strong>, and teaser into <strong>Attention</strong>, VMs, Health.</li>
+<li><strong>Attention</strong> (<code>/attention</code>) — ranked actions, Issue Stream, and day-2 activity when Home shows warnings.</li>
+<li><strong>Sidebar / Finder</strong> — centers such as VMs, Storage, Monitoring, Settings.</li>
+<li><strong>Command palette</strong> — open with the keyboard shortcut shown in the shell (typically ⌘K / Ctrl+K) and type a page name.</li>
+<li><strong>Browse vs workbench</strong> — inventory lists are safe to explore; power actions live on the VM workbench so production VMs are harder to disrupt by accident.</li>
+<li><strong>Getting started checklist</strong> — first-time visitors see a banner on Home; click <strong>Getting started checklist</strong> (or <strong>Help → Getting Started</strong>) for a short, role-aware task list (admins get cluster/team setup, everyone else gets &quot;find/create a VM&quot;, &quot;open a console&quot;, &quot;check cost&quot;). Progress is saved to your account, so it follows you across devices and browsers — not just this one tab.</li>
+</ol>
+<p>See <a href="using-the-dashboard.md">Using the Dashboard</a> for navigation details.</p>
+<h2>4. Your first five workflows</h2>
+<h3>A. Browse and power a VM</h3>
+<ol>
+<li>Go to <strong>VMs</strong> → <code>/vms</code>.</li>
+<li>Filter by namespace or name.</li>
+<li>Open a VM → <code>/vms/&lt;namespace&gt;/&lt;name&gt;</code> (workbench).</li>
+<li>Use <strong>Start / Stop / Restart / Pause</strong> as needed.</li>
+<li>Confirm status updates in the inventory.</li>
+</ol>
+<p>Guide: <a href="pages/core/vms.md">Virtual Machines</a></p>
+<h3>B. Open a live console</h3>
+<ol>
+<li>From a <strong>Running</strong> VM workbench, open <strong>Console → VNC</strong> (graphical) or <strong>Serial</strong> (text).</li>
+<li>VNC needs HTTPS. If the session is black, click <strong>Focus</strong> in the console toolbar.</li>
+<li>For RDP/SSH: use <strong>Remote access</strong> to expose a NodePort, then connect with your OS client (downloadable <code>.rdp</code> or <code>ssh</code> command). VNC remains the in-browser default.</li>
+</ol>
+<p>Guide: <a href="pages/consoles/overview.md">Consoles &amp; remote access</a></p>
+<h3>C. Create a VM</h3>
+<ol>
+<li>Open <strong>VM setup</strong> → <code>/vm-setup</code> (or <code>/vms/new</code>).</li>
+<li>Choose instance type / preference / template (or AI-assisted manifest if enabled).</li>
+<li>For <strong>Windows</strong>: if Settings → Network shows Kryton <strong>Connected</strong>, prefer the Kryton catalog
+path (template IDs like <code>windows-11-enterprise</code>). Otherwise use Autounattend / ISO.</li>
+<li>Review disks, network, and namespace.</li>
+<li>Deploy — the VM appears under <code>/vms</code> (Kryton creates deep-link via <code>providerRef</code>).</li>
+</ol>
+<p>Guides: <a href="pages/core/vm-setup.md">Create a machine</a> · <a href="pages/cluster/windows-via-kryton.md">Windows via Kryton</a></p>
+<h3>D. Snapshot and restore</h3>
+<ol>
+<li><strong>Snapshot Manager</strong> → <code>/snapshot-manager</code> — take an on-demand or scheduled snapshot.</li>
+<li>To recover: <strong>Restore Wizard</strong> → <code>/restore-wizard</code> and follow the guided restore.</li>
+</ol>
+<p>Guide: <a href="pages/run/snapshots.md">Snapshots</a></p>
+<h3>E. Cost check and rightsizing</h3>
+<ol>
+<li><strong>Cost Intelligence</strong> → <code>/cost-intelligence</code> — spend by VM / namespace.</li>
+<li><strong>Rightsizing</strong> → <code>/rightsizing</code> — idle / oversized recommendations.</li>
+</ol>
+<p>Guide: <a href="pages/cost/cost-intelligence.md">Cost Intelligence</a></p>
+<h2>5. Optional: TUI and CLI</h2>
+<p>Same cluster, different surfaces:</p>
+<pre><code class="language-bash"># Terminal UI (k9s-style)
+zeus-os
+zeus-os production    # namespace filter
+
+# Headless CLI (examples depend on install path)
+zeus-os-cli --help
+</code></pre>
+<p>API: <code>/api/v1</code> on the same host as the dashboard. OpenAPI lives under <strong>Developer Center</strong> / <strong>API Docs</strong> (<code>/api-docs</code>).</p>
+<h2>Next steps</h2>
+<table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Read next</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>VM operator</td>
+<td><a href="pages/README.md#core">Page guides — Core</a></td>
+</tr>
+<tr>
+<td>Platform admin</td>
+<td><a href="admin-basics.md">Admin basics</a></td>
+</tr>
+<tr>
+<td>Security / network</td>
+<td><a href="pages/more/packetwolf.md">PacketWolf</a></td>
+</tr>
+<tr>
+<td>Full capability map</td>
+<td><a href="../zeus-os-customer-feature-guide.md">Feature Guide</a></td>
+</tr>
+</tbody></table>
+<hr>
+<p><em>If something fails at login or console, see <a href="../handbook/troubleshooting.md">Troubleshooting</a>.</em></p>
+<hr>
+<p>How the Zeus OS web shell works — so page guides make sense.</p>
+<h2>Surfaces inside the browser</h2>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Home / Mission Control</strong></td>
+<td>Chapter home + highlights band + Attention teaser</td>
+</tr>
+<tr>
+<td><strong>Sidebar / Finder tree</strong></td>
+<td>Primary navigation by product center</td>
+</tr>
+<tr>
+<td><strong>Workspace switcher</strong></td>
+<td>Quick jump: Dashboard, VMs, Kubernetes, AI, Storage, Monitoring</td>
+</tr>
+<tr>
+<td><strong>Command palette</strong></td>
+<td>Search any page or action by name</td>
+</tr>
+<tr>
+<td><strong>Top bar</strong></td>
+<td>Context (cluster/namespace), quick links (Settings, Terminal, API Docs)</td>
+</tr>
+<tr>
+<td><strong>Inspector / sheets</strong></td>
+<td>Detail panels without leaving the list</td>
+</tr>
+<tr>
+<td><strong>Workbench routes</strong></td>
+<td>Full-page ops for a single VM or object</td>
+</tr>
+</tbody></table>
+<h2>Browse vs workbench (important)</h2>
+<p>Zeus separates <strong>inventory</strong> from <strong>actions</strong>:</p>
+<ul>
+<li><strong>Browse</strong> (<code>/vms</code>, <code>/pods</code>, <code>/nodes</code>, …) — read, filter, compare, open details.</li>
+<li><strong>Workbench</strong> (<code>/vms/:namespace/:name</code>, hardware studio, consoles) — start/stop, hot-plug, remote access, guest agent.</li>
+</ul>
+<p>That design reduces accidental power actions on production fleets.</p>
+<h2>Finding any page</h2>
+<ol>
+<li>Sidebar section (Core, Cluster, Observe, Run, Security, Cost, More).</li>
+<li>Command palette — type “packetwolf”, “velero”, “cost”, etc.</li>
+<li>This manual’s <a href="PAGE_INDEX.md">PAGE_INDEX.md</a> — every route with a one-line purpose.</li>
+<li>Favorites (<code>/favorites</code>) — pin pages you use daily.</li>
+</ol>
+<p>Every page guide includes <strong>Operate from the console (UX)</strong> — concrete clicks after you land on the route.</p>
+<h2>Namespaces and tenancy</h2>
+<p>Lists usually respect the active namespace filter (and tenant scope if multi-tenancy is enabled). If a VM “disappeared”:</p>
+<ol>
+<li>Clear or broaden the namespace filter.</li>
+<li>Confirm you are in the correct tenant (Identity / Tenancy).</li>
+<li>Refresh — live watches may lag briefly after create/delete.</li>
+</ol>
+<h2>Consoles</h2>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Where</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>VNC</td>
+<td>VM workbench / ConsoleHub</td>
+<td>HTTPS required</td>
+</tr>
+<tr>
+<td>Serial</td>
+<td>VM workbench</td>
+<td>Works over HTTP or HTTPS</td>
+</tr>
+<tr>
+<td>RDP / SSH</td>
+<td>Remote access panel</td>
+<td>Native OS client via NodePort</td>
+</tr>
+<tr>
+<td>Multi-session</td>
+<td><code>/consolehub</code>, <code>/workspace</code></td>
+<td>Tabs and session policy</td>
+</tr>
+</tbody></table>
+<h2>Keyboard and accessibility</h2>
+<ul>
+<li>Command palette: ⌘K / Ctrl+K (exact binding shown in the shell).</li>
+<li>Escape closes sheets and overlays.</li>
+<li>Focus traps exist on modals — tab stays inside the dialog.</li>
+</ul>
+<h2>Settings you may need early</h2>
+<table>
+<thead>
+<tr>
+<th>Setting area</th>
+<th>Path</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Appearance / sidebar</td>
+<td><code>/settings/appearance</code></td>
+<td>Light or Dark theme, density, rail-only sidebar</td>
+</tr>
+<tr>
+<td>Security</td>
+<td><code>/settings/security</code></td>
+<td>Session / policy (admin)</td>
+</tr>
+<tr>
+<td>API access</td>
+<td><code>/settings/api-access</code></td>
+<td>Tokens for automation</td>
+</tr>
+<tr>
+<td>AI providers</td>
+<td><code>/settings/ai-providers</code></td>
+<td>Optional LLM for wizards</td>
+</tr>
+</tbody></table>
+<p>Full admin env vars and production checklist: <a href="admin-basics.md">Admin basics</a> and <a href="../handbook/admin-configuration.md">Handbook — Admin</a>.</p>
+<h2>Related</h2>
+<ul>
+<li><a href="getting-started.md">Getting Started</a></li>
+<li><a href="pages/README.md">Page-by-page guides</a></li>
+</ul>
+<hr>
+<p>End-to-end jobs that span multiple pages. Use with the <a href="pages/README.md">page guides</a>.</p>
+<h2>Start-of-shift triage</h2>
+<ol>
+<li><a href="pages/core/home.md">Home</a> — scan pulse and the Attention teaser</li>
+<li><a href="pages/observe/attention.md">Attention</a> — ranked actions, Issue Stream, day-2 activity</li>
+<li><a href="pages/observe/incidents.md">Incidents</a> or <a href="pages/observe/system-health.md">System Health</a> — drill down when correlation or host health is needed</li>
+<li><a href="pages/core/vms.md">VMs</a> — act on VM-scoped recommended actions (guest agent, power, console)</li>
+</ol>
+<h2>Create → console → snapshot</h2>
+<ol>
+<li><a href="pages/core/vm-setup.md">VM setup</a> — <code>/vm-setup</code></li>
+<li>Wait until status is Running on <a href="pages/core/vms.md">VMs</a></li>
+<li>Open <a href="pages/core/vm-workbench.md">workbench</a> → <a href="pages/consoles/overview.md">Console</a></li>
+<li>Before changes: <a href="pages/run/snapshots.md">Snapshots</a></li>
+</ol>
+<h2>Maintain a node</h2>
+<ol>
+<li><a href="pages/cluster/nodes.md">Nodes</a> — identify the node</li>
+<li><a href="pages/run/migrations.md">Live Migrations</a> — evacuate VMs (dry-run first)</li>
+<li>Node Drain — <code>/node-drain</code></li>
+<li>Confirm <a href="pages/core/vmis.md">VM Instances</a> on remaining workers</li>
+</ol>
+<h2>Contain a noisy or compromised VM</h2>
+<ol>
+<li><a href="pages/observe/incidents.md">Incidents</a> — open or create context</li>
+<li><a href="pages/more/packetwolf.md">PacketWolf</a> — dry-run then apply containment</li>
+<li><a href="pages/consoles/overview.md">Console</a> — inspect guest if needed</li>
+<li>Remove containment when resolved</li>
+</ol>
+<h2>Cost waste sweep</h2>
+<ol>
+<li><a href="pages/cost/cost-intelligence.md">Cost Intelligence</a></li>
+<li><a href="pages/cost/rightsizing.md">Rightsizing</a></li>
+<li>Apply safer shapes via workbench / <a href="pages/core/instance-types.md">instance types</a></li>
+<li>Re-check spend after metrics catch up</li>
+</ol>
+<h2>Backup before upgrade</h2>
+<ol>
+<li><a href="pages/run/snapshots.md">Snapshot Manager</a> and/or <a href="pages/run/velero.md">Velero</a></li>
+<li><a href="pages/run/backup-wizard.md">Backup Wizard</a> if you want a guided checklist</li>
+<li>Perform change</li>
+<li>Restore Wizard <code>/restore-wizard</code> only if needed</li>
+</ol>
+<h2>Related</h2>
+<ul>
+<li><a href="getting-started.md">Getting Started</a></li>
+<li><a href="../zeus-os-customer-feature-guide.md">Feature Guide</a></li>
+</ul>
+
+</main>
+</body>
+</html>

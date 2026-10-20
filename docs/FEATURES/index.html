@@ -1,0 +1,5791 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../EMAIL_NOTIFICATIONS/">
+      
+      
+        <link rel="next" href="../SCIM/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.50">
+    
+    
+      
+        <title>Zeus OS features - Zeus OS</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.a40c8224.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#zeus-os-features" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Zeus OS" class="md-header__button md-logo" aria-label="Zeus OS" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Zeus OS
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Zeus OS features
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Zeus OS" class="md-nav__button md-logo" aria-label="Zeus OS" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Zeus OS
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Zeus OS documentation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../AIR_GAPPED_INSTALL/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Air-gapped Zeus OS / v9s install
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CONTENT_LIBRARY/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Content library: signed template bundles between Zeus instances
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EMAIL_NOTIFICATIONS/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Email (SMTP) notification channel
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Zeus OS features
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Zeus OS features
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-vm-lifecycle-fleet-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. VM Lifecycle &amp; Fleet Operations
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-consoles-remote-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Consoles &amp; Remote Access
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-networking-packetwolf-vm-shield" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Networking &amp; PacketWolf VM Shield
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-storage-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Storage &amp; Data
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-cost-finops-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Cost, FinOps &amp; Optimization
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-capacity-autoscaling-placement" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Capacity, Autoscaling &amp; Placement
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-observability-topology-time-machine" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Observability, Topology &amp; Time Machine
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-security-posture-vulnerability" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Security Posture &amp; Vulnerability
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-compliance-governance-admission-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Compliance, Governance &amp; Admission Control
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-day-2-automation-remediation" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. Day-2 Automation &amp; Remediation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-incident-response-war-room" class="md-nav__link">
+    <span class="md-ellipsis">
+      11. Incident Response &amp; War Room
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-gitops-cicd-change-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      12. GitOps, CI/CD &amp; Change Management
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-backup-dr-snapshots" class="md-nav__link">
+    <span class="md-ellipsis">
+      13. Backup, DR &amp; Snapshots
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-multi-cluster-multi-tenancy-enterprise-identity" class="md-nav__link">
+    <span class="md-ellipsis">
+      14. Multi-Cluster, Multi-Tenancy &amp; Enterprise Identity
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-ai-ops-marketplace-developer-center" class="md-nav__link">
+    <span class="md-ellipsis">
+      15. AI Ops, Marketplace &amp; Developer Center
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-edge-chaos-performance-platform-ops" class="md-nav__link">
+    <span class="md-ellipsis">
+      16. Edge, Chaos, Performance &amp; Platform Ops
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#also-included" class="md-nav__link">
+    <span class="md-ellipsis">
+      Also included
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Also included">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#identity-and-provisioning" class="md-nav__link">
+    <span class="md-ellipsis">
+      Identity and provisioning
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#platform" class="md-nav__link">
+    <span class="md-ellipsis">
+      Platform
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#networking-extras" class="md-nav__link">
+    <span class="md-ellipsis">
+      Networking extras
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SCIM/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SCIM 2.0 provisioning
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../WEBAUTHN/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    WebAuthn second factor (passkeys / security keys)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cli/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    zeus-os-cli
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Api
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            Api
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Zeus OS REST API reference (OpenAPI)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Customer
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            Customer
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Zeus OS — Customer Documentation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/PAGE_INDEX/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Zeus OS — Complete page index
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/admin-basics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Admin Basics (Customer Deployments)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/enterprise-sso/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Enterprise SSO / OIDC (Keycloak)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/getting-started/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting Started with Zeus OS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/using-the-dashboard/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Using the Dashboard
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/workflows/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Common workflows
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_8" id="__nav_10_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Pages
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_8">
+            <span class="md-nav__icon md-icon"></span>
+            Pages
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Page-by-page guides
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_8_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_8_2" id="__nav_10_8_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Centers
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_10_8_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_8_2">
+            <span class="md-nav__icon md-icon"></span>
+            Centers
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/centers/applications/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Application Center
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/centers/approvals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Approvals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/centers/auth-audit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Auth audit log
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/centers/backup-dr/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Backup &amp; DR
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/centers/console-sessions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Console Sessions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/centers/developer-center/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Developer Center
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/centers/edge-center/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Edge Center
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/centers/forge/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Forge
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/centers/identity-center/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Identity Center
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/centers/infra-browser/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Machine Finder
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/centers/kubernetes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Kubernetes Center
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/centers/marketplace/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Marketplace
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/centers/migration-factory/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Migration Command Center
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/centers/onboarding/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cluster onboarding
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/centers/patch-center/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Patch Center
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/centers/plugins/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Plugins
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/centers/reports/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reports
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/centers/restore-wizard/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Restore Wizard
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/centers/support/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Support
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/centers/tasks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Task Center
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/centers/time-machine/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Time Machine
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/centers/vm-groups/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    VM Groups
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/centers/war-room/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    War Room
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/centers/workspace/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Resource Canvas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_8_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_8_3" id="__nav_10_8_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Cluster
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_10_8_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_8_3">
+            <span class="md-nav__icon md-icon"></span>
+            Cluster
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/cluster/blueprints/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Blueprints
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/cluster/cilium-enterprise-networking/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Enterprise networking
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/cluster/customization-profiles/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Customization Profiles
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/cluster/datavolumes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DataVolumes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/cluster/device-plugins/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Device Plugins
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/cluster/disk-manager/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Disk Manager
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/cluster/gpu/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GPU Devices
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/cluster/hpa/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HPA
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/cluster/image-factory/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Image Factory
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/cluster/image-library/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Image Library
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/cluster/image-registry/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Image Registry
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/cluster/metallb-external-ips/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MetalLB &amp; external IPs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/cluster/network-attachments/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Networks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/cluster/nodes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Nodes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/cluster/pods/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pods
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/cluster/priority-classes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Priority Classes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/cluster/pvc-resize/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PVC Resize
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/cluster/runtime-classes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Runtime Classes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/cluster/services/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Services
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/cluster/storage/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Storage
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/cluster/taints/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Taints
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/cluster/templates/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Templates
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/cluster/vpa/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    VPA
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/cluster/windows-via-kryton/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Windows via Kryton
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_8_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_8_4" id="__nav_10_8_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Consoles
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_10_8_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_8_4">
+            <span class="md-nav__icon md-icon"></span>
+            Consoles
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/consoles/consolehub/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ConsoleHub
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/consoles/overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Consoles &amp; remote access
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_8_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_8_5" id="__nav_10_8_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Core
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_10_8_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_8_5">
+            <span class="md-nav__icon md-icon"></span>
+            Core
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/core/favorites/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Favorites
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/core/home/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home (Mission Control)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/core/instance-types/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Instance types
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/core/vm-compare/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Compare VMs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/core/vm-setup/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    VM setup (create a machine)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/core/vm-workbench/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    VM workbench
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/core/vmirs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    VM fleets (VMIRS)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/core/vmis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    VM Instances (VMI)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/core/vms/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Virtual Machines
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_8_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_8_6" id="__nav_10_8_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Cost
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_10_8_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_8_6">
+            <span class="md-nav__icon md-icon"></span>
+            Cost
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/cost/budget-alerts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Budget Alerts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/cost/chargeback/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chargeback
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/cost/cost-allocation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cost Allocation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/cost/cost-estimator/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cost Estimator
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/cost/cost-intelligence/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cost Intelligence
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/cost/costs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Costs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/cost/rightsizing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Rightsizing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/cost/sla/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SLA Dashboard
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/cost/spot-savings/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spot Savings
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_8_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_8_7" id="__nav_10_8_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    More
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_10_8_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_8_7">
+            <span class="md-nav__icon md-icon"></span>
+            More
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/more/ai-center/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AI Center
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/more/anomaly-detector/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Anomaly Detector
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/more/api-docs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    API Docs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/more/api-playground/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    API Playground
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/more/argocd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ArgoCD
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/more/auto-remediation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Auto-Remediation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/more/catalog/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Catalog
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/more/chaos-engineering/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chaos Engineering
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/more/cicd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CI/CD
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/more/cilium/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cilium CNI
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/more/cluster-upgrade/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cluster Upgrade
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/more/database-ops/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Database Ops
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/more/debug/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Debug
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/more/dependencies/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Dependencies
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/more/deployment-strategies/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deployment Strategies
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/more/disaster-recovery/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Disaster Recovery
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/more/dns/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DNS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/more/gitops/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GitOps
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/more/helm/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Helm Releases
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/more/iac/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    IaC
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/more/kernel/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Kernel Info
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/more/kustomize/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Kustomize
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/more/multi-cluster/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multi-Cluster
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/more/network-flow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Network Flow
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/more/nlp-command/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    NLP Command
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/more/operators/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Operators
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/more/optimization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Optimization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/more/packetwolf/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PacketWolf VM Guard
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/more/perf-testing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Performance Testing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/more/placement-advisor/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Placement Advisor
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/more/placement/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Placement
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/more/progressive-delivery/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Progressive Delivery
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/more/resource-tagging/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Resource Tags
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/more/service-mesh-detail/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mesh Detail
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/more/status-page/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Status Page
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/more/terminal/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Terminal
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/more/topology-manager/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Topology Mgr
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/more/topology/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Topology
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/more/webhook-tester/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Webhook Tester
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/more/widgets/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Widgets
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_8_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_8_8" id="__nav_10_8_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Observe
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_10_8_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_8_8">
+            <span class="md-nav__icon md-icon"></span>
+            Observe
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/observe/alerting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Alerts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/observe/apm/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    APM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/observe/attention/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Attention
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/observe/capacity/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Capacity
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/observe/containers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Containers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/observe/custom-metrics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Custom Metrics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/observe/events/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Events
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/observe/forecasting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Forecasting
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/observe/heatmap/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Resource Heatmap
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/observe/host/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Host Info
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/observe/incident-chat/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Incident chat
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/observe/incidents/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Incidents
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/observe/logs-explorer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Logs Explorer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/observe/monitoring/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Monitoring Targets
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/observe/network-info/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Network Info
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/observe/slo-manager/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SLO Manager
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/observe/system-health/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    System Health
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/observe/vm-monitor/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    VM Monitor
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_8_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_8_9" id="__nav_10_8_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Run
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_10_8_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_8_9">
+            <span class="md-nav__icon md-icon"></span>
+            Run
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/run/autoscaler/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AutoScaler
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/run/backup-wizard/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Backup Wizard
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/run/cluster-autoscaling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cluster Autoscale
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/run/migrations/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Live Migrations
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/run/node-drain/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Node Drain
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/run/operations/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Operations
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/run/snapshots/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Snapshots
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/run/velero/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Velero
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/run/windows-licensing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Windows Licensing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/run/workflows/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Workflows
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_8_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_8_10" id="__nav_10_8_10_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Security
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_10_8_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_8_10">
+            <span class="md-nav__icon md-icon"></span>
+            Security
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/security/admission-control/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Admission control
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/security/affinity-rules/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Affinity Rules
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/security/certificates/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Certificates
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/security/change-approval/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Change Approval
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/security/compliance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Compliance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/security/external-secrets/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    External Secrets
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/security/image-scanning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Image Scanning
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/security/opa/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    OPA Gatekeeper
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/security/pdb/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PDB
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/security/security/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Security
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/security/tenancy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tenancy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/security/users/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Users
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_8_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_8_11" id="__nav_10_8_11_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Settings
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_10_8_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_8_11">
+            <span class="md-nav__icon md-icon"></span>
+            Settings
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/settings/settings-advanced/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Settings — Advanced
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/settings/settings-ai-providers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Settings — AI providers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/settings/settings-api-access/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Settings — API access
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/settings/settings-appearance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Settings — Appearance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/settings/settings-backup-dr/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Settings — Backup &amp; DR
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/settings/settings-general/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Settings — General
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/settings/settings-network/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Settings — Network
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/settings/settings-security/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Settings — Security
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pages/settings/settings/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Settings
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_9" id="__nav_10_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Pdf
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_9">
+            <span class="md-nav__icon md-icon"></span>
+            Pdf
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/pdf/PDF_INDEX/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Zeus OS customer PDFs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-vm-lifecycle-fleet-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. VM Lifecycle &amp; Fleet Operations
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-consoles-remote-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Consoles &amp; Remote Access
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-networking-packetwolf-vm-shield" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Networking &amp; PacketWolf VM Shield
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-storage-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Storage &amp; Data
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-cost-finops-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Cost, FinOps &amp; Optimization
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-capacity-autoscaling-placement" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Capacity, Autoscaling &amp; Placement
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-observability-topology-time-machine" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Observability, Topology &amp; Time Machine
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-security-posture-vulnerability" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Security Posture &amp; Vulnerability
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-compliance-governance-admission-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Compliance, Governance &amp; Admission Control
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-day-2-automation-remediation" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. Day-2 Automation &amp; Remediation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-incident-response-war-room" class="md-nav__link">
+    <span class="md-ellipsis">
+      11. Incident Response &amp; War Room
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-gitops-cicd-change-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      12. GitOps, CI/CD &amp; Change Management
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-backup-dr-snapshots" class="md-nav__link">
+    <span class="md-ellipsis">
+      13. Backup, DR &amp; Snapshots
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-multi-cluster-multi-tenancy-enterprise-identity" class="md-nav__link">
+    <span class="md-ellipsis">
+      14. Multi-Cluster, Multi-Tenancy &amp; Enterprise Identity
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-ai-ops-marketplace-developer-center" class="md-nav__link">
+    <span class="md-ellipsis">
+      15. AI Ops, Marketplace &amp; Developer Center
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-edge-chaos-performance-platform-ops" class="md-nav__link">
+    <span class="md-ellipsis">
+      16. Edge, Chaos, Performance &amp; Platform Ops
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#also-included" class="md-nav__link">
+    <span class="md-ellipsis">
+      Also included
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Also included">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#identity-and-provisioning" class="md-nav__link">
+    <span class="md-ellipsis">
+      Identity and provisioning
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#platform" class="md-nav__link">
+    <span class="md-ellipsis">
+      Platform
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#networking-extras" class="md-nav__link">
+    <span class="md-ellipsis">
+      Networking extras
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="zeus-os-features">Zeus OS features</h1>
+<p>Every feature in the current product, one by one: <strong>146 features across 19 groups</strong>. Features marked <code>Preview</code> or <code>Partial</code> have documented limits, stated in the row; unknown values are shown as unknown, never as zero.</p>
+<ul>
+<li><a href="#vm-lifecycle--fleet-operations">1. VM Lifecycle &amp; Fleet Operations</a></li>
+<li><a href="#consoles--remote-access">2. Consoles &amp; Remote Access</a></li>
+<li><a href="#networking--packetwolf-vm-shield">3. Networking &amp; PacketWolf VM Shield</a></li>
+<li><a href="#storage--data">4. Storage &amp; Data</a></li>
+<li><a href="#cost-finops--optimization">5. Cost, FinOps &amp; Optimization</a></li>
+<li><a href="#capacity-autoscaling--placement">6. Capacity, Autoscaling &amp; Placement</a></li>
+<li><a href="#observability-topology--time-machine">7. Observability, Topology &amp; Time Machine</a></li>
+<li><a href="#security-posture--vulnerability">8. Security Posture &amp; Vulnerability</a></li>
+<li><a href="#compliance-governance--admission-control">9. Compliance, Governance &amp; Admission Control</a></li>
+<li><a href="#day-2-automation--remediation">10. Day-2 Automation &amp; Remediation</a></li>
+<li><a href="#incident-response--war-room">11. Incident Response &amp; War Room</a></li>
+<li><a href="#gitops-cicd--change-management">12. GitOps, CI/CD &amp; Change Management</a></li>
+<li><a href="#backup-dr--snapshots">13. Backup, DR &amp; Snapshots</a></li>
+<li><a href="#multi-cluster-multi-tenancy--enterprise-identity">14. Multi-Cluster, Multi-Tenancy &amp; Enterprise Identity</a></li>
+<li><a href="#ai-ops-marketplace--developer-center">15. AI Ops, Marketplace &amp; Developer Center</a></li>
+<li><a href="#edge-chaos-performance--platform-ops">16. Edge, Chaos, Performance &amp; Platform Ops</a></li>
+<li><a href="#also-included">Also included</a></li>
+</ul>
+<h2 id="1-vm-lifecycle-fleet-operations">1. VM Lifecycle &amp; Fleet Operations</h2>
+<p><em>Create, run, migrate, and manage KubeVirt virtual machines at fleet scale without touching kubectl.</em></p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>VM Command Center</strong></td>
+<td>Browse, filter, and operate every KubeVirt VM and running instance from one inventory with power, pause, restart, and detail drill-down.</td>
+</tr>
+<tr>
+<td><strong>VM Workbench &amp; Power Actions</strong></td>
+<td>Start, stop, restart, pause, and delete VMs from a dedicated workbench separated from read-only browse views.</td>
+</tr>
+<tr>
+<td><strong>VM Setup &amp; Template Wizard</strong></td>
+<td>Guided creation from instance types, preferences, and templates with cluster-grounded, AI-assisted manifest generation.</td>
+</tr>
+<tr>
+<td><strong>Templates &amp; Instance Type Catalog</strong></td>
+<td>Curated VM templates, KubeVirt instance types, and preferences browsable and one-click deployable.</td>
+</tr>
+<tr>
+<td><strong>Hot-Plug CPU, Memory &amp; Disks</strong></td>
+<td>Add vCPU, RAM, and data disks to running VMs live without a reboot.</td>
+</tr>
+<tr>
+<td><strong>NIC Model Selection</strong></td>
+<td>Choose VirtIO or e1000e per network interface, at creation or on an existing VM.</td>
+</tr>
+<tr>
+<td><strong>Virtual Devices &amp; Memory Overcommit</strong></td>
+<td>Toggle watchdog, VirtIO RNG, sound, USB tablet, serial console, and the virtio memory-balloon device per VM.</td>
+</tr>
+<tr>
+<td><strong>Live Migration Assistant</strong> <code>Preview</code></td>
+<td>Plan and start live VM migrations with a guided wizard. Some pre-checks are estimates and the target node is not yet passed to KubeVirt.</td>
+</tr>
+<tr>
+<td><strong>Migration Factory</strong> <code>Partial</code></td>
+<td>Batch-migrate and convert VMs, including disk conversion, across nodes and storage as a supervised campaign. Cross-cluster migration is not implemented yet.</td>
+</tr>
+<tr>
+<td><strong>VM Groups &amp; Fleet Bulk Ops</strong></td>
+<td>Organize VMs into logical groups and apply power, tagging, and lifecycle actions in bulk.</td>
+</tr>
+<tr>
+<td><strong>VM Clone &amp; Compare</strong></td>
+<td>Clone VMs from running state or snapshots and diff two VMs' configuration side by side.</td>
+</tr>
+<tr>
+<td><strong>VM Health &amp; Repair</strong></td>
+<td>Per-VM health scoring plus guided repair actions for stuck, unschedulable, or degraded instances.</td>
+</tr>
+<tr>
+<td><strong>Windows Enterprise &amp; Licensing</strong></td>
+<td>Windows guest customization, sysprep, and license tracking for Windows VM estates.</td>
+</tr>
+<tr>
+<td><strong>Windows via Kryton</strong></td>
+<td>Optional Kryton REST catalog for Windows create + golden factory (12 dockur IDs); Zeus keeps day-2 VNC/native RDP/GuestKit.</td>
+</tr>
+<tr>
+<td><strong>Guest Intelligence</strong></td>
+<td>Reads guest-agent data for OS, IPs, installed software, and in-guest state.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="2-consoles-remote-access">2. Consoles &amp; Remote Access</h2>
+<p><em>Live VNC, serial, terminal, RDP, and SSH access with real-time metrics — all in the browser.</em></p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>VNC Graphical Console</strong></td>
+<td>Full graphical VM console streamed over WebSocket, including a pop-out standalone window.</td>
+</tr>
+<tr>
+<td><strong>Serial Console</strong></td>
+<td>Live serial-port console for headless VMs and boot-time troubleshooting.</td>
+</tr>
+<tr>
+<td><strong>Native RDP &amp; SSH (NodePort expose)</strong></td>
+<td>One-click expose of RDP or SSH over a NodePort (a free port is assigned and collisions are rejected), then connect with your own client using a downloadable .rdp file or an ssh command.</td>
+</tr>
+<tr>
+<td><strong>Console Hub &amp; Workspace</strong></td>
+<td>Multi-console workspace with tabs, session management, and a unified console launcher.</td>
+</tr>
+<tr>
+<td><strong>Live Console Metrics</strong></td>
+<td>Real-time CPU, memory, disk, and network telemetry streamed alongside each console.</td>
+</tr>
+<tr>
+<td><strong>Console Session Recording &amp; Sharing</strong></td>
+<td>Record, replay, and share console sessions for training, audit, and collaboration.</td>
+</tr>
+<tr>
+<td><strong>In-Browser Terminal</strong></td>
+<td>Cluster and pod terminal access with WebSocket-backed shells.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="3-networking-packetwolf-vm-shield">3. Networking &amp; PacketWolf VM Shield</h2>
+<p><em>See exactly what a VM talks to and contain it in one click — kernel-native visibility and enforcement.</em></p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>PacketWolf VM Shield</strong></td>
+<td>Unified per-VM network visibility and one-click containment with desired-vs-actual verification and a background reconciler.</td>
+</tr>
+<tr>
+<td><strong>Live Flow Watch (Hubble)</strong></td>
+<td>Streams a VM's live allowed/denied flows, dependency map, public-exposure findings, and an explainable risk score.</td>
+</tr>
+<tr>
+<td><strong>Containment Profiles</strong></td>
+<td>Internet lock, full quarantine, lateral lock, exfiltration lock, and investigation mode — with optional termination of existing connections.</td>
+</tr>
+<tr>
+<td><strong>Policy Preview &amp; Dry-Run</strong></td>
+<td>Dry-runs the exact containment policy against recorded traffic to show what it will and won't break.</td>
+</tr>
+<tr>
+<td><strong>Per-VM Firewall &amp; Egress Control</strong></td>
+<td>Block specific outbound ports (SMB, RDP, C2) and manage per-VM firewall rules from a panel.</td>
+</tr>
+<tr>
+<td><strong>Cilium Dashboard</strong></td>
+<td>Visualize Cilium identities, endpoints, and network policy enforcement across the cluster.</td>
+</tr>
+<tr>
+<td><strong>Network Policy Builder</strong></td>
+<td>Visually author, simulate, and apply Kubernetes and Cilium network policies.</td>
+</tr>
+<tr>
+<td><strong>Network Flow &amp; Observability</strong></td>
+<td>Cluster-wide network flow maps, attachments (Multus), and traffic observability.</td>
+</tr>
+<tr>
+<td><strong>Service Mesh &amp; Ingress</strong></td>
+<td>Manage service mesh routing, ingress rules, service discovery, and full MetalLB IPAddressPool/L2Advertisement CRUD (create and delete pools, not just view).</td>
+</tr>
+<tr>
+<td><strong>VM-Aware Ingress</strong></td>
+<td>Create, validate, and delete Ingress rules for a VM's exposed Service directly from the VM inspector, with TLS-secret and host-conflict checks before you apply.</td>
+</tr>
+<tr>
+<td><strong>Host Networking (NMState)</strong></td>
+<td>Declare NIC/bond/VLAN configuration for cluster nodes and see per-node apply status, via the kubernetes-nmstate operator.</td>
+</tr>
+<tr>
+<td><strong>DNS &amp; IPAM</strong></td>
+<td>Cluster DNS records and IP address management for VMs and services.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="4-storage-data">4. Storage &amp; Data</h2>
+<p><em>Manage DataVolumes, disks, PVCs, images, and storage migration for the whole VM estate.</em></p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Storage Explorer</strong></td>
+<td>Unified view of storage classes, PVCs, volumes, and capacity across the cluster.</td>
+</tr>
+<tr>
+<td><strong>DataVolumes &amp; CDI Import</strong></td>
+<td>Create and import DataVolumes from URLs, registries, and uploads via the CDI upload flow.</td>
+</tr>
+<tr>
+<td><strong>Disk Manager &amp; Hot-Plug</strong></td>
+<td>Add, resize, and hot-plug VM disks including live PVC resize.</td>
+</tr>
+<tr>
+<td><strong>Image Library, Factory &amp; Registry</strong></td>
+<td>Curate boot images, build images with the Image Factory (Zeus ISO pipelines and optional <strong>Build with Kryton</strong>), and browse the image registry.</td>
+</tr>
+<tr>
+<td><strong>Storage Migration</strong></td>
+<td>Move VM volumes between storage classes and backends with supervised migration.</td>
+</tr>
+<tr>
+<td><strong>Volume Snapshots</strong></td>
+<td>Point-in-time volume snapshots integrated with the snapshot manager.</td>
+</tr>
+<tr>
+<td><strong>Storage Intelligence</strong></td>
+<td>Analytics on storage usage, waste, and growth trends with optimization hints.</td>
+</tr>
+<tr>
+<td><strong>Atlas Distributed Storage</strong></td>
+<td>Read-only Ceph/NFS backend, cluster, and pool inventory proxied from Atlas (the Zyvor storage control plane), surfaced on the Storage page.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="5-cost-finops-optimization">5. Cost, FinOps &amp; Optimization</h2>
+<p><em>Per-VM cost visibility, waste detection, forecasting, chargeback, and rightsizing.</em></p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Cost Intelligence Dashboard</strong> <code>Partial</code></td>
+<td>Per-VM and per-namespace cost from a price model you configure, with trends and drill-down. A model, not billing data.</td>
+</tr>
+<tr>
+<td><strong>Chargeback &amp; Cost Allocation</strong></td>
+<td>Allocate spend to tenants, teams, and projects with a chargeback engine and reports.</td>
+</tr>
+<tr>
+<td><strong>Waste Detection &amp; Rightsizing</strong></td>
+<td>Finds idle, oversized, and orphaned resources and recommends right-sized shapes.</td>
+</tr>
+<tr>
+<td><strong>Cost Forecasting</strong></td>
+<td>Projects future spend from usage trends and growth models.</td>
+</tr>
+<tr>
+<td><strong>Budget Alerts</strong></td>
+<td>Server-side monthly budgets per cluster, tenant or namespace, evaluated from recorded cost history, with one alert per threshold per month through your notification channels. Estimates from configured unit prices, not invoices.</td>
+</tr>
+<tr>
+<td><strong>Spot &amp; Savings Advisor</strong></td>
+<td>Identifies spot and savings-plan opportunities for eligible workloads.</td>
+</tr>
+<tr>
+<td><strong>Optimization Center</strong></td>
+<td>Consolidated hub of cost, capacity, and performance optimization recommendations.</td>
+</tr>
+<tr>
+<td><strong>Cost Estimator</strong></td>
+<td>Pre-deployment cost estimation for planned VMs and workloads.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="6-capacity-autoscaling-placement">6. Capacity, Autoscaling &amp; Placement</h2>
+<p><em>Plan headroom, schedule smartly, and scale nodes, pods, and VMs automatically.</em></p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Capacity Planning</strong></td>
+<td>Cluster and node capacity dashboards with headroom, saturation, and what-if analysis.</td>
+</tr>
+<tr>
+<td><strong>Cluster Autoscaling</strong></td>
+<td>Configure and observe node autoscaling behavior and scale events.</td>
+</tr>
+<tr>
+<td><strong>HPA &amp; VPA Managers</strong></td>
+<td>Manage Horizontal and Vertical Pod Autoscalers with recommendations.</td>
+</tr>
+<tr>
+<td><strong>Placement Advisor</strong></td>
+<td>Recommends optimal nodes for VMs using affinity, taints, and resource fit.</td>
+</tr>
+<tr>
+<td><strong>Affinity, Taints &amp; Tolerations</strong></td>
+<td>Author affinity/anti-affinity rules, node taints, and tolerations visually.</td>
+</tr>
+<tr>
+<td><strong>Priority &amp; Runtime Classes</strong></td>
+<td>Manage PriorityClasses, RuntimeClasses, and Pod Disruption Budgets.</td>
+</tr>
+<tr>
+<td><strong>Utilization Heatmap</strong></td>
+<td>Cluster-wide heatmap of resource pressure across nodes and namespaces.</td>
+</tr>
+<tr>
+<td><strong>Node &amp; HA/DRS Management</strong></td>
+<td>Node inventory, cordon/drain, and HA/DRS workload balancing, from suggest-only to fully automated, with a per-VM cooldown against thrashing and a full history of what the engine moved and why.</td>
+</tr>
+<tr>
+<td><strong>Manual Node Fencing</strong></td>
+<td>Force-remediate a node you have confirmed dead out of band: cordon it and force-delete its VM instances so KubeVirt reschedules them elsewhere. Needs an explicit opt-in and a "node is dead" confirmation, and refuses on any node still reporting Ready.</td>
+</tr>
+<tr>
+<td><strong>GPU &amp; Device Plugins</strong></td>
+<td>Manage GPU dashboards, device plugins, and hardware device attachment, including a vGPU mediated-device profile picker with a manual-resource fallback when no GPU hardware is present.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="7-observability-topology-time-machine">7. Observability, Topology &amp; Time Machine</h2>
+<p><em>Topology maps, distributed tracing, logs, metrics, and point-in-time cluster history.</em></p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Topology &amp; Dependency Graph</strong></td>
+<td>Interactive maps of nodes, VMs, pods, services, and their dependencies.</td>
+</tr>
+<tr>
+<td><strong>Cluster DVR &amp; VM Flight Recorder</strong></td>
+<td>Time Machine that continuously samples cluster and per-VM state for point-in-time replay.</td>
+</tr>
+<tr>
+<td><strong>Distributed Tracing &amp; APM</strong> <code>Partial</code></td>
+<td>Service list, request rate and error rate from PacketWolf flows. Latency percentiles are shown only when measured, otherwise unknown.</td>
+</tr>
+<tr>
+<td><strong>Logs Explorer &amp; Aggregation</strong></td>
+<td>Centralized log search and aggregation across pods and VMs.</td>
+</tr>
+<tr>
+<td><strong>Metrics &amp; Custom Metrics</strong></td>
+<td>Real Prometheus-backed metrics, custom metric dashboards, and monitoring targets.</td>
+</tr>
+<tr>
+<td><strong>Anomaly Detection</strong></td>
+<td>Detects abnormal resource, cost, and behavior patterns automatically.</td>
+</tr>
+<tr>
+<td><strong>Timeline &amp; Gantt View</strong> <code>Partial</code></td>
+<td>Chronological timeline of events and remediation actions, and Gantt-style operation views.</td>
+</tr>
+<tr>
+<td><strong>Event Analysis</strong></td>
+<td>Correlates and analyzes Kubernetes events for root-cause signals.</td>
+</tr>
+<tr>
+<td><strong>System Health &amp; Status Page</strong></td>
+<td>Overall cluster health scoring and a shareable status page.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="8-security-posture-vulnerability">8. Security Posture &amp; Vulnerability</h2>
+<p><em>Continuous posture scoring, image scanning, secrets, and a dedicated security operations center.</em></p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Security Posture &amp; Overview</strong></td>
+<td>Continuous scoring of cluster and VM security posture with prioritized findings.</td>
+</tr>
+<tr>
+<td><strong>Vulnerability &amp; Image Scanning</strong></td>
+<td>Scans container and VM images for CVEs with severity breakdowns.</td>
+</tr>
+<tr>
+<td><strong>Security Operations Center</strong></td>
+<td>Consolidated SecOps view of threats, containment actions, and response state.</td>
+</tr>
+<tr>
+<td><strong>Secrets &amp; External Secrets</strong></td>
+<td>Manage Kubernetes secrets and External Secrets Operator integrations.</td>
+</tr>
+<tr>
+<td><strong>Certificate Manager</strong></td>
+<td>Track, issue, and rotate TLS certificates across the cluster.</td>
+</tr>
+<tr>
+<td><strong>eBPF &amp; Kernel Intelligence</strong></td>
+<td>Kernel-level (eBPF) runtime signals and kernel info for deep security context.</td>
+</tr>
+<tr>
+<td><strong>Patch Center</strong> <code>Partial</code></td>
+<td>Patch readiness checks and patch planning. Zeus OS does not execute patches yet.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="9-compliance-governance-admission-control">9. Compliance, Governance &amp; Admission Control</h2>
+<p><em>Frameworks, policy engines, admission webhooks, and RBAC visualization for provable control.</em></p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Compliance &amp; Frameworks</strong></td>
+<td>Continuous compliance checks mapped to frameworks with pass/fail evidence.</td>
+</tr>
+<tr>
+<td><strong>OPA Gatekeeper &amp; Zeus Policies</strong></td>
+<td>Manage OPA Gatekeeper constraints and native Zeus policy definitions.</td>
+</tr>
+<tr>
+<td><strong>Admission Control</strong></td>
+<td>Configure admission webhooks and validate resources before they're admitted.</td>
+</tr>
+<tr>
+<td><strong>Policy Simulation &amp; Violations</strong></td>
+<td>Simulate policy impact and track live policy violations.</td>
+</tr>
+<tr>
+<td><strong>RBAC Visualizer</strong></td>
+<td>Visual map of roles, bindings, service accounts, and effective permissions.</td>
+</tr>
+<tr>
+<td><strong>Audit Log &amp; Trail</strong></td>
+<td>Immutable audit trail of every action across surfaces.</td>
+</tr>
+<tr>
+<td><strong>Resource Governance &amp; Quotas</strong></td>
+<td>Resource quotas, limits, and governance policy across namespaces and tenants.</td>
+</tr>
+<tr>
+<td><strong>Resource Tagging</strong></td>
+<td>Consistent tagging and labeling for ownership, cost, and policy.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="10-day-2-automation-remediation">10. Day-2 Automation &amp; Remediation</h2>
+<p><em>Closed-loop remediation, scheduled operations, workflows, and macros that run the boring parts.</em></p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Day-2 Closed-Loop Remediation</strong></td>
+<td>Background engine that detects signals and runs remediation playbooks with a kill-switch.</td>
+</tr>
+<tr>
+<td><strong>Auto-Remediation Playbooks</strong></td>
+<td>Registry of remediation playbooks with signal-to-action mapping and audit.</td>
+</tr>
+<tr>
+<td><strong>Scheduled Operations</strong></td>
+<td>Schedule power on/off, snapshots, and other operations on cron-like cadences.</td>
+</tr>
+<tr>
+<td><strong>Workflow Automation &amp; Manager</strong></td>
+<td>Compose multi-step operational workflows across resources.</td>
+</tr>
+<tr>
+<td><strong>Macros &amp; Batch Actions</strong> <code>Preview</code></td>
+<td>Bulk operations across many resources. Macro recording and replay is not yet available.</td>
+</tr>
+<tr>
+<td><strong>Task Center</strong></td>
+<td>Central queue of running, scheduled, and completed operational tasks.</td>
+</tr>
+<tr>
+<td><strong>Undo &amp; Rollback</strong></td>
+<td>Rollback and undo support for reversible operations.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="11-incident-response-war-room">11. Incident Response &amp; War Room</h2>
+<p><em>Auto-assembled war rooms, guided response wizards, RCA, and SLA/SLO tracking.</em></p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Incident Center</strong></td>
+<td>Track active incidents with severity, timeline, and correlated context.</td>
+</tr>
+<tr>
+<td><strong>War Room Auto-Assembly</strong></td>
+<td>Automatically assembles topology, logs, metrics, and RCA context for an active incident.</td>
+</tr>
+<tr>
+<td><strong>Incident Response Wizard</strong></td>
+<td>Guided, step-by-step response flows with recommended remediation.</td>
+</tr>
+<tr>
+<td><strong>Incident Chat</strong></td>
+<td>In-context collaboration thread tied to an incident.</td>
+</tr>
+<tr>
+<td><strong>SLA Dashboard &amp; SLO Manager</strong></td>
+<td>Define and track SLOs, error budgets, and SLA compliance.</td>
+</tr>
+<tr>
+<td><strong>Alerting &amp; Notifications</strong></td>
+<td>Alert rules, Prometheus rules, notification routing, and an alerting engine.</td>
+</tr>
+<tr>
+<td><strong>Executive Briefing</strong></td>
+<td>Auto-generated briefings summarizing state, risk, and incidents for leadership.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="12-gitops-cicd-change-management">12. GitOps, CI/CD &amp; Change Management</h2>
+<p><em>Argo/Flux sync, Helm and Kustomize, progressive delivery, and gated change approval.</em></p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>GitOps Sync (Argo/Flux)</strong> <code>Partial</code></td>
+<td>Read-only view of Flux and Argo CD sync state and drift for objects that already exist in the cluster.</td>
+</tr>
+<tr>
+<td><strong>Helm &amp; Kustomize</strong></td>
+<td>Browse and manage Helm releases and Kustomize overlays.</td>
+</tr>
+<tr>
+<td><strong>Progressive Delivery</strong></td>
+<td>Canary, blue-green, and progressive rollout strategies with health gating.</td>
+</tr>
+<tr>
+<td><strong>CI/CD Pipelines</strong></td>
+<td>View and integrate CI/CD pipeline status for delivered workloads.</td>
+</tr>
+<tr>
+<td><strong>Change Approval &amp; Approvals</strong></td>
+<td>Gate risky changes behind approval workflows before they execute.</td>
+</tr>
+<tr>
+<td><strong>Infrastructure as Code</strong></td>
+<td>Manage IaC definitions and environment configuration for the estate.</td>
+</tr>
+<tr>
+<td><strong>Environment Management</strong></td>
+<td>Model and manage dev/stage/prod environments and promotion.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="13-backup-dr-snapshots">13. Backup, DR &amp; Snapshots</h2>
+<p><em>Velero-backed backups, disaster recovery orchestration, and scheduled VM snapshots.</em></p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Backup &amp; DR Center</strong></td>
+<td>Configure and monitor VM/cluster backups with a guided backup wizard.</td>
+</tr>
+<tr>
+<td><strong>Velero Integration</strong></td>
+<td>Native Velero backup and restore management for Kubernetes and VM resources.</td>
+</tr>
+<tr>
+<td><strong>Disaster Recovery Orchestration</strong> <code>Partial</code></td>
+<td>DR plans with measured RPO and a real restore test into a scratch namespace. Failover and execute steps are simulated and labelled as such.</td>
+</tr>
+<tr>
+<td><strong>Snapshot Manager &amp; Scheduling</strong></td>
+<td>Take, browse, and restore VM snapshots on demand or on a schedule.</td>
+</tr>
+<tr>
+<td><strong>Restore Wizard</strong></td>
+<td>Guided restore of VMs and volumes from backups and snapshots.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="14-multi-cluster-multi-tenancy-enterprise-identity">14. Multi-Cluster, Multi-Tenancy &amp; Enterprise Identity</h2>
+<p><em>Fleet-wide operations, tenant isolation, OIDC/LDAP/SAML/MFA, API tokens, and SIEM.</em></p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Multi-Cluster Fleet</strong> <code>Partial</code></td>
+<td>Register remote clusters, connect, probe health and compare counts per cluster. Moving VMs between clusters is not implemented yet.</td>
+</tr>
+<tr>
+<td><strong>Multi-Tenancy</strong></td>
+<td>Namespace-label-based tenant isolation with per-tenant filtering across views.</td>
+</tr>
+<tr>
+<td><strong>Enterprise SSO (OIDC/LDAP/SAML)</strong></td>
+<td>Pluggable authentication with OIDC, LDAP, SAML, and local modes; local admin stays available as an automatic break-glass fallback whenever SSO is active. Verified live against a real Keycloak realm.</td>
+</tr>
+<tr>
+<td><strong>Identity Center &amp; User Management</strong></td>
+<td>Manage users, roles, sessions, and identity policy with session revocation.</td>
+</tr>
+<tr>
+<td><strong>API Tokens &amp; Scoped Access</strong></td>
+<td>Issue scoped API keys and bearer tokens for automation and integrations.</td>
+</tr>
+<tr>
+<td><strong>SIEM &amp; Auth Audit</strong></td>
+<td>Stream auth and audit events to SIEM systems with a dedicated auth-audit view.</td>
+</tr>
+<tr>
+<td><strong>Log Shipping</strong></td>
+<td>Forward virt-launcher pod logs to Loki or a generic HTTP endpoint, filterable by namespace or VM, with no in-cluster collection agent.</td>
+</tr>
+<tr>
+<td><strong>Provider Portal</strong></td>
+<td>Multi-tenant provider/operator portal for managed-service delivery.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="15-ai-ops-marketplace-developer-center">15. AI Ops, Marketplace &amp; Developer Center</h2>
+<p><em>Built-in evidence-first LLM, copilots, blueprints, marketplace, and a developer toolkit.</em></p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>AI Center &amp; Copilot</strong></td>
+<td>Built-in LLM (in-cluster Ollama or Forge gateway) for evidence-first, auditable assistance.</td>
+</tr>
+<tr>
+<td><strong>Autonomous AI Ops</strong></td>
+<td>AI-driven analysis, troubleshooting, and recommendation generation grounded in live cluster state.</td>
+</tr>
+<tr>
+<td><strong>Natural-Language Command &amp; Search</strong></td>
+<td>NLP-driven command bar and universal search across the estate.</td>
+</tr>
+<tr>
+<td><strong>RAG Template Catalog</strong></td>
+<td>Retrieval-augmented generation over the template catalog using Qdrant and local embeddings.</td>
+</tr>
+<tr>
+<td><strong>Marketplace &amp; Blueprints</strong></td>
+<td>Browse and deploy application blueprints and marketplace workspaces.</td>
+</tr>
+<tr>
+<td><strong>Application &amp; Service Catalog</strong></td>
+<td>Curated catalog of applications, operators, and services to deploy.</td>
+</tr>
+<tr>
+<td><strong>Developer Center &amp; Playground</strong></td>
+<td>API docs, API playground, GraphQL, webhook tester, and debug tools.</td>
+</tr>
+<tr>
+<td><strong>Plugins &amp; Custom Resources</strong></td>
+<td>Extend Zeus OS with plugins and manage arbitrary Kubernetes custom resources.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="16-edge-chaos-performance-platform-ops">16. Edge, Chaos, Performance &amp; Platform Ops</h2>
+<p><em>Edge fleets, chaos experiments, performance testing, database ops, and cluster lifecycle.</em></p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Edge Center</strong></td>
+<td>Manage distributed edge clusters and remote-site workloads.</td>
+</tr>
+<tr>
+<td><strong>Chaos Engineering</strong></td>
+<td>Design and run fault-injection experiments to test resilience.</td>
+</tr>
+<tr>
+<td><strong>Performance Testing &amp; Profiling</strong></td>
+<td>Load, performance testing, and profiling for workloads and VMs.</td>
+</tr>
+<tr>
+<td><strong>Database Operations</strong></td>
+<td>Manage database workloads and operators from a dedicated DB ops surface.</td>
+</tr>
+<tr>
+<td><strong>Operators Hub</strong></td>
+<td>Discover, install, and manage Kubernetes operators.</td>
+</tr>
+<tr>
+<td><strong>Cluster Upgrade &amp; Lifecycle</strong> <code>Partial</code></td>
+<td>Upgrade pre-checks and version-skew rules for cluster and node upgrades. Zeus OS does not execute upgrades yet.</td>
+</tr>
+<tr>
+<td><strong>Host &amp; Hypervisor Management</strong></td>
+<td>Inspect and manage physical hosts, host groups, and hypervisor state.</td>
+</tr>
+<tr>
+<td><strong>Reports &amp; Analytics</strong></td>
+<td>Generate exportable reports across cost, compliance, capacity, and security.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="also-included">Also included</h2>
+<h3 id="identity-and-provisioning">Identity and provisioning</h3>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>SCIM v2 provisioning</strong></td>
+<td>Provision users and groups from your identity provider, with group-to-role mapping and deactivation honoured at sign-in.</td>
+</tr>
+<tr>
+<td><strong>WebAuthn second factor</strong></td>
+<td>Hardware security keys as a second factor for local sign-in.</td>
+</tr>
+<tr>
+<td><strong>Email and chat notification channels</strong></td>
+<td>SMTP email, Slack, Teams, webhook and PagerDuty channels with masked configuration and SSRF guards.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="platform">Platform</h3>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Plugin registry</strong></td>
+<td>Register plugins with HMAC-signed webhooks and navigation entries.</td>
+</tr>
+<tr>
+<td><strong>Content library</strong></td>
+<td>Subscribe to signed template bundles; imports always land as unapproved drafts.</td>
+</tr>
+<tr>
+<td><strong>Zeus state backup and restore</strong></td>
+<td>Back up and restore Zeus OS state; secrets are excluded unless you supply a passphrase.</td>
+</tr>
+<tr>
+<td><strong>Maintenance windows</strong></td>
+<td>Define maintenance windows.</td>
+</tr>
+<tr>
+<td><strong>Zyra knowledge index</strong></td>
+<td>Ask Zyra over your own repositories with retrieval and citations; off by default for remote models.</td>
+</tr>
+<tr>
+<td><strong>English and Spanish interface</strong></td>
+<td>Light and dark appearance, a command palette, and accessibility checks in CI. The Spanish translation is machine-drafted.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="networking-extras">Networking extras</h3>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Cilium egress gateway, BGP and Gateway API</strong></td>
+<td>Manage egress gateway policies, BGP peering, L2 announcements and Gateway API resources.</td>
+</tr>
+<tr>
+<td><strong>Cilium encryption status</strong></td>
+<td>Read-only WireGuard encryption status.</td>
+</tr>
+<tr>
+<td><strong>Netra integration</strong></td>
+<td>Typed views over Netra observation, with leased emergency deny that needs a platform admin.</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.60a45f97.min.js"></script>
+      
+    
+  </body>
+</html>

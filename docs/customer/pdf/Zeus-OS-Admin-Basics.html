@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Admin Basics — Zeus OS</title>
+<style>
+  @page { size: A4; margin: 15mm 16mm 16mm; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; color: #1f2937; background: #fff; line-height: 1.58; font-size: 10.5pt; }
+  .cover { height: 262mm; margin: -15mm -16mm 0; background: linear-gradient(135deg,#0a0a1a,#1e3a5f,#0d1b2a); color: #fff; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; position: relative; overflow: hidden; page-break-after: always; }
+  .cover::before { content:''; position:absolute; top:-50%; left:-50%; width:200%; height:200%; background: radial-gradient(circle at 30% 38%, rgba(59,130,246,.20) 0%, transparent 45%), radial-gradient(circle at 72% 80%, rgba(99,102,241,.13) 0%, transparent 50%); }
+  .cover .kicker { position:relative; font-size:1em; letter-spacing:5px; text-transform:uppercase; opacity:.72; margin-bottom:1.4em; }
+  .cover h1 { position:relative; font-size:3.4em; font-weight:800; letter-spacing:-2px; margin-bottom:.14em; }
+  .cover h1 span { color:#3b82f6; }
+  .cover .sub { position:relative; font-size:1.35em; font-weight:300; opacity:.93; margin-bottom:1.4em; max-width:24em; }
+  .cover .tagline { position:relative; font-size:1.02em; opacity:.72; max-width:40em; }
+  .cover .badge { display:inline-block; background:rgba(59,130,246,.2); border:1px solid rgba(59,130,246,.45); padding:8px 22px; border-radius:20px; font-size:.9em; margin-top:2.2em; }
+  .cover .foot { position:absolute; bottom:34px; font-size:.82em; opacity:.6; }
+  main { padding: 0; }
+  h1 { margin: 0 0 .5em; font-size: 1.9em; color: #12203a; }
+  h2 { page-break-before: always; padding-top: 2mm; margin: 0 0 .35em; font-size: 1.55em; font-weight: 750; letter-spacing:-.5px; color: #12203a; border-bottom: 2px solid #e5edfb; padding-bottom: .28em; }
+  h2:first-of-type { page-break-before: avoid; }
+  h3 { margin: 1.1em 0 .4em; font-size: 1.12em; font-weight: 700; color: #1e293b; }
+  h4 { margin: .9em 0 .3em; font-size: 1.02em; font-weight: 650; }
+  p { margin: .5em 0; }
+  ul, ol { margin: .5em 0 .9em 1.4em; } li { margin: .22em 0; }
+  a { color: #2563eb; text-decoration: none; }
+  code { background:#eef2f7; padding:1px 6px; border-radius:4px; font-size:.86em; font-family:'SF Mono',ui-monospace,Menlo,monospace; color:#0f172a; word-break: break-word; }
+  pre { background:#0f172a; color:#e2e8f0; padding:12px 15px; border-radius:9px; overflow-x:auto; margin:.8em 0; page-break-inside:avoid; }
+  pre code { background:none; color:inherit; padding:0; font-size:9pt; }
+  table { width: 100%; border-collapse: collapse; margin: .8em 0 1.1em; font-size: 9.5pt; page-break-inside: avoid; }
+  th, td { border: 1px solid #e5e7eb; padding: 6px 8px; text-align: left; vertical-align: top; }
+  th { background: #f1f5f9; color: #0f172a; font-weight: 650; }
+  hr { border: none; border-top: 1px solid #e5e7eb; margin: 1.2em 0; }
+  blockquote { border-left: 3px solid #3b82f6; margin: .8em 0; padding: .4em 0 .4em .9em; color: #334155; background: #f8fafc; }
+  .doc-break { page-break-before: always; }
+</style>
+</head>
+<body>
+<section class="cover">
+        <div class="kicker">ZyvorAI Labs · Customer Documentation</div>
+        <h1>Zeus <span>OS</span></h1>
+        <div class="sub">Admin Basics</div>
+        <div class="tagline">Visual day-2 control plane for KubeVirt and Kubernetes</div>
+        <div class="badge">2026-09-26</div>
+        <div class="foot">zyvor.dev · Confidential — for licensed customers</div>
+      </section>
+<main>
+<p>Platform-facing configuration for Zeus OS. Operators using the UI day-to-day can skip this unless asked to verify URL, TLS, or auth.</p>
+<p>For the full env-var and production checklist, see <a href="../handbook/admin-configuration.md">Handbook — Administration &amp; Configuration</a>.</p>
+<h2>Ports customers care about</h2>
+<table>
+<thead>
+<tr>
+<th>Port</th>
+<th>Service</th>
+<th>Typical use</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>5050</strong></td>
+<td><code>zeus-os-web</code></td>
+<td>Direct / local dashboard + API</td>
+</tr>
+<tr>
+<td><strong>30050</strong></td>
+<td>NodePort (common deploy)</td>
+<td>Cluster-exposed HTTPS dashboard</td>
+</tr>
+<tr>
+<td><strong>8081</strong></td>
+<td>Optional console-proxy</td>
+<td>Sidecar console proxy</td>
+</tr>
+<tr>
+<td><strong>9191 / 9443</strong></td>
+<td>PacketWolf</td>
+<td>Network intelligence (proxied)</td>
+</tr>
+<tr>
+<td><strong>9090</strong></td>
+<td>Prometheus</td>
+<td>Metrics source (cluster)</td>
+</tr>
+</tbody></table>
+<p>Zeus itself listens on <strong>5050</strong> (plus optional console proxy). Give customers the <strong>ingress or NodePort URL</strong>, not internal ClusterIP addresses.</p>
+<h2>Fastest production-style deploy</h2>
+<pre><code class="language-bash"># On a machine with kubeconfig + KubeVirt already installed
+./scripts/deploy-remote.sh &lt;HOST&gt; &lt;SSH_USER&gt; --k3s
+# → https://&lt;HOST&gt;:30050
+</code></pre>
+<p>Air-gapped: <a href="../AIR_GAPPED_INSTALL.md">AIR_GAPPED_INSTALL.md</a>. Helm profiles: <a href="../HELM_VALUES_PROFILES.md">HELM_VALUES_PROFILES.md</a>.</p>
+<h3>From a binary bundle (no git clone, no build tools)</h3>
+<p>If you received a <code>zeus-os-&lt;version&gt;-linux-amd64.tar.gz</code> bundle (built via
+<code>scripts/package-binary-remote.sh</code>), it ships the Helm chart plus a script that builds a
+runtime image from the bundle&#39;s own binaries — no source tree, no cargo/npm:</p>
+<pre><code class="language-bash">tar xzf zeus-os-*-linux-amd64.tar.gz &amp;&amp; cd zeus-os-*-linux-amd64
+./install-cluster.sh                                          # KubeVirt/CDI/Cilium prereqs
+./install-to-kubernetes.sh --registry &lt;your-registry&gt;/zeus-os --push
+./apply-cluster-network.sh
+</code></pre>
+<p><code>install-to-kubernetes.sh --help</code> shows namespace/release/dry-run options, and a local
+single-node cluster (kind/k3s/minikube) sharing the build daemon&#39;s image store can skip
+<code>--push</code> entirely. Note: an image built this way lacks the <code>helm</code> CLI the full-source
+<code>web/Dockerfile</code> bundles — the in-app /helm repo/install UI won&#39;t work; use <code>web/Dockerfile</code>
+instead if you need it. Browser-VNC assets and GuestKit agent binaries are included.</p>
+<h2>Authentication (what to enable)</h2>
+<p>Resolution order on the server:</p>
+<ol>
+<li><code>ZEUS_OS_NO_AUTH=1</code> — lab only</li>
+<li><code>ZEUS_OS_API_KEY</code> — static bearer for API</li>
+<li><code>ZEUS_OS_AUTH=local|ldap|saml|oidc</code> — interactive login</li>
+</ol>
+<p>Enterprise detail: <a href="../ENTERPRISE_AUTH_TENANCY.md">ENTERPRISE_AUTH_TENANCY.md</a>.</p>
+<p>When <code>ldap</code>/<code>saml</code>/<code>oidc</code> is set, the local admin account stays available as a break-glass
+fallback automatically — the login screen shows an explicit toggle to pick between the directory/
+SSO method and the local admin account, rather than requiring the operator to know a hidden URL.</p>
+<p><strong>Tell operators:</strong></p>
+<ul>
+<li>Dashboard URL + auth method</li>
+<li>Whether MFA / SSO is required</li>
+<li>That RDP/SSH use <strong>guest</strong> credentials</li>
+</ul>
+<h3>Local admin password</h3>
+<p>The built-in local admin account defaults to <strong><code>Admin@321</code></strong> when <code>ZEUS_OS_LOCAL_ADMIN_PASSWORD</code>
+isn&#39;t set — <strong>change this before any internet-facing or production install.</strong></p>
+<p>The default differs by install path:</p>
+<table>
+<thead>
+<tr>
+<th>Install path</th>
+<th>Default behavior</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Helm chart</td>
+<td>Fixed <code>Admin@321</code> unless <code>config.localAuth.adminPassword</code> or <code>config.localAuth.adminPasswordSecretRef</code> is set in <code>values.yaml</code></td>
+</tr>
+<tr>
+<td>Binary bundle (<code>scripts/package-binary-remote.sh</code>)</td>
+<td>Generates a <strong>random</strong> strong password automatically unless <code>ZEUS_OS_LOCAL_ADMIN_PASSWORD</code> is set in the bundle&#39;s env file — does <strong>not</strong> fall back to <code>Admin@321</code></td>
+</tr>
+</tbody></table>
+<p>Set your own password at install time (Helm):</p>
+<pre><code class="language-bash">helm upgrade --install zeus-os ./chart --set config.localAuth.adminPassword=&quot;a-real-password&quot;
+# or reference an existing Secret instead of inlining the password:
+# --set config.localAuth.adminPasswordSecretRef.name=zeus-os-local-auth
+</code></pre>
+<h2>TLS (required for browser VNC)</h2>
+<pre><code class="language-bash">export ZEUS_OS_TLS_CERT=/path/to/cert.pem
+export ZEUS_OS_TLS_KEY=/path/to/key.pem
+# or terminate TLS at ingress and serve the SPA behind HTTPS
+</code></pre>
+<p>Without a secure context, in-browser VNC will not work; serial console still can.</p>
+<h2>Multi-tenancy</h2>
+<p>Namespaces may be labeled <code>zeus-os.io/tenant=&lt;id&gt;</code>. List APIs filter by tenant for scoped users. Configure tenants under <strong>Tenancy</strong> (<code>/tenancy</code>) and Identity Center.</p>
+<h2>What to hand customers after install</h2>
+<ol>
+<li>Correct HTTPS URL (and the port that is <em>not</em> GuestKit/Machina).</li>
+<li>Login instructions for your auth mode.</li>
+<li>Link to this customer package: <code>docs/customer/README.md</code> (or the PDF set).</li>
+<li>Optional: Feature Guide PDF for capability overview.</li>
+</ol>
+<h2>Health checks</h2>
+<pre><code class="language-bash">curl -sk -o /dev/null -w &quot;%{http_code}\n&quot; https://&lt;host&gt;:30050/api/v1/health
+kubectl -n zeus-os get pods,svc   # namespace may differ per chart
+</code></pre>
+<h2>Related</h2>
+<ul>
+<li><a href="getting-started.md">Getting Started</a> — operator path after URL works</li>
+<li><a href="enterprise-sso.md">Enterprise SSO / OIDC</a> — Keycloak and generic OIDC</li>
+<li><a href="../CUSTOMER_ACCESS_RUNBOOK.md">CUSTOMER_ACCESS_RUNBOOK.md</a> — example access notes</li>
+<li><a href="../handbook/README.md">Handbook README</a></li>
+</ul>
+
+</main>
+</body>
+</html>
