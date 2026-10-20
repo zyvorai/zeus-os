@@ -16,9 +16,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: |
-          pip install "mkdocs-material==9.5.*"
+          python3 -m venv "$RUNNER_TEMP/venv"
+          "$RUNNER_TEMP/venv/bin/pip" install "mkdocs-material==9.5.*"
           printf 'site_name: Zeus OS\ndocs_dir: docs\ntheme:\n  name: material\n' > mkdocs.yml
-          mkdocs build -d _site/docs
+          "$RUNNER_TEMP/venv/bin/mkdocs" build -d _site/docs
           cp -R site/. _site/
           touch _site/.nojekyll
       - uses: actions/upload-pages-artifact@v3
