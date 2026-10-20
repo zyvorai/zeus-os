@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Customer Documentation Overview — Zeus OS</title>
+<style>
+  @page { size: A4; margin: 15mm 16mm 16mm; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; color: #1f2937; background: #fff; line-height: 1.58; font-size: 10.5pt; }
+  .cover { height: 262mm; margin: -15mm -16mm 0; background: linear-gradient(135deg,#0a0a1a,#1e3a5f,#0d1b2a); color: #fff; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; position: relative; overflow: hidden; page-break-after: always; }
+  .cover::before { content:''; position:absolute; top:-50%; left:-50%; width:200%; height:200%; background: radial-gradient(circle at 30% 38%, rgba(59,130,246,.20) 0%, transparent 45%), radial-gradient(circle at 72% 80%, rgba(99,102,241,.13) 0%, transparent 50%); }
+  .cover .kicker { position:relative; font-size:1em; letter-spacing:5px; text-transform:uppercase; opacity:.72; margin-bottom:1.4em; }
+  .cover h1 { position:relative; font-size:3.4em; font-weight:800; letter-spacing:-2px; margin-bottom:.14em; }
+  .cover h1 span { color:#3b82f6; }
+  .cover .sub { position:relative; font-size:1.35em; font-weight:300; opacity:.93; margin-bottom:1.4em; max-width:24em; }
+  .cover .tagline { position:relative; font-size:1.02em; opacity:.72; max-width:40em; }
+  .cover .badge { display:inline-block; background:rgba(59,130,246,.2); border:1px solid rgba(59,130,246,.45); padding:8px 22px; border-radius:20px; font-size:.9em; margin-top:2.2em; }
+  .cover .foot { position:absolute; bottom:34px; font-size:.82em; opacity:.6; }
+  main { padding: 0; }
+  h1 { margin: 0 0 .5em; font-size: 1.9em; color: #12203a; }
+  h2 { page-break-before: always; padding-top: 2mm; margin: 0 0 .35em; font-size: 1.55em; font-weight: 750; letter-spacing:-.5px; color: #12203a; border-bottom: 2px solid #e5edfb; padding-bottom: .28em; }
+  h2:first-of-type { page-break-before: avoid; }
+  h3 { margin: 1.1em 0 .4em; font-size: 1.12em; font-weight: 700; color: #1e293b; }
+  h4 { margin: .9em 0 .3em; font-size: 1.02em; font-weight: 650; }
+  p { margin: .5em 0; }
+  ul, ol { margin: .5em 0 .9em 1.4em; } li { margin: .22em 0; }
+  a { color: #2563eb; text-decoration: none; }
+  code { background:#eef2f7; padding:1px 6px; border-radius:4px; font-size:.86em; font-family:'SF Mono',ui-monospace,Menlo,monospace; color:#0f172a; word-break: break-word; }
+  pre { background:#0f172a; color:#e2e8f0; padding:12px 15px; border-radius:9px; overflow-x:auto; margin:.8em 0; page-break-inside:avoid; }
+  pre code { background:none; color:inherit; padding:0; font-size:9pt; }
+  table { width: 100%; border-collapse: collapse; margin: .8em 0 1.1em; font-size: 9.5pt; page-break-inside: avoid; }
+  th, td { border: 1px solid #e5e7eb; padding: 6px 8px; text-align: left; vertical-align: top; }
+  th { background: #f1f5f9; color: #0f172a; font-weight: 650; }
+  hr { border: none; border-top: 1px solid #e5e7eb; margin: 1.2em 0; }
+  blockquote { border-left: 3px solid #3b82f6; margin: .8em 0; padding: .4em 0 .4em .9em; color: #334155; background: #f8fafc; }
+  .doc-break { page-break-before: always; }
+</style>
+</head>
+<body>
+<section class="cover">
+        <div class="kicker">ZyvorAI Labs · Customer Documentation</div>
+        <h1>Zeus <span>OS</span></h1>
+        <div class="sub">Customer Documentation Overview</div>
+        <div class="tagline">Visual day-2 control plane for KubeVirt and Kubernetes</div>
+        <div class="badge">2026-09-26</div>
+        <div class="foot">zyvor.dev · Confidential — for licensed customers</div>
+      </section>
+<main>
+<p><strong>Zeus OS</strong> is the visual day-2 control plane for <strong>KubeVirt</strong> virtual machines and Kubernetes infrastructure. This package is written for operators, platform admins, and FinOps users — not application developers hacking on the source tree.</p>
+<table>
+<thead>
+<tr>
+<th>You want to…</th>
+<th>Open</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Install and log in</td>
+<td><a href="getting-started.md">Getting Started</a></td>
+</tr>
+<tr>
+<td>Learn the shell (nav, search, workspaces)</td>
+<td><a href="using-the-dashboard.md">Using the Dashboard</a></td>
+</tr>
+<tr>
+<td>Follow a page, step by step</td>
+<td><a href="pages/README.md">Page-by-page guides</a></td>
+</tr>
+<tr>
+<td>Multi-page jobs (create, migrate, contain…)</td>
+<td><a href="workflows.md">Common workflows</a></td>
+</tr>
+<tr>
+<td>Look up any screen by route</td>
+<td><a href="PAGE_INDEX.md">Complete page index</a></td>
+</tr>
+<tr>
+<td>Deploy, auth, TLS, ports</td>
+<td><a href="admin-basics.md">Admin basics</a></td>
+</tr>
+<tr>
+<td>Browse capabilities by theme</td>
+<td><a href="../zeus-os-customer-feature-guide.md">Feature Guide</a></td>
+</tr>
+<tr>
+<td>Fix a symptom</td>
+<td><a href="../handbook/troubleshooting.md">Troubleshooting</a> · <a href="../handbook/faq.md">FAQ</a></td>
+</tr>
+</tbody></table>
+<h2>Printable PDFs</h2>
+<p>Build branded PDFs from this Markdown (requires Chrome/Chromium + <code>ui</code> deps):</p>
+<pre><code class="language-bash">node scripts/customer-docs/build-customer-pdfs.mjs
+</code></pre>
+<p>Output lands in <a href="pdf/"><code>pdf/</code></a>:</p>
+<table>
+<thead>
+<tr>
+<th>PDF</th>
+<th>Contents</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>Zeus-OS-Customer-README.pdf</code></td>
+<td>This overview</td>
+</tr>
+<tr>
+<td><code>Zeus-OS-Getting-Started.pdf</code></td>
+<td>Access, login, dashboard basics, common workflows</td>
+</tr>
+<tr>
+<td><code>Zeus-OS-Page-by-Page.pdf</code></td>
+<td>Complete manual — every dashboard page (~190 pages)</td>
+</tr>
+<tr>
+<td><code>Zeus-OS-Admin-Basics.pdf</code></td>
+<td>Deploy, auth, TLS, ports</td>
+</tr>
+</tbody></table>
+<p>The build regenerates both indexes first and validates that every guide exists.
+Check links independently with <code>node scripts/customer-docs/check-links.mjs</code>.</p>
+<p>Also available: the feature-domain <strong><a href="../zeus-os-customer-feature-guide.pdf">Customer Feature Guide PDF</a></strong> (<code>node scripts/build-feature-guide.mjs</code>).</p>
+<h2>Product at a glance</h2>
+<pre><code class="language-text">  Web dashboard  →  see inventory, operate VMs, consoles, cost, security
+  TUI (zeus-os)  →  k9s-style terminal for the same cluster
+  CLI            →  script power / snapshot / guest actions
+  REST + WS API  →  /api/v1 (OpenAPI in Developer Center)
+</code></pre>
+<p>Zeus OS operates what is already running on Kubernetes + KubeVirt. VMware import / conversion lives in sibling products (<strong>Transiva</strong>, <strong>h2kvm</strong>); Zeus links out to those engines from Migrations / Migration Factory.</p>
+<h2>How this manual is organized</h2>
+<ol>
+<li><strong>Getting started</strong> — URL, login, first five workflows.</li>
+<li><strong>Using the dashboard</strong> — sidebar, command palette, browse vs workbench.</li>
+<li><strong>Page-by-page</strong> — a guide for <strong>every</strong> dashboard screen (purpose, when to use it, steps, related pages). All 132 sidebar routes plus workbench pages, wizards, product centers, and Settings categories are covered.</li>
+<li><strong>Page index</strong> — every route with a one-line purpose and a link to its guide.</li>
+<li><strong>Admin basics</strong> — what platform admins configure before operators use the UI.</li>
+</ol>
+<p>Deep engineering docs live under <a href="../dev/"><code>../dev/</code></a> and are out of scope for customers.</p>
+<h2>Support surfaces (quick map)</h2>
+<table>
+<thead>
+<tr>
+<th>Need</th>
+<th>Typical path</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>VM inventory &amp; power</td>
+<td><code>/vms</code> → workbench <code>/vms/:namespace/:name</code></td>
+</tr>
+<tr>
+<td>Create a VM</td>
+<td><code>/vm-setup</code> or <code>/vms/new</code></td>
+</tr>
+<tr>
+<td>Live console (VNC/serial)</td>
+<td>VM workbench → Console · <code>/consolehub</code></td>
+</tr>
+<tr>
+<td>Storage / PVCs</td>
+<td><code>/storage</code></td>
+</tr>
+<tr>
+<td>Network containment</td>
+<td><code>/packetwolf</code></td>
+</tr>
+<tr>
+<td>Backup / restore</td>
+<td><code>/velero</code>, <code>/backup-wizard</code>, <code>/restore-wizard</code></td>
+</tr>
+<tr>
+<td>Cost</td>
+<td><code>/cost-intelligence</code>, <code>/rightsizing</code></td>
+</tr>
+<tr>
+<td>Incidents</td>
+<td><code>/incidents</code></td>
+</tr>
+<tr>
+<td>Attention</td>
+<td><code>/attention</code></td>
+</tr>
+<tr>
+<td>Settings</td>
+<td><code>/settings</code></td>
+</tr>
+</tbody></table>
+<hr>
+<p><em>ZyvorAI Labs · <a href="https://zyvor.dev">zyvor.dev</a> · Zeus OS (repo <code>zeus-os</code>)</em></p>
+
+</main>
+</body>
+</html>
