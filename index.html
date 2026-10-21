@@ -1,3 +1,4 @@
+    <div class="cmd"><small>Open</small><code>kubectl port-forward svc/zeus-os 5050 &amp;&amp; open https://localhost:5050</code></div>
 <!doctype html>
 <html lang="en">
 <head>
@@ -180,7 +181,7 @@ footer .wrap{display:flex;gap:24px;flex-wrap:wrap;align-items:center}
     <h1 class="rv">Every VM. <span class="grad">One control plane.</span></h1>
     <p class="sub rv">Zeus OS turns Kubernetes into a private cloud you can actually see. Create, run, migrate, secure and cost every virtual machine from a dashboard, a terminal or an API.</p>
     <div class="cta rv"><a class="btn p" href="#get">Install in minutes →</a><a class="btn g" href="docs/">Read the docs</a></div>
-    <div class="install rv" id="cp" title="Click to copy"><span class="dim">$</span> <b>helm install zeus-os oci://ghcr.io/zyvorai/charts/zeus-os --version 0.2.0 --set-string config.localAuth.adminPassword=YOUR_PASSWORD</b></div>
+    <div class="install rv" id="cp" title="Click to copy"><span class="dim">$</span> <b>helm install zeus-os oci://ghcr.io/zyvorai/charts/zeus-os --version 0.2.1 --set-string config.localAuth.adminPassword=YOUR_PASSWORD</b></div>
 
     <div class="stage rv"><div class="win">
       <div class="bar"><i></i><i></i><i></i><span>zeus-os · Compute · Virtual machines</span></div>
@@ -278,12 +279,11 @@ hotplug, boot order, firmware, NICs and virtual devices.</pre></div></div>
 <section class="final" id="get"><div class="wrap">
   <div class="eyebrow">Get started</div>
   <h2 class="rv">Run your cloud, not your tooling.</h2>
-  <p class="lead rv" style="margin:18px auto 0">Free to download. Signed releases for Linux amd64 and arm64.</p>
-  <div class="cta rv"><a class="btn p" href="https://github.com/zyvorai/zeus-os/releases">Download latest</a><a class="btn g" href="docs/">Documentation</a></div>
+  <p class="lead rv" style="margin:18px auto 0">Free to try. The Helm chart and container image are public today; signed releases are on the way.</p>
+  <div class="cta rv"><a class="btn p" href="https://github.com/zyvorai/zeus-os#quickstart">Install with Helm</a><a class="btn g" href="docs/">Documentation</a></div>
   <div class="cmds rv">
-    <div class="cmd"><small>Container</small><code>docker run -p 5050:5050 ghcr.io/zyvorai/zeus-os-web</code></div>
-    <div class="cmd"><small>Helm</small><code>helm install zeus-os oci://ghcr.io/zyvorai/charts/zeus-os --version 0.2.0 --set-string config.localAuth.adminPassword=YOUR_PASSWORD</code></div>
-    <div class="cmd"><small>Verify</small><code>sha256sum -c SHA256SUMS &amp;&amp; cosign verify …</code></div>
+    <div class="cmd"><small>Helm</small><code>helm install zeus-os oci://ghcr.io/zyvorai/charts/zeus-os --version 0.2.1 --set-string config.localAuth.adminPassword=YOUR_PASSWORD</code></div>
+    <div class="cmd"><small>Open</small><code>kubectl port-forward svc/zeus-os 5050 &amp;&amp; open https://localhost:5050</code></div>
   </div>
 </div></section>
 
@@ -300,7 +300,7 @@ hotplug, boot order, firmware, NICs and virtual devices.</pre></div></div>
   document.querySelectorAll('[data-n]').forEach(function(el){var t=+el.dataset.n,s=performance.now();(function f(n){var p=Math.min((n-s)/1400,1);el.textContent=Math.round(t*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(f)})(s)});
   document.querySelectorAll('.tabs button').forEach(function(b){b.onclick=function(){document.querySelectorAll('.tabs button,.surface').forEach(function(x){x.classList.remove('on')});b.classList.add('on');document.getElementById('s-'+b.dataset.t).classList.add('on')}});
   document.querySelectorAll('.cell').forEach(function(c){c.addEventListener('pointermove',function(e){var b=c.getBoundingClientRect();c.style.setProperty('--mx',(e.clientX-b.left)+'px');c.style.setProperty('--my',(e.clientY-b.top)+'px')})});
-  var cp=document.getElementById('cp');cp.onclick=function(){try{navigator.clipboard.writeText('helm install zeus-os oci://ghcr.io/zyvorai/charts/zeus-os --version 0.2.0 --set-string config.localAuth.adminPassword=YOUR_PASSWORD');cp.lastElementChild.textContent='Copied ✓'}catch(e){}};
+  var cp=document.getElementById('cp');cp.onclick=function(){try{navigator.clipboard.writeText('helm install zeus-os oci://ghcr.io/zyvorai/charts/zeus-os --version 0.2.1 --set-string config.localAuth.adminPassword=YOUR_PASSWORD');cp.lastElementChild.textContent='Copied ✓'}catch(e){}};
 })();
 </script>
 </body>

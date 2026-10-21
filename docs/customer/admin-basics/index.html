@@ -4844,9 +4844,39 @@ chart refuses to install without one, and the binary bundle generates a random o
 # --set config.localAuth.adminPasswordSecretRef.name=zeus-os-local-auth
 </code></pre>
 <h2 id="tls-required-for-browser-vnc">TLS (required for browser VNC)</h2>
+<p>The Helm chart serves <strong>HTTPS by default</strong>. With no TLS settings it generates a self-signed
+certificate (valid ten years, with the Service names and <code>localhost</code> as names) and reuses it on every
+<code>helm upgrade</code>, so the fingerprint you accepted in the browser does not change. Browsers warn about a
+self-signed certificate; bring your own to remove the warning:</p>
+<table>
+<thead>
+<tr>
+<th>You want</th>
+<th>Set</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Your own certificate</td>
+<td><code>kubectl create secret tls zeus-os-tls --cert=tls.crt --key=tls.key</code>, then <code>--set tls.secretName=zeus-os-tls</code></td>
+</tr>
+<tr>
+<td>Extra names in the generated certificate</td>
+<td><code>--set 'tls.hosts[0]=zeus.example.com'</code></td>
+</tr>
+<tr>
+<td>TLS terminated at an Ingress</td>
+<td><code>--set ingress.enabled=true</code> (the pod stays on HTTP unless <code>tls.secretName</code> is set)</td>
+</tr>
+<tr>
+<td>Plain HTTP (only behind something that terminates TLS)</td>
+<td><code>--set tls.selfSigned=false</code></td>
+</tr>
+</tbody>
+</table>
+<p>Without the chart, set the certificate directly:</p>
 <pre><code class="language-bash">export ZEUS_OS_TLS_CERT=/path/to/cert.pem
 export ZEUS_OS_TLS_KEY=/path/to/key.pem
-# or terminate TLS at ingress and serve the SPA behind HTTPS
 </code></pre>
 <p>Without a secure context, in-browser VNC will not work; serial console still can.</p>
 <h2 id="multi-tenancy">Multi-tenancy</h2>
