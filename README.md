@@ -402,10 +402,10 @@ _Edge fleets, chaos experiments, performance testing, database ops, and cluster 
 docker run -p 5050:5050 ghcr.io/zyvorai/zeus-os-web:latest
 
 # Kubernetes (Helm, OCI)
-helm install zeus-os oci://ghcr.io/zyvorai/charts/zeus-os --version <version>
+helm install zeus-os oci://ghcr.io/zyvorai/charts/zeus-os --version 0.2.0 --set-string config.localAuth.adminPassword=YOUR_PASSWORD
 ```
 
-Then open `http://localhost:5050` (or your service address) and sign in. Authentication is on by default; `ZEUS_OS_NO_AUTH=1` is for a local trial only. Requires a Kubernetes cluster with KubeVirt and a valid kubeconfig or in-cluster service account.
+The chart refuses to install without an admin password: set one as above, or point `config.localAuth.adminPasswordSecretRef` at a Secret. To reach the dashboard from outside the cluster add `--set service.type=NodePort`, or use `kubectl port-forward svc/zeus-os 5050` and open `http://localhost:5050`, then sign in as `admin`. Authentication is on by default; `ZEUS_OS_NO_AUTH=1` is for a local trial only. Requires a Kubernetes cluster with KubeVirt and a valid kubeconfig or in-cluster service account.
 
 | Next | Read |
 |---|---|
