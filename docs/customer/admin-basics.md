@@ -67,15 +67,15 @@ SSO method and the local admin account, rather than requiring the operator to kn
 
 ### Local admin password
 
-The built-in local admin account defaults to **`Admin@321`** when `ZEUS_OS_LOCAL_ADMIN_PASSWORD`
-isn't set — **change this before any internet-facing or production install.**
+The built-in local admin account always uses a password you choose at install time. The Helm
+chart refuses to install without one, and the binary bundle generates a random one.
 
-The default differs by install path:
+How it is set differs by install path:
 
-| Install path | Default behavior |
+| Install path | Behavior |
 |--------------|-------------------|
-| Helm chart | Fixed `Admin@321` unless `config.localAuth.adminPassword` or `config.localAuth.adminPasswordSecretRef` is set in `values.yaml` |
-| Binary bundle (`scripts/package-binary-remote.sh`) | Generates a **random** strong password automatically unless `ZEUS_OS_LOCAL_ADMIN_PASSWORD` is set in the bundle's env file — does **not** fall back to `Admin@321` |
+| Helm chart | **Refuses to install** unless `config.localAuth.adminPassword` or `config.localAuth.adminPasswordSecretRef` is set (`config.localAuth.allowDefaultPassword=true` exists for throwaway dev clusters only) |
+| Binary bundle (`scripts/package-binary-remote.sh`) | Generates a **random** strong password automatically unless `ZEUS_OS_LOCAL_ADMIN_PASSWORD` is set in the bundle's env file — does **not** fall back to a fixed default |
 
 Set your own password at install time (Helm):
 

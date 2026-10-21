@@ -9,8 +9,8 @@ Verified end-to-end live against a real Keycloak realm.
 
 Unlike some products in the suite, Zeus OS does not bundle a Keycloak instance in its Helm
 chart — you point it at a Keycloak (or other OIDC provider) you already have, or stand one up
-separately. Whichever SSO mode is active, the built-in local admin account (`admin` /
-`Admin@321` by default) stays available underneath it automatically as a break-glass
+separately. Whichever SSO mode is active, the built-in local admin account (`admin`, with
+the password you set at install time) stays available underneath it automatically as a break-glass
 fallback — the login screen shows a toggle between the two, not a hidden URL.
 
 ## Option A — Bring your own OIDC provider (Keycloak example)
@@ -74,8 +74,8 @@ available as break-glass here too.
 
 ## Option C — Local admin only (no IdP)
 
-Leave `ZEUS_OS_AUTH` unset (the default). Sign in with the local admin account — change
-`Admin@321` before any internet-facing install (`config.localAuth.adminPassword` in Helm, or
+Leave `ZEUS_OS_AUTH` unset (the default). Sign in with the local admin account — set your own
+password at install time (`config.localAuth.adminPassword` in Helm, or
 reference a Secret via `config.localAuth.adminPasswordSecretRef`). See
 [Admin basics — Local admin password](admin-basics.md#local-admin-password).
 
