@@ -1,6 +1,6 @@
 # Zeus OS customer PDFs
 
-Generated: 2026-09-26
+Generated: 2026-10-21
 
 Rebuild: `node scripts/customer-docs/build-customer-pdfs.mjs`
 

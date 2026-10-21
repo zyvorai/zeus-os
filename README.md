@@ -34,6 +34,17 @@
 
 ![Operate, Observe, Secure, Govern](docs-assets/capabilities.svg)
 
+## See it
+
+Real captures from a running Zeus OS lab (a small single-node cluster with one test VM, so counts are modest). Dark theme shown; a Light theme ships too.
+
+| | |
+|---|---|
+| ![Security posture and compliance](docs-assets/screens/security.jpg)<br>**Security.** Posture score, findings by severity and compliance framework scores. | ![Network observe](docs-assets/screens/network.jpg)<br>**Network.** Live connections, blocked flows and throughput, with firewall, policy builder, DNS and topology tabs. |
+| ![AI Center](docs-assets/screens/ai-center.jpg)<br>**AI Center.** Six advisors (AI SRE, Migration, Security, Cost, Capacity and more) with evidence-first analysis. | ![Capacity](docs-assets/screens/capacity.jpg)<br>**Capacity.** Cluster CPU and memory utilisation, overcommit and planning scenarios. |
+| ![Storage](docs-assets/screens/storage.jpg)<br>**Storage.** PVC fleet, bound ratio, classes, backends and protection. | ![Nodes](docs-assets/screens/nodes.jpg)<br>**Nodes.** Every host with readiness, roles and a drain wizard. |
+| ![Costs](docs-assets/screens/costs.jpg)<br>**Costs.** Monthly spend and savings from one price model you configure, labelled as estimates rather than invoices. | |
+
 ## Why Zeus OS
 
 | When this happens... | Zeus OS gives you... |

@@ -4,7 +4,7 @@ Every navigable dashboard page from `ui/src/navigation/navConfig.ts`.
 Deep how-to guides exist for primary journeys under [`pages/`](pages/README.md);
 this index covers the **full catalog** (including labs/integrate-tier screens).
 
-_Generated: 2026-09-26 · 135 pages_
+_Generated: 2026-10-21 · 135 pages_
 
 Regenerate: `node scripts/customer-docs/generate-page-index.mjs`
 
