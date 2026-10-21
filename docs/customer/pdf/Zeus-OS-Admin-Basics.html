@@ -43,7 +43,7 @@
         <h1>Zeus <span>OS</span></h1>
         <div class="sub">Admin Basics</div>
         <div class="tagline">Visual day-2 control plane for KubeVirt and Kubernetes</div>
-        <div class="badge">2026-09-26</div>
+        <div class="badge">2026-10-21</div>
         <div class="foot">zyvor.dev · Confidential — for licensed customers</div>
       </section>
 <main>
@@ -123,23 +123,23 @@ SSO method and the local admin account, rather than requiring the operator to kn
 <li>That RDP/SSH use <strong>guest</strong> credentials</li>
 </ul>
 <h3>Local admin password</h3>
-<p>The built-in local admin account defaults to <strong><code>Admin@321</code></strong> when <code>ZEUS_OS_LOCAL_ADMIN_PASSWORD</code>
-isn&#39;t set — <strong>change this before any internet-facing or production install.</strong></p>
-<p>The default differs by install path:</p>
+<p>The built-in local admin account always uses a password you choose at install time. The Helm
+chart refuses to install without one, and the binary bundle generates a random one.</p>
+<p>How it is set differs by install path:</p>
 <table>
 <thead>
 <tr>
 <th>Install path</th>
-<th>Default behavior</th>
+<th>Behavior</th>
 </tr>
 </thead>
 <tbody><tr>
 <td>Helm chart</td>
-<td>Fixed <code>Admin@321</code> unless <code>config.localAuth.adminPassword</code> or <code>config.localAuth.adminPasswordSecretRef</code> is set in <code>values.yaml</code></td>
+<td><strong>Refuses to install</strong> unless <code>config.localAuth.adminPassword</code> or <code>config.localAuth.adminPasswordSecretRef</code> is set (<code>config.localAuth.allowDefaultPassword=true</code> exists for throwaway dev clusters only)</td>
 </tr>
 <tr>
 <td>Binary bundle (<code>scripts/package-binary-remote.sh</code>)</td>
-<td>Generates a <strong>random</strong> strong password automatically unless <code>ZEUS_OS_LOCAL_ADMIN_PASSWORD</code> is set in the bundle&#39;s env file — does <strong>not</strong> fall back to <code>Admin@321</code></td>
+<td>Generates a <strong>random</strong> strong password automatically unless <code>ZEUS_OS_LOCAL_ADMIN_PASSWORD</code> is set in the bundle&#39;s env file — does <strong>not</strong> fall back to a fixed default</td>
 </tr>
 </tbody></table>
 <p>Set your own password at install time (Helm):</p>
