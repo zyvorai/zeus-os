@@ -87,10 +87,23 @@ helm upgrade --install zeus-os ./chart --set config.localAuth.adminPassword="a-r
 
 ## TLS (required for browser VNC)
 
+The Helm chart serves **HTTPS by default**. With no TLS settings it generates a self-signed
+certificate (valid ten years, with the Service names and `localhost` as names) and reuses it on every
+`helm upgrade`, so the fingerprint you accepted in the browser does not change. Browsers warn about a
+self-signed certificate; bring your own to remove the warning:
+
+| You want | Set |
+|---|---|
+| Your own certificate | `kubectl create secret tls zeus-os-tls --cert=tls.crt --key=tls.key`, then `--set tls.secretName=zeus-os-tls` |
+| Extra names in the generated certificate | `--set 'tls.hosts[0]=zeus.example.com'` |
+| TLS terminated at an Ingress | `--set ingress.enabled=true` (the pod stays on HTTP unless `tls.secretName` is set) |
+| Plain HTTP (only behind something that terminates TLS) | `--set tls.selfSigned=false` |
+
+Without the chart, set the certificate directly:
+
 ```bash
 export ZEUS_OS_TLS_CERT=/path/to/cert.pem
 export ZEUS_OS_TLS_KEY=/path/to/key.pem
-# or terminate TLS at ingress and serve the SPA behind HTTPS
 ```
 
 Without a secure context, in-browser VNC will not work; serial console still can.

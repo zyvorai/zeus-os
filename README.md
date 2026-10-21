@@ -28,7 +28,7 @@
 ---
 
 > **This repository distributes binaries, container images, the Helm chart and documentation. It contains no source code.**
-> <a id="status"></a>**Status: preview.** No public release has been published yet, so the install commands below apply once the first release is out. Watch [Releases](https://github.com/zyvorai/zeus-os/releases). Where a feature is partial, the product and its docs say so.
+> <a id="status"></a>**Status: preview.** The Helm chart (`oci://ghcr.io/zyvorai/charts/zeus-os`) and the container image (`ghcr.io/zyvorai/zeus-os-web`) are public so you can try it, but there is no signed release yet: no checksums, signatures or SBOM, and no standalone binaries. Watch [Releases](https://github.com/zyvorai/zeus-os/releases). Where a feature is partial, the product and its docs say so.
 
 ## What it does
 
@@ -36,14 +36,17 @@
 
 ## See it
 
-Real captures from a running Zeus OS lab (a small single-node cluster with one test VM, so counts are modest). Dark theme shown; a Light theme ships too.
+Real captures from a running Zeus OS lab (a small single-node cluster with one test VM, so counts are modest). Light theme shown; a Dark theme ships too. Every page is a flowing web page: big numbers, hairline sections and real data, with nothing boxed in or cut off. Unknown values show a dash, never an invented zero.
+
+![Machines: every VM with its real console screenshot](docs-assets/screens/machines.jpg)
+
+**Machines.** Highlights, search and the one primary action on top; each VM shows its real console screenshot (a VM with none says so, instead of drawing a fake one). Click a VM to open its own full page.
 
 | | |
 |---|---|
-| ![Security posture and compliance](docs-assets/screens/security.jpg)<br>**Security.** Posture score, findings by severity and compliance framework scores. | ![Network observe](docs-assets/screens/network.jpg)<br>**Network.** Live connections, blocked flows and throughput, with firewall, policy builder, DNS and topology tabs. |
-| ![AI Center](docs-assets/screens/ai-center.jpg)<br>**AI Center.** Six advisors (AI SRE, Migration, Security, Cost, Capacity and more) with evidence-first analysis. | ![Capacity](docs-assets/screens/capacity.jpg)<br>**Capacity.** Cluster CPU and memory utilisation, overcommit and planning scenarios. |
-| ![Storage](docs-assets/screens/storage.jpg)<br>**Storage.** PVC fleet, bound ratio, classes, backends and protection. | ![Nodes](docs-assets/screens/nodes.jpg)<br>**Nodes.** Every host with readiness, roles and a drain wizard. |
-| ![Costs](docs-assets/screens/costs.jpg)<br>**Costs.** Monthly spend and savings from one price model you configure, labelled as estimates rather than invoices. | |
+| ![Costs](docs-assets/screens/costs.jpg)<br>**Costs.** Monthly spend and savings from one price model you configure, with the recorded run-rate over time. Estimates, not invoices. | ![Security posture and compliance](docs-assets/screens/security.jpg)<br>**Security.** Posture score, findings by severity and compliance framework scores. |
+| ![AI Center](docs-assets/screens/ai-center.jpg)<br>**AI Center.** Six advisors (AI SRE, Migration, Security, Cost, Capacity, Network) with evidence-first analysis. | ![Kubernetes](docs-assets/screens/kubernetes.jpg)<br>**Kubernetes.** Node readiness, pod counts and every day-2 surface for the container layer, one click away. |
+| ![Time machine](docs-assets/screens/time-machine.jpg)<br>**Time machine.** Scrub the cluster back through recorded frames, or rewind a single VM's lifecycle. | |
 
 ## Why Zeus OS
 
@@ -395,17 +398,27 @@ _Edge fleets, chaos experiments, performance testing, database ops, and cluster 
 
 ## Quickstart
 
-> Available once the first release is published.
+> Preview: the chart and image below are public, but there is no signed release yet (no checksums, signatures or SBOM).
 
 ```bash
-# Container
-docker run -p 5050:5050 ghcr.io/zyvorai/zeus-os-web:latest
-
-# Kubernetes (Helm, OCI)
-helm install zeus-os oci://ghcr.io/zyvorai/charts/zeus-os --version 0.2.0 --set-string config.localAuth.adminPassword=YOUR_PASSWORD
+# Kubernetes (Helm, OCI). The chart pulls ghcr.io/zyvorai/zeus-os-web and wires up cluster access.
+helm install zeus-os oci://ghcr.io/zyvorai/charts/zeus-os --version 0.2.1 --set-string config.localAuth.adminPassword=YOUR_PASSWORD
 ```
 
-The chart refuses to install without an admin password: set one as above, or point `config.localAuth.adminPasswordSecretRef` at a Secret. To reach the dashboard from outside the cluster add `--set service.type=NodePort`, or use `kubectl port-forward svc/zeus-os 5050` and open `http://localhost:5050`, then sign in as `admin`. Authentication is on by default; `ZEUS_OS_NO_AUTH=1` is for a local trial only. Requires a Kubernetes cluster with KubeVirt and a valid kubeconfig or in-cluster service account.
+The chart refuses to install without an admin password: set one as above, or point `config.localAuth.adminPasswordSecretRef` at a Secret.
+
+The dashboard serves **HTTPS** out of the box. The chart generates a self-signed certificate (valid ten years, reused on upgrade), so browsers warn until you bring your own:
+
+```bash
+kubectl port-forward svc/zeus-os 5050          # then open https://localhost:5050 and sign in as admin
+--set service.type=NodePort                     # or reach it from outside the cluster
+--set tls.secretName=my-cert                    # your own certificate (a Secret with tls.crt / tls.key)
+--set 'tls.hosts[0]=zeus.example.com'           # extra names in the generated certificate
+--set ingress.enabled=true                      # TLS terminates at your ingress; the pod stays on HTTP
+--set tls.selfSigned=false                      # plain HTTP, only behind something that terminates TLS
+```
+
+Authentication is on by default; `ZEUS_OS_NO_AUTH=1` is for a local trial only. Requires a Kubernetes cluster with KubeVirt.
 
 | Next | Read |
 |---|---|
