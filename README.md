@@ -42,6 +42,22 @@ Real captures from a running Zeus OS lab (a small single-node cluster with one t
 
 **Machines.** Highlights, search and the one primary action on top; each VM shows its real console screenshot (a VM with none says so, instead of drawing a fake one). Click a VM to open its own full page.
 
+### Dark theme, in motion
+
+| | |
+|---|---|
+| ![Home in the dark theme](docs-assets/screens/home-dark.jpg)<br>**Home.** Fleet status, an Ask Zyra brief built from signals Zeus already computed, and the headline numbers. | ![Machines in the dark theme](docs-assets/screens/machines-dark.jpg)<br>**Machines.** Same page, dark theme: large numerals, the real console screenshot, no boxes around sections. |
+
+![Scrolling Home](docs-assets/motion/home.gif)
+
+![Scrolling Machines](docs-assets/motion/machines.gif)
+
+![A machine as a full page: console, vitals, tabs](docs-assets/motion/vm-detail.gif)
+
+IP addresses and node names are masked in these captures.
+
+### More pages
+
 | | |
 |---|---|
 | ![Costs](docs-assets/screens/costs.jpg)<br>**Costs.** Monthly spend and savings from one price model you configure, with the recorded run-rate over time. Estimates, not invoices. | ![Security posture and compliance](docs-assets/screens/security.jpg)<br>**Security.** Posture score, findings by severity and compliance framework scores. |
