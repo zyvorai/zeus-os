@@ -402,7 +402,7 @@ _Edge fleets, chaos experiments, performance testing, database ops, and cluster 
 
 ```bash
 # Kubernetes (Helm, OCI). The chart pulls ghcr.io/zyvorai/zeus-os-web and wires up cluster access.
-helm install zeus-os oci://ghcr.io/zyvorai/charts/zeus-os --version 0.2.1 --set-string config.localAuth.adminPassword=YOUR_PASSWORD
+helm install zeus-os oci://ghcr.io/zyvorai/charts/zeus-os --version 0.3.0 --set-string config.localAuth.adminPassword=YOUR_PASSWORD
 ```
 
 The chart refuses to install without an admin password: set one as above, or point `config.localAuth.adminPasswordSecretRef` at a Secret.
