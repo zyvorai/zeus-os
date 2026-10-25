@@ -23,6 +23,8 @@
 
 📖 **[Read the full docs](https://zyvorai.github.io/zeus-os/)**: getting started, admin basics, enterprise SSO and a page-by-page guide.
 
+🔎 **[Try the live demo](https://zeus.zyvor.dev)**: sign in as `viewer` with the password `Zeus-Live-Demo-Viewer-2026!`. It is a shared, read-only copy on a small test cluster with a few tiny VMs; you can look at everything the viewer role may see, but not change anything.
+
 </div>
 
 ---
