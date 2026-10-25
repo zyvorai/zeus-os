@@ -180,7 +180,7 @@ footer .wrap{display:flex;gap:24px;flex-wrap:wrap;align-items:center}
     <span class="pill rv"><i></i> Built natively on KubeVirt</span>
     <h1 class="rv">Every VM. <span class="grad">One control plane.</span></h1>
     <p class="sub rv">Zeus OS turns Kubernetes into a private cloud you can actually see. Create, run, migrate, secure and cost every virtual machine from a dashboard, a terminal or an API.</p>
-    <div class="cta rv"><a class="btn p" href="#get">Install in minutes →</a><a class="btn g" href="docs/">Read the docs</a></div>
+    <div class="cta rv"><a class="btn p" href="#get">Install in minutes →</a><a class="btn g" href="https://zeus.zyvor.dev" rel="noopener">Try the live demo</a><a class="btn g" href="docs/">Read the docs</a></div>
     <div class="install rv" id="cp" title="Click to copy"><span class="dim">$</span> <b>helm install zeus-os oci://ghcr.io/zyvorai/charts/zeus-os --version 0.3.0 --set-string config.localAuth.adminPassword=YOUR_PASSWORD</b></div>
 
     <div class="stage rv"><div class="win">
@@ -282,6 +282,7 @@ hotplug, boot order, firmware, NICs and virtual devices.</pre></div></div>
   <p class="lead rv" style="margin:18px auto 0">Free to try. The Helm chart and container image are public today; signed releases are on the way.</p>
   <div class="cta rv"><a class="btn p" href="https://github.com/zyvorai/zeus-os#quickstart">Install with Helm</a><a class="btn g" href="docs/">Documentation</a></div>
   <div class="cmds rv">
+    <div class="cmd"><small>Try it now</small><code>Open https://zeus.zyvor.dev and sign in as viewer with the password Zeus-Live-Demo-Viewer-2026! (a shared, read-only copy running on a small test cluster with a few tiny VMs)</code></div>
     <div class="cmd"><small>Helm</small><code>helm install zeus-os oci://ghcr.io/zyvorai/charts/zeus-os --version 0.3.0 --set-string config.localAuth.adminPassword=YOUR_PASSWORD</code></div>
     <div class="cmd"><small>Open</small><code>kubectl port-forward svc/zeus-os 5050 &amp;&amp; open https://localhost:5050</code></div>
   </div>
