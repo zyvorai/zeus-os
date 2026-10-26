@@ -25,6 +25,27 @@
 
 🔎 **[Try the live demo](https://zeus.zyvor.dev)**: sign in as `viewer` with the password `Zeus-Live-Demo-Viewer-2026!`. It is a shared, read-only copy on a small test cluster with a few tiny VMs; you can look at everything the viewer role may see, but not change anything.
 
+<p align="center">
+<a href="#quickstart">Quickstart</a> ·
+<a href="#what-it-does">What it does</a> ·
+<a href="#see-it">Screenshots</a> ·
+<a href="#why-zeus-os">Why</a> ·
+<a href="#every-feature">Features</a> ·
+<a href="#four-interfaces">Interfaces</a> ·
+<a href="#security-and-identity">Security</a> ·
+<a href="#documentation">Docs</a>
+</p>
+
+<table align="center">
+<tr>
+<td align="center"><b>146</b><br><sub>features</sub></td>
+<td align="center"><b>19</b><br><sub>feature groups</sub></td>
+<td align="center"><b>4</b><br><sub>interfaces, one engine</sub></td>
+<td align="center"><b>48+</b><br><sub>terminal UI views</sub></td>
+<td align="center"><b>4</b><br><sub>identity protocols</sub></td>
+</tr>
+</table>
+
 </div>
 
 ---
@@ -86,6 +107,44 @@ Unknown values are shown as unknown, never as zero, and features that are only p
 ![Zeus OS architecture](docs-assets/architecture.svg)
 
 Zeus OS uses KubeVirt and CDI custom resources and subresources first, rather than shelling out to `virtctl`. Optional integrations (Velero backups, Cilium networking, PacketWolf and Netra network views, identity providers) are switched on when you configure them.
+
+## Quickstart
+
+### Requirements
+
+- A Kubernetes cluster with [KubeVirt](https://kubevirt.io) (and CDI for image import)
+- `helm` 3.8+ (OCI chart support) and `kubectl`
+- Optional: Velero, Cilium, PacketWolf / Netra, an OIDC, SAML or LDAP provider
+
+> Preview: the chart and image below are public, but there is no signed release yet (no checksums, signatures or SBOM).
+
+```bash
+# Kubernetes (Helm, OCI). The chart pulls ghcr.io/zyvorai/zeus-os-web and wires up cluster access.
+helm install zeus-os oci://ghcr.io/zyvorai/charts/zeus-os --version 0.3.0 --set-string config.localAuth.adminPassword=YOUR_PASSWORD
+```
+
+The chart refuses to install without an admin password: set one as above, or point `config.localAuth.adminPasswordSecretRef` at a Secret.
+
+The dashboard serves **HTTPS** out of the box. The chart generates a self-signed certificate (valid ten years, reused on upgrade), so browsers warn until you bring your own:
+
+```bash
+kubectl port-forward svc/zeus-os 5050          # then open https://localhost:5050 and sign in as admin
+--set service.type=NodePort                     # or reach it from outside the cluster
+--set tls.secretName=my-cert                    # your own certificate (a Secret with tls.crt / tls.key)
+--set 'tls.hosts[0]=zeus.example.com'           # extra names in the generated certificate
+--set ingress.enabled=true                      # TLS terminates at your ingress; the pod stays on HTTP
+--set tls.selfSigned=false                      # plain HTTP, only behind something that terminates TLS
+```
+
+Authentication is on by default; `ZEUS_OS_NO_AUTH=1` is for a local trial only. Requires a Kubernetes cluster with KubeVirt.
+
+| Next | Read |
+|---|---|
+| First five workflows | [Getting started](docs/customer/getting-started.md) |
+| Daily use | [Using the dashboard](docs/customer/using-the-dashboard.md) |
+| Deploy URL, auth, TLS, ports | [Admin basics](docs/customer/admin-basics.md) |
+| Single sign-on | [Enterprise SSO](docs/customer/enterprise-sso.md) |
+| Air-gapped clusters | [Air-gapped install](docs/AIR_GAPPED_INSTALL.md) |
 
 ## Every feature
 
@@ -412,41 +471,9 @@ _Edge fleets, chaos experiments, performance testing, database ops, and cluster 
 | **Cilium encryption status** | Read-only WireGuard encryption status. |
 | **Netra integration** | Typed views over Netra observation, with leased emergency deny that needs a platform admin. |
 
-</details>
-
-## Quickstart
-
-> Preview: the chart and image below are public, but there is no signed release yet (no checksums, signatures or SBOM).
-
-```bash
-# Kubernetes (Helm, OCI). The chart pulls ghcr.io/zyvorai/zeus-os-web and wires up cluster access.
-helm install zeus-os oci://ghcr.io/zyvorai/charts/zeus-os --version 0.3.0 --set-string config.localAuth.adminPassword=YOUR_PASSWORD
-```
-
-The chart refuses to install without an admin password: set one as above, or point `config.localAuth.adminPasswordSecretRef` at a Secret.
-
-The dashboard serves **HTTPS** out of the box. The chart generates a self-signed certificate (valid ten years, reused on upgrade), so browsers warn until you bring your own:
-
-```bash
-kubectl port-forward svc/zeus-os 5050          # then open https://localhost:5050 and sign in as admin
---set service.type=NodePort                     # or reach it from outside the cluster
---set tls.secretName=my-cert                    # your own certificate (a Secret with tls.crt / tls.key)
---set 'tls.hosts[0]=zeus.example.com'           # extra names in the generated certificate
---set ingress.enabled=true                      # TLS terminates at your ingress; the pod stays on HTTP
---set tls.selfSigned=false                      # plain HTTP, only behind something that terminates TLS
-```
-
-Authentication is on by default; `ZEUS_OS_NO_AUTH=1` is for a local trial only. Requires a Kubernetes cluster with KubeVirt.
-
-| Next | Read |
-|---|---|
-| First five workflows | [Getting started](docs/customer/getting-started.md) |
-| Daily use | [Using the dashboard](docs/customer/using-the-dashboard.md) |
-| Deploy URL, auth, TLS, ports | [Admin basics](docs/customer/admin-basics.md) |
-| Single sign-on | [Enterprise SSO](docs/customer/enterprise-sso.md) |
-| Air-gapped clusters | [Air-gapped install](docs/AIR_GAPPED_INSTALL.md) |
-
 ## Install
+
+> Standalone binaries are not published yet; the Helm chart above is the supported route today. The commands below show the planned layout.
 
 ```bash
 # Binary (Linux amd64 / arm64)
