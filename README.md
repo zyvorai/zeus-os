@@ -32,6 +32,7 @@
 <a href="#why-zeus-os">Why</a> ·
 <a href="#every-feature">Features</a> ·
 <a href="#four-interfaces">Interfaces</a> ·
+<a href="#mac-app">Mac app</a> ·
 <a href="#security-and-identity">Security</a> ·
 <a href="#documentation">Docs</a>
 </p>
@@ -50,7 +51,7 @@
 
 ---
 
-> **This repository distributes binaries, container images, the Helm chart and documentation. It contains no source code.**
+> **This repository distributes binaries, container images, the Helm chart and documentation, plus the source of the native [Mac app](#mac-app) in [`macos/`](macos/). It contains no server source code.**
 > <a id="status"></a>**Status: preview.** The Helm chart (`oci://ghcr.io/zyvorai/charts/zeus-os`) and the container image (`ghcr.io/zyvorai/zeus-os-web`) are public so you can try it, but there is no signed release yet: no checksums, signatures or SBOM, and no standalone binaries. Watch [Releases](https://github.com/zyvorai/zeus-os/releases). Where a feature is partial, the product and its docs say so.
 
 ## What it does
@@ -502,6 +503,32 @@ curl -H "Authorization: Bearer $TOKEN" https://zeus.example.com/api/v1/vms
 ```
 
 See the [CLI reference](docs/cli.md) and the [API notes](docs/api/README.md). An OpenAPI spec, Python and Go SDKs, a Terraform provider and an Ansible collection are available for the product.
+
+## Mac app
+
+A native macOS client for a running Zeus OS server, built with SwiftUI. It talks to the same REST API as the web dashboard, so it shows what the other interfaces show. **Early preview.**
+
+**What it does today**
+
+- Sign in to one or more saved servers; the session token can optionally be stored in the Keychain.
+- **Overview**: measured cluster CPU and memory, machines running, and a node table.
+- **Machines**: sortable, searchable table with an inspector showing CPU, memory, network and disk history (15 minute, 1 hour and 6 hour ranges).
+- **Start, stop and restart** for editor and admin roles; stop and restart ask first. Viewers get a read-only app.
+- A menu bar item with machines running and active alert count.
+- Live updates by polling (every 5 seconds in front, slower behind, with backoff when the server is unreachable).
+
+**Not yet**: consoles, an alerts list (the sidebar shows only the active-alert count), and certificate trust prompts. The server must present a certificate the Mac already trusts; the chart's default self-signed certificate is not accepted yet.
+
+**Build it** (macOS 27, Xcode 27, [XcodeGen](https://github.com/yonaskolb/XcodeGen)):
+
+```bash
+cd macos
+xcodegen generate                 # writes Zeus.xcodeproj from project.yml
+open Zeus.xcodeproj               # run the Zeus scheme
+swift test                        # ZeusKit tests (API client, models, profiles, polling policy)
+```
+
+The client library lives in `macos/Sources/ZeusKit` and the app in `macos/ZeusApp`.
 
 ## Security and identity
 
