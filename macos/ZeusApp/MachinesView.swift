@@ -3,7 +3,7 @@ import ZeusKit
 
 struct MachinesView: View {
     @Environment(AppModel.self) private var model
-    @State private var selection: VM.ID?
+    @State private var selection: Set<VM.ID> = []
     @State private var search = ""
     @State private var sort = [KeyPathComparator(\VM.name)]
     @State private var pending: (action: VMAction, vm: VM)?
@@ -13,7 +13,9 @@ struct MachinesView: View {
             .sorted(using: sort)
     }
 
-    private var selected: VM? { model.vms.first { $0.id == selection } }
+    private var selectedVMs: [VM] { model.vms.filter { selection.contains($0.id) } }
+    /// The inspector and per-machine toolbar apply to exactly one selected machine.
+    private var selected: VM? { selection.count == 1 ? selectedVMs.first : nil }
 
     /// Start is harmless so it runs at once; stop and restart ask first.
     private func request(_ action: VMAction, _ vm: VM) {
@@ -58,8 +60,9 @@ struct MachinesView: View {
         }
         .overlay { if rows.isEmpty { ContentUnavailableView.search(text: search) } }
         .searchable(text: $search)
-        .inspector(isPresented: .constant(selection != nil)) {
-            if let vm = model.vms.first(where: { $0.id == selection }) { VMInspector(vm: vm, request: request, onDeleted: { selection = nil }) }
+        .modifier(MachineWriteTools(selected: selectedVMs))
+        .inspector(isPresented: .constant(selection.count == 1)) {
+            if let vm = selected { VMInspector(vm: vm, request: request, onDeleted: { selection = [] }) }
         }
         .navigationTitle("Machines")
     }
@@ -86,6 +89,7 @@ struct VMInspector: View {
             if !model.canWrite {
                 Text("Your role is read-only.").font(.footnote).foregroundStyle(.secondary)
             }
+            VMLabelsSection(vm: vm)
             Section("Metrics") { VMMetricsView(vm: vm) }
             if let client = model.client { VMDetailSections(vm: vm, client: client).id(vm.id) }
         }

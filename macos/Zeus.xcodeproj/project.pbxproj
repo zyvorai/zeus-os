@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		00C0CB0A972098E32BA8C53C /* NewMachineTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C278070230A3F581075575 /* NewMachineTools.swift */; };
 		03FC1FB1025D6A17B47516BF /* MachinesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34D5AB7D8FA7292DC1E25A2 /* MachinesView.swift */; };
 		0D74E984717DE48E731305A2 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0408D024D46186E7ABFE8320 /* RootView.swift */; };
 		0F5C895A677CF6CE4F04B1F2 /* BackupsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48197E092BA0BBDB3B1061F9 /* BackupsView.swift */; };
@@ -54,6 +55,7 @@
 		DA8DAF3FD92E22F9F2A8FAC8 /* CreateViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27E28AF5DF468D78EE92E38 /* CreateViews.swift */; };
 		DD1028551E039DC3D22FF366 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B2A629F7F8B247F2030274 /* Settings.swift */; };
 		E106512EA684FD07AA1692A6 /* RespondViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D12ADA008102B43711B3BEF /* RespondViews.swift */; };
+		E40C4DC9DD6DA0696D9D1413 /* NewMachineSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A00FA631A33CB8613FEB4F3 /* NewMachineSheet.swift */; };
 		EA21C9F077EFF2E64519B72D /* Destinations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03917729189B3A420C850010 /* Destinations.swift */; };
 		F3B90961C2FDDDB3B6F1BB54 /* ObserveDestinations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784303EB6AC51002E56245F7 /* ObserveDestinations.swift */; };
 		FC0428FD638A3E8E95F45FBB /* MetricChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9158914EC3539A4F3C742EC8 /* MetricChart.swift */; };
@@ -64,6 +66,7 @@
 		0408D024D46186E7ABFE8320 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		0AE273A4B15847AA75C98750 /* AICenterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AICenterView.swift; sourceTree = "<group>"; };
 		10A2830F528CC837EE6CB8FC /* FinOpsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinOpsView.swift; sourceTree = "<group>"; };
+		1A00FA631A33CB8613FEB4F3 /* NewMachineSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMachineSheet.swift; sourceTree = "<group>"; };
 		1C13F1B4AC6F167B69FCCC9B /* Zeus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zeus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E12D4A461C05709687D2AC0 /* AutomationViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutomationViews.swift; sourceTree = "<group>"; };
 		1EAD65FD858C3DC3356E32BD /* EventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsView.swift; sourceTree = "<group>"; };
@@ -71,6 +74,7 @@
 		2746BED706388B8E3321DF36 /* APMView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APMView.swift; sourceTree = "<group>"; };
 		28D84D8A3A6F0A27125533EC /* LogsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogsView.swift; sourceTree = "<group>"; };
 		29C76870188E00765CE45993 /* Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loader.swift; sourceTree = "<group>"; };
+		33C278070230A3F581075575 /* NewMachineTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMachineTools.swift; sourceTree = "<group>"; };
 		37B1838FD0A4ACB1B90704A6 /* IdentityViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentityViews.swift; sourceTree = "<group>"; };
 		3C294737AC9CB90CA2339D5D /* CreateDestinations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateDestinations.swift; sourceTree = "<group>"; };
 		3D12ADA008102B43711B3BEF /* RespondViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RespondViews.swift; sourceTree = "<group>"; };
@@ -155,6 +159,8 @@
 			children = (
 				3C294737AC9CB90CA2339D5D /* CreateDestinations.swift */,
 				A27E28AF5DF468D78EE92E38 /* CreateViews.swift */,
+				1A00FA631A33CB8613FEB4F3 /* NewMachineSheet.swift */,
+				33C278070230A3F581075575 /* NewMachineTools.swift */,
 			);
 			path = Create;
 			sourceTree = "<group>";
@@ -403,6 +409,8 @@
 				FC0428FD638A3E8E95F45FBB /* MetricChart.swift in Sources */,
 				79460D31BD8E2EC2FABE2435 /* NetworkDestinations.swift in Sources */,
 				D01D084FAD6DBD8202EEB0FC /* NetworkViews.swift in Sources */,
+				E40C4DC9DD6DA0696D9D1413 /* NewMachineSheet.swift in Sources */,
+				00C0CB0A972098E32BA8C53C /* NewMachineTools.swift in Sources */,
 				905EB905F0F3C38BC13E5384 /* NotificationService.swift in Sources */,
 				F3B90961C2FDDDB3B6F1BB54 /* ObserveDestinations.swift in Sources */,
 				C066069432E3A4D47D4D3F8D /* OptimizationView.swift in Sources */,
