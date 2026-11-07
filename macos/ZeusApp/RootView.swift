@@ -87,7 +87,7 @@ struct MainView: View {
             switch selection ?? .overview {
             case .overview: OverviewView()
             case .machines: MachinesView()
-            case .alerts: ContentUnavailableView("No active alerts", systemImage: "checkmark.seal")
+            case .alerts: AlertsView()
             }
         }
         .toolbar {
