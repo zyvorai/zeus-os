@@ -568,6 +568,6 @@ More at [zyvor.dev](https://zyvor.dev).
 
 ## License
 
-Zeus OS is distributed under the Zeus OS EULA. The licence text will be added before the first release.
+Zeus OS is distributed under the Zeus OS EULA. The licence text will be added before the first release. This includes the source of the Mac app in [`macos/`](macos/): it is covered by the same EULA, and no separate open-source licence is granted.
 
 <div align="center"><sub>© ZYVORAI LABS PRIVATE LIMITED</sub></div>
