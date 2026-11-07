@@ -38,11 +38,14 @@ public final class ZeusClient: Sendable {
         _ = try await raw(try request(Self.actionPath(action, vm), method: "POST"))
     }
 
+    /// Percent-encodes one path segment, including "/" (which `urlPathAllowed` would leave alone).
+    static func segment(_ s: String) -> String {
+        s.addingPercentEncoding(withAllowedCharacters:
+            CharacterSet.urlPathAllowed.subtracting(CharacterSet(charactersIn: "/"))) ?? s
+    }
+
     static func actionPath(_ action: VMAction, _ vm: VM) -> String {
-        let allowed = CharacterSet.urlPathAllowed.subtracting(CharacterSet(charactersIn: "/"))
-        let ns = vm.namespace.addingPercentEncoding(withAllowedCharacters: allowed) ?? vm.namespace
-        let name = vm.name.addingPercentEncoding(withAllowedCharacters: allowed) ?? vm.name
-        return "vms/\(ns)/\(name)/\(action.rawValue)"
+        "vms/\(segment(vm.namespace))/\(segment(vm.name))/\(action.rawValue)"
     }
 
     public func vmHistory(_ vm: VM, range: MetricsRange) async throws -> [MetricPoint] {
@@ -58,14 +61,19 @@ public final class ZeusClient: Sendable {
     public func nodeMetrics() async throws -> [NodeMetrics] { try await send("metrics/nodes") }
 
     static func metricsPath(_ vm: VM, _ leaf: String) -> String {
-        let allowed = CharacterSet.urlPathAllowed.subtracting(CharacterSet(charactersIn: "/"))
-        let ns = vm.namespace.addingPercentEncoding(withAllowedCharacters: allowed) ?? vm.namespace
-        let name = vm.name.addingPercentEncoding(withAllowedCharacters: allowed) ?? vm.name
-        return "metrics/vms/\(ns)/\(name)/\(leaf)"
+        "metrics/vms/\(segment(vm.namespace))/\(segment(vm.name))/\(leaf)"
     }
 
     /// Currently active alerts (`/alerts`), the same set `alertStats()` counts.
     public func alerts() async throws -> [FiredAlert] { try await send("alerts") }
+
+    /// Marks an alert acknowledged. The endpoint takes no body and returns free-form JSON, which we
+    /// ignore; callers re-read `alerts()` to see the new state. There is no "un-acknowledge".
+    public func acknowledge(_ alert: FiredAlert) async throws {
+        _ = try await raw(try request(Self.acknowledgePath(alert), method: "POST"))
+    }
+
+    static func acknowledgePath(_ alert: FiredAlert) -> String { "alerts/\(segment(alert.id))/acknowledge" }
 
     public func alertStats() async throws -> AlertStats {
         try await send("alerts/stats")

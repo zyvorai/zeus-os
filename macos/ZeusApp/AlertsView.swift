@@ -4,6 +4,8 @@ import ZeusKit
 struct AlertsView: View {
     @Environment(AppModel.self) private var model
     @State private var search = ""
+    @State private var selection = Set<FiredAlert.ID>()
+    @State private var confirming: [FiredAlert]?
     @State private var sort = [KeyPathComparator(\FiredAlert.severityRank), KeyPathComparator(\FiredAlert.firedAt, order: .reverse)]
 
     private var reported: Int { model.alerts?.totalActive ?? 0 }
@@ -13,6 +15,17 @@ struct AlertsView: View {
             .filter { search.isEmpty || [$0.ruleName, $0.resourceName, $0.namespace]
                 .contains { $0.localizedCaseInsensitiveContains(search) } }
             .sorted(using: sort)
+    }
+
+    /// Selected alerts that can still be acknowledged.
+    private func eligible(_ ids: Set<FiredAlert.ID>) -> [FiredAlert] {
+        (model.alertList ?? []).filter { ids.contains($0.id) && !$0.acknowledged }
+    }
+
+    /// One alert goes straight through; several ask first because there is no way to undo it.
+    private func request(_ alerts: [FiredAlert]) {
+        guard !alerts.isEmpty else { return }
+        if alerts.count == 1 { Task { await model.acknowledge(alerts) } } else { confirming = alerts }
     }
 
     var body: some View {
@@ -38,7 +51,7 @@ struct AlertsView: View {
     }
 
     private var table: some View {
-        Table(rows, sortOrder: $sort) {
+        Table(rows, selection: $selection, sortOrder: $sort) {
             TableColumn("Severity", value: \.severityRank) { a in
                 SeverityLabel(severity: a.severity)       // icon + text, never color alone
             }
@@ -53,12 +66,40 @@ struct AlertsView: View {
             TableColumn("Seen") { Text("\($0.count)×").monospacedDigit() }.width(50)
             TableColumn("Fired", value: \.firedAt) { Text($0.firedAt, style: .relative) }
             TableColumn("State") { a in
-                Text(a.acknowledged ? "Acknowledged" : "Open")
-                    .foregroundStyle(a.acknowledged ? .secondary : .primary)
+                if model.busyAlerts.contains(a.id) { ProgressView().controlSize(.small) }
+                else {
+                    Text(a.acknowledged ? "Acknowledged" : "Open")
+                        .foregroundStyle(a.acknowledged ? .secondary : .primary)
+                }
             }
         }
         .searchable(text: $search)
         .overlay { if rows.isEmpty { ContentUnavailableView.search(text: search) } }
+        .contextMenu(forSelectionType: FiredAlert.ID.self) { ids in
+            let targets = eligible(ids)
+            Button(targets.count > 1 ? "Acknowledge \(targets.count) Alerts" : "Acknowledge",
+                   systemImage: "checkmark.circle") { request(targets) }
+                .disabled(!model.canWrite || targets.isEmpty)
+        }
+        .toolbar {
+            ToolbarItem {
+                let targets = eligible(selection)
+                Button("Acknowledge", systemImage: "checkmark.circle") { request(targets) }
+                    .disabled(!model.canWrite || targets.isEmpty || targets.contains { model.busyAlerts.contains($0.id) })
+                    .help(model.canWrite ? "Acknowledge the selected alerts" : "Your role is read-only")
+            }
+        }
+        .confirmationDialog("Acknowledge \(confirming?.count ?? 0) alerts?",
+                            isPresented: Binding(get: { confirming != nil }, set: { if !$0 { confirming = nil } }),
+                            titleVisibility: .visible) {
+            if let c = confirming { Button("Acknowledge \(c.count)") { Task { await model.acknowledge(c) } } }
+        } message: { Text("This can't be undone from here.") }
+        .safeAreaInset(edge: .bottom) {
+            if let e = model.alertError { Text(e).font(.callout).foregroundStyle(.red).padding(8) }
+        }
+        .onChange(of: model.alertList) { _, list in      // drop selections for alerts that went away
+            selection.formIntersection(Set((list ?? []).map(\.id)))
+        }
     }
 }
 
