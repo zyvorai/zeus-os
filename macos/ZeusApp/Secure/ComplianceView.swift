@@ -4,6 +4,7 @@ import ZeusKit
 struct ComplianceView: View {
     let client: ZeusClient
     @State private var loader: Loader<[ComplianceFramework]>
+    @State private var selected: ComplianceFramework?
 
     init(client: ZeusClient) {
         self.client = client
@@ -18,11 +19,15 @@ struct ComplianceView: View {
             } else {
                 ScrollView {
                     LazyVGrid(columns: [GridItem(.adaptive(minimum: 260), spacing: 16)], spacing: 16) {
-                        ForEach(frameworks) { f in FrameworkCard(framework: f) }
+                        ForEach(frameworks) { f in
+                            Button { selected = f } label: { FrameworkCard(framework: f) }
+                                .buttonStyle(.plain).accessibilityHint("Shows control detail")
+                        }
                     }.padding()
                 }
             }
         }
+        .sheet(item: $selected) { ComplianceDetailView(client: client, framework: $0) }
         .navigationTitle("Compliance")
         .toolbar { ToolbarItem { Button("Reload", systemImage: "arrow.clockwise") { Task { await loader.reload() } } } }
         .task { loader.start(polling: false) }
