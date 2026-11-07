@@ -18,6 +18,7 @@
 		1C7EE932259374CB2FD7D34F /* AutomationViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E12D4A461C05709687D2AC0 /* AutomationViews.swift */; };
 		1D486022553CB3BB2610C633 /* RespondDestinations.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA11B7535A50B4ACC4715640 /* RespondDestinations.swift */; };
 		20CBD7697DFAA22DA0583477 /* ComplianceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B6506524528A9EA5B4E029 /* ComplianceView.swift */; };
+		2828BB6D928843E408C8FE65 /* AlertRuleEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FD3E85B371A4F4AE2F3D50 /* AlertRuleEditor.swift */; };
 		282BC17DD56F53880D09D94A /* CostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DD97E91EEDC7DDC0E07413 /* CostView.swift */; };
 		3438FA78AC656654FB8DA5C5 /* SecurityDestinations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A33914BFBFFA0E74B616F15 /* SecurityDestinations.swift */; };
 		372D19743FB97F5A6F0B4BE5 /* ZeusApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DFDC04C993555B2A0B20A3 /* ZeusApp.swift */; };
@@ -25,6 +26,7 @@
 		4D02F62B86B54D9E7492473E /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C76870188E00765CE45993 /* Loader.swift */; };
 		4F16BC25612093D20B93C5C5 /* VMDepthViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C95E9529F209D8F283BC5E8 /* VMDepthViews.swift */; };
 		5437CDD7A1C837EA546D8172 /* FinOpsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A2830F528CC837EE6CB8FC /* FinOpsView.swift */; };
+		64B250617906D55C5F78DC7A /* SLOEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE49DC3F71468B5DE6C0E30D /* SLOEditor.swift */; };
 		668A8E5A033291A0DB57360C /* LogsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D84D8A3A6F0A27125533EC /* LogsView.swift */; };
 		6817A0377297A97F4EDA86A5 /* APMView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2746BED706388B8E3321DF36 /* APMView.swift */; };
 		693A87E032F662C86E340C3C /* AccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D1FAF193358533E0DCE90A /* AccessView.swift */; };
@@ -34,6 +36,7 @@
 		82788CD1E7200D5FC1170BFC /* AlertsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83522E998C7D75D5A46F6D2E /* AlertsView.swift */; };
 		82FA26203311A7869991FE15 /* VMManage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87BFF36BADC4F106E4DA47D /* VMManage.swift */; };
 		830099EA7FB67A5B61C6552A /* MachineIntents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582ED6B5F8AD664E37399273 /* MachineIntents.swift */; };
+		831D08F881E466CBE80D4151 /* ChannelEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D70D0244FD331139262AFE /* ChannelEditor.swift */; };
 		855BB9EB41D6F638E70F2B1A /* OverviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33FFEECE04BFC832047B83D /* OverviewView.swift */; };
 		8CB9F0AD9E19A6B73742BD1B /* ComplianceDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2516914BB4602FBC9A74FB2 /* ComplianceDetailView.swift */; };
 		8FCFA8D9DDA238FA7ADC2FBA /* AICenterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE273A4B15847AA75C98750 /* AICenterView.swift */; };
@@ -80,7 +83,9 @@
 		560361648E7180B3808E2B10 /* PolicyViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolicyViews.swift; sourceTree = "<group>"; };
 		56DFDC04C993555B2A0B20A3 /* ZeusApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZeusApp.swift; sourceTree = "<group>"; };
 		582ED6B5F8AD664E37399273 /* MachineIntents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MachineIntents.swift; sourceTree = "<group>"; };
+		58D70D0244FD331139262AFE /* ChannelEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelEditor.swift; sourceTree = "<group>"; };
 		5E64F20F98B256363EFEB60E /* CapacityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapacityView.swift; sourceTree = "<group>"; };
+		66FD3E85B371A4F4AE2F3D50 /* AlertRuleEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertRuleEditor.swift; sourceTree = "<group>"; };
 		6A33914BFBFFA0E74B616F15 /* SecurityDestinations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityDestinations.swift; sourceTree = "<group>"; };
 		6C95E9529F209D8F283BC5E8 /* VMDepthViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMDepthViews.swift; sourceTree = "<group>"; };
 		77FF22F0D0EAABBCC16BFD97 /* TopologyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopologyView.swift; sourceTree = "<group>"; };
@@ -109,6 +114,7 @@
 		D9B3274898F0A5409562A8DA /* NetworkDestinations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDestinations.swift; sourceTree = "<group>"; };
 		E1288837F211FF50B826AFAF /* CapacityDestinations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapacityDestinations.swift; sourceTree = "<group>"; };
 		E2669F05C472E960891B7A85 /* TrustPrompt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustPrompt.swift; sourceTree = "<group>"; };
+		EE49DC3F71468B5DE6C0E30D /* SLOEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SLOEditor.swift; sourceTree = "<group>"; };
 		F06256A79054150136F54EF5 /* AuditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuditView.swift; sourceTree = "<group>"; };
 		F9DD1328005B1CCF93583E90 /* AutomationDestinations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutomationDestinations.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -254,8 +260,11 @@
 		983E786AEF822229139F7550 /* Respond */ = {
 			isa = PBXGroup;
 			children = (
+				66FD3E85B371A4F4AE2F3D50 /* AlertRuleEditor.swift */,
+				58D70D0244FD331139262AFE /* ChannelEditor.swift */,
 				AA11B7535A50B4ACC4715640 /* RespondDestinations.swift */,
 				3D12ADA008102B43711B3BEF /* RespondViews.swift */,
+				EE49DC3F71468B5DE6C0E30D /* SLOEditor.swift */,
 			);
 			path = Respond;
 			sourceTree = "<group>";
@@ -376,6 +385,7 @@
 				8FCFA8D9DDA238FA7ADC2FBA /* AICenterView.swift in Sources */,
 				6817A0377297A97F4EDA86A5 /* APMView.swift in Sources */,
 				693A87E032F662C86E340C3C /* AccessView.swift in Sources */,
+				2828BB6D928843E408C8FE65 /* AlertRuleEditor.swift in Sources */,
 				82788CD1E7200D5FC1170BFC /* AlertsView.swift in Sources */,
 				D99D3ED89099DD886AD43ECB /* AppModel.swift in Sources */,
 				0F8BA7AFBA1DB788C1C86C33 /* AuditView.swift in Sources */,
@@ -384,6 +394,7 @@
 				0F5C895A677CF6CE4F04B1F2 /* BackupsView.swift in Sources */,
 				0F71B42C36A1E999987B385D /* CapacityDestinations.swift in Sources */,
 				49C9C915232C873E0EA19496 /* CapacityView.swift in Sources */,
+				831D08F881E466CBE80D4151 /* ChannelEditor.swift in Sources */,
 				8CB9F0AD9E19A6B73742BD1B /* ComplianceDetailView.swift in Sources */,
 				20CBD7697DFAA22DA0583477 /* ComplianceView.swift in Sources */,
 				282BC17DD56F53880D09D94A /* CostView.swift in Sources */,
@@ -411,6 +422,7 @@
 				1D486022553CB3BB2610C633 /* RespondDestinations.swift in Sources */,
 				E106512EA684FD07AA1692A6 /* RespondViews.swift in Sources */,
 				0D74E984717DE48E731305A2 /* RootView.swift in Sources */,
+				64B250617906D55C5F78DC7A /* SLOEditor.swift in Sources */,
 				3438FA78AC656654FB8DA5C5 /* SecurityDestinations.swift in Sources */,
 				DD1028551E039DC3D22FF366 /* Settings.swift in Sources */,
 				A618DB9CF8A52785AE216065 /* SnapshotsView.swift in Sources */,

@@ -6,6 +6,7 @@ struct AlertsView: View {
     @State private var search = ""
     @State private var selection = Set<FiredAlert.ID>()
     @State private var confirming: [FiredAlert]?
+    @State private var resolving: [FiredAlert]?
     @State private var sort = [KeyPathComparator(\FiredAlert.severityRank), KeyPathComparator(\FiredAlert.firedAt, order: .reverse)]
 
     private var reported: Int { model.alerts?.totalActive ?? 0 }
@@ -20,6 +21,10 @@ struct AlertsView: View {
     /// Selected alerts that can still be acknowledged.
     private func eligible(_ ids: Set<FiredAlert.ID>) -> [FiredAlert] {
         (model.alertList ?? []).filter { ids.contains($0.id) && !$0.acknowledged }
+    }
+
+    private func resolvable(_ ids: Set<FiredAlert.ID>) -> [FiredAlert] {
+        (model.alertList ?? []).filter { ids.contains($0.id) }
     }
 
     /// One alert goes straight through; several ask first because there is no way to undo it.
@@ -80,8 +85,17 @@ struct AlertsView: View {
             Button(targets.count > 1 ? "Acknowledge \(targets.count) Alerts" : "Acknowledge",
                    systemImage: "checkmark.circle") { request(targets) }
                 .disabled(!model.canWrite || targets.isEmpty)
+            let open = resolvable(ids)
+            Button(open.count > 1 ? "Resolve \(open.count) Alerts…" : "Resolve…", systemImage: "checkmark.seal") { resolving = open }
+                .disabled(!model.canWrite || open.isEmpty)
         }
         .toolbar {
+            ToolbarItem {
+                let open = resolvable(selection)
+                Button("Resolve", systemImage: "checkmark.seal") { resolving = open }
+                    .disabled(!model.canWrite || open.isEmpty || open.contains { model.busyAlerts.contains($0.id) })
+                    .help(model.canWrite ? "Resolve the selected alerts" : "Your role is read-only")
+            }
             ToolbarItem {
                 let targets = eligible(selection)
                 Button("Acknowledge", systemImage: "checkmark.circle") { request(targets) }
@@ -94,6 +108,11 @@ struct AlertsView: View {
                             titleVisibility: .visible) {
             if let c = confirming { Button("Acknowledge \(c.count)") { Task { await model.acknowledge(c) } } }
         } message: { Text("This can't be undone from here.") }
+        .confirmationDialog(resolving.map { $0.count == 1 ? "Resolve \($0[0].ruleName) on \($0[0].resourceName)?" : "Resolve \($0.count) alerts?" } ?? "",
+                            isPresented: Binding(get: { resolving != nil }, set: { if !$0 { resolving = nil } }),
+                            titleVisibility: .visible) {
+            if let r = resolving { Button("Resolve \(r.count)") { Task { await model.resolve(r) } } }
+        } message: { Text("Marks the alert resolved on the server. This can't be undone from here.") }
         .safeAreaInset(edge: .bottom) {
             if let e = model.alertError { Text(e).font(.callout).foregroundStyle(.red).padding(8) }
         }
