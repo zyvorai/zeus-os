@@ -10,6 +10,7 @@ struct BackupsView: View {
     @State private var restoring: VMBackup?
     @State private var failure: String?
     @State private var notice: String?
+    @State private var scheduling = false
 
     init(client: ZeusClient) {
         self.client = client
@@ -61,6 +62,14 @@ struct BackupsView: View {
             }
         }
         .navigationTitle("Backups")
+        .toolbar {
+            if model.canWrite {
+                ToolbarItem { Button("New Schedule", systemImage: "calendar.badge.plus") { scheduling = true } }
+            }
+        }
+        .sheet(isPresented: $scheduling) {
+            NewVeleroScheduleSheet(client: client) { await loader.reload() }
+        }
         .safeAreaInset(edge: .bottom) {
             if let failure { InlineError(message: failure) { self.failure = nil } }
             else if let notice { InlineError(message: notice) { self.notice = nil } }
