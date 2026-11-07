@@ -64,41 +64,50 @@ struct LoginView: View {
     }
 }
 
-enum SidebarGroup: String, CaseIterable, Identifiable {
-    case run = "Run", observe = "Observe", protect = "Protect", storage = "Storage", cost = "Cost", secure = "Secure"
-    var id: String { rawValue }
-}
+/// One sidebar entry. Areas contribute their own lists (see `Destinations.swift` and the per-area
+/// `*Destinations.swift` files) and `Destination.all` concatenates them, so adding a screen never
+/// touches a shared enum.
+struct Destination: Identifiable {
+    let id: String
+    let title: String
+    let symbol: String
+    let group: String
+    let content: @MainActor (AppModel) -> AnyView
 
-enum Section_: String, CaseIterable, Identifiable {
-    case overview = "Overview", machines = "Machines", alerts = "Alerts"
-    case snapshots = "Snapshots", backups = "Backups", cost = "Cost"
-    case audit = "Audit", compliance = "Compliance"
-    case storage = "Storage", drPlans = "DR Plans", velero = "Velero", disks = "Disks & Images"
-    var id: String { rawValue }
-    var group: SidebarGroup {
-        switch self { case .overview, .machines: .run; case .alerts: .observe; case .snapshots, .backups: .protect; case .cost: .cost; case .audit, .compliance: .secure; case .storage, .drPlans, .velero, .disks: .storage }
+    init(_ title: String, symbol: String, group: String, id: String? = nil,
+         content: @escaping @MainActor (AppModel) -> AnyView) {
+        self.id = id ?? title; self.title = title; self.symbol = symbol; self.group = group; self.content = content
     }
-    var symbol: String {
-        switch self { case .overview: "gauge.with.dots.needle.50percent"; case .machines: "server.rack"; case .alerts: "bell"; case .snapshots: "camera.on.rectangle"; case .backups: "externaldrive.badge.timemachine"; case .cost: "dollarsign.circle"; case .audit: "list.bullet.clipboard"; case .compliance: "checkmark.shield"; case .storage: "externaldrive"; case .drPlans: "arrow.triangle.2.circlepath"; case .velero: "shippingbox"; case .disks: "opticaldisc" }
+
+    /// Screens that need a signed-in client. Rebuilt when the server changes so no state leaks across servers.
+    init<V: View>(_ title: String, symbol: String, group: String, id: String? = nil,
+                  view: @escaping @MainActor (ZeusClient) -> V) {
+        self.init(title, symbol: symbol, group: group, id: id) { model in
+            guard let c = model.client else { return AnyView(EmptyView()) }
+            return AnyView(view(c).id(ObjectIdentifier(c)))
+        }
     }
 }
 
 struct MainView: View {
     @Environment(AppModel.self) private var model
-    @State private var selection: Section_? = .overview
+    @State private var selection: Destination.ID? = "Overview"
+
+    private var groups: [(name: String, items: [Destination])] {
+        var order: [String] = []
+        for d in Destination.all where !order.contains(d.group) { order.append(d.group) }
+        return order.map { g in (g, Destination.all.filter { $0.group == g }) }
+    }
 
     var body: some View {
         NavigationSplitView {
             List(selection: $selection) {
-                ForEach(SidebarGroup.allCases) { group in
-                    let items = Section_.allCases.filter { $0.group == group }
-                    if !items.isEmpty {
-                        Section(group.rawValue) {
-                            ForEach(items) { s in
-                                Label(s.rawValue, systemImage: s.symbol)
-                                    .badge(s == .alerts ? (model.alerts?.needsAttention ?? 0) : 0)
-                                    .tag(s)
-                            }
+                ForEach(groups, id: \.name) { group in
+                    Section(group.name) {
+                        ForEach(group.items) { d in
+                            Label(d.title, systemImage: d.symbol)
+                                .badge(d.id == "Alerts" ? (model.alerts?.needsAttention ?? 0) : 0)
+                                .tag(d.id)
                         }
                     }
                 }
@@ -106,20 +115,7 @@ struct MainView: View {
             .navigationSplitViewColumnWidth(min: 190, ideal: 220, max: 300)
             .safeAreaInset(edge: .bottom) { AccountFooter() }
         } detail: {
-            switch selection ?? .overview {
-            case .overview: OverviewView()
-            case .machines: MachinesView()
-            case .alerts: AlertsView()
-            case .snapshots: if let c = model.client { SnapshotsView(client: c).id(ObjectIdentifier(c)) }
-            case .audit: if let c = model.client { AuditView(client: c).id(ObjectIdentifier(c)) }
-            case .compliance: if let c = model.client { ComplianceView(client: c).id(ObjectIdentifier(c)) }
-            case .cost: if let c = model.client { CostView(client: c).id(ObjectIdentifier(c)) }
-            case .storage: if let c = model.client { StorageView(client: c).id(ObjectIdentifier(c)) }
-            case .drPlans: if let c = model.client { DRPlansView(client: c).id(ObjectIdentifier(c)) }
-            case .velero: if let c = model.client { VeleroView(client: c).id(ObjectIdentifier(c)) }
-            case .disks: if let c = model.client { DisksAndImagesView(client: c).id(ObjectIdentifier(c)) }
-            case .backups: if let c = model.client { BackupsView(client: c).id(ObjectIdentifier(c)) }
-            }
+            (Destination.all.first { $0.id == selection } ?? Destination.all[0]).content(model)
         }
         .toolbar {
             ToolbarItem(placement: .status) { LiveStatusView() }
