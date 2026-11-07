@@ -4,6 +4,8 @@ public enum ZeusError: Error, Sendable {
     case unauthorized
     case server(status: Int, message: String)
     case transport(Error)
+    /// TLS validation failed and the certificate isn't the one the profile pinned. Carries what to show the user.
+    case untrustedCertificate(CertificateInfo)
 }
 
 /// Thin async client for the Zeus OS REST API (`/api/v1`).
@@ -11,15 +13,30 @@ public final class ZeusClient: Sendable {
     public let baseURL: URL
     private let token: String?
     private let session: URLSession
+    private let trust: CertificateTrust?
+    private let pin: String?
 
-    public init(baseURL: URL, token: String? = nil, session: URLSession = .shared) {
+    /// Without an injected `session` the client builds its own, whose delegate enforces `pinnedFingerprint`:
+    /// system validation first; only if that fails is the leaf compared with the pin. Validation is never disabled.
+    public init(baseURL: URL, token: String? = nil, session: URLSession? = nil, pinnedFingerprint: String? = nil) {
         self.baseURL = baseURL
         self.token = token
-        self.session = session
+        self.pin = pinnedFingerprint
+        if let session {
+            self.session = session; self.trust = nil
+        } else {
+            let t = CertificateTrust(pinnedFingerprint: pinnedFingerprint)
+            self.trust = t
+            self.session = URLSession(configuration: .default, delegate: t, delegateQueue: nil)
+        }
     }
 
     public func withToken(_ token: String) -> ZeusClient {
-        ZeusClient(baseURL: baseURL, token: token, session: session)
+        ZeusClient(baseURL: baseURL, token: token, session: session, trust: trust, pin: pin)
+    }
+
+    private init(baseURL: URL, token: String?, session: URLSession, trust: CertificateTrust?, pin: String?) {
+        self.baseURL = baseURL; self.token = token; self.session = session; self.trust = trust; self.pin = pin
     }
 
     public func login(username: String, password: String) async throws -> LoginResponse {
@@ -139,7 +156,10 @@ public final class ZeusClient: Sendable {
     func raw(_ req: URLRequest) async throws -> Data {
         let data: Data, resp: URLResponse
         do { (data, resp) = try await session.data(for: req) }
-        catch { throw ZeusError.transport(error) }
+        catch {
+            if let rejected = trust?.takeRejected() { throw ZeusError.untrustedCertificate(rejected) }
+            throw ZeusError.transport(error)
+        }
         let status = (resp as? HTTPURLResponse)?.statusCode ?? 0
         if status == 401 { throw ZeusError.unauthorized }
         guard (200..<300).contains(status) else {

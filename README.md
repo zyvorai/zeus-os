@@ -525,10 +525,11 @@ A native macOS client for a running Zeus OS server, built with SwiftUI. It talks
 - **Security, read-only**: tap a compliance framework for control detail; **Access** (RBAC roles, bindings, service accounts, findings), **Image Scanning** (severity breakdown), **Policies** (Kyverno, admission, Gatekeeper) and **Network Policies** (Kubernetes and Cilium).
 - **Migrations**: migration list plus a live-migrate action (preflight check first, then a confirmation); **Templates** browser (templates and instance types, read-only: creating a VM from a built-in template is not offered because the instantiate endpoint's addressing of empty-namespace templates is unclear); **VM Groups** with group start, stop and restart. The migrate and group-action requests are unit-tested only, not exercised against a live server.
 - **Network** (read-only): overview with Multus attachments and Kubernetes policies, services with ingress and MetalLB pools, Cilium status, encryption and endpoint identities, PacketWolf VM shield status, and DNS and IPAM.
+- **System integration**: optional notification banners for new critical or warning alerts (off by default; alerts already firing at connect never notify); a Settings window (⌘,) with refresh interval, notifications, default server and "Sign out and forget"; Sign Out (⇧⌘O); Shortcuts actions to start, stop, restart and read the status of a machine (stop and restart ask for confirmation); machine names in Spotlight; and a **certificate trust prompt** for self-signed servers that shows the SHA-256 fingerprint and pins that one certificate per saved server (system validation is never disabled, and a changed certificate prompts again).
 - A menu bar item with machines running and active alert count.
 - Live updates by polling (every 5 seconds in front, slower behind, with backoff when the server is unreachable).
 
-**Not yet**: consoles and certificate trust prompts. The server must present a certificate the Mac already trusts; the chart's default self-signed certificate is not accepted yet.
+**Not yet**: consoles and keyboard shortcuts for switching sections. Notifications, Shortcuts actions and the trust prompt are new and have only been unit-tested and compiled, not yet exercised end to end.
 
 **Build it** (macOS 27, Xcode 27, [XcodeGen](https://github.com/yonaskolb/XcodeGen)):
 
