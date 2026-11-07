@@ -62,6 +62,7 @@
 		C066069432E3A4D47D4D3F8D /* OptimizationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A80BD38C7ACE39A41639C2 /* OptimizationView.swift */; };
 		C11AB6707E17CC9AD863C0ED /* MenuBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B03716182838A6E90FDB2A /* MenuBarView.swift */; };
 		C52F783D31B07133098529B5 /* TailScreens.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D8D1A28BA1841222FE5260 /* TailScreens.swift */; };
+		CEB44647253B3F12D1C29866 /* TailDeliveryViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = B412C00F6AB1E4BE441227B2 /* TailDeliveryViews.swift */; };
 		CEE8B7F09747AD26BE453AF3 /* ConsoleViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE697B8E629684F8FEB1939 /* ConsoleViews.swift */; };
 		D01D084FAD6DBD8202EEB0FC /* NetworkViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37F045EB89C55ECD9D5072E /* NetworkViews.swift */; };
 		D2848B7F7BD36C83C0D9D905 /* VNCConsole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA582B5ABD0F0299E575BC7 /* VNCConsole.swift */; };
@@ -70,6 +71,7 @@
 		D99D3ED89099DD886AD43ECB /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B0774CDE942A26ED1503CD /* AppModel.swift */; };
 		DA8DAF3FD92E22F9F2A8FAC8 /* CreateViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27E28AF5DF468D78EE92E38 /* CreateViews.swift */; };
 		DD1028551E039DC3D22FF366 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B2A629F7F8B247F2030274 /* Settings.swift */; };
+		DF3F743F183422869929F030 /* TailDeliveryDestinations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3590DCECD0B7A4D749130B2F /* TailDeliveryDestinations.swift */; };
 		E106512EA684FD07AA1692A6 /* RespondViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D12ADA008102B43711B3BEF /* RespondViews.swift */; };
 		E40C4DC9DD6DA0696D9D1413 /* NewMachineSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A00FA631A33CB8613FEB4F3 /* NewMachineSheet.swift */; };
 		EA21C9F077EFF2E64519B72D /* Destinations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03917729189B3A420C850010 /* Destinations.swift */; };
@@ -96,6 +98,7 @@
 		29C76870188E00765CE45993 /* Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loader.swift; sourceTree = "<group>"; };
 		2C983ECAB5A19E74FBC23AA7 /* OpsActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpsActions.swift; sourceTree = "<group>"; };
 		33C278070230A3F581075575 /* NewMachineTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMachineTools.swift; sourceTree = "<group>"; };
+		3590DCECD0B7A4D749130B2F /* TailDeliveryDestinations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TailDeliveryDestinations.swift; sourceTree = "<group>"; };
 		37B1838FD0A4ACB1B90704A6 /* IdentityViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentityViews.swift; sourceTree = "<group>"; };
 		3C294737AC9CB90CA2339D5D /* CreateDestinations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateDestinations.swift; sourceTree = "<group>"; };
 		3D12ADA008102B43711B3BEF /* RespondViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RespondViews.swift; sourceTree = "<group>"; };
@@ -136,6 +139,7 @@
 		A7B0774CDE942A26ED1503CD /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
 		A8A80BD38C7ACE39A41639C2 /* OptimizationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptimizationView.swift; sourceTree = "<group>"; };
 		AA11B7535A50B4ACC4715640 /* RespondDestinations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RespondDestinations.swift; sourceTree = "<group>"; };
+		B412C00F6AB1E4BE441227B2 /* TailDeliveryViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TailDeliveryViews.swift; sourceTree = "<group>"; };
 		B87BFF36BADC4F106E4DA47D /* VMManage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMManage.swift; sourceTree = "<group>"; };
 		BB47515E905887300FA8175E /* VMMetricsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMMetricsView.swift; sourceTree = "<group>"; };
 		C37F045EB89C55ECD9D5072E /* NetworkViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkViews.swift; sourceTree = "<group>"; };
@@ -218,6 +222,15 @@
 			path = Protect;
 			sourceTree = "<group>";
 		};
+		3465A6964F8824C180C1CA6A /* TailDelivery */ = {
+			isa = PBXGroup;
+			children = (
+				3590DCECD0B7A4D749130B2F /* TailDeliveryDestinations.swift */,
+				B412C00F6AB1E4BE441227B2 /* TailDeliveryViews.swift */,
+			);
+			path = TailDelivery;
+			sourceTree = "<group>";
+		};
 		3D4B4CF32F9C8F3484493F60 /* ZeusApp */ = {
 			isa = PBXGroup;
 			children = (
@@ -247,6 +260,7 @@
 				983E786AEF822229139F7550 /* Respond */,
 				65E026D05AE46EB07AB87A86 /* Secure */,
 				152874F8452BDE4A83C7D3EF /* Storage */,
+				3465A6964F8824C180C1CA6A /* TailDelivery */,
 				FBE3C0B3C215908479DE8EB5 /* TailObserve */,
 				54082EEBBEDD3FA88AD3746A /* TailPlatform */,
 				167D6CE4D58E9E4F9A201EAA /* TailSched */,
@@ -536,6 +550,8 @@
 				6D35C9B13423B29A6EC56E68 /* SpotlightIndexer.swift in Sources */,
 				80692FD9B250A37EF406B3EF /* StorageActions.swift in Sources */,
 				192E75C81988EDE4759B40D0 /* StorageView.swift in Sources */,
+				DF3F743F183422869929F030 /* TailDeliveryDestinations.swift in Sources */,
+				CEB44647253B3F12D1C29866 /* TailDeliveryViews.swift in Sources */,
 				0394D704D6E315023FFC9632 /* TailPlatformViews.swift in Sources */,
 				C52F783D31B07133098529B5 /* TailScreens.swift in Sources */,
 				89772EDDBE4BFED2181AB2D4 /* TailWorkloadsViews.swift in Sources */,
