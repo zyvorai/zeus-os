@@ -523,10 +523,11 @@ A native macOS client for a running Zeus OS server, built with SwiftUI. It talks
 - **Respond** (read-only): alert rules, notification channels (names and types only, never secrets), notification history, SLOs with error-budget gauges, incidents with cluster health, and a tenancy overview.
 - **Machine detail**: disks, guest network and OS (once the guest agent connects) and recent changes in the inspector; pause or resume, clone, clone from a snapshot and delete (each confirms); view and edit cloud-init user-data; read-only guest-agent views (OS, network, processes, users, filesystems).
 - **Security, read-only**: tap a compliance framework for control detail; **Access** (RBAC roles, bindings, service accounts, findings), **Image Scanning** (severity breakdown), **Policies** (Kyverno, admission, Gatekeeper) and **Network Policies** (Kubernetes and Cilium).
+- **System integration**: optional notification banners for new critical or warning alerts (off by default; alerts already firing at connect never notify); a Settings window (⌘,) with refresh interval, notifications, default server and "Sign out and forget"; Sign Out (⇧⌘O); Shortcuts actions to start, stop, restart and read the status of a machine (stop and restart ask for confirmation); machine names in Spotlight; and a **certificate trust prompt** for self-signed servers that shows the SHA-256 fingerprint and pins that one certificate per saved server (system validation is never disabled, and a changed certificate prompts again).
 - A menu bar item with machines running and active alert count.
 - Live updates by polling (every 5 seconds in front, slower behind, with backoff when the server is unreachable).
 
-**Not yet**: consoles and certificate trust prompts. The server must present a certificate the Mac already trusts; the chart's default self-signed certificate is not accepted yet.
+**Not yet**: consoles and keyboard shortcuts for switching sections. Notifications, Shortcuts actions and the trust prompt are new and have only been unit-tested and compiled, not yet exercised end to end.
 
 **Build it** (macOS 27, Xcode 27, [XcodeGen](https://github.com/yonaskolb/XcodeGen)):
 

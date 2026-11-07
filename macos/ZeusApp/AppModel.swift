@@ -22,6 +22,10 @@ final class AppModel {
     var busy: Set<VM.ID> = []
     var busyAlerts: Set<FiredAlert.ID> = []
     var alertError: String?
+    /// Set when a server's certificate failed validation; the root view shows a sheet to trust or refuse it.
+    var trustRequest: TrustRequest?
+    private var alertFilter = AlertNotificationFilter()
+    private var indexedVMs: Set<String> = []
 
     enum LiveState: Equatable { case off, live, retrying(Int) }
     var liveState = LiveState.off
@@ -32,7 +36,7 @@ final class AppModel {
     var canWrite: Bool { session?.role == "editor" || session?.role == "admin" }
 
     init() {
-        profiles = store.load()
+        profiles = Prefs.defaultFirst(store.load())
         // Catch up immediately when the user comes back to the app instead of waiting out the slow idle interval.
         NotificationCenter.default.addObserver(forName: NSApplication.didBecomeActiveNotification,
                                                object: nil, queue: .main) { [weak self] _ in
@@ -44,39 +48,57 @@ final class AppModel {
     func resume(_ profile: ServerProfile) async {
         guard let token = store.token(for: profile) else { return }
         isLoading = true; defer { isLoading = false }
-        let c = ZeusClient(baseURL: profile.url, token: token)
+        let c = ZeusClient(baseURL: profile.url, token: token, pinnedFingerprint: profile.pinnedFingerprint)
         do {
             _ = try await c.alertStats()          // cheap authenticated probe
             client = c; active = profile
             session = LoginResponse(token: token, username: profile.username, role: profile.role ?? "viewer",
                                     tenantIds: [], expiresIn: 0)
             error = nil
+            alertFilter.reset()
             await refresh()
             startLive()
         } catch ZeusError.unauthorized {
             try? store.setToken(nil, for: profile)
+        } catch ZeusError.untrustedCertificate(let info) {
+            trustRequest = TrustRequest(info: info, host: profile.url.host() ?? profile.name,
+                                        changed: profile.pinnedFingerprint != nil) { [weak self] fp in
+                guard let self else { return }
+                var p = profile; p.pinnedFingerprint = fp
+                await self.resume(self.store.upsert(p))
+                self.profiles = Prefs.defaultFirst(self.store.load())
+            }
         } catch {
             self.error = "Couldn't reach \(profile.url.host() ?? "server")."
         }
     }
 
-    func signIn(name: String, url: URL, username: String, password: String, remember: Bool) async {
+    func signIn(name: String, url: URL, username: String, password: String, remember: Bool,
+                trusting pin: String? = nil) async {
         isLoading = true; defer { isLoading = false }
+        let pin = pin ?? store.load().first { $0.url == url && $0.username == username }?.pinnedFingerprint
         do {
-            let anon = ZeusClient(baseURL: url)
+            let anon = ZeusClient(baseURL: url, pinnedFingerprint: pin)
             let s = try await anon.login(username: username, password: password)
             let profile = store.upsert(ServerProfile(name: name.isEmpty ? (url.host() ?? "Server") : name,
-                                                     url: url, username: username, role: s.role))
+                                                     url: url, username: username, role: s.role,
+                                                     pinnedFingerprint: pin))
             if remember {
                 do { try store.setToken(s.token, for: profile) }
                 catch { notice = "Signed in, but couldn't save to the Keychain." }
             }
             profiles = store.load(); active = profile
             session = s; client = anon.withToken(s.token); error = nil
+            alertFilter.reset()
             await refresh()
             startLive()
         } catch ZeusError.unauthorized {
             error = "Wrong username or password."
+        } catch ZeusError.untrustedCertificate(let info) {
+            trustRequest = TrustRequest(info: info, host: url.host() ?? "server", changed: pin != nil) { [weak self] fp in
+                await self?.signIn(name: name, url: url, username: username, password: password,
+                                   remember: remember, trusting: fp)
+            }
         } catch {
             self.error = "Couldn't reach \(url.host() ?? "server")."
         }
@@ -138,6 +160,7 @@ final class AppModel {
         if forget, let p = active { try? store.setToken(nil, for: p) }
         liveTask?.cancel(); liveTask = nil
         session = nil; client = nil; active = nil
+        alertFilter.reset(); SpotlightIndexer.clear(); indexedVMs = []
         vms = []; alerts = nil; alertList = nil; alertError = nil; busyAlerts = []; cluster = nil; nodes = []
         liveState = .off; lastUpdated = nil; busy = []
     }
@@ -149,8 +172,13 @@ final class AppModel {
         liveTask?.cancel()
         liveState = .live
         liveTask = Task { [weak self] in
-            var backoff = PollBackoff()
+            var interval = Prefs.pollSeconds
+            var backoff = PollBackoff(active: .seconds(interval), idle: .seconds(max(30, interval)))
             while !Task.isCancelled {
+                if Prefs.pollSeconds != interval {
+                    interval = Prefs.pollSeconds
+                    backoff = PollBackoff(active: .seconds(interval), idle: .seconds(max(30, interval)))
+                }
                 try? await Task.sleep(for: backoff.delay(appIsActive: NSApplication.shared.isActive))
                 guard !Task.isCancelled, let self, self.client != nil else { return }
                 if await self.refresh(quiet: true) { backoff.succeeded() } else { backoff.failed() }
@@ -177,6 +205,9 @@ final class AppModel {
             guard self.client === client else { return false }   // signed out or switched server mid-flight
             vms = newVMs; alerts = newAlerts; alertList = newList; cluster = newCluster; nodes = newNodes
             lastUpdated = .now
+            if let newList { NotificationService.shared.notify(alertFilter.newAlerts(in: newList), server: active?.name) }
+            let ids = Set(newVMs.map(\.id))
+            if ids != indexedVMs { indexedVMs = ids; SpotlightIndexer.index(newVMs, server: active?.name ?? "Zeus") }
             if !quiet { error = nil }
             return true
         } catch ZeusError.unauthorized {

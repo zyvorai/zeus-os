@@ -7,9 +7,14 @@ public struct ServerProfile: Codable, Sendable, Identifiable, Hashable {
     public var username: String
     /// Role seen at last sign-in, so a restored session can enable or disable write actions.
     public var role: String?
+    /// SHA-256 (lowercase hex) of the leaf certificate the user explicitly trusted for this server.
+    /// Only consulted when normal system validation fails; nil means "system trust only".
+    public var pinnedFingerprint: String?
 
-    public init(id: UUID = UUID(), name: String, url: URL, username: String, role: String? = nil) {
+    public init(id: UUID = UUID(), name: String, url: URL, username: String, role: String? = nil,
+                pinnedFingerprint: String? = nil) {
         self.id = id; self.name = name; self.url = url; self.username = username; self.role = role
+        self.pinnedFingerprint = pinnedFingerprint
     }
 }
 
@@ -37,7 +42,8 @@ public struct ProfileStore: Sendable {
     public func upsert(_ profile: ServerProfile) -> ServerProfile {
         var all = load()
         if let i = all.firstIndex(where: { $0.url == profile.url && $0.username == profile.username }) {
-            let kept = ServerProfile(id: all[i].id, name: profile.name, url: profile.url, username: profile.username, role: profile.role)
+            let kept = ServerProfile(id: all[i].id, name: profile.name, url: profile.url, username: profile.username, role: profile.role,
+                                     pinnedFingerprint: profile.pinnedFingerprint)
             all[i] = kept; save(all); return kept
         }
         all.append(profile); save(all); return profile
