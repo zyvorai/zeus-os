@@ -9,8 +9,9 @@ public struct RuleCondition: Decodable, Sendable, Hashable {
     public let `operator`: String?
     public let threshold: Double?
     public let durationMinutes: Int?
+    public let filters: [String: String]?
 
-    enum CodingKeys: String, CodingKey { case metric, `operator`, threshold, durationMinutes = "duration_minutes" }
+    enum CodingKeys: String, CodingKey { case metric, `operator`, threshold, filters, durationMinutes = "duration_minutes" }
 
     public var summary: String {
         [metric, `operator`, threshold.map { $0.formatted() }].compactMap { $0 }.joined(separator: " ")
@@ -26,6 +27,7 @@ public struct AlertingRule: Decodable, Sendable, Identifiable, Hashable {
     public let enabled: Bool?
     public let condition: RuleCondition?
     public let notificationChannels: [String]?
+    public let escalationPolicyId: String?
     public let lastTriggered: String?
     public let createdAt: String?
 
@@ -33,6 +35,7 @@ public struct AlertingRule: Decodable, Sendable, Identifiable, Hashable {
 
     enum CodingKeys: String, CodingKey {
         case name, description, severity, enabled, condition
+        case escalationPolicyId = "escalation_policy_id"
         case ruleId = "rule_id", notificationChannels = "notification_channels"
         case lastTriggered = "last_triggered", createdAt = "created_at"
     }
