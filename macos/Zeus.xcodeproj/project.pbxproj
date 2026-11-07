@@ -11,6 +11,7 @@
 		0D74E984717DE48E731305A2 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0408D024D46186E7ABFE8320 /* RootView.swift */; };
 		12BDB724294C1D224FEFCCF1 /* ZeusKit in Frameworks */ = {isa = PBXBuildFile; productRef = 496B17285E6FC4BCF75FD40B /* ZeusKit */; };
 		372D19743FB97F5A6F0B4BE5 /* ZeusApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DFDC04C993555B2A0B20A3 /* ZeusApp.swift */; };
+		82788CD1E7200D5FC1170BFC /* AlertsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83522E998C7D75D5A46F6D2E /* AlertsView.swift */; };
 		855BB9EB41D6F638E70F2B1A /* OverviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33FFEECE04BFC832047B83D /* OverviewView.swift */; };
 		BBA66875BB9BACB6226F4E4F /* VMMetricsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB47515E905887300FA8175E /* VMMetricsView.swift */; };
 		C11AB6707E17CC9AD863C0ED /* MenuBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B03716182838A6E90FDB2A /* MenuBarView.swift */; };
@@ -23,6 +24,7 @@
 		1C13F1B4AC6F167B69FCCC9B /* Zeus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zeus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2452BFC991DBE62E68949461 /* macos */ = {isa = PBXFileReference; lastKnownFileType = folder; name = macos; path = .; sourceTree = SOURCE_ROOT; };
 		56DFDC04C993555B2A0B20A3 /* ZeusApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZeusApp.swift; sourceTree = "<group>"; };
+		83522E998C7D75D5A46F6D2E /* AlertsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertsView.swift; sourceTree = "<group>"; };
 		9158914EC3539A4F3C742EC8 /* MetricChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricChart.swift; sourceTree = "<group>"; };
 		91B03716182838A6E90FDB2A /* MenuBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarView.swift; sourceTree = "<group>"; };
 		A7B0774CDE942A26ED1503CD /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 		3D4B4CF32F9C8F3484493F60 /* ZeusApp */ = {
 			isa = PBXGroup;
 			children = (
+				83522E998C7D75D5A46F6D2E /* AlertsView.swift */,
 				A7B0774CDE942A26ED1503CD /* AppModel.swift */,
 				D34D5AB7D8FA7292DC1E25A2 /* MachinesView.swift */,
 				91B03716182838A6E90FDB2A /* MenuBarView.swift */,
@@ -146,6 +149,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82788CD1E7200D5FC1170BFC /* AlertsView.swift in Sources */,
 				D99D3ED89099DD886AD43ECB /* AppModel.swift in Sources */,
 				03FC1FB1025D6A17B47516BF /* MachinesView.swift in Sources */,
 				C11AB6707E17CC9AD863C0ED /* MenuBarView.swift in Sources */,

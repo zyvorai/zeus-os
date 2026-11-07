@@ -12,6 +12,8 @@ final class AppModel {
     var client: ZeusClient?
     var vms: [VM] = []
     var alerts: AlertStats?
+    /// nil means "couldn't load", which is different from an empty list.
+    var alertList: [FiredAlert]?
     var cluster: ClusterMetrics?
     var nodes: [NodeMetrics] = []
     var error: String?
@@ -108,7 +110,7 @@ final class AppModel {
         if forget, let p = active { try? store.setToken(nil, for: p) }
         liveTask?.cancel(); liveTask = nil
         session = nil; client = nil; active = nil
-        vms = []; alerts = nil; cluster = nil; nodes = []
+        vms = []; alerts = nil; alertList = nil; cluster = nil; nodes = []
         liveState = .off; lastUpdated = nil; busy = []
     }
 
@@ -141,10 +143,11 @@ final class AppModel {
             async let a = client.alertStats()
             async let c = try? client.clusterMetrics()     // optional: don't fail the refresh over these
             async let n = try? client.nodeMetrics()
+            async let l = try? client.alerts()
             let (newVMs, newAlerts) = try await (v, a)
-            let (newCluster, newNodes) = await (c, n ?? [])
+            let (newCluster, newNodes, newList) = await (c, n ?? [], l)
             guard self.client === client else { return false }   // signed out or switched server mid-flight
-            vms = newVMs; alerts = newAlerts; cluster = newCluster; nodes = newNodes
+            vms = newVMs; alerts = newAlerts; alertList = newList; cluster = newCluster; nodes = newNodes
             lastUpdated = .now
             if !quiet { error = nil }
             return true

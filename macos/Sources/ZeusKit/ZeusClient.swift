@@ -64,6 +64,9 @@ public final class ZeusClient: Sendable {
         return "metrics/vms/\(ns)/\(name)/\(leaf)"
     }
 
+    /// Currently active alerts (`/alerts`), the same set `alertStats()` counts.
+    public func alerts() async throws -> [FiredAlert] { try await send("alerts") }
+
     public func alertStats() async throws -> AlertStats {
         try await send("alerts/stats")
     }
