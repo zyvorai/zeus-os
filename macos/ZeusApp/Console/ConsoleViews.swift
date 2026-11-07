@@ -162,18 +162,23 @@ struct VMConsoleButtons: View {
     @Environment(AppModel.self) private var model
     @Environment(\.openURL) private var openURL
     @State private var serial = false
+    @State private var graphical = false
 
     var body: some View {
         Group {
             Button("Serial Console…", systemImage: "terminal") { serial = true }
                 .disabled(vm.status != "Running" || !model.canWrite)
                 .help(model.canWrite ? "Open the serial console" : "Your role is read-only")
+            Button("Graphical Console…", systemImage: "display.and.arrow.down") { graphical = true }
+                .disabled(vm.status != "Running" || !model.canWrite)
+                .help(model.canWrite ? "Open the graphical console (can send keyboard and mouse input)" : "Your role is read-only")
             Button("Graphical Console in Browser", systemImage: "display") {
                 if let url = client.graphicalConsoleURL(for: vm) { openURL(url) }
             }
             .disabled(vm.status != "Running")
         }
         .sheet(isPresented: $serial) { SerialConsoleSheet(vm: vm, client: client) }
+        .sheet(isPresented: $graphical) { GraphicalConsoleSheet(vm: vm, client: client) }
     }
 }
 

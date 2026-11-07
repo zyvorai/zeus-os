@@ -537,11 +537,11 @@ A native macOS client for a running Zeus OS server, built with SwiftUI. It talks
 - Live updates by polling (every 5 seconds in front, slower behind, with backoff when the server is unreachable).
 
 **Not yet**: consoles and keyboard shortcuts for switching sections. Notifications, Shortcuts actions and the trust prompt are new and have only been unit-tested and compiled, not yet exercised end to end.
-- **Consoles**: a text-mode serial console for a running machine (from the inspector), a pod terminal, "Graphical Console in Browser" (opens the web dashboard; there is no native VNC client), and read-only console access requests and JIT grants. Line-oriented only (no full-screen programs); console sessions are unit-tested only, not yet exercised against a live server.
+- **Consoles**: a text-mode serial console for a running machine (from the inspector), a pod terminal, "Graphical Console…" (a native RFB/VNC client: raw and CopyRect encodings, mouse and keyboard, Ctrl+Alt+Del; editors and admins only; sessions are shared, never exclusive), and "Graphical Console in Browser" as a fallback, and read-only console access requests and JIT grants. Line-oriented only (no full-screen programs); console sessions are unit-tested only, not yet exercised against a live server. The native VNC client was only tested against a scripted fake server, never a real VM; it offers just Raw and CopyRect, so expect bandwidth-heavy updates, and it has no VNC-password or clipboard support.
 - A menu bar item with machines running and active alert count.
 - Live updates by polling (every 5 seconds in front, slower behind, with backoff when the server is unreachable).
 
-**Not yet**: a native graphical (VNC) console and certificate trust prompts. The server must present a certificate the Mac already trusts; the chart's default self-signed certificate is not accepted yet.
+**Not yet**: certificate trust prompts. The server must present a certificate the Mac already trusts; the chart's default self-signed certificate is not accepted yet.
 
 **Build it** (macOS 27, Xcode 27, [XcodeGen](https://github.com/yonaskolb/XcodeGen)):
 
