@@ -15,6 +15,8 @@ public final class ZeusClient: Sendable {
     private let session: URLSession
     private let trust: CertificateTrust?
     private let pin: String?
+    var webSocketSession: URLSession { session }
+    var bearerToken: String? { token }
 
     /// Without an injected `session` the client builds its own, whose delegate enforces `pinnedFingerprint`:
     /// system validation first; only if that fails is the leaf compared with the pin. Validation is never disabled.

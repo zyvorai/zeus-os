@@ -85,6 +85,7 @@ struct VMInspector: View {
             Section {
                 ActionButtons(vm: vm, request: request)
                 if let client = model.client { VMManageButtons(vm: vm, client: client, onDeleted: onDeleted) }
+                if let client = model.client { VMConsoleButtons(vm: vm, client: client) }
             }
             if !model.canWrite {
                 Text("Your role is read-only.").font(.footnote).foregroundStyle(.secondary)
