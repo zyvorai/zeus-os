@@ -59,7 +59,7 @@ struct MachinesView: View {
         .overlay { if rows.isEmpty { ContentUnavailableView.search(text: search) } }
         .searchable(text: $search)
         .inspector(isPresented: .constant(selection != nil)) {
-            if let vm = model.vms.first(where: { $0.id == selection }) { VMInspector(vm: vm, request: request) }
+            if let vm = model.vms.first(where: { $0.id == selection }) { VMInspector(vm: vm, request: request, onDeleted: { selection = nil }) }
         }
         .navigationTitle("Machines")
     }
@@ -68,6 +68,7 @@ struct MachinesView: View {
 struct VMInspector: View {
     let vm: VM
     let request: (VMAction, VM) -> Void
+    var onDeleted: () -> Void = {}
     @Environment(AppModel.self) private var model
 
     var body: some View {
@@ -80,11 +81,13 @@ struct VMInspector: View {
             LabeledContent("Security", value: vm.securityScore.map(String.init) ?? "—")
             Section {
                 ActionButtons(vm: vm, request: request)
+                if let client = model.client { VMManageButtons(vm: vm, client: client, onDeleted: onDeleted) }
             }
             if !model.canWrite {
                 Text("Your role is read-only.").font(.footnote).foregroundStyle(.secondary)
             }
             Section("Metrics") { VMMetricsView(vm: vm) }
+            if let client = model.client { VMDetailSections(vm: vm, client: client).id(vm.id) }
         }
         .formStyle(.grouped)
         .inspectorColumnWidth(min: 280, ideal: 360)
