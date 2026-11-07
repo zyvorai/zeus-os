@@ -517,6 +517,7 @@ A native macOS client for a running Zeus OS server, built with SwiftUI. It talks
 - **Alerts**: table of active alerts with severity, resource, value against threshold and state. Editors and admins can acknowledge one or several at once.
 - **Snapshots**: list, take (optionally freezing guest filesystems) and delete VM snapshots. **Backups**: Velero schedules, VM backups and totals, read-only for now.
 - **Cost**: modelled monthly and daily cost, a per-machine table, a cost-by-component chart, and savings, from your configured price model (estimates, not invoices).
+- **Capacity**: current usage against thresholds, projected utilisation chart and forecasts. **Optimization**: right-sizing recommendations. **FinOps**: unit prices (editable by editors and admins), recorded cost history, budgets (list and delete).
 - **Audit**: searchable event table with a warnings filter (on a stock install these are Kubernetes events). **Compliance**: score, passed and failed controls per framework.
 - **Storage**: capacity, claims, volumes and storage classes; **DR Plans**, **Velero** and **Disks & Images** lists, all read-only. Editors and admins can restore a VM backup from Backups after a confirmation (the restore request is unit-tested only, not exercised against a live server).
 - **Respond** (read-only): alert rules, notification channels (names and types only, never secrets), notification history, SLOs with error-budget gauges, incidents with cluster health, and a tenancy overview.
