@@ -4,7 +4,7 @@ import ZeusKit
 /// Sidebar order is the order of this list; groups appear in order of first use.
 /// To add an area: create `static let yours: [Destination]` in your own file and add it here.
 extension Destination {
-    static let all: [Destination] = core + protect + cost + secure + storage
+    static let all: [Destination] = core + protect + cost + secure + storage + respond
 
     static let core: [Destination] = [
         Destination("Overview", symbol: "gauge.with.dots.needle.50percent", group: "Run") { _ in AnyView(OverviewView()) },
