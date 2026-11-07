@@ -14,6 +14,7 @@
 		0F8BA7AFBA1DB788C1C86C33 /* AuditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06256A79054150136F54EF5 /* AuditView.swift */; };
 		12BDB724294C1D224FEFCCF1 /* ZeusKit in Frameworks */ = {isa = PBXBuildFile; productRef = 496B17285E6FC4BCF75FD40B /* ZeusKit */; };
 		192E75C81988EDE4759B40D0 /* StorageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8686FDDBC66E13BFC244BCFF /* StorageView.swift */; };
+		1C7EE932259374CB2FD7D34F /* AutomationViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E12D4A461C05709687D2AC0 /* AutomationViews.swift */; };
 		1D486022553CB3BB2610C633 /* RespondDestinations.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA11B7535A50B4ACC4715640 /* RespondDestinations.swift */; };
 		20CBD7697DFAA22DA0583477 /* ComplianceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B6506524528A9EA5B4E029 /* ComplianceView.swift */; };
 		282BC17DD56F53880D09D94A /* CostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DD97E91EEDC7DDC0E07413 /* CostView.swift */; };
@@ -29,6 +30,7 @@
 		855BB9EB41D6F638E70F2B1A /* OverviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33FFEECE04BFC832047B83D /* OverviewView.swift */; };
 		8CB9F0AD9E19A6B73742BD1B /* ComplianceDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2516914BB4602FBC9A74FB2 /* ComplianceDetailView.swift */; };
 		A618DB9CF8A52785AE216065 /* SnapshotsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9166DB9DC1756E703C7623 /* SnapshotsView.swift */; };
+		B484871D308C4971A14C7CD0 /* AutomationDestinations.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9DD1328005B1CCF93583E90 /* AutomationDestinations.swift */; };
 		B4A582FBE51D4EC9769B5549 /* PolicyViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560361648E7180B3808E2B10 /* PolicyViews.swift */; };
 		BBA66875BB9BACB6226F4E4F /* VMMetricsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB47515E905887300FA8175E /* VMMetricsView.swift */; };
 		C066069432E3A4D47D4D3F8D /* OptimizationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A80BD38C7ACE39A41639C2 /* OptimizationView.swift */; };
@@ -45,6 +47,7 @@
 		0408D024D46186E7ABFE8320 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		10A2830F528CC837EE6CB8FC /* FinOpsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinOpsView.swift; sourceTree = "<group>"; };
 		1C13F1B4AC6F167B69FCCC9B /* Zeus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zeus.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1E12D4A461C05709687D2AC0 /* AutomationViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutomationViews.swift; sourceTree = "<group>"; };
 		2452BFC991DBE62E68949461 /* macos */ = {isa = PBXFileReference; lastKnownFileType = folder; name = macos; path = .; sourceTree = SOURCE_ROOT; };
 		29C76870188E00765CE45993 /* Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loader.swift; sourceTree = "<group>"; };
 		3D12ADA008102B43711B3BEF /* RespondViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RespondViews.swift; sourceTree = "<group>"; };
@@ -73,6 +76,7 @@
 		D34D5AB7D8FA7292DC1E25A2 /* MachinesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MachinesView.swift; sourceTree = "<group>"; };
 		E1288837F211FF50B826AFAF /* CapacityDestinations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapacityDestinations.swift; sourceTree = "<group>"; };
 		F06256A79054150136F54EF5 /* AuditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuditView.swift; sourceTree = "<group>"; };
+		F9DD1328005B1CCF93583E90 /* AutomationDestinations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutomationDestinations.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +139,7 @@
 				0408D024D46186E7ABFE8320 /* RootView.swift */,
 				BB47515E905887300FA8175E /* VMMetricsView.swift */,
 				56DFDC04C993555B2A0B20A3 /* ZeusApp.swift */,
+				B24135CB96B2C7A8C60ED2DD /* Automation */,
 				AA6050BB2B6A12BA3BC78C14 /* Capacity */,
 				7A519FA9120CDA7ED6B197A9 /* Cost */,
 				33D5E1F126E1F642E29B18A3 /* Protect */,
@@ -194,6 +199,15 @@
 				A8A80BD38C7ACE39A41639C2 /* OptimizationView.swift */,
 			);
 			path = Capacity;
+			sourceTree = "<group>";
+		};
+		B24135CB96B2C7A8C60ED2DD /* Automation */ = {
+			isa = PBXGroup;
+			children = (
+				F9DD1328005B1CCF93583E90 /* AutomationDestinations.swift */,
+				1E12D4A461C05709687D2AC0 /* AutomationViews.swift */,
+			);
+			path = Automation;
 			sourceTree = "<group>";
 		};
 		E1571D125A683A1ED5E68173 /* VM */ = {
@@ -272,6 +286,8 @@
 				82788CD1E7200D5FC1170BFC /* AlertsView.swift in Sources */,
 				D99D3ED89099DD886AD43ECB /* AppModel.swift in Sources */,
 				0F8BA7AFBA1DB788C1C86C33 /* AuditView.swift in Sources */,
+				B484871D308C4971A14C7CD0 /* AutomationDestinations.swift in Sources */,
+				1C7EE932259374CB2FD7D34F /* AutomationViews.swift in Sources */,
 				0F5C895A677CF6CE4F04B1F2 /* BackupsView.swift in Sources */,
 				0F71B42C36A1E999987B385D /* CapacityDestinations.swift in Sources */,
 				49C9C915232C873E0EA19496 /* CapacityView.swift in Sources */,
