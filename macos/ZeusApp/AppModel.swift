@@ -128,25 +128,35 @@ final class AppModel {
     /// Acknowledges each alert in turn and reports partial failure. An alert that vanished (404) or was
     /// already handled isn't an error worth shouting about; the refresh afterwards shows the truth.
     func acknowledge(_ targets: [FiredAlert]) async {
-        let todo = targets.filter { !$0.acknowledged && !busyAlerts.contains($0.id) }
+        await act(on: targets.filter { !$0.acknowledged }, verb: "acknowledge") { try await $0.acknowledge($1) }
+    }
+
+    /// Resolves each alert (acknowledged or not) with the same partial-failure handling as `acknowledge`.
+    func resolve(_ targets: [FiredAlert]) async {
+        await act(on: targets, verb: "resolve") { try await $0.resolve($1) }
+    }
+
+    private func act(on targets: [FiredAlert], verb: String,
+                     _ call: (ZeusClient, FiredAlert) async throws -> Void) async {
+        let todo = targets.filter { !busyAlerts.contains($0.id) }
         guard canWrite, let client, !todo.isEmpty else { return }
         alertError = nil
         busyAlerts.formUnion(todo.map(\.id))
         defer { busyAlerts.subtract(todo.map(\.id)) }
         var failed = 0
         for alert in todo {
-            do { try await client.acknowledge(alert) }
+            do { try await call(client, alert) }
             catch ZeusError.unauthorized { signOut(forget: false); error = "Session expired. Sign in again."; return }
             catch ZeusError.server(let status, let message) where status == 403 {
-                alertError = message.isEmpty ? "Your role can't acknowledge alerts." : message
+                alertError = message.isEmpty ? "Your role can't \(verb) alerts." : message
                 break
             }
             catch ZeusError.server(let status, _) where status == 404 { }
             catch { failed += 1 }
         }
         if failed > 0 && alertError == nil {
-            alertError = failed == todo.count ? "Couldn't acknowledge the selected alerts."
-                                              : "Couldn't acknowledge \(failed) of \(todo.count) alerts."
+            alertError = failed == todo.count ? "Couldn't \(verb) the selected alerts."
+                                              : "Couldn't \(verb) \(failed) of \(todo.count) alerts."
         }
         await refresh(quiet: true)
     }
