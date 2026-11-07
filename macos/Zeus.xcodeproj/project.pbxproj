@@ -26,12 +26,14 @@
 		4D02F62B86B54D9E7492473E /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C76870188E00765CE45993 /* Loader.swift */; };
 		4F16BC25612093D20B93C5C5 /* VMDepthViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C95E9529F209D8F283BC5E8 /* VMDepthViews.swift */; };
 		5437CDD7A1C837EA546D8172 /* FinOpsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A2830F528CC837EE6CB8FC /* FinOpsView.swift */; };
+		5F6B97ECAEB6801EDF467080 /* OpsActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C983ECAB5A19E74FBC23AA7 /* OpsActions.swift */; };
 		668A8E5A033291A0DB57360C /* LogsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D84D8A3A6F0A27125533EC /* LogsView.swift */; };
 		6817A0377297A97F4EDA86A5 /* APMView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2746BED706388B8E3321DF36 /* APMView.swift */; };
 		693A87E032F662C86E340C3C /* AccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D1FAF193358533E0DCE90A /* AccessView.swift */; };
 		6D35C9B13423B29A6EC56E68 /* SpotlightIndexer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998F2B26B4F2B0DE32FCFBD9 /* SpotlightIndexer.swift */; };
 		77ECC94EFB18C5A5D606AA19 /* EventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAD65FD858C3DC3356E32BD /* EventsView.swift */; };
 		79460D31BD8E2EC2FABE2435 /* NetworkDestinations.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B3274898F0A5409562A8DA /* NetworkDestinations.swift */; };
+		80692FD9B250A37EF406B3EF /* StorageActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015AEBD2B59F763126952A89 /* StorageActions.swift */; };
 		82788CD1E7200D5FC1170BFC /* AlertsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83522E998C7D75D5A46F6D2E /* AlertsView.swift */; };
 		82FA26203311A7869991FE15 /* VMManage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87BFF36BADC4F106E4DA47D /* VMManage.swift */; };
 		830099EA7FB67A5B61C6552A /* MachineIntents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582ED6B5F8AD664E37399273 /* MachineIntents.swift */; };
@@ -62,6 +64,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		015AEBD2B59F763126952A89 /* StorageActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageActions.swift; sourceTree = "<group>"; };
 		03917729189B3A420C850010 /* Destinations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Destinations.swift; sourceTree = "<group>"; };
 		0408D024D46186E7ABFE8320 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		0AE273A4B15847AA75C98750 /* AICenterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AICenterView.swift; sourceTree = "<group>"; };
@@ -74,6 +77,7 @@
 		2746BED706388B8E3321DF36 /* APMView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APMView.swift; sourceTree = "<group>"; };
 		28D84D8A3A6F0A27125533EC /* LogsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogsView.swift; sourceTree = "<group>"; };
 		29C76870188E00765CE45993 /* Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loader.swift; sourceTree = "<group>"; };
+		2C983ECAB5A19E74FBC23AA7 /* OpsActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpsActions.swift; sourceTree = "<group>"; };
 		33C278070230A3F581075575 /* NewMachineTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMachineTools.swift; sourceTree = "<group>"; };
 		37B1838FD0A4ACB1B90704A6 /* IdentityViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentityViews.swift; sourceTree = "<group>"; };
 		3C294737AC9CB90CA2339D5D /* CreateDestinations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateDestinations.swift; sourceTree = "<group>"; };
@@ -132,6 +136,7 @@
 		152874F8452BDE4A83C7D3EF /* Storage */ = {
 			isa = PBXGroup;
 			children = (
+				015AEBD2B59F763126952A89 /* StorageActions.swift */,
 				8686FDDBC66E13BFC244BCFF /* StorageView.swift */,
 			);
 			path = Storage;
@@ -282,6 +287,7 @@
 			children = (
 				F9DD1328005B1CCF93583E90 /* AutomationDestinations.swift */,
 				1E12D4A461C05709687D2AC0 /* AutomationViews.swift */,
+				2C983ECAB5A19E74FBC23AA7 /* OpsActions.swift */,
 			);
 			path = Automation;
 			sourceTree = "<group>";
@@ -413,6 +419,7 @@
 				00C0CB0A972098E32BA8C53C /* NewMachineTools.swift in Sources */,
 				905EB905F0F3C38BC13E5384 /* NotificationService.swift in Sources */,
 				F3B90961C2FDDDB3B6F1BB54 /* ObserveDestinations.swift in Sources */,
+				5F6B97ECAEB6801EDF467080 /* OpsActions.swift in Sources */,
 				C066069432E3A4D47D4D3F8D /* OptimizationView.swift in Sources */,
 				855BB9EB41D6F638E70F2B1A /* OverviewView.swift in Sources */,
 				B4A582FBE51D4EC9769B5549 /* PolicyViews.swift in Sources */,
@@ -423,6 +430,7 @@
 				DD1028551E039DC3D22FF366 /* Settings.swift in Sources */,
 				A618DB9CF8A52785AE216065 /* SnapshotsView.swift in Sources */,
 				6D35C9B13423B29A6EC56E68 /* SpotlightIndexer.swift in Sources */,
+				80692FD9B250A37EF406B3EF /* StorageActions.swift in Sources */,
 				192E75C81988EDE4759B40D0 /* StorageView.swift in Sources */,
 				B5B8B46E130ED9E39DD39A50 /* TopologyView.swift in Sources */,
 				9F83436EDF368DB31E08A6AF /* TrustPrompt.swift in Sources */,

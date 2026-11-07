@@ -1,7 +1,7 @@
 import SwiftUI
 import ZeusKit
 
-// Read-only automation and delivery screens. Nothing here runs, applies or approves anything.
+// Automation and delivery screens. Read-only except the row actions in OpsActions.swift (editor and admin roles).
 
 func autoWhen(_ s: String?) -> Text {
     if let d = zeusDate(s) { Text(d, format: .dateTime.month().day().hour().minute()) } else { Text(s?.isEmpty == false ? s! : "—") }
@@ -26,17 +26,47 @@ struct AutoTable<Row: Identifiable & Sendable, Columns: TableColumnContent>: Vie
     let emptyDetail: String
     let symbol: String
     @State var loader: Loader<[Row]>
+    /// Write actions for a row (empty for none). Only offered when the signed-in role can write.
+    var rowActions: ((Row) -> [OpsAction])? = nil
     @TableColumnBuilder<Row, Never> var columns: () -> Columns
+    @Environment(AppModel.self) private var model
+    @State private var selection: Row.ID?
+    @State private var pending: OpsAction?
+    @State private var failure: String?
+
+    private func actions(_ id: Row.ID?, in rows: [Row]) -> [OpsAction] {
+        guard model.canWrite, let rowActions, let id, let row = rows.first(where: { $0.id == id }) else { return [] }
+        return rowActions(row)
+    }
 
     var body: some View {
         LoadStateView(loader: loader) { rows in
             if rows.isEmpty {
                 ContentUnavailableView(emptyTitle, systemImage: symbol, description: Text(emptyDetail))
             } else {
-                Table(rows) { columns() }
+                Table(rows, selection: $selection) { columns() }
+                    .contextMenu(forSelectionType: Row.ID.self) { ids in
+                        if ids.count == 1 {
+                            ForEach(actions(ids.first, in: rows)) { a in
+                                Button(a.title, systemImage: a.symbol) { pending = a }
+                            }
+                        }
+                    }
             }
         }
-        .toolbar { ToolbarItem { Button("Reload", systemImage: "arrow.clockwise") { Task { await loader.reload() } } } }
+        .toolbar {
+            ToolbarItem { Button("Reload", systemImage: "arrow.clockwise") { Task { await loader.reload() } } }
+            if model.canWrite, rowActions != nil {
+                ToolbarItem {
+                    Menu("Actions", systemImage: "ellipsis.circle") {
+                        let list = actions(selection, in: loader.value ?? [])
+                        if list.isEmpty { Text("Select a row") }
+                        ForEach(list) { a in Button(a.title, systemImage: a.symbol) { pending = a } }
+                    }
+                }
+            }
+        }
+        .opsActions(pending: $pending, failure: $failure) { await loader.reload() }
         .task { loader.start() }
         .onDisappear { loader.stop() }
         .accessibilityLabel(title)
@@ -57,7 +87,8 @@ struct TasksView: View {
             switch section {
             case .tasks:
                 AutoTable(title: "Tasks", emptyTitle: "No tasks", emptyDetail: "No tasks are running or recorded.",
-                          symbol: "checklist", loader: Loader { try await client.opsTasks() }) {
+                          symbol: "checklist", loader: Loader { try await client.opsTasks() },
+                          rowActions: { OpsActions.task($0, client: client) }) {
                     TableColumn("Type") { dash($0.taskType) }
                     TableColumn("Object") { Text([$0.namespace, $0.object].compactMap { $0 }.joined(separator: "/")) }
                     TableColumn("Status") { statusText($0.status) }.width(90)
@@ -68,7 +99,8 @@ struct TasksView: View {
             case .scheduled:
                 AutoTable(title: "Scheduled", emptyTitle: "No scheduled operations",
                           emptyDetail: "No scheduled VM operations are defined.",
-                          symbol: "calendar.badge.clock", loader: Loader { try await client.scheduledOperations() }) {
+                          symbol: "calendar.badge.clock", loader: Loader { try await client.scheduledOperations() },
+                          rowActions: { OpsActions.scheduled($0, client: client) }) {
                     TableColumn("Name") { dash($0.name ?? $0.id) }
                     TableColumn("Action") { dash($0.action) }
                     TableColumn("VM") { Text([$0.namespace, $0.vmName].compactMap { $0 }.joined(separator: "/")) }
@@ -96,7 +128,8 @@ struct WorkflowsView: View {
             switch section {
             case .workflows:
                 AutoTable(title: "Workflows", emptyTitle: "No workflows", emptyDetail: "No workflows are defined on this server.",
-                          symbol: "point.3.connected.trianglepath.dotted", loader: Loader { try await client.workflows() }) {
+                          symbol: "point.3.connected.trianglepath.dotted", loader: Loader { try await client.workflows() },
+                          rowActions: { OpsActions.workflow($0, client: client) }) {
                     TableColumn("Name") { dash($0.name ?? $0.id) }
                     TableColumn("Trigger") { dash($0.triggerType) }
                     TableColumn("Schedule") { dash($0.schedule) }
@@ -328,7 +361,8 @@ struct DeliveryView: View {
                     }
                 case .approvals:
                     AutoTable(title: "Approvals", emptyTitle: "No change approvals", emptyDetail: "No change requests are waiting or recorded.",
-                              symbol: "checkmark.seal", loader: Loader { try await client.changeApprovals() }) {
+                              symbol: "checkmark.seal", loader: Loader { try await client.changeApprovals() },
+                              rowActions: { OpsActions.approval($0, client: client) }) {
                         TableColumn("Action") { dash($0.action) }
                         TableColumn("Target") { Text([$0.targetNamespace, $0.targetVm].compactMap { $0 }.joined(separator: "/")) }
                         TableColumn("Status") { statusText($0.status) }.width(90)
