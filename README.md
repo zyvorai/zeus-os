@@ -514,10 +514,11 @@ A native macOS client for a running Zeus OS server, built with SwiftUI. It talks
 - **Overview**: measured cluster CPU and memory, machines running, and a node table.
 - **Machines**: sortable, searchable table with an inspector showing CPU, memory, network and disk history (15 minute, 1 hour and 6 hour ranges).
 - **Start, stop and restart** for editor and admin roles; stop and restart ask first. Viewers get a read-only app.
+- **Alerts**: table of active alerts with severity, resource, value against threshold and state.
 - A menu bar item with machines running and active alert count.
 - Live updates by polling (every 5 seconds in front, slower behind, with backoff when the server is unreachable).
 
-**Not yet**: consoles, an alerts list (the sidebar shows only the active-alert count), and certificate trust prompts. The server must present a certificate the Mac already trusts; the chart's default self-signed certificate is not accepted yet.
+**Not yet**: consoles, acknowledging alerts, and certificate trust prompts. The server must present a certificate the Mac already trusts; the chart's default self-signed certificate is not accepted yet.
 
 **Build it** (macOS 27, Xcode 27, [XcodeGen](https://github.com/yonaskolb/XcodeGen)):
 
