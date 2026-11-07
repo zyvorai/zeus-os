@@ -79,8 +79,44 @@ public final class ZeusClient: Sendable {
         try await send("alerts/stats")
     }
 
+    // MARK: Generic access for the many endpoints that don't have a dedicated method yet.
+    // Each segment is percent-encoded individually, so names containing "/" or spaces are safe.
+
+    static func path(_ segments: [String]) -> String { segments.map(segment).joined(separator: "/") }
+
+    public func get<T: Decodable>(_ segments: String..., query: [URLQueryItem] = []) async throws -> T {
+        try await send(Self.path(segments), query: query)
+    }
+
+    /// For list endpoints: accepts a bare array or `{"items": [...]}`.
+    public func list<T: Decodable & Sendable>(_ segments: String..., query: [URLQueryItem] = []) async throws -> [T] {
+        let l: Listing<T> = try await send(Self.path(segments), query: query)
+        return l.items
+    }
+
+    public func post<T: Decodable>(_ segments: String..., body: (any Encodable)? = nil) async throws -> T {
+        try await send(Self.path(segments), method: "POST", body: body)
+    }
+
+    public func put<T: Decodable>(_ segments: String..., body: (any Encodable)? = nil) async throws -> T {
+        try await send(Self.path(segments), method: "PUT", body: body)
+    }
+
+    /// Write calls whose response body we don't need (callers re-read the resource instead).
+    public func post(_ segments: String..., body: (any Encodable)? = nil) async throws {
+        _ = try await raw(try request(Self.path(segments), method: "POST", body: body))
+    }
+
+    public func put(_ segments: String..., body: (any Encodable)? = nil) async throws {
+        _ = try await raw(try request(Self.path(segments), method: "PUT", body: body))
+    }
+
+    public func delete(_ segments: String...) async throws {
+        _ = try await raw(try request(Self.path(segments), method: "DELETE"))
+    }
+
     func request(_ path: String, method: String = "GET", query: [URLQueryItem] = [],
-                 body: [String: String]? = nil) throws -> URLRequest {
+                 body: (any Encodable)? = nil) throws -> URLRequest {
         // `path` is already percent-encoded per segment; URL.appending(path:) would encode it again.
         guard var comps = URLComponents(url: baseURL, resolvingAgainstBaseURL: false) else {
             throw ZeusError.transport(URLError(.badURL))
@@ -114,7 +150,7 @@ public final class ZeusClient: Sendable {
     }
 
     func send<T: Decodable>(_ path: String, method: String = "GET", query: [URLQueryItem] = [],
-                            body: [String: String]? = nil) async throws -> T {
+                            body: (any Encodable)? = nil) async throws -> T {
         let data = try await raw(try request(path, method: method, query: query, body: body))
         return try JSONDecoder().decode(T.self, from: data)
     }

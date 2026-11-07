@@ -64,9 +64,17 @@ struct LoginView: View {
     }
 }
 
+enum SidebarGroup: String, CaseIterable, Identifiable {
+    case run = "Run", observe = "Observe"
+    var id: String { rawValue }
+}
+
 enum Section_: String, CaseIterable, Identifiable {
     case overview = "Overview", machines = "Machines", alerts = "Alerts"
     var id: String { rawValue }
+    var group: SidebarGroup {
+        switch self { case .overview, .machines: .run; case .alerts: .observe }
+    }
     var symbol: String {
         switch self { case .overview: "gauge.with.dots.needle.50percent"; case .machines: "server.rack"; case .alerts: "bell" }
     }
@@ -78,11 +86,22 @@ struct MainView: View {
 
     var body: some View {
         NavigationSplitView {
-            List(Section_.allCases, selection: $selection) { s in
-                Label(s.rawValue, systemImage: s.symbol)
-                    .badge(s == .alerts ? (model.alerts?.needsAttention ?? 0) : 0)
+            List(selection: $selection) {
+                ForEach(SidebarGroup.allCases) { group in
+                    let items = Section_.allCases.filter { $0.group == group }
+                    if !items.isEmpty {
+                        Section(group.rawValue) {
+                            ForEach(items) { s in
+                                Label(s.rawValue, systemImage: s.symbol)
+                                    .badge(s == .alerts ? (model.alerts?.needsAttention ?? 0) : 0)
+                                    .tag(s)
+                            }
+                        }
+                    }
+                }
             }
-            .navigationSplitViewColumnWidth(min: 180, ideal: 210)
+            .navigationSplitViewColumnWidth(min: 190, ideal: 220, max: 300)
+            .safeAreaInset(edge: .bottom) { AccountFooter() }
         } detail: {
             switch selection ?? .overview {
             case .overview: OverviewView()
@@ -94,6 +113,24 @@ struct MainView: View {
             ToolbarItem(placement: .status) { LiveStatusView() }
             ToolbarItem { Button("Refresh", systemImage: "arrow.clockwise") { Task { await model.refresh() } } }
             ToolbarItem { Button("Sign Out", systemImage: "rectangle.portrait.and.arrow.right") { model.signOut() } }
+        }
+    }
+}
+
+/// Which server and user this window is signed in as, with the role, at the foot of the sidebar.
+struct AccountFooter: View {
+    @Environment(AppModel.self) private var model
+
+    var body: some View {
+        if let p = model.active {
+            VStack(alignment: .leading, spacing: 2) {
+                Text(p.name).font(.callout.weight(.medium)).lineLimit(1)
+                Text("\(p.username) · \(model.session?.role ?? "viewer")")
+                    .font(.caption).foregroundStyle(.secondary).lineLimit(1)
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.horizontal, 14).padding(.vertical, 10)
+            .accessibilityElement(children: .combine)
         }
     }
 }
