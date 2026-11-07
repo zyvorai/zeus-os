@@ -144,7 +144,10 @@ struct NodesData: Sendable { let nodes: [ClusterNode]; let host: HostInfo?; let 
 
 struct NodesView: View {
     @State private var loader: Loader<NodesData>
+    @State private var selection: ClusterNode.ID?
+    private let client: ZeusClient
     init(client: ZeusClient) {
+        self.client = client
         _loader = State(initialValue: Loader {
             async let n = client.clusterNodes()
             async let h = try? client.hostInfo()
@@ -156,7 +159,7 @@ struct NodesView: View {
     var body: some View {
         LoadStateView(loader: loader) { data in
             VStack(spacing: 0) {
-                Table(data.nodes) {
+                Table(data.nodes, selection: $selection) {
                     TableColumn("Node", value: \.name)
                     TableColumn("Status") { Text($0.status ?? "—") }
                     TableColumn("Roles") { Text($0.roles.joined(separator: ", ")) }
@@ -188,6 +191,12 @@ struct NodesView: View {
                         ForEach(data.connections) { Text([$0.name, $0.kind, $0.status].compactMap { $0 }.joined(separator: " · ")) }
                     }
                 }.formStyle(.grouped)
+            }
+        }
+        .inspector(isPresented: Binding(get: { selection != nil }, set: { if !$0 { selection = nil } })) {
+            if let name = selection {
+                NodeInspector(client: client, name: name) { Task { await loader.reload() } }
+                    .inspectorColumnWidth(min: 320, ideal: 400, max: 560)
             }
         }
         .screen("Nodes & Hosts", loader)
