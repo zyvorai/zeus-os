@@ -32,3 +32,14 @@ private let alertJSON = #"""
     }
     #expect(ZeusDate.parse("nope") == nil)
 }
+
+@Test func acknowledgeRequestIsAuthenticatedPOSTWithEncodedID() throws {
+    let a = try JSONDecoder().decode([FiredAlert].self, from: Data(alertJSON.utf8))[0]
+    let c = ZeusClient(baseURL: URL(string: "https://z.example")!, token: "t")
+    let r = try c.request(ZeusClient.acknowledgePath(a), method: "POST")
+    #expect(r.httpMethod == "POST")
+    #expect(r.url?.absoluteString == "https://z.example/api/v1/alerts/a1/acknowledge")
+    #expect(r.value(forHTTPHeaderField: "Authorization") == "Bearer t")
+    #expect(r.httpBody == nil)
+    #expect(ZeusClient.segment("a/b c") == "a%2Fb%20c")
+}
