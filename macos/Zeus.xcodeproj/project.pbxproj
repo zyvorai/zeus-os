@@ -13,6 +13,7 @@
 		0F71B42C36A1E999987B385D /* CapacityDestinations.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1288837F211FF50B826AFAF /* CapacityDestinations.swift */; };
 		0F8BA7AFBA1DB788C1C86C33 /* AuditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06256A79054150136F54EF5 /* AuditView.swift */; };
 		12BDB724294C1D224FEFCCF1 /* ZeusKit in Frameworks */ = {isa = PBXBuildFile; productRef = 496B17285E6FC4BCF75FD40B /* ZeusKit */; };
+		17732345D24E50975715E406 /* IdentityViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B1838FD0A4ACB1B90704A6 /* IdentityViews.swift */; };
 		192E75C81988EDE4759B40D0 /* StorageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8686FDDBC66E13BFC244BCFF /* StorageView.swift */; };
 		1D486022553CB3BB2610C633 /* RespondDestinations.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA11B7535A50B4ACC4715640 /* RespondDestinations.swift */; };
 		20CBD7697DFAA22DA0583477 /* ComplianceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B6506524528A9EA5B4E029 /* ComplianceView.swift */; };
@@ -32,6 +33,7 @@
 		855BB9EB41D6F638E70F2B1A /* OverviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33FFEECE04BFC832047B83D /* OverviewView.swift */; };
 		8CB9F0AD9E19A6B73742BD1B /* ComplianceDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2516914BB4602FBC9A74FB2 /* ComplianceDetailView.swift */; };
 		905EB905F0F3C38BC13E5384 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E83F39108719C6BD1F84097 /* NotificationService.swift */; };
+		99D9C1EB76868B69BA51CF24 /* IdentityDestinations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A73BD66F2D956BADFBDE52D /* IdentityDestinations.swift */; };
 		9F83436EDF368DB31E08A6AF /* TrustPrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2669F05C472E960891B7A85 /* TrustPrompt.swift */; };
 		A618DB9CF8A52785AE216065 /* SnapshotsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9166DB9DC1756E703C7623 /* SnapshotsView.swift */; };
 		B4A582FBE51D4EC9769B5549 /* PolicyViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560361648E7180B3808E2B10 /* PolicyViews.swift */; };
@@ -56,6 +58,7 @@
 		1C13F1B4AC6F167B69FCCC9B /* Zeus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zeus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2452BFC991DBE62E68949461 /* macos */ = {isa = PBXFileReference; lastKnownFileType = folder; name = macos; path = .; sourceTree = SOURCE_ROOT; };
 		29C76870188E00765CE45993 /* Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loader.swift; sourceTree = "<group>"; };
+		37B1838FD0A4ACB1B90704A6 /* IdentityViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentityViews.swift; sourceTree = "<group>"; };
 		3C294737AC9CB90CA2339D5D /* CreateDestinations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateDestinations.swift; sourceTree = "<group>"; };
 		3D12ADA008102B43711B3BEF /* RespondViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RespondViews.swift; sourceTree = "<group>"; };
 		3F2ABAE080E33AD1A8D443E0 /* ImageScanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageScanView.swift; sourceTree = "<group>"; };
@@ -76,6 +79,7 @@
 		98DD97E91EEDC7DDC0E07413 /* CostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CostView.swift; sourceTree = "<group>"; };
 		998F2B26B4F2B0DE32FCFBD9 /* SpotlightIndexer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotlightIndexer.swift; sourceTree = "<group>"; };
 		99B2A629F7F8B247F2030274 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		9A73BD66F2D956BADFBDE52D /* IdentityDestinations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentityDestinations.swift; sourceTree = "<group>"; };
 		A2516914BB4602FBC9A74FB2 /* ComplianceDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplianceDetailView.swift; sourceTree = "<group>"; };
 		A27E28AF5DF468D78EE92E38 /* CreateViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateViews.swift; sourceTree = "<group>"; };
 		A2D1FAF193358533E0DCE90A /* AccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessView.swift; sourceTree = "<group>"; };
@@ -165,6 +169,7 @@
 				AA6050BB2B6A12BA3BC78C14 /* Capacity */,
 				7A519FA9120CDA7ED6B197A9 /* Cost */,
 				2B14977B5F3F78E2D5F157C8 /* Create */,
+				E94CF03D9674BED3D70C7883 /* Identity */,
 				C769C819FCD6B8559FBEA8B4 /* Integration */,
 				4E504A42FFB9032F1E59E3D0 /* Network */,
 				33D5E1F126E1F642E29B18A3 /* Protect */,
@@ -256,6 +261,15 @@
 			path = VM;
 			sourceTree = "<group>";
 		};
+		E94CF03D9674BED3D70C7883 /* Identity */ = {
+			isa = PBXGroup;
+			children = (
+				9A73BD66F2D956BADFBDE52D /* IdentityDestinations.swift */,
+				37B1838FD0A4ACB1B90704A6 /* IdentityViews.swift */,
+			);
+			path = Identity;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -333,6 +347,8 @@
 				DA8DAF3FD92E22F9F2A8FAC8 /* CreateViews.swift in Sources */,
 				EA21C9F077EFF2E64519B72D /* Destinations.swift in Sources */,
 				5437CDD7A1C837EA546D8172 /* FinOpsView.swift in Sources */,
+				99D9C1EB76868B69BA51CF24 /* IdentityDestinations.swift in Sources */,
+				17732345D24E50975715E406 /* IdentityViews.swift in Sources */,
 				D89848AA9095236EEE518C00 /* ImageScanView.swift in Sources */,
 				4D02F62B86B54D9E7492473E /* Loader.swift in Sources */,
 				830099EA7FB67A5B61C6552A /* MachineIntents.swift in Sources */,
