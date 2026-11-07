@@ -27,7 +27,7 @@ public struct MetricPoint: Decodable, Sendable, Identifiable, Hashable {
     public init(from decoder: Decoder) throws {
         let c = try decoder.container(keyedBy: CodingKeys.self)
         let raw = try c.decode(String.self, forKey: .timestamp)
-        guard let date = Self.parse(raw) else {
+        guard let date = ZeusDate.parse(raw) else {
             throw DecodingError.dataCorruptedError(forKey: .timestamp, in: c,
                                                    debugDescription: "Unrecognised timestamp \(raw)")
         }
@@ -39,12 +39,6 @@ public struct MetricPoint: Decodable, Sendable, Identifiable, Hashable {
         networkTxBytesPerSec = try c.decodeIfPresent(Double.self, forKey: .networkTxBytesPerSec)
         diskReadBytesPerSec = try c.decodeIfPresent(Double.self, forKey: .diskReadBytesPerSec)
         diskWriteBytesPerSec = try c.decodeIfPresent(Double.self, forKey: .diskWriteBytesPerSec)
-    }
-
-    /// Server timestamps carry fractional seconds ("…52.055+00:00"); accept both forms.
-    static func parse(_ s: String) -> Date? {
-        if let d = try? Date.ISO8601FormatStyle(includingFractionalSeconds: true).parse(s) { return d }
-        return try? Date.ISO8601FormatStyle().parse(s)
     }
 }
 
