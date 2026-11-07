@@ -12,6 +12,7 @@
 		0F5C895A677CF6CE4F04B1F2 /* BackupsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48197E092BA0BBDB3B1061F9 /* BackupsView.swift */; };
 		0F8BA7AFBA1DB788C1C86C33 /* AuditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06256A79054150136F54EF5 /* AuditView.swift */; };
 		12BDB724294C1D224FEFCCF1 /* ZeusKit in Frameworks */ = {isa = PBXBuildFile; productRef = 496B17285E6FC4BCF75FD40B /* ZeusKit */; };
+		192E75C81988EDE4759B40D0 /* StorageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8686FDDBC66E13BFC244BCFF /* StorageView.swift */; };
 		20CBD7697DFAA22DA0583477 /* ComplianceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B6506524528A9EA5B4E029 /* ComplianceView.swift */; };
 		282BC17DD56F53880D09D94A /* CostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DD97E91EEDC7DDC0E07413 /* CostView.swift */; };
 		372D19743FB97F5A6F0B4BE5 /* ZeusApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DFDC04C993555B2A0B20A3 /* ZeusApp.swift */; };
@@ -34,6 +35,7 @@
 		56DFDC04C993555B2A0B20A3 /* ZeusApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZeusApp.swift; sourceTree = "<group>"; };
 		78B6506524528A9EA5B4E029 /* ComplianceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplianceView.swift; sourceTree = "<group>"; };
 		83522E998C7D75D5A46F6D2E /* AlertsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertsView.swift; sourceTree = "<group>"; };
+		8686FDDBC66E13BFC244BCFF /* StorageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageView.swift; sourceTree = "<group>"; };
 		8A9166DB9DC1756E703C7623 /* SnapshotsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotsView.swift; sourceTree = "<group>"; };
 		9158914EC3539A4F3C742EC8 /* MetricChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricChart.swift; sourceTree = "<group>"; };
 		91B03716182838A6E90FDB2A /* MenuBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarView.swift; sourceTree = "<group>"; };
@@ -57,6 +59,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		152874F8452BDE4A83C7D3EF /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				8686FDDBC66E13BFC244BCFF /* StorageView.swift */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
 		1711782B750BC495112BFF7C /* Packages */ = {
 			isa = PBXGroup;
 			children = (
@@ -99,6 +109,7 @@
 				7A519FA9120CDA7ED6B197A9 /* Cost */,
 				33D5E1F126E1F642E29B18A3 /* Protect */,
 				65E026D05AE46EB07AB87A86 /* Secure */,
+				152874F8452BDE4A83C7D3EF /* Storage */,
 			);
 			path = ZeusApp;
 			sourceTree = "<group>";
@@ -204,6 +215,7 @@
 				855BB9EB41D6F638E70F2B1A /* OverviewView.swift in Sources */,
 				0D74E984717DE48E731305A2 /* RootView.swift in Sources */,
 				A618DB9CF8A52785AE216065 /* SnapshotsView.swift in Sources */,
+				192E75C81988EDE4759B40D0 /* StorageView.swift in Sources */,
 				BBA66875BB9BACB6226F4E4F /* VMMetricsView.swift in Sources */,
 				372D19743FB97F5A6F0B4BE5 /* ZeusApp.swift in Sources */,
 			);

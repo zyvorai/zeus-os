@@ -65,7 +65,7 @@ struct LoginView: View {
 }
 
 enum SidebarGroup: String, CaseIterable, Identifiable {
-    case run = "Run", observe = "Observe", protect = "Protect", cost = "Cost", secure = "Secure"
+    case run = "Run", observe = "Observe", protect = "Protect", storage = "Storage", cost = "Cost", secure = "Secure"
     var id: String { rawValue }
 }
 
@@ -73,12 +73,13 @@ enum Section_: String, CaseIterable, Identifiable {
     case overview = "Overview", machines = "Machines", alerts = "Alerts"
     case snapshots = "Snapshots", backups = "Backups", cost = "Cost"
     case audit = "Audit", compliance = "Compliance"
+    case storage = "Storage", drPlans = "DR Plans", velero = "Velero", disks = "Disks & Images"
     var id: String { rawValue }
     var group: SidebarGroup {
-        switch self { case .overview, .machines: .run; case .alerts: .observe; case .snapshots, .backups: .protect; case .cost: .cost; case .audit, .compliance: .secure }
+        switch self { case .overview, .machines: .run; case .alerts: .observe; case .snapshots, .backups: .protect; case .cost: .cost; case .audit, .compliance: .secure; case .storage, .drPlans, .velero, .disks: .storage }
     }
     var symbol: String {
-        switch self { case .overview: "gauge.with.dots.needle.50percent"; case .machines: "server.rack"; case .alerts: "bell"; case .snapshots: "camera.on.rectangle"; case .backups: "externaldrive.badge.timemachine"; case .cost: "dollarsign.circle"; case .audit: "list.bullet.clipboard"; case .compliance: "checkmark.shield" }
+        switch self { case .overview: "gauge.with.dots.needle.50percent"; case .machines: "server.rack"; case .alerts: "bell"; case .snapshots: "camera.on.rectangle"; case .backups: "externaldrive.badge.timemachine"; case .cost: "dollarsign.circle"; case .audit: "list.bullet.clipboard"; case .compliance: "checkmark.shield"; case .storage: "externaldrive"; case .drPlans: "arrow.triangle.2.circlepath"; case .velero: "shippingbox"; case .disks: "opticaldisc" }
     }
 }
 
@@ -113,6 +114,10 @@ struct MainView: View {
             case .audit: if let c = model.client { AuditView(client: c).id(ObjectIdentifier(c)) }
             case .compliance: if let c = model.client { ComplianceView(client: c).id(ObjectIdentifier(c)) }
             case .cost: if let c = model.client { CostView(client: c).id(ObjectIdentifier(c)) }
+            case .storage: if let c = model.client { StorageView(client: c).id(ObjectIdentifier(c)) }
+            case .drPlans: if let c = model.client { DRPlansView(client: c).id(ObjectIdentifier(c)) }
+            case .velero: if let c = model.client { VeleroView(client: c).id(ObjectIdentifier(c)) }
+            case .disks: if let c = model.client { DisksAndImagesView(client: c).id(ObjectIdentifier(c)) }
             case .backups: if let c = model.client { BackupsView(client: c).id(ObjectIdentifier(c)) }
             }
         }
