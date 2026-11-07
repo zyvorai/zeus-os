@@ -65,18 +65,19 @@ struct LoginView: View {
 }
 
 enum SidebarGroup: String, CaseIterable, Identifiable {
-    case run = "Run", observe = "Observe"
+    case run = "Run", observe = "Observe", protect = "Protect"
     var id: String { rawValue }
 }
 
 enum Section_: String, CaseIterable, Identifiable {
     case overview = "Overview", machines = "Machines", alerts = "Alerts"
+    case snapshots = "Snapshots", backups = "Backups"
     var id: String { rawValue }
     var group: SidebarGroup {
-        switch self { case .overview, .machines: .run; case .alerts: .observe }
+        switch self { case .overview, .machines: .run; case .alerts: .observe; case .snapshots, .backups: .protect }
     }
     var symbol: String {
-        switch self { case .overview: "gauge.with.dots.needle.50percent"; case .machines: "server.rack"; case .alerts: "bell" }
+        switch self { case .overview: "gauge.with.dots.needle.50percent"; case .machines: "server.rack"; case .alerts: "bell"; case .snapshots: "camera.on.rectangle"; case .backups: "externaldrive.badge.timemachine" }
     }
 }
 
@@ -107,6 +108,8 @@ struct MainView: View {
             case .overview: OverviewView()
             case .machines: MachinesView()
             case .alerts: AlertsView()
+            case .snapshots: if let c = model.client { SnapshotsView(client: c).id(ObjectIdentifier(c)) }
+            case .backups: if let c = model.client { BackupsView(client: c).id(ObjectIdentifier(c)) }
             }
         }
         .toolbar {

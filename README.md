@@ -515,6 +515,7 @@ A native macOS client for a running Zeus OS server, built with SwiftUI. It talks
 - **Machines**: sortable, searchable table with an inspector showing CPU, memory, network and disk history (15 minute, 1 hour and 6 hour ranges).
 - **Start, stop and restart** for editor and admin roles; stop and restart ask first. Viewers get a read-only app.
 - **Alerts**: table of active alerts with severity, resource, value against threshold and state. Editors and admins can acknowledge one or several at once.
+- **Snapshots**: list, take (optionally freezing guest filesystems) and delete VM snapshots. **Backups**: Velero schedules, VM backups and totals, read-only for now.
 - A menu bar item with machines running and active alert count.
 - Live updates by polling (every 5 seconds in front, slower behind, with backoff when the server is unreachable).
 

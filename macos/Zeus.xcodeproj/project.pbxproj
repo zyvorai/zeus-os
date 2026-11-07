@@ -9,11 +9,13 @@
 /* Begin PBXBuildFile section */
 		03FC1FB1025D6A17B47516BF /* MachinesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34D5AB7D8FA7292DC1E25A2 /* MachinesView.swift */; };
 		0D74E984717DE48E731305A2 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0408D024D46186E7ABFE8320 /* RootView.swift */; };
+		0F5C895A677CF6CE4F04B1F2 /* BackupsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48197E092BA0BBDB3B1061F9 /* BackupsView.swift */; };
 		12BDB724294C1D224FEFCCF1 /* ZeusKit in Frameworks */ = {isa = PBXBuildFile; productRef = 496B17285E6FC4BCF75FD40B /* ZeusKit */; };
 		372D19743FB97F5A6F0B4BE5 /* ZeusApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DFDC04C993555B2A0B20A3 /* ZeusApp.swift */; };
 		4D02F62B86B54D9E7492473E /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C76870188E00765CE45993 /* Loader.swift */; };
 		82788CD1E7200D5FC1170BFC /* AlertsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83522E998C7D75D5A46F6D2E /* AlertsView.swift */; };
 		855BB9EB41D6F638E70F2B1A /* OverviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33FFEECE04BFC832047B83D /* OverviewView.swift */; };
+		A618DB9CF8A52785AE216065 /* SnapshotsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9166DB9DC1756E703C7623 /* SnapshotsView.swift */; };
 		BBA66875BB9BACB6226F4E4F /* VMMetricsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB47515E905887300FA8175E /* VMMetricsView.swift */; };
 		C11AB6707E17CC9AD863C0ED /* MenuBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B03716182838A6E90FDB2A /* MenuBarView.swift */; };
 		D99D3ED89099DD886AD43ECB /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B0774CDE942A26ED1503CD /* AppModel.swift */; };
@@ -25,8 +27,10 @@
 		1C13F1B4AC6F167B69FCCC9B /* Zeus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zeus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2452BFC991DBE62E68949461 /* macos */ = {isa = PBXFileReference; lastKnownFileType = folder; name = macos; path = .; sourceTree = SOURCE_ROOT; };
 		29C76870188E00765CE45993 /* Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loader.swift; sourceTree = "<group>"; };
+		48197E092BA0BBDB3B1061F9 /* BackupsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupsView.swift; sourceTree = "<group>"; };
 		56DFDC04C993555B2A0B20A3 /* ZeusApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZeusApp.swift; sourceTree = "<group>"; };
 		83522E998C7D75D5A46F6D2E /* AlertsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertsView.swift; sourceTree = "<group>"; };
+		8A9166DB9DC1756E703C7623 /* SnapshotsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotsView.swift; sourceTree = "<group>"; };
 		9158914EC3539A4F3C742EC8 /* MetricChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricChart.swift; sourceTree = "<group>"; };
 		91B03716182838A6E90FDB2A /* MenuBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarView.swift; sourceTree = "<group>"; };
 		A7B0774CDE942A26ED1503CD /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
@@ -64,6 +68,15 @@
 			);
 			sourceTree = "<group>";
 		};
+		33D5E1F126E1F642E29B18A3 /* Protect */ = {
+			isa = PBXGroup;
+			children = (
+				48197E092BA0BBDB3B1061F9 /* BackupsView.swift */,
+				8A9166DB9DC1756E703C7623 /* SnapshotsView.swift */,
+			);
+			path = Protect;
+			sourceTree = "<group>";
+		};
 		3D4B4CF32F9C8F3484493F60 /* ZeusApp */ = {
 			isa = PBXGroup;
 			children = (
@@ -77,6 +90,7 @@
 				0408D024D46186E7ABFE8320 /* RootView.swift */,
 				BB47515E905887300FA8175E /* VMMetricsView.swift */,
 				56DFDC04C993555B2A0B20A3 /* ZeusApp.swift */,
+				33D5E1F126E1F642E29B18A3 /* Protect */,
 			);
 			path = ZeusApp;
 			sourceTree = "<group>";
@@ -154,12 +168,14 @@
 			files = (
 				82788CD1E7200D5FC1170BFC /* AlertsView.swift in Sources */,
 				D99D3ED89099DD886AD43ECB /* AppModel.swift in Sources */,
+				0F5C895A677CF6CE4F04B1F2 /* BackupsView.swift in Sources */,
 				4D02F62B86B54D9E7492473E /* Loader.swift in Sources */,
 				03FC1FB1025D6A17B47516BF /* MachinesView.swift in Sources */,
 				C11AB6707E17CC9AD863C0ED /* MenuBarView.swift in Sources */,
 				FC0428FD638A3E8E95F45FBB /* MetricChart.swift in Sources */,
 				855BB9EB41D6F638E70F2B1A /* OverviewView.swift in Sources */,
 				0D74E984717DE48E731305A2 /* RootView.swift in Sources */,
+				A618DB9CF8A52785AE216065 /* SnapshotsView.swift in Sources */,
 				BBA66875BB9BACB6226F4E4F /* VMMetricsView.swift in Sources */,
 				372D19743FB97F5A6F0B4BE5 /* ZeusApp.swift in Sources */,
 			);
