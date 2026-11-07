@@ -1,4 +1,5 @@
 import SwiftUI
+import AppKit
 import ZeusKit
 
 @MainActor @Observable
@@ -18,9 +19,22 @@ final class AppModel {
     var isLoading = false
     var busy: Set<VM.ID> = []
 
+    enum LiveState: Equatable { case off, live, retrying(Int) }
+    var liveState = LiveState.off
+    var lastUpdated: Date?
+    private var liveTask: Task<Void, Never>?
+    private var isRefreshing = false
+
     var canWrite: Bool { session?.role == "editor" || session?.role == "admin" }
 
-    init() { profiles = store.load() }
+    init() {
+        profiles = store.load()
+        // Catch up immediately when the user comes back to the app instead of waiting out the slow idle interval.
+        NotificationCenter.default.addObserver(forName: NSApplication.didBecomeActiveNotification,
+                                               object: nil, queue: .main) { [weak self] _ in
+            Task { @MainActor in await self?.refresh(quiet: true) }
+        }
+    }
 
     /// Try the saved token for a profile; on rejection forget it so the user signs in again.
     func resume(_ profile: ServerProfile) async {
@@ -34,6 +48,7 @@ final class AppModel {
                                     tenantIds: [], expiresIn: 0)
             error = nil
             await refresh()
+            startLive()
         } catch ZeusError.unauthorized {
             try? store.setToken(nil, for: profile)
         } catch {
@@ -55,6 +70,7 @@ final class AppModel {
             profiles = store.load(); active = profile
             session = s; client = anon.withToken(s.token); error = nil
             await refresh()
+            startLive()
         } catch ZeusError.unauthorized {
             error = "Wrong username or password."
         } catch {
@@ -90,22 +106,56 @@ final class AppModel {
 
     func signOut(forget: Bool = true) {
         if forget, let p = active { try? store.setToken(nil, for: p) }
-        session = nil; client = nil; active = nil; vms = []; alerts = nil
+        liveTask?.cancel(); liveTask = nil
+        session = nil; client = nil; active = nil
+        vms = []; alerts = nil; cluster = nil; nodes = []
+        liveState = .off; lastUpdated = nil; busy = []
     }
 
-    func refresh() async {
-        guard let client else { return }
+    /// Polls for as long as a session exists: quickly while the app is in front, slowly behind,
+    /// and with backoff while the server is failing. Runs at model level so the menu bar extra
+    /// stays current with no window open.
+    private func startLive() {
+        liveTask?.cancel()
+        liveState = .live
+        liveTask = Task { [weak self] in
+            var backoff = PollBackoff()
+            while !Task.isCancelled {
+                try? await Task.sleep(for: backoff.delay(appIsActive: NSApplication.shared.isActive))
+                guard !Task.isCancelled, let self, self.client != nil else { return }
+                if await self.refresh(quiet: true) { backoff.succeeded() } else { backoff.failed() }
+                guard self.client != nil else { return }          // signed out during the request
+                self.liveState = backoff.failures == 0 ? .live : .retrying(backoff.failures)
+            }
+        }
+    }
+
+    /// Returns whether the refresh succeeded. `quiet` leaves `error` alone so background polling
+    /// doesn't wipe (or spam) messages about the user's own actions; auth loss is always reported.
+    @discardableResult
+    func refresh(quiet: Bool = false) async -> Bool {
+        guard let client, !isRefreshing else { return false }
+        isRefreshing = true; defer { isRefreshing = false }
         do {
             async let v = client.vms()
             async let a = client.alertStats()
             async let c = try? client.clusterMetrics()     // optional: don't fail the refresh over these
             async let n = try? client.nodeMetrics()
-            (vms, alerts) = try await (v, a)
-            (cluster, nodes) = await (c, n ?? [])
-            error = nil
+            let (newVMs, newAlerts) = try await (v, a)
+            let (newCluster, newNodes) = await (c, n ?? [])
+            guard self.client === client else { return false }   // signed out or switched server mid-flight
+            vms = newVMs; alerts = newAlerts; cluster = newCluster; nodes = newNodes
+            lastUpdated = .now
+            if !quiet { error = nil }
+            return true
         } catch ZeusError.unauthorized {
+            guard self.client === client else { return false }
             if let p = active { try? store.setToken(nil, for: p) }
             signOut(forget: false); error = "Session expired. Sign in again."
-        } catch { self.error = "Refresh failed." }
+            return false
+        } catch {
+            if !quiet && self.client === client { self.error = "Refresh failed." }
+            return false
+        }
     }
 }

@@ -1,4 +1,5 @@
 import SwiftUI
+import AppKit
 import ZeusKit
 
 @MainActor @Observable
@@ -7,16 +8,19 @@ final class VMMetricsModel {
     var isLoading = false
     var failed = false
 
-    func load(client: ZeusClient?, vm: VM, range: MetricsRange) async {
+    /// `silent` is a background refresh of what's already on screen: no spinner, and a failure
+    /// keeps the last good data instead of blanking the charts.
+    func load(client: ZeusClient?, vm: VM, range: MetricsRange, silent: Bool = false) async {
         guard let client else { return }
-        isLoading = true; defer { isLoading = false }
+        if !silent { isLoading = true }
+        defer { if !silent { isLoading = false } }
         do {
             let p = try await client.vmHistory(vm, range: range)
             guard !Task.isCancelled else { return }       // a newer selection superseded this one
             points = p; failed = false
         } catch is CancellationError {
         } catch {
-            if !Task.isCancelled { points = []; failed = true }
+            if !Task.isCancelled && !silent { points = []; failed = true }
         }
     }
 
@@ -62,7 +66,15 @@ struct VMMetricsView: View {
             }
         }
         .overlay(alignment: .topTrailing) { if metrics.isLoading { ProgressView().controlSize(.small) } }
-        .task(id: "\(vm.id)|\(range.rawValue)") { await metrics.load(client: model.client, vm: vm, range: range) }
+        .task(id: "\(vm.id)|\(range.rawValue)") {
+            metrics.points = []                                // don't show another machine's history while loading
+            await metrics.load(client: model.client, vm: vm, range: range)
+            while !Task.isCancelled {                          // keep the charts live while they're visible
+                try? await Task.sleep(for: .seconds(15))
+                guard !Task.isCancelled, NSApplication.shared.isActive else { continue }
+                await metrics.load(client: model.client, vm: vm, range: range, silent: true)
+            }
+        }
     }
 }
 

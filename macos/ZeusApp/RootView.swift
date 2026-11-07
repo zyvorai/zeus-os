@@ -91,8 +91,34 @@ struct MainView: View {
             }
         }
         .toolbar {
+            ToolbarItem(placement: .status) { LiveStatusView() }
             ToolbarItem { Button("Refresh", systemImage: "arrow.clockwise") { Task { await model.refresh() } } }
             ToolbarItem { Button("Sign Out", systemImage: "rectangle.portrait.and.arrow.right") { model.signOut() } }
         }
+    }
+}
+
+/// "Live · updated 5 seconds ago", or an orange "Reconnecting" while polls are failing.
+struct LiveStatusView: View {
+    @Environment(AppModel.self) private var model
+
+    var body: some View {
+        HStack(spacing: 6) {
+            Circle().fill(color).frame(width: 8, height: 8)
+            if case .retrying = model.liveState {
+                Text("Reconnecting…")
+            } else if let t = model.lastUpdated {
+                Text("Updated ") + Text(t, style: .relative) + Text(" ago")
+            } else {
+                Text("Live")
+            }
+        }
+        .font(.caption).foregroundStyle(.secondary)
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel(model.liveState == .live ? "Live updates on" : "Live updates reconnecting")
+    }
+
+    private var color: Color {
+        switch model.liveState { case .live: .green; case .retrying: .orange; case .off: .gray }
     }
 }
