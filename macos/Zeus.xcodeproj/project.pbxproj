@@ -34,7 +34,9 @@
 		C066069432E3A4D47D4D3F8D /* OptimizationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A80BD38C7ACE39A41639C2 /* OptimizationView.swift */; };
 		C11AB6707E17CC9AD863C0ED /* MenuBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B03716182838A6E90FDB2A /* MenuBarView.swift */; };
 		D89848AA9095236EEE518C00 /* ImageScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2ABAE080E33AD1A8D443E0 /* ImageScanView.swift */; };
+		D94E53B0C6239549FD15F136 /* CreateDestinations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C294737AC9CB90CA2339D5D /* CreateDestinations.swift */; };
 		D99D3ED89099DD886AD43ECB /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B0774CDE942A26ED1503CD /* AppModel.swift */; };
+		DA8DAF3FD92E22F9F2A8FAC8 /* CreateViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27E28AF5DF468D78EE92E38 /* CreateViews.swift */; };
 		E106512EA684FD07AA1692A6 /* RespondViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D12ADA008102B43711B3BEF /* RespondViews.swift */; };
 		EA21C9F077EFF2E64519B72D /* Destinations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03917729189B3A420C850010 /* Destinations.swift */; };
 		FC0428FD638A3E8E95F45FBB /* MetricChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9158914EC3539A4F3C742EC8 /* MetricChart.swift */; };
@@ -47,6 +49,7 @@
 		1C13F1B4AC6F167B69FCCC9B /* Zeus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zeus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2452BFC991DBE62E68949461 /* macos */ = {isa = PBXFileReference; lastKnownFileType = folder; name = macos; path = .; sourceTree = SOURCE_ROOT; };
 		29C76870188E00765CE45993 /* Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loader.swift; sourceTree = "<group>"; };
+		3C294737AC9CB90CA2339D5D /* CreateDestinations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateDestinations.swift; sourceTree = "<group>"; };
 		3D12ADA008102B43711B3BEF /* RespondViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RespondViews.swift; sourceTree = "<group>"; };
 		3F2ABAE080E33AD1A8D443E0 /* ImageScanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageScanView.swift; sourceTree = "<group>"; };
 		48197E092BA0BBDB3B1061F9 /* BackupsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupsView.swift; sourceTree = "<group>"; };
@@ -63,6 +66,7 @@
 		91B03716182838A6E90FDB2A /* MenuBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarView.swift; sourceTree = "<group>"; };
 		98DD97E91EEDC7DDC0E07413 /* CostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CostView.swift; sourceTree = "<group>"; };
 		A2516914BB4602FBC9A74FB2 /* ComplianceDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplianceDetailView.swift; sourceTree = "<group>"; };
+		A27E28AF5DF468D78EE92E38 /* CreateViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateViews.swift; sourceTree = "<group>"; };
 		A2D1FAF193358533E0DCE90A /* AccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessView.swift; sourceTree = "<group>"; };
 		A7B0774CDE942A26ED1503CD /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
 		A8A80BD38C7ACE39A41639C2 /* OptimizationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptimizationView.swift; sourceTree = "<group>"; };
@@ -112,6 +116,15 @@
 			);
 			sourceTree = "<group>";
 		};
+		2B14977B5F3F78E2D5F157C8 /* Create */ = {
+			isa = PBXGroup;
+			children = (
+				3C294737AC9CB90CA2339D5D /* CreateDestinations.swift */,
+				A27E28AF5DF468D78EE92E38 /* CreateViews.swift */,
+			);
+			path = Create;
+			sourceTree = "<group>";
+		};
 		33D5E1F126E1F642E29B18A3 /* Protect */ = {
 			isa = PBXGroup;
 			children = (
@@ -137,6 +150,7 @@
 				56DFDC04C993555B2A0B20A3 /* ZeusApp.swift */,
 				AA6050BB2B6A12BA3BC78C14 /* Capacity */,
 				7A519FA9120CDA7ED6B197A9 /* Cost */,
+				2B14977B5F3F78E2D5F157C8 /* Create */,
 				33D5E1F126E1F642E29B18A3 /* Protect */,
 				983E786AEF822229139F7550 /* Respond */,
 				65E026D05AE46EB07AB87A86 /* Secure */,
@@ -278,6 +292,8 @@
 				8CB9F0AD9E19A6B73742BD1B /* ComplianceDetailView.swift in Sources */,
 				20CBD7697DFAA22DA0583477 /* ComplianceView.swift in Sources */,
 				282BC17DD56F53880D09D94A /* CostView.swift in Sources */,
+				D94E53B0C6239549FD15F136 /* CreateDestinations.swift in Sources */,
+				DA8DAF3FD92E22F9F2A8FAC8 /* CreateViews.swift in Sources */,
 				EA21C9F077EFF2E64519B72D /* Destinations.swift in Sources */,
 				5437CDD7A1C837EA546D8172 /* FinOpsView.swift in Sources */,
 				D89848AA9095236EEE518C00 /* ImageScanView.swift in Sources */,
