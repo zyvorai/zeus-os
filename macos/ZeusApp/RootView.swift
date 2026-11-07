@@ -73,12 +73,13 @@ enum Section_: String, CaseIterable, Identifiable {
     case overview = "Overview", machines = "Machines", alerts = "Alerts"
     case snapshots = "Snapshots", backups = "Backups", cost = "Cost"
     case audit = "Audit", compliance = "Compliance"
+    case capacity = "Capacity", optimization = "Optimization", finops = "FinOps"
     var id: String { rawValue }
     var group: SidebarGroup {
-        switch self { case .overview, .machines: .run; case .alerts: .observe; case .snapshots, .backups: .protect; case .cost: .cost; case .audit, .compliance: .secure }
+        switch self { case .overview, .machines: .run; case .alerts, .capacity: .observe; case .optimization, .finops: .cost; case .snapshots, .backups: .protect; case .cost: .cost; case .audit, .compliance: .secure }
     }
     var symbol: String {
-        switch self { case .overview: "gauge.with.dots.needle.50percent"; case .machines: "server.rack"; case .alerts: "bell"; case .snapshots: "camera.on.rectangle"; case .backups: "externaldrive.badge.timemachine"; case .cost: "dollarsign.circle"; case .audit: "list.bullet.clipboard"; case .compliance: "checkmark.shield" }
+        switch self { case .overview: "gauge.with.dots.needle.50percent"; case .machines: "server.rack"; case .alerts: "bell"; case .snapshots: "camera.on.rectangle"; case .backups: "externaldrive.badge.timemachine"; case .cost: "dollarsign.circle"; case .audit: "list.bullet.clipboard"; case .compliance: "checkmark.shield"; case .capacity: "chart.line.uptrend.xyaxis"; case .optimization: "lightbulb"; case .finops: "banknote" }
     }
 }
 
@@ -113,6 +114,9 @@ struct MainView: View {
             case .audit: if let c = model.client { AuditView(client: c).id(ObjectIdentifier(c)) }
             case .compliance: if let c = model.client { ComplianceView(client: c).id(ObjectIdentifier(c)) }
             case .cost: if let c = model.client { CostView(client: c).id(ObjectIdentifier(c)) }
+            case .capacity: if let c = model.client { CapacityView(client: c).id(ObjectIdentifier(c)) }
+            case .optimization: if let c = model.client { OptimizationView(client: c).id(ObjectIdentifier(c)) }
+            case .finops: if let c = model.client { FinOpsView(client: c).id(ObjectIdentifier(c)) }
             case .backups: if let c = model.client { BackupsView(client: c).id(ObjectIdentifier(c)) }
             }
         }
