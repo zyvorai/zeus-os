@@ -80,7 +80,7 @@ struct MainView: View {
         NavigationSplitView {
             List(Section_.allCases, selection: $selection) { s in
                 Label(s.rawValue, systemImage: s.symbol)
-                    .badge(s == .alerts ? (model.alerts?.totalActive ?? 0) : 0)
+                    .badge(s == .alerts ? (model.alerts?.needsAttention ?? 0) : 0)
             }
             .navigationSplitViewColumnWidth(min: 180, ideal: 210)
         } detail: {

@@ -58,6 +58,9 @@ public struct AlertStats: Codable, Sendable {
     public let info: Int
     public let acknowledged: Int
 
+    /// Alerts still waiting for someone. `totalActive` includes the acknowledged ones.
+    public var needsAttention: Int { max(0, totalActive - acknowledged) }
+
     enum CodingKeys: String, CodingKey {
         case totalActive = "total_active"
         case critical, warning, info, acknowledged
