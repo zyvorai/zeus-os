@@ -10,7 +10,9 @@
 		03FC1FB1025D6A17B47516BF /* MachinesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34D5AB7D8FA7292DC1E25A2 /* MachinesView.swift */; };
 		0D74E984717DE48E731305A2 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0408D024D46186E7ABFE8320 /* RootView.swift */; };
 		0F5C895A677CF6CE4F04B1F2 /* BackupsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48197E092BA0BBDB3B1061F9 /* BackupsView.swift */; };
+		0F8BA7AFBA1DB788C1C86C33 /* AuditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06256A79054150136F54EF5 /* AuditView.swift */; };
 		12BDB724294C1D224FEFCCF1 /* ZeusKit in Frameworks */ = {isa = PBXBuildFile; productRef = 496B17285E6FC4BCF75FD40B /* ZeusKit */; };
+		20CBD7697DFAA22DA0583477 /* ComplianceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B6506524528A9EA5B4E029 /* ComplianceView.swift */; };
 		282BC17DD56F53880D09D94A /* CostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DD97E91EEDC7DDC0E07413 /* CostView.swift */; };
 		372D19743FB97F5A6F0B4BE5 /* ZeusApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DFDC04C993555B2A0B20A3 /* ZeusApp.swift */; };
 		4D02F62B86B54D9E7492473E /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C76870188E00765CE45993 /* Loader.swift */; };
@@ -30,6 +32,7 @@
 		29C76870188E00765CE45993 /* Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loader.swift; sourceTree = "<group>"; };
 		48197E092BA0BBDB3B1061F9 /* BackupsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupsView.swift; sourceTree = "<group>"; };
 		56DFDC04C993555B2A0B20A3 /* ZeusApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZeusApp.swift; sourceTree = "<group>"; };
+		78B6506524528A9EA5B4E029 /* ComplianceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplianceView.swift; sourceTree = "<group>"; };
 		83522E998C7D75D5A46F6D2E /* AlertsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertsView.swift; sourceTree = "<group>"; };
 		8A9166DB9DC1756E703C7623 /* SnapshotsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotsView.swift; sourceTree = "<group>"; };
 		9158914EC3539A4F3C742EC8 /* MetricChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricChart.swift; sourceTree = "<group>"; };
@@ -39,6 +42,7 @@
 		BB47515E905887300FA8175E /* VMMetricsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMMetricsView.swift; sourceTree = "<group>"; };
 		D33FFEECE04BFC832047B83D /* OverviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewView.swift; sourceTree = "<group>"; };
 		D34D5AB7D8FA7292DC1E25A2 /* MachinesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MachinesView.swift; sourceTree = "<group>"; };
+		F06256A79054150136F54EF5 /* AuditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuditView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +98,7 @@
 				56DFDC04C993555B2A0B20A3 /* ZeusApp.swift */,
 				7A519FA9120CDA7ED6B197A9 /* Cost */,
 				33D5E1F126E1F642E29B18A3 /* Protect */,
+				65E026D05AE46EB07AB87A86 /* Secure */,
 			);
 			path = ZeusApp;
 			sourceTree = "<group>";
@@ -104,6 +109,15 @@
 				1C13F1B4AC6F167B69FCCC9B /* Zeus.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		65E026D05AE46EB07AB87A86 /* Secure */ = {
+			isa = PBXGroup;
+			children = (
+				F06256A79054150136F54EF5 /* AuditView.swift */,
+				78B6506524528A9EA5B4E029 /* ComplianceView.swift */,
+			);
+			path = Secure;
 			sourceTree = "<group>";
 		};
 		7A519FA9120CDA7ED6B197A9 /* Cost */ = {
@@ -179,7 +193,9 @@
 			files = (
 				82788CD1E7200D5FC1170BFC /* AlertsView.swift in Sources */,
 				D99D3ED89099DD886AD43ECB /* AppModel.swift in Sources */,
+				0F8BA7AFBA1DB788C1C86C33 /* AuditView.swift in Sources */,
 				0F5C895A677CF6CE4F04B1F2 /* BackupsView.swift in Sources */,
+				20CBD7697DFAA22DA0583477 /* ComplianceView.swift in Sources */,
 				282BC17DD56F53880D09D94A /* CostView.swift in Sources */,
 				4D02F62B86B54D9E7492473E /* Loader.swift in Sources */,
 				03FC1FB1025D6A17B47516BF /* MachinesView.swift in Sources */,
