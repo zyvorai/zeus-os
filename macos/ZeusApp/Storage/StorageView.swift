@@ -8,16 +8,25 @@ struct StorageData: Sendable {
     let classes: [StorageClass]
     let claims: [StorageClaim]
     let volumes: [StorageVolume]
+    var snapshots: [VolumeSnapshot] = []
 }
 
-/// Read-only storage explorer: capacity, storage classes, claims and volumes.
+/// Storage explorer: capacity, storage classes, claims, volumes and volume snapshots. Editors and admins can
+/// create and grow claims and delete volume snapshots.
 struct StorageView: View {
+    @Environment(AppModel.self) private var model
     let client: ZeusClient
     @State private var loader: Loader<StorageData>
     @State private var tab = Tab.claims
     @State private var search = ""
+    @State private var claimSelection: StorageClaim.ID?
+    @State private var snapSelection: VolumeSnapshot.ID?
+    @State private var creatingClaim = false
+    @State private var resizing: StorageClaim?
+    @State private var pending: OpsAction?
+    @State private var failure: String?
 
-    enum Tab: String, CaseIterable, Identifiable { case claims = "Claims", volumes = "Volumes", classes = "Classes"; var id: String { rawValue } }
+    enum Tab: String, CaseIterable, Identifiable { case claims = "Claims", volumes = "Volumes", snapshots = "Snapshots", classes = "Classes"; var id: String { rawValue } }
 
     init(client: ZeusClient) {
         self.client = client
@@ -26,7 +35,8 @@ struct StorageView: View {
             async let c = client.storageClasses()
             async let p = client.storageClaims()
             async let v = client.storageVolumes()
-            return try await StorageData(overview: await o, classes: c, claims: p, volumes: v)
+            async let s = try? client.volumeSnapshots()
+            return try await StorageData(overview: await o, classes: c, claims: p, volumes: v, snapshots: await s ?? [])
         })
     }
 
@@ -39,12 +49,36 @@ struct StorageView: View {
                 switch tab {
                 case .claims: claims(data.claims)
                 case .volumes: volumes(data.volumes)
+                case .snapshots: snapshots(data.snapshots)
                 case .classes: classes(data.classes)
                 }
             }
         }
         .navigationTitle("Storage")
         .searchable(text: $search, prompt: "Search storage")
+        .toolbar {
+            if model.canWrite {
+                ToolbarItem { Button("New Claim", systemImage: "plus") { creatingClaim = true } }
+                ToolbarItem {
+                    Button("Resize Claim", systemImage: "arrow.up.left.and.arrow.down.right") {
+                        resizing = loader.value?.claims.first { $0.id == claimSelection }
+                    }
+                    .disabled(tab != .claims || claimSelection == nil)
+                }
+                ToolbarItem {
+                    Button("Delete Snapshot", systemImage: "trash") {
+                        pending = loader.value?.snapshots.first { $0.id == snapSelection }
+                            .flatMap { OpsActions.volumeSnapshot($0, client: client).first }
+                    }
+                    .disabled(tab != .snapshots || snapSelection == nil)
+                }
+            }
+        }
+        .opsActions(pending: $pending, failure: $failure) { await loader.reload() }
+        .sheet(isPresented: $creatingClaim) {
+            NewClaimSheet(client: client, classes: loader.value?.classes ?? []) { await loader.reload() }
+        }
+        .sheet(item: $resizing) { c in ResizeClaimSheet(client: client, claim: c) { await loader.reload() } }
         .task { loader.start() }
         .onDisappear { loader.stop() }
     }
@@ -70,7 +104,7 @@ struct StorageView: View {
 
     @ViewBuilder private func claims(_ all: [StorageClaim]) -> some View {
         let rows = all.filter { matches($0.name, $0.namespace, $0.storageClass) }
-        Table(rows) {
+        Table(rows, selection: $claimSelection) {
             TableColumn("Name", value: \.name)
             TableColumn("Namespace", value: \.namespace)
             TableColumn("Status") { Text($0.status ?? "—") }
@@ -78,7 +112,31 @@ struct StorageView: View {
             TableColumn("Size") { Text(gi($0.requestedGi)) }
             TableColumn("Access") { Text(($0.accessModes ?? []).joined(separator: ", ")) }
         }
+        .contextMenu(forSelectionType: StorageClaim.ID.self) { ids in
+            if model.canWrite, ids.count == 1, let c = rows.first(where: { $0.id == ids.first }) {
+                Button("Resize…", systemImage: "arrow.up.left.and.arrow.down.right") { resizing = c }
+            }
+        }
         .overlay { if rows.isEmpty { ContentUnavailableView("No claims", systemImage: "externaldrive") } }
+    }
+
+    @ViewBuilder private func snapshots(_ all: [VolumeSnapshot]) -> some View {
+        let rows = all.filter { matches($0.name, $0.namespace, $0.sourcePVC) }
+        Table(rows, selection: $snapSelection) {
+            TableColumn("Snapshot", value: \.name)
+            TableColumn("Namespace", value: \.namespace)
+            TableColumn("Source claim") { Text($0.sourcePVC ?? "—") }
+            TableColumn("Ready") { Text($0.readyToUse == true ? "Yes" : ($0.error ?? "No")) }
+            TableColumn("Size") { Text($0.restoreSize ?? "—") }
+            TableColumn("Class") { Text($0.snapshotClass ?? "—") }
+        }
+        .contextMenu(forSelectionType: VolumeSnapshot.ID.self) { ids in
+            if model.canWrite, ids.count == 1, let s = rows.first(where: { $0.id == ids.first }),
+               let a = OpsActions.volumeSnapshot(s, client: client).first {
+                Button(a.title, systemImage: a.symbol) { pending = a }
+            }
+        }
+        .overlay { if rows.isEmpty { ContentUnavailableView("No volume snapshots", systemImage: "camera.on.rectangle") } }
     }
 
     @ViewBuilder private func volumes(_ all: [StorageVolume]) -> some View {
