@@ -7,6 +7,11 @@ public struct LoginResponse: Codable, Sendable {
     public let tenantIds: [String]
     public let expiresIn: Int
 
+    public init(token: String, username: String, role: String, tenantIds: [String], expiresIn: Int) {
+        self.token = token; self.username = username; self.role = role
+        self.tenantIds = tenantIds; self.expiresIn = expiresIn
+    }
+
     enum CodingKeys: String, CodingKey {
         case token, username, role
         case tenantIds = "tenant_ids"

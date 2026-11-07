@@ -1,4 +1,5 @@
 import SwiftUI
+import ZeusKit
 
 struct RootView: View {
     @Environment(AppModel.self) private var model
@@ -10,27 +11,56 @@ struct RootView: View {
 
 struct LoginView: View {
     @Environment(AppModel.self) private var model
+    @State private var selected: ServerProfile.ID?
+    @State private var name = ""
     @State private var url = "https://zeus.zyvor.dev"
     @State private var user = ""
     @State private var pass = ""
+    @State private var remember = true
 
     var body: some View {
         Form {
-            Section("Server") { TextField("URL", text: $url).textContentType(.URL) }
-            Section("Account") {
+            if !model.profiles.isEmpty {
+                Section("Saved servers") {
+                    ForEach(model.profiles) { p in
+                        HStack {
+                            Button { Task { await open(p) } } label: {
+                                VStack(alignment: .leading) {
+                                    Text(p.name); Text("\(p.username) · \(p.url.host() ?? "")").font(.caption).foregroundStyle(.secondary)
+                                }
+                            }.buttonStyle(.plain)
+                            Spacer()
+                            Button("Remove", systemImage: "trash", role: .destructive) { model.forget(p) }
+                                .labelStyle(.iconOnly).buttonStyle(.borderless)
+                        }
+                    }
+                }
+            }
+            Section(model.profiles.isEmpty ? "Server" : "Add or sign in") {
+                TextField("Name (optional)", text: $name)
+                TextField("URL", text: $url)
                 TextField("Username", text: $user)
                 SecureField("Password", text: $pass)
+                Toggle("Remember in Keychain", isOn: $remember)
             }
             if let e = model.error { Text(e).foregroundStyle(.red) }
+            if let n = model.notice { Text(n).foregroundStyle(.orange) }
             Button("Sign In") {
                 guard let u = URL(string: url) else { return }
-                Task { await model.signIn(url: u, username: user, password: pass) }
+                Task { await model.signIn(name: name, url: u, username: user, password: pass, remember: remember) }
             }
             .keyboardShortcut(.defaultAction)
             .disabled(user.isEmpty || pass.isEmpty || model.isLoading)
         }
         .formStyle(.grouped)
-        .frame(width: 420).padding()
+        .frame(width: 440).padding()
+        .task { if let first = model.profiles.first { await model.resume(first) } }
+    }
+
+    /// Saved token first; if it is gone or rejected, prefill the form for a password.
+    private func open(_ p: ServerProfile) async {
+        await model.resume(p)
+        if model.session == nil { name = p.name; url = p.url.absoluteString; user = p.username }
     }
 }
 
