@@ -88,4 +88,15 @@ private final class GapRecorder: URLProtocol, @unchecked Sendable {
         #expect(method == "POST" && url == "https://zeus.test/api/v1/helm/releases/web/nginx/rollback")
         #expect(json?["revision"] as? Int == 3)
     }
+
+    @Test func helmUninstallDeletesRelease() async throws {
+        let r = try JSONDecoder().decode(HelmRelease.self, from: Data(#"{"name":"nginx","namespace":"web"}"#.utf8))
+        try await client.helmUninstall(r)
+        #expect(method == "DELETE" && url == "https://zeus.test/api/v1/helm/releases/web/nginx")
+    }
+
+    @Test func channelTestPostsToChannel() async throws {
+        try await client.testNotificationChannel(id: "c/1")
+        #expect(method == "POST" && url == "https://zeus.test/api/v1/notifications/channels/c%2F1/test")
+    }
 }
