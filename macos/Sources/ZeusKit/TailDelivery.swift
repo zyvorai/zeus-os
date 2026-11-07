@@ -8,14 +8,14 @@ extension JSONValue {
     static let tailSensitiveFragments = ["url", "secret", "token", "password", "cabundle", "ca_bundle", "credential", "authorization", "headers"]
 
     /// A copy with every object key containing a sensitive fragment removed, recursively.
-    public func scrubbed() -> JSONValue {
+    public func scrubbedForDelivery() -> JSONValue {
         switch self {
         case .object(let o):
             .object(o.filter { k, _ in
                 let l = k.lowercased()
                 return !Self.tailSensitiveFragments.contains { l.contains($0) }
-            }.mapValues { $0.scrubbed() })
-        case .array(let a): .array(a.map { $0.scrubbed() })
+            }.mapValues { $0.scrubbedForDelivery() })
+        case .array(let a): .array(a.map { $0.scrubbedForDelivery() })
         default: self
         }
     }
@@ -31,6 +31,6 @@ extension ZeusClient {
     /// GET any path and return the scrubbed JSON, whatever its shape (list, wrapped list or single record).
     public func tailValue(_ path: [String]) async throws -> JSONValue {
         let v: JSONValue = try await send(Self.path(path))
-        return v.scrubbed()
+        return v.scrubbedForDelivery()
     }
 }

@@ -3,7 +3,7 @@ import Foundation
 @testable import ZeusKit
 
 private func value(_ s: String) throws -> JSONValue {
-    try JSONDecoder().decode(JSONValue.self, from: Data(s.utf8)).scrubbed()
+    try JSONDecoder().decode(JSONValue.self, from: Data(s.utf8)).scrubbedForDelivery()
 }
 
 // Live fixtures are trimmed from a real server; "spec-shaped" ones are labelled because the live list was empty.

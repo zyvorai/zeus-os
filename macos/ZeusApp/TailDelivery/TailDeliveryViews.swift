@@ -1,7 +1,7 @@
 import SwiftUI
 import ZeusKit
 
-struct TailSection: Identifiable {
+struct DeliverySection: Identifiable {
     let id: String
     let label: String
     let path: [String]
@@ -11,20 +11,20 @@ struct TailSection: Identifiable {
 /// A picker over several read-only endpoints. List responses show as a searchable table with a record
 /// inspector; single-record responses (status, stats, graphs) show as an outline. Server refusals such as
 /// "not configured" are shown verbatim rather than as a generic failure.
-struct TailSectionsView: View {
+struct DeliverySectionsView: View {
     let title: String
     let client: ZeusClient
-    let sections: [TailSection]
+    let sections: [DeliverySection]
     @State private var selected: String
     @State private var value: JSONValue?
     @State private var failure: String?
 
-    init(title: String, client: ZeusClient, sections: [TailSection]) {
+    init(title: String, client: ZeusClient, sections: [DeliverySection]) {
         self.title = title; self.client = client; self.sections = sections
         _selected = State(initialValue: sections[0].id)
     }
 
-    private var current: TailSection { sections.first { $0.id == selected } ?? sections[0] }
+    private var current: DeliverySection { sections.first { $0.id == selected } ?? sections[0] }
 
     private func load() async {
         value = nil; failure = nil
