@@ -65,14 +65,16 @@ struct LoginView: View {
 }
 
 enum Section_: String, CaseIterable, Identifiable {
-    case machines = "Machines", alerts = "Alerts"
+    case overview = "Overview", machines = "Machines", alerts = "Alerts"
     var id: String { rawValue }
-    var symbol: String { self == .machines ? "server.rack" : "bell" }
+    var symbol: String {
+        switch self { case .overview: "gauge.with.dots.needle.50percent"; case .machines: "server.rack"; case .alerts: "bell" }
+    }
 }
 
 struct MainView: View {
     @Environment(AppModel.self) private var model
-    @State private var selection: Section_? = .machines
+    @State private var selection: Section_? = .overview
 
     var body: some View {
         NavigationSplitView {
@@ -82,7 +84,8 @@ struct MainView: View {
             }
             .navigationSplitViewColumnWidth(min: 180, ideal: 210)
         } detail: {
-            switch selection ?? .machines {
+            switch selection ?? .overview {
+            case .overview: OverviewView()
             case .machines: MachinesView()
             case .alerts: ContentUnavailableView("No active alerts", systemImage: "checkmark.seal")
             }

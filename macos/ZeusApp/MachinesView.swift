@@ -84,9 +84,10 @@ struct VMInspector: View {
             if !model.canWrite {
                 Text("Your role is read-only.").font(.footnote).foregroundStyle(.secondary)
             }
+            Section("Metrics") { VMMetricsView(vm: vm) }
         }
         .formStyle(.grouped)
-        .inspectorColumnWidth(min: 240, ideal: 280)
+        .inspectorColumnWidth(min: 280, ideal: 360)
     }
 }
 

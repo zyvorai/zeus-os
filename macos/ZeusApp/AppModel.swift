@@ -11,6 +11,8 @@ final class AppModel {
     var client: ZeusClient?
     var vms: [VM] = []
     var alerts: AlertStats?
+    var cluster: ClusterMetrics?
+    var nodes: [NodeMetrics] = []
     var error: String?
     var notice: String?
     var isLoading = false
@@ -96,7 +98,10 @@ final class AppModel {
         do {
             async let v = client.vms()
             async let a = client.alertStats()
+            async let c = try? client.clusterMetrics()     // optional: don't fail the refresh over these
+            async let n = try? client.nodeMetrics()
             (vms, alerts) = try await (v, a)
+            (cluster, nodes) = await (c, n ?? [])
             error = nil
         } catch ZeusError.unauthorized {
             if let p = active { try? store.setToken(nil, for: p) }
