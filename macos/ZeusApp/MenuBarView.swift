@@ -9,7 +9,7 @@ struct MenuBarView: View {
         } else {
             let running = model.vms.filter { $0.status == "Running" }.count
             Text("\(running) of \(model.vms.count) machines running")
-            Text("\(model.alerts?.totalActive ?? 0) active alerts")
+            Text("\(model.alerts?.needsAttention ?? 0) open alerts")
             Divider()
             Button("Refresh") { Task { await model.refresh() } }
         }

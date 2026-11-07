@@ -39,3 +39,11 @@ private func vm(_ ns: String, _ name: String, _ status: String = "Running") -> V
     #expect(VMAction.stop.isAvailable(for: "Running"))
     #expect(!VMAction.stop.isAvailable(for: "Starting"))
 }
+
+@Test func needsAttentionExcludesAcknowledged() throws {
+    let json = #"{"total_active":5,"critical":1,"warning":4,"info":0,"acknowledged":2}"#
+    let s = try JSONDecoder().decode(AlertStats.self, from: Data(json.utf8))
+    #expect(s.needsAttention == 3)
+    let odd = #"{"total_active":1,"critical":0,"warning":1,"info":0,"acknowledged":3}"#
+    #expect(try JSONDecoder().decode(AlertStats.self, from: Data(odd.utf8)).needsAttention == 0)
+}
