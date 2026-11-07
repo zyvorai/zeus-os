@@ -1,0 +1,29 @@
+name: Zeus
+options:
+  bundleIdPrefix: dev.zyvor
+  deploymentTarget:
+    macOS: "27.0"
+packages:
+  ZeusKit:
+    path: .
+targets:
+  Zeus:
+    type: application
+    platform: macOS
+    sources: [ZeusApp]
+    dependencies:
+      - package: ZeusKit
+        product: ZeusKit
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: dev.zyvor.zeus
+        PRODUCT_NAME: Zeus
+        SWIFT_VERSION: "6.0"
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: Zeus
+        INFOPLIST_KEY_LSApplicationCategoryType: public.app-category.developer-tools
+        ENABLE_APP_SANDBOX: YES
+        ENABLE_OUTGOING_NETWORK_CONNECTIONS: YES
+        ENABLE_HARDENED_RUNTIME: YES
+        CODE_SIGN_STYLE: Automatic
+        CODE_SIGN_IDENTITY: "-"
