@@ -14,6 +14,7 @@ final class AppModel {
     var error: String?
     var notice: String?
     var isLoading = false
+    var busy: Set<VM.ID> = []
 
     var canWrite: Bool { session?.role == "editor" || session?.role == "admin" }
 
@@ -56,6 +57,27 @@ final class AppModel {
             error = "Wrong username or password."
         } catch {
             self.error = "Couldn't reach \(url.host() ?? "server")."
+        }
+    }
+
+    /// Sends a power action, then polls until the machine's status changes (max ~30s).
+    func perform(_ action: VMAction, on vm: VM) async {
+        guard canWrite, let client, !busy.contains(vm.id) else { return }
+        busy.insert(vm.id); defer { busy.remove(vm.id) }
+        do {
+            try await client.perform(action, on: vm)
+            for _ in 0..<10 {
+                try? await Task.sleep(for: .seconds(3))
+                await refresh()
+                if let now = vms.first(where: { $0.id == vm.id }), now.status != vm.status { break }
+            }
+            error = nil
+        } catch ZeusError.server(let status, let message) where status == 403 {
+            error = message.isEmpty ? "Your role can't \(action.rawValue) machines." : message
+        } catch ZeusError.unauthorized {
+            signOut(forget: false); error = "Session expired. Sign in again."
+        } catch {
+            self.error = "Couldn't \(action.rawValue) \(vm.name)."
         }
     }
 

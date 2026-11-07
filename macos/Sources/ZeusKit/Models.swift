@@ -63,3 +63,17 @@ public struct AlertStats: Codable, Sendable {
         case critical, warning, info, acknowledged
     }
 }
+
+public enum VMAction: String, Sendable, CaseIterable {
+    case start, stop, restart
+
+    public var title: String { rawValue.capitalized }
+
+    /// Which states the action makes sense in. Unknown states disable everything.
+    public func isAvailable(for status: String) -> Bool {
+        switch self {
+        case .start: status == "Stopped"
+        case .stop, .restart: status == "Running"
+        }
+    }
+}

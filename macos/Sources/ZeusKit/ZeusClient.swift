@@ -32,12 +32,24 @@ public final class ZeusClient: Sendable {
         return page.items
     }
 
+    /// Power actions. The endpoints take an optional free-form body and return free-form JSON,
+    /// which we ignore: callers re-read `vms()` to see the resulting state.
+    public func perform(_ action: VMAction, on vm: VM) async throws {
+        _ = try await raw(try request(Self.actionPath(action, vm), method: "POST"))
+    }
+
+    static func actionPath(_ action: VMAction, _ vm: VM) -> String {
+        let allowed = CharacterSet.urlPathAllowed.subtracting(CharacterSet(charactersIn: "/"))
+        let ns = vm.namespace.addingPercentEncoding(withAllowedCharacters: allowed) ?? vm.namespace
+        let name = vm.name.addingPercentEncoding(withAllowedCharacters: allowed) ?? vm.name
+        return "vms/\(ns)/\(name)/\(action.rawValue)"
+    }
+
     public func alertStats() async throws -> AlertStats {
         try await send("alerts/stats")
     }
 
-    func send<T: Decodable>(_ path: String, method: String = "GET",
-                            body: [String: String]? = nil) async throws -> T {
+    func request(_ path: String, method: String = "GET", body: [String: String]? = nil) throws -> URLRequest {
         var req = URLRequest(url: baseURL.appending(path: "api/v1/\(path)"))
         req.httpMethod = method
         if let token { req.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization") }
@@ -45,6 +57,10 @@ public final class ZeusClient: Sendable {
             req.setValue("application/json", forHTTPHeaderField: "Content-Type")
             req.httpBody = try JSONEncoder().encode(body)
         }
+        return req
+    }
+
+    func raw(_ req: URLRequest) async throws -> Data {
         let data: Data, resp: URLResponse
         do { (data, resp) = try await session.data(for: req) }
         catch { throw ZeusError.transport(error) }
@@ -54,6 +70,12 @@ public final class ZeusClient: Sendable {
             let msg = (try? JSONDecoder().decode([String: String].self, from: data))?["error"] ?? ""
             throw ZeusError.server(status: status, message: msg)
         }
+        return data
+    }
+
+    func send<T: Decodable>(_ path: String, method: String = "GET",
+                            body: [String: String]? = nil) async throws -> T {
+        let data = try await raw(try request(path, method: method, body: body))
         return try JSONDecoder().decode(T.self, from: data)
     }
 }
