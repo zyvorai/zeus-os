@@ -92,18 +92,36 @@ struct Destination: Identifiable {
 struct MainView: View {
     @Environment(AppModel.self) private var model
     @State private var selection: Destination.ID? = "Overview"
+    @State private var filter = ""
+    @AppStorage("sidebar.collapsed") private var collapsedRaw = ""
 
+    private var collapsed: Set<String> { Set(collapsedRaw.split(separator: ",").map(String.init)) }
+
+    private func setExpanded(_ group: String, _ expanded: Bool) {
+        var c = collapsed
+        if expanded { c.remove(group) } else { c.insert(group) }
+        collapsedRaw = c.sorted().joined(separator: ",")
+    }
+
+    /// Groups in order of first use, limited to entries matching the filter.
     private var groups: [(name: String, items: [Destination])] {
         var order: [String] = []
         for d in Destination.all where !order.contains(d.group) { order.append(d.group) }
-        return order.map { g in (g, Destination.all.filter { $0.group == g }) }
+        return order.compactMap { g in
+            let items = Destination.all.filter { $0.group == g &&
+                (filter.isEmpty || $0.title.localizedCaseInsensitiveContains(filter)
+                 || g.localizedCaseInsensitiveContains(filter)) }
+            return items.isEmpty ? nil : (g, items)
+        }
     }
 
     var body: some View {
         NavigationSplitView {
             List(selection: $selection) {
                 ForEach(groups, id: \.name) { group in
-                    Section(group.name) {
+                    Section(group.name, isExpanded: Binding(
+                        get: { !filter.isEmpty || !collapsed.contains(group.name) },
+                        set: { setExpanded(group.name, $0) })) {
                         ForEach(group.items) { d in
                             Label(d.title, systemImage: d.symbol)
                                 .badge(d.id == "Alerts" ? (model.alerts?.needsAttention ?? 0) : 0)
@@ -112,6 +130,8 @@ struct MainView: View {
                     }
                 }
             }
+            .searchable(text: $filter, placement: .sidebar, prompt: "Filter")
+            .overlay { if groups.isEmpty { ContentUnavailableView.search(text: filter) } }
             .navigationSplitViewColumnWidth(min: 190, ideal: 220, max: 300)
             .safeAreaInset(edge: .bottom) { AccountFooter() }
         } detail: {
@@ -121,6 +141,16 @@ struct MainView: View {
             ToolbarItem(placement: .status) { LiveStatusView() }
             ToolbarItem { Button("Refresh", systemImage: "arrow.clockwise") { Task { await model.refresh() } } }
             ToolbarItem { Button("Sign Out", systemImage: "rectangle.portrait.and.arrow.right") { model.signOut() } }
+        }
+        .background { sectionShortcuts }
+    }
+
+    /// ⌘1…⌘9 jump to the first nine screens in sidebar order.
+    private var sectionShortcuts: some View {
+        ForEach(Array(Destination.all.prefix(9).enumerated()), id: \.element.id) { i, d in
+            Button(d.title) { selection = d.id }
+                .keyboardShortcut(KeyEquivalent(Character("\(i + 1)")), modifiers: .command)
+                .frame(width: 0, height: 0).opacity(0).accessibilityHidden(true)
         }
     }
 }
