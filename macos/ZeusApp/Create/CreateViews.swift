@@ -91,8 +91,8 @@ struct MigrationsView: View {
     }
 }
 
-/// Read-only: creating a machine from a template is not offered because the instantiate endpoint
-/// addresses templates by `{namespace}/{name}` while built-in templates have an empty namespace.
+/// Read-only browser. Creating a machine (New Machine on the Machines toolbar) works from namespaced templates only:
+/// the instantiate endpoint addresses templates by `{namespace}/{name}` and built-ins have an empty namespace.
 struct TemplatesView: View {
     let client: ZeusClient
     @State private var loader: Loader<[VMTemplateInfo]>
