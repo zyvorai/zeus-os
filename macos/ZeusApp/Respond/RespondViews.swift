@@ -128,7 +128,9 @@ struct ChannelsView: View {
     @State private var loader: Loader<ChannelsData>
     @State private var creating = false
     @State private var deleting: ChannelDeletion?
+    @State private var testing: NotificationChannel?
     @State private var failure: String?
+    @State private var info: String?
 
     init(client: ZeusClient) {
         self.client = client
@@ -150,6 +152,11 @@ struct ChannelsView: View {
         await loader.reload()
     }
 
+    private func sendTest(_ c: NotificationChannel) async {
+        do { try await client.testNotificationChannel(id: c.id); failure = nil; info = "Test message sent to \(c.name ?? c.id)." }
+        catch { info = nil; failure = describe(error, "send a test message") }
+    }
+
     private func delete(_ d: ChannelDeletion) async {
         do {
             if d.alerting { try await client.deleteAlertingChannel(id: d.id) } else { try await client.deleteNotificationChannel(id: d.id) }
@@ -169,7 +176,15 @@ struct ChannelsView: View {
                                 titleVisibility: .visible) {
                 Button("Delete", role: .destructive) { if let d = deleting { Task { await delete(d) } } }
             } message: { Text("Rules and budgets that notify this channel will stop reaching it. This can't be undone.") }
-            .safeAreaInset(edge: .bottom) { if let failure { InlineError(message: failure) { self.failure = nil } } }
+            .confirmationDialog(testing.map { "Send a test to \($0.name ?? $0.id)?" } ?? "",
+                                isPresented: Binding(get: { testing != nil }, set: { if !$0 { testing = nil } }),
+                                titleVisibility: .visible) {
+                Button("Send Test") { if let c = testing { Task { await sendTest(c) } } }
+            } message: { Text("A real test message is delivered to everyone this channel reaches.") }
+            .safeAreaInset(edge: .bottom) {
+                if let failure { InlineError(message: failure) { self.failure = nil } }
+                else if let info { Label(info, systemImage: "checkmark.circle").padding(8).onTapGesture { self.info = nil } }
+            }
     }
 
     private var screen: some View {
@@ -207,6 +222,7 @@ struct ChannelsView: View {
                             if model.canWrite, let c = data.notification.first(where: { ids.contains($0.id) }) {
                                 Button(c.enabled == false ? "Enable" : "Disable",
                                        systemImage: c.enabled == false ? "play.circle" : "pause.circle") { Task { await toggle(c) } }
+                                Button("Send Test…", systemImage: "paperplane") { testing = c }
                                 Button("Delete…", systemImage: "trash", role: .destructive) {
                                     deleting = ChannelDeletion(id: c.id, name: c.name ?? c.id, alerting: false)
                                 }

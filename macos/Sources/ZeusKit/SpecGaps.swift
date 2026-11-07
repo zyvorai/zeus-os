@@ -103,4 +103,14 @@ extension ZeusClient {
     public func helmRollback(_ r: HelmRelease, toRevision revision: Int) async throws {
         try await post("helm", "releases", r.namespace ?? "default", r.name, "rollback", body: HelmRollbackBody(revision: revision))
     }
+
+    /// `DELETE /helm/releases/{namespace}/{name}`: uninstalls the release and its resources.
+    public func helmUninstall(_ r: HelmRelease) async throws {
+        try await delete("helm", "releases", r.namespace ?? "default", r.name)
+    }
+
+    /// `POST /notifications/channels/{id}/test`: asks the server to deliver a test message through the channel.
+    public func testNotificationChannel(id: String) async throws {
+        try await post("notifications", "channels", id, "test")
+    }
 }

@@ -171,6 +171,7 @@ struct HelmView: View {
     let client: ZeusClient
     @State private var rollbackTarget: HelmRevision?
     @State private var rollbackFailure: String?
+    @State private var uninstalling: HelmRelease?
     @State private var loader: Loader<[HelmRelease]>
     @State private var selection: HelmRelease.ID?
     @State private var history: [HelmRevision] = []
@@ -198,6 +199,11 @@ struct HelmView: View {
                         TableColumn("Updated") { autoWhen($0.updated) }
                     }
                     .frame(minHeight: 160)
+                    .contextMenu(forSelectionType: HelmRelease.ID.self) { ids in
+                        if model.canWrite, let r = releases.first(where: { ids.contains($0.id) }) {
+                            Button("Uninstall…", systemImage: "trash", role: .destructive) { uninstalling = r }
+                        }
+                    }
                     historyPane(releases)
                 }
             }
@@ -207,6 +213,18 @@ struct HelmView: View {
         .task { loader.start() }
         .onDisappear { loader.stop() }
         .task(id: selection) { await loadHistory() }
+        .confirmationDialog(uninstalling.map { "Uninstall \($0.name)?" } ?? "",
+                            isPresented: Binding(get: { uninstalling != nil }, set: { if !$0 { uninstalling = nil } }),
+                            titleVisibility: .visible) {
+            Button("Uninstall", role: .destructive) { if let r = uninstalling { Task { await uninstall(r) } } }
+        } message: { Text("The release and the resources it created are removed from the cluster. This can't be undone.") }
+        .safeAreaInset(edge: .bottom) { if let rollbackFailure { InlineError(message: rollbackFailure) { self.rollbackFailure = nil } } }
+    }
+
+    private func uninstall(_ r: HelmRelease) async {
+        do { try await client.helmUninstall(r); rollbackFailure = nil; if selection == r.id { selection = nil } }
+        catch { rollbackFailure = describe(error, "uninstall the release") }
+        await loader.reload()
     }
 
     @ViewBuilder private func historyPane(_ releases: [HelmRelease]) -> some View {
@@ -230,7 +248,6 @@ struct HelmView: View {
                 }.width(90)
             }
             .frame(minHeight: 120)
-            .safeAreaInset(edge: .bottom) { if let rollbackFailure { InlineError(message: rollbackFailure) { self.rollbackFailure = nil } } }
             .confirmationDialog(rollbackTarget.map { "Roll back to revision \($0.revision)?" } ?? "",
                                 isPresented: Binding(get: { rollbackTarget != nil }, set: { if !$0 { rollbackTarget = nil } }),
                                 titleVisibility: .visible) {
