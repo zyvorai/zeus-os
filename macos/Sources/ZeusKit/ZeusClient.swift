@@ -11,6 +11,8 @@ public final class ZeusClient: Sendable {
     public let baseURL: URL
     private let token: String?
     private let session: URLSession
+    var webSocketSession: URLSession { session }
+    var bearerToken: String? { token }
 
     public init(baseURL: URL, token: String? = nil, session: URLSession = .shared) {
         self.baseURL = baseURL

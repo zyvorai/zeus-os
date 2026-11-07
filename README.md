@@ -525,10 +525,11 @@ A native macOS client for a running Zeus OS server, built with SwiftUI. It talks
 - **Security, read-only**: tap a compliance framework for control detail; **Access** (RBAC roles, bindings, service accounts, findings), **Image Scanning** (severity breakdown), **Policies** (Kyverno, admission, Gatekeeper) and **Network Policies** (Kubernetes and Cilium).
 - **Migrations**: migration list plus a live-migrate action (preflight check first, then a confirmation); **Templates** browser (templates and instance types, read-only: creating a VM from a built-in template is not offered because the instantiate endpoint's addressing of empty-namespace templates is unclear); **VM Groups** with group start, stop and restart. The migrate and group-action requests are unit-tested only, not exercised against a live server.
 - **Network** (read-only): overview with Multus attachments and Kubernetes policies, services with ingress and MetalLB pools, Cilium status, encryption and endpoint identities, PacketWolf VM shield status, and DNS and IPAM.
+- **Consoles**: a text-mode serial console for a running machine (from the inspector), a pod terminal, "Graphical Console in Browser" (opens the web dashboard; there is no native VNC client), and read-only console access requests and JIT grants. Line-oriented only (no full-screen programs); console sessions are unit-tested only, not yet exercised against a live server.
 - A menu bar item with machines running and active alert count.
 - Live updates by polling (every 5 seconds in front, slower behind, with backoff when the server is unreachable).
 
-**Not yet**: consoles and certificate trust prompts. The server must present a certificate the Mac already trusts; the chart's default self-signed certificate is not accepted yet.
+**Not yet**: a native graphical (VNC) console and certificate trust prompts. The server must present a certificate the Mac already trusts; the chart's default self-signed certificate is not accepted yet.
 
 **Build it** (macOS 27, Xcode 27, [XcodeGen](https://github.com/yonaskolb/XcodeGen)):
 
