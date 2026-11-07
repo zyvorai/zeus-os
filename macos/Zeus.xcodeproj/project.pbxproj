@@ -16,7 +16,9 @@
 		282BC17DD56F53880D09D94A /* CostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DD97E91EEDC7DDC0E07413 /* CostView.swift */; };
 		372D19743FB97F5A6F0B4BE5 /* ZeusApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DFDC04C993555B2A0B20A3 /* ZeusApp.swift */; };
 		4D02F62B86B54D9E7492473E /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C76870188E00765CE45993 /* Loader.swift */; };
+		4F16BC25612093D20B93C5C5 /* VMDepthViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C95E9529F209D8F283BC5E8 /* VMDepthViews.swift */; };
 		82788CD1E7200D5FC1170BFC /* AlertsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83522E998C7D75D5A46F6D2E /* AlertsView.swift */; };
+		82FA26203311A7869991FE15 /* VMManage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87BFF36BADC4F106E4DA47D /* VMManage.swift */; };
 		855BB9EB41D6F638E70F2B1A /* OverviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33FFEECE04BFC832047B83D /* OverviewView.swift */; };
 		A618DB9CF8A52785AE216065 /* SnapshotsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9166DB9DC1756E703C7623 /* SnapshotsView.swift */; };
 		BBA66875BB9BACB6226F4E4F /* VMMetricsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB47515E905887300FA8175E /* VMMetricsView.swift */; };
@@ -32,6 +34,7 @@
 		29C76870188E00765CE45993 /* Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loader.swift; sourceTree = "<group>"; };
 		48197E092BA0BBDB3B1061F9 /* BackupsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupsView.swift; sourceTree = "<group>"; };
 		56DFDC04C993555B2A0B20A3 /* ZeusApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZeusApp.swift; sourceTree = "<group>"; };
+		6C95E9529F209D8F283BC5E8 /* VMDepthViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMDepthViews.swift; sourceTree = "<group>"; };
 		78B6506524528A9EA5B4E029 /* ComplianceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplianceView.swift; sourceTree = "<group>"; };
 		83522E998C7D75D5A46F6D2E /* AlertsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertsView.swift; sourceTree = "<group>"; };
 		8A9166DB9DC1756E703C7623 /* SnapshotsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotsView.swift; sourceTree = "<group>"; };
@@ -39,6 +42,7 @@
 		91B03716182838A6E90FDB2A /* MenuBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarView.swift; sourceTree = "<group>"; };
 		98DD97E91EEDC7DDC0E07413 /* CostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CostView.swift; sourceTree = "<group>"; };
 		A7B0774CDE942A26ED1503CD /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
+		B87BFF36BADC4F106E4DA47D /* VMManage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMManage.swift; sourceTree = "<group>"; };
 		BB47515E905887300FA8175E /* VMMetricsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMMetricsView.swift; sourceTree = "<group>"; };
 		D33FFEECE04BFC832047B83D /* OverviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewView.swift; sourceTree = "<group>"; };
 		D34D5AB7D8FA7292DC1E25A2 /* MachinesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MachinesView.swift; sourceTree = "<group>"; };
@@ -99,6 +103,7 @@
 				7A519FA9120CDA7ED6B197A9 /* Cost */,
 				33D5E1F126E1F642E29B18A3 /* Protect */,
 				65E026D05AE46EB07AB87A86 /* Secure */,
+				E1571D125A683A1ED5E68173 /* VM */,
 			);
 			path = ZeusApp;
 			sourceTree = "<group>";
@@ -126,6 +131,15 @@
 				98DD97E91EEDC7DDC0E07413 /* CostView.swift */,
 			);
 			path = Cost;
+			sourceTree = "<group>";
+		};
+		E1571D125A683A1ED5E68173 /* VM */ = {
+			isa = PBXGroup;
+			children = (
+				6C95E9529F209D8F283BC5E8 /* VMDepthViews.swift */,
+				B87BFF36BADC4F106E4DA47D /* VMManage.swift */,
+			);
+			path = VM;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -204,6 +218,8 @@
 				855BB9EB41D6F638E70F2B1A /* OverviewView.swift in Sources */,
 				0D74E984717DE48E731305A2 /* RootView.swift in Sources */,
 				A618DB9CF8A52785AE216065 /* SnapshotsView.swift in Sources */,
+				4F16BC25612093D20B93C5C5 /* VMDepthViews.swift in Sources */,
+				82FA26203311A7869991FE15 /* VMManage.swift in Sources */,
 				BBA66875BB9BACB6226F4E4F /* VMMetricsView.swift in Sources */,
 				372D19743FB97F5A6F0B4BE5 /* ZeusApp.swift in Sources */,
 			);
