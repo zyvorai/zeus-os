@@ -16,6 +16,7 @@
 		12BDB724294C1D224FEFCCF1 /* ZeusKit in Frameworks */ = {isa = PBXBuildFile; productRef = 496B17285E6FC4BCF75FD40B /* ZeusKit */; };
 		17732345D24E50975715E406 /* IdentityViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B1838FD0A4ACB1B90704A6 /* IdentityViews.swift */; };
 		192E75C81988EDE4759B40D0 /* StorageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8686FDDBC66E13BFC244BCFF /* StorageView.swift */; };
+		1970980CDE6ACDC63CFB58F3 /* BudgetEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F738BA510E804074C6FD0DF /* BudgetEditor.swift */; };
 		1C7EE932259374CB2FD7D34F /* AutomationViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E12D4A461C05709687D2AC0 /* AutomationViews.swift */; };
 		1D486022553CB3BB2610C633 /* RespondDestinations.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA11B7535A50B4ACC4715640 /* RespondDestinations.swift */; };
 		20CBD7697DFAA22DA0583477 /* ComplianceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B6506524528A9EA5B4E029 /* ComplianceView.swift */; };
@@ -100,6 +101,7 @@
 		66FD3E85B371A4F4AE2F3D50 /* AlertRuleEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertRuleEditor.swift; sourceTree = "<group>"; };
 		6A33914BFBFFA0E74B616F15 /* SecurityDestinations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityDestinations.swift; sourceTree = "<group>"; };
 		6C95E9529F209D8F283BC5E8 /* VMDepthViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMDepthViews.swift; sourceTree = "<group>"; };
+		6F738BA510E804074C6FD0DF /* BudgetEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetEditor.swift; sourceTree = "<group>"; };
 		77FF22F0D0EAABBCC16BFD97 /* TopologyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopologyView.swift; sourceTree = "<group>"; };
 		784303EB6AC51002E56245F7 /* ObserveDestinations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObserveDestinations.swift; sourceTree = "<group>"; };
 		78B6506524528A9EA5B4E029 /* ComplianceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplianceView.swift; sourceTree = "<group>"; };
@@ -291,6 +293,7 @@
 			isa = PBXGroup;
 			children = (
 				66FD3E85B371A4F4AE2F3D50 /* AlertRuleEditor.swift */,
+				6F738BA510E804074C6FD0DF /* BudgetEditor.swift */,
 				58D70D0244FD331139262AFE /* ChannelEditor.swift */,
 				AA11B7535A50B4ACC4715640 /* RespondDestinations.swift */,
 				3D12ADA008102B43711B3BEF /* RespondViews.swift */,
@@ -432,6 +435,7 @@
 				B484871D308C4971A14C7CD0 /* AutomationDestinations.swift in Sources */,
 				1C7EE932259374CB2FD7D34F /* AutomationViews.swift in Sources */,
 				0F5C895A677CF6CE4F04B1F2 /* BackupsView.swift in Sources */,
+				1970980CDE6ACDC63CFB58F3 /* BudgetEditor.swift in Sources */,
 				0F71B42C36A1E999987B385D /* CapacityDestinations.swift in Sources */,
 				49C9C915232C873E0EA19496 /* CapacityView.swift in Sources */,
 				831D08F881E466CBE80D4151 /* ChannelEditor.swift in Sources */,
