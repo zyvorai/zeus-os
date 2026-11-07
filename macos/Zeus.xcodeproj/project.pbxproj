@@ -23,13 +23,18 @@
 		4D02F62B86B54D9E7492473E /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C76870188E00765CE45993 /* Loader.swift */; };
 		4F16BC25612093D20B93C5C5 /* VMDepthViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C95E9529F209D8F283BC5E8 /* VMDepthViews.swift */; };
 		5437CDD7A1C837EA546D8172 /* FinOpsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A2830F528CC837EE6CB8FC /* FinOpsView.swift */; };
+		668A8E5A033291A0DB57360C /* LogsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D84D8A3A6F0A27125533EC /* LogsView.swift */; };
+		6817A0377297A97F4EDA86A5 /* APMView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2746BED706388B8E3321DF36 /* APMView.swift */; };
 		693A87E032F662C86E340C3C /* AccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D1FAF193358533E0DCE90A /* AccessView.swift */; };
+		77ECC94EFB18C5A5D606AA19 /* EventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAD65FD858C3DC3356E32BD /* EventsView.swift */; };
 		82788CD1E7200D5FC1170BFC /* AlertsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83522E998C7D75D5A46F6D2E /* AlertsView.swift */; };
 		82FA26203311A7869991FE15 /* VMManage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87BFF36BADC4F106E4DA47D /* VMManage.swift */; };
 		855BB9EB41D6F638E70F2B1A /* OverviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33FFEECE04BFC832047B83D /* OverviewView.swift */; };
 		8CB9F0AD9E19A6B73742BD1B /* ComplianceDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2516914BB4602FBC9A74FB2 /* ComplianceDetailView.swift */; };
+		8FCFA8D9DDA238FA7ADC2FBA /* AICenterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE273A4B15847AA75C98750 /* AICenterView.swift */; };
 		A618DB9CF8A52785AE216065 /* SnapshotsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9166DB9DC1756E703C7623 /* SnapshotsView.swift */; };
 		B4A582FBE51D4EC9769B5549 /* PolicyViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560361648E7180B3808E2B10 /* PolicyViews.swift */; };
+		B5B8B46E130ED9E39DD39A50 /* TopologyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FF22F0D0EAABBCC16BFD97 /* TopologyView.swift */; };
 		BBA66875BB9BACB6226F4E4F /* VMMetricsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB47515E905887300FA8175E /* VMMetricsView.swift */; };
 		C066069432E3A4D47D4D3F8D /* OptimizationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A80BD38C7ACE39A41639C2 /* OptimizationView.swift */; };
 		C11AB6707E17CC9AD863C0ED /* MenuBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B03716182838A6E90FDB2A /* MenuBarView.swift */; };
@@ -37,15 +42,20 @@
 		D99D3ED89099DD886AD43ECB /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B0774CDE942A26ED1503CD /* AppModel.swift */; };
 		E106512EA684FD07AA1692A6 /* RespondViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D12ADA008102B43711B3BEF /* RespondViews.swift */; };
 		EA21C9F077EFF2E64519B72D /* Destinations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03917729189B3A420C850010 /* Destinations.swift */; };
+		F3B90961C2FDDDB3B6F1BB54 /* ObserveDestinations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784303EB6AC51002E56245F7 /* ObserveDestinations.swift */; };
 		FC0428FD638A3E8E95F45FBB /* MetricChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9158914EC3539A4F3C742EC8 /* MetricChart.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		03917729189B3A420C850010 /* Destinations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Destinations.swift; sourceTree = "<group>"; };
 		0408D024D46186E7ABFE8320 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		0AE273A4B15847AA75C98750 /* AICenterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AICenterView.swift; sourceTree = "<group>"; };
 		10A2830F528CC837EE6CB8FC /* FinOpsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinOpsView.swift; sourceTree = "<group>"; };
 		1C13F1B4AC6F167B69FCCC9B /* Zeus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zeus.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1EAD65FD858C3DC3356E32BD /* EventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsView.swift; sourceTree = "<group>"; };
 		2452BFC991DBE62E68949461 /* macos */ = {isa = PBXFileReference; lastKnownFileType = folder; name = macos; path = .; sourceTree = SOURCE_ROOT; };
+		2746BED706388B8E3321DF36 /* APMView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APMView.swift; sourceTree = "<group>"; };
+		28D84D8A3A6F0A27125533EC /* LogsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogsView.swift; sourceTree = "<group>"; };
 		29C76870188E00765CE45993 /* Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loader.swift; sourceTree = "<group>"; };
 		3D12ADA008102B43711B3BEF /* RespondViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RespondViews.swift; sourceTree = "<group>"; };
 		3F2ABAE080E33AD1A8D443E0 /* ImageScanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageScanView.swift; sourceTree = "<group>"; };
@@ -55,6 +65,8 @@
 		5E64F20F98B256363EFEB60E /* CapacityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapacityView.swift; sourceTree = "<group>"; };
 		6A33914BFBFFA0E74B616F15 /* SecurityDestinations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityDestinations.swift; sourceTree = "<group>"; };
 		6C95E9529F209D8F283BC5E8 /* VMDepthViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMDepthViews.swift; sourceTree = "<group>"; };
+		77FF22F0D0EAABBCC16BFD97 /* TopologyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopologyView.swift; sourceTree = "<group>"; };
+		784303EB6AC51002E56245F7 /* ObserveDestinations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObserveDestinations.swift; sourceTree = "<group>"; };
 		78B6506524528A9EA5B4E029 /* ComplianceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplianceView.swift; sourceTree = "<group>"; };
 		83522E998C7D75D5A46F6D2E /* AlertsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertsView.swift; sourceTree = "<group>"; };
 		8686FDDBC66E13BFC244BCFF /* StorageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageView.swift; sourceTree = "<group>"; };
@@ -137,6 +149,7 @@
 				56DFDC04C993555B2A0B20A3 /* ZeusApp.swift */,
 				AA6050BB2B6A12BA3BC78C14 /* Capacity */,
 				7A519FA9120CDA7ED6B197A9 /* Cost */,
+				459F1857BAA5B0D1DDF1A325 /* Observe */,
 				33D5E1F126E1F642E29B18A3 /* Protect */,
 				983E786AEF822229139F7550 /* Respond */,
 				65E026D05AE46EB07AB87A86 /* Secure */,
@@ -152,6 +165,19 @@
 				1C13F1B4AC6F167B69FCCC9B /* Zeus.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		459F1857BAA5B0D1DDF1A325 /* Observe */ = {
+			isa = PBXGroup;
+			children = (
+				0AE273A4B15847AA75C98750 /* AICenterView.swift */,
+				2746BED706388B8E3321DF36 /* APMView.swift */,
+				1EAD65FD858C3DC3356E32BD /* EventsView.swift */,
+				28D84D8A3A6F0A27125533EC /* LogsView.swift */,
+				784303EB6AC51002E56245F7 /* ObserveDestinations.swift */,
+				77FF22F0D0EAABBCC16BFD97 /* TopologyView.swift */,
+			);
+			path = Observe;
 			sourceTree = "<group>";
 		};
 		65E026D05AE46EB07AB87A86 /* Secure */ = {
@@ -268,6 +294,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8FCFA8D9DDA238FA7ADC2FBA /* AICenterView.swift in Sources */,
+				6817A0377297A97F4EDA86A5 /* APMView.swift in Sources */,
 				693A87E032F662C86E340C3C /* AccessView.swift in Sources */,
 				82788CD1E7200D5FC1170BFC /* AlertsView.swift in Sources */,
 				D99D3ED89099DD886AD43ECB /* AppModel.swift in Sources */,
@@ -279,12 +307,15 @@
 				20CBD7697DFAA22DA0583477 /* ComplianceView.swift in Sources */,
 				282BC17DD56F53880D09D94A /* CostView.swift in Sources */,
 				EA21C9F077EFF2E64519B72D /* Destinations.swift in Sources */,
+				77ECC94EFB18C5A5D606AA19 /* EventsView.swift in Sources */,
 				5437CDD7A1C837EA546D8172 /* FinOpsView.swift in Sources */,
 				D89848AA9095236EEE518C00 /* ImageScanView.swift in Sources */,
 				4D02F62B86B54D9E7492473E /* Loader.swift in Sources */,
+				668A8E5A033291A0DB57360C /* LogsView.swift in Sources */,
 				03FC1FB1025D6A17B47516BF /* MachinesView.swift in Sources */,
 				C11AB6707E17CC9AD863C0ED /* MenuBarView.swift in Sources */,
 				FC0428FD638A3E8E95F45FBB /* MetricChart.swift in Sources */,
+				F3B90961C2FDDDB3B6F1BB54 /* ObserveDestinations.swift in Sources */,
 				C066069432E3A4D47D4D3F8D /* OptimizationView.swift in Sources */,
 				855BB9EB41D6F638E70F2B1A /* OverviewView.swift in Sources */,
 				B4A582FBE51D4EC9769B5549 /* PolicyViews.swift in Sources */,
@@ -294,6 +325,7 @@
 				3438FA78AC656654FB8DA5C5 /* SecurityDestinations.swift in Sources */,
 				A618DB9CF8A52785AE216065 /* SnapshotsView.swift in Sources */,
 				192E75C81988EDE4759B40D0 /* StorageView.swift in Sources */,
+				B5B8B46E130ED9E39DD39A50 /* TopologyView.swift in Sources */,
 				4F16BC25612093D20B93C5C5 /* VMDepthViews.swift in Sources */,
 				82FA26203311A7869991FE15 /* VMManage.swift in Sources */,
 				BBA66875BB9BACB6226F4E4F /* VMMetricsView.swift in Sources */,
