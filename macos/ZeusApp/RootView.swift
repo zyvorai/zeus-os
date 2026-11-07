@@ -65,7 +65,7 @@ struct LoginView: View {
 }
 
 enum SidebarGroup: String, CaseIterable, Identifiable {
-    case run = "Run", observe = "Observe", protect = "Protect", cost = "Cost", secure = "Secure"
+    case run = "Run", observe = "Observe", protect = "Protect", respond = "Respond", cost = "Cost", secure = "Secure"
     var id: String { rawValue }
 }
 
@@ -73,12 +73,15 @@ enum Section_: String, CaseIterable, Identifiable {
     case overview = "Overview", machines = "Machines", alerts = "Alerts"
     case snapshots = "Snapshots", backups = "Backups", cost = "Cost"
     case audit = "Audit", compliance = "Compliance"
+    case rules = "Alert Rules", channels = "Channels", notifications = "Notifications"
+    case slos = "SLOs", incidents = "Incidents", tenancy = "Tenancy"
     var id: String { rawValue }
     var group: SidebarGroup {
-        switch self { case .overview, .machines: .run; case .alerts: .observe; case .snapshots, .backups: .protect; case .cost: .cost; case .audit, .compliance: .secure }
+        switch self { case .overview, .machines: .run; case .alerts: .observe; case .snapshots, .backups: .protect; case .cost: .cost; case .audit, .compliance: .secure
+        case .rules, .channels, .notifications, .slos, .incidents, .tenancy: .respond }
     }
     var symbol: String {
-        switch self { case .overview: "gauge.with.dots.needle.50percent"; case .machines: "server.rack"; case .alerts: "bell"; case .snapshots: "camera.on.rectangle"; case .backups: "externaldrive.badge.timemachine"; case .cost: "dollarsign.circle"; case .audit: "list.bullet.clipboard"; case .compliance: "checkmark.shield" }
+        switch self { case .overview: "gauge.with.dots.needle.50percent"; case .machines: "server.rack"; case .alerts: "bell"; case .snapshots: "camera.on.rectangle"; case .backups: "externaldrive.badge.timemachine"; case .cost: "dollarsign.circle"; case .audit: "list.bullet.clipboard"; case .compliance: "checkmark.shield"; case .rules: "bell.badge"; case .channels: "paperplane"; case .notifications: "tray"; case .slos: "target"; case .incidents: "exclamationmark.triangle"; case .tenancy: "building.2" }
     }
 }
 
@@ -114,6 +117,12 @@ struct MainView: View {
             case .compliance: if let c = model.client { ComplianceView(client: c).id(ObjectIdentifier(c)) }
             case .cost: if let c = model.client { CostView(client: c).id(ObjectIdentifier(c)) }
             case .backups: if let c = model.client { BackupsView(client: c).id(ObjectIdentifier(c)) }
+            case .rules: if let c = model.client { RulesView(client: c).id(ObjectIdentifier(c)) }
+            case .channels: if let c = model.client { ChannelsView(client: c).id(ObjectIdentifier(c)) }
+            case .notifications: if let c = model.client { NotificationHistoryView(client: c).id(ObjectIdentifier(c)) }
+            case .slos: if let c = model.client { SLOView(client: c).id(ObjectIdentifier(c)) }
+            case .incidents: if let c = model.client { IncidentsView(client: c).id(ObjectIdentifier(c)) }
+            case .tenancy: if let c = model.client { TenancyView(client: c).id(ObjectIdentifier(c)) }
             }
         }
         .toolbar {
