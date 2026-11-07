@@ -15,11 +15,18 @@ struct BudgetRow: Identifiable {
     var limit: Double? { raw["monthly_limit"]?.number }
 }
 
+struct BudgetEditTarget: Identifiable {
+    let id = UUID()
+    let row: BudgetRow?
+    let channels: [NotificationChannel]
+}
+
 struct FinOpsView: View {
     @Environment(AppModel.self) private var model
     let client: ZeusClient
     @State private var loader: Loader<FinOpsData>
     @State private var deleting: BudgetRow?
+    @State private var budgetEditor: BudgetEditTarget?
     @State private var editingPricing = false
     @State private var failure: String?
 
@@ -53,6 +60,15 @@ struct FinOpsView: View {
         .sheet(isPresented: $editingPricing) {
             if let p = loader.value?.pricing?.pricing {
                 PricingEditSheet(current: p) { update in await save(update) }
+            }
+        }
+        .sheet(item: $budgetEditor) { t in
+            BudgetEditor(existing: t.row, currency: loader.value?.budgets.currency ?? "USD", channels: t.channels) { input in
+                do {
+                    if let r = t.row { try await client.updateBudget(id: r.id, input) } else { try await client.createBudget(input) }
+                } catch { return describe(error, "save the budget") }
+                await loader.reload()
+                return nil
             }
         }
         .confirmationDialog(deleting.map { "Delete budget \($0.name)?" } ?? "",
@@ -95,7 +111,11 @@ struct FinOpsView: View {
     private func budgets(_ b: BudgetReport) -> some View {
         let rows = b.budgets.map(BudgetRow.init)
         return VStack(alignment: .leading) {
-            Text("Budgets for \(b.period ?? "this month")").font(.headline)
+            HStack {
+                Text("Budgets for \(b.period ?? "this month")").font(.headline)
+                Spacer()
+                if model.canWrite { Button("New Budget…", systemImage: "plus") { openEditor(nil) } }
+            }
             if rows.isEmpty {
                 Text("No budgets are set.").foregroundStyle(.secondary)
             } else {
@@ -103,14 +123,23 @@ struct FinOpsView: View {
                     TableColumn("Name") { Text($0.name) }
                     TableColumn("Monthly limit") { Text($0.limit.map { $0.formatted(.currency(code: b.currency ?? "USD")) } ?? "—").monospacedDigit() }
                     TableColumn("") { r in
-                        if model.canWrite { Button("Delete…", role: .destructive) { deleting = r }.buttonStyle(.borderless) }
+                        if model.canWrite {
+                            HStack {
+                                Button("Edit…") { openEditor(r) }.buttonStyle(.borderless)
+                                Button("Delete…", role: .destructive) { deleting = r }.buttonStyle(.borderless)
+                            }
+                        }
                     }
                 }
                 .frame(height: 40 + CGFloat(rows.count) * 28)
             }
-            if model.canWrite {
-                Text("Creating budgets isn't available in the app yet.").font(.caption).foregroundStyle(.secondary)
-            }
+        }
+    }
+
+    private func openEditor(_ row: BudgetRow?) {
+        Task {
+            let channels = (try? await client.notificationChannels()) ?? []
+            budgetEditor = BudgetEditTarget(row: row, channels: channels)
         }
     }
 

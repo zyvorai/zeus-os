@@ -167,7 +167,10 @@ struct WorkflowsView: View {
 // MARK: Helm
 
 struct HelmView: View {
+    @Environment(AppModel.self) private var model
     let client: ZeusClient
+    @State private var rollbackTarget: HelmRevision?
+    @State private var rollbackFailure: String?
     @State private var loader: Loader<[HelmRelease]>
     @State private var selection: HelmRelease.ID?
     @State private var history: [HelmRevision] = []
@@ -220,9 +223,32 @@ struct HelmView: View {
                 TableColumn("App version") { dash($0.appVersion) }
                 TableColumn("Updated") { autoWhen($0.updated) }
                 TableColumn("Description") { dash($0.description) }
+                TableColumn("") { rev in
+                    if model.canWrite, rev.revision != currentRevision(releases) {
+                        Button("Roll back…") { rollbackTarget = rev }.buttonStyle(.borderless)
+                    }
+                }.width(90)
             }
             .frame(minHeight: 120)
+            .safeAreaInset(edge: .bottom) { if let rollbackFailure { InlineError(message: rollbackFailure) { self.rollbackFailure = nil } } }
+            .confirmationDialog(rollbackTarget.map { "Roll back to revision \($0.revision)?" } ?? "",
+                                isPresented: Binding(get: { rollbackTarget != nil }, set: { if !$0 { rollbackTarget = nil } }),
+                                titleVisibility: .visible) {
+                Button("Roll Back", role: .destructive) { if let t = rollbackTarget { Task { await rollback(releases, t) } } }
+            } message: { Text("The release is redeployed with that revision's chart and values.") }
         }
+    }
+
+    private func currentRevision(_ releases: [HelmRelease]) -> Int? {
+        releases.first(where: { $0.id == selection })?.revision
+    }
+
+    private func rollback(_ releases: [HelmRelease], _ rev: HelmRevision) async {
+        guard let r = releases.first(where: { $0.id == selection }) else { return }
+        do { try await client.helmRollback(r, toRevision: rev.revision); rollbackFailure = nil }
+        catch { rollbackFailure = describe(error, "roll back the release") }
+        await loader.reload()
+        await loadHistory()
     }
 
     private func loadHistory() async {
