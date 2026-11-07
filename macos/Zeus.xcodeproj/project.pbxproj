@@ -16,15 +16,20 @@
 		1D486022553CB3BB2610C633 /* RespondDestinations.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA11B7535A50B4ACC4715640 /* RespondDestinations.swift */; };
 		20CBD7697DFAA22DA0583477 /* ComplianceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B6506524528A9EA5B4E029 /* ComplianceView.swift */; };
 		282BC17DD56F53880D09D94A /* CostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DD97E91EEDC7DDC0E07413 /* CostView.swift */; };
+		3438FA78AC656654FB8DA5C5 /* SecurityDestinations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A33914BFBFFA0E74B616F15 /* SecurityDestinations.swift */; };
 		372D19743FB97F5A6F0B4BE5 /* ZeusApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DFDC04C993555B2A0B20A3 /* ZeusApp.swift */; };
 		4D02F62B86B54D9E7492473E /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C76870188E00765CE45993 /* Loader.swift */; };
 		4F16BC25612093D20B93C5C5 /* VMDepthViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C95E9529F209D8F283BC5E8 /* VMDepthViews.swift */; };
+		693A87E032F662C86E340C3C /* AccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D1FAF193358533E0DCE90A /* AccessView.swift */; };
 		82788CD1E7200D5FC1170BFC /* AlertsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83522E998C7D75D5A46F6D2E /* AlertsView.swift */; };
 		82FA26203311A7869991FE15 /* VMManage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87BFF36BADC4F106E4DA47D /* VMManage.swift */; };
 		855BB9EB41D6F638E70F2B1A /* OverviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33FFEECE04BFC832047B83D /* OverviewView.swift */; };
+		8CB9F0AD9E19A6B73742BD1B /* ComplianceDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2516914BB4602FBC9A74FB2 /* ComplianceDetailView.swift */; };
 		A618DB9CF8A52785AE216065 /* SnapshotsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9166DB9DC1756E703C7623 /* SnapshotsView.swift */; };
+		B4A582FBE51D4EC9769B5549 /* PolicyViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560361648E7180B3808E2B10 /* PolicyViews.swift */; };
 		BBA66875BB9BACB6226F4E4F /* VMMetricsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB47515E905887300FA8175E /* VMMetricsView.swift */; };
 		C11AB6707E17CC9AD863C0ED /* MenuBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B03716182838A6E90FDB2A /* MenuBarView.swift */; };
+		D89848AA9095236EEE518C00 /* ImageScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2ABAE080E33AD1A8D443E0 /* ImageScanView.swift */; };
 		D99D3ED89099DD886AD43ECB /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B0774CDE942A26ED1503CD /* AppModel.swift */; };
 		E106512EA684FD07AA1692A6 /* RespondViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D12ADA008102B43711B3BEF /* RespondViews.swift */; };
 		EA21C9F077EFF2E64519B72D /* Destinations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03917729189B3A420C850010 /* Destinations.swift */; };
@@ -38,8 +43,11 @@
 		2452BFC991DBE62E68949461 /* macos */ = {isa = PBXFileReference; lastKnownFileType = folder; name = macos; path = .; sourceTree = SOURCE_ROOT; };
 		29C76870188E00765CE45993 /* Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loader.swift; sourceTree = "<group>"; };
 		3D12ADA008102B43711B3BEF /* RespondViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RespondViews.swift; sourceTree = "<group>"; };
+		3F2ABAE080E33AD1A8D443E0 /* ImageScanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageScanView.swift; sourceTree = "<group>"; };
 		48197E092BA0BBDB3B1061F9 /* BackupsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupsView.swift; sourceTree = "<group>"; };
+		560361648E7180B3808E2B10 /* PolicyViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolicyViews.swift; sourceTree = "<group>"; };
 		56DFDC04C993555B2A0B20A3 /* ZeusApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZeusApp.swift; sourceTree = "<group>"; };
+		6A33914BFBFFA0E74B616F15 /* SecurityDestinations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityDestinations.swift; sourceTree = "<group>"; };
 		6C95E9529F209D8F283BC5E8 /* VMDepthViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMDepthViews.swift; sourceTree = "<group>"; };
 		78B6506524528A9EA5B4E029 /* ComplianceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplianceView.swift; sourceTree = "<group>"; };
 		83522E998C7D75D5A46F6D2E /* AlertsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertsView.swift; sourceTree = "<group>"; };
@@ -48,6 +56,8 @@
 		9158914EC3539A4F3C742EC8 /* MetricChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricChart.swift; sourceTree = "<group>"; };
 		91B03716182838A6E90FDB2A /* MenuBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarView.swift; sourceTree = "<group>"; };
 		98DD97E91EEDC7DDC0E07413 /* CostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CostView.swift; sourceTree = "<group>"; };
+		A2516914BB4602FBC9A74FB2 /* ComplianceDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplianceDetailView.swift; sourceTree = "<group>"; };
+		A2D1FAF193358533E0DCE90A /* AccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessView.swift; sourceTree = "<group>"; };
 		A7B0774CDE942A26ED1503CD /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
 		AA11B7535A50B4ACC4715640 /* RespondDestinations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RespondDestinations.swift; sourceTree = "<group>"; };
 		B87BFF36BADC4F106E4DA47D /* VMManage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMManage.swift; sourceTree = "<group>"; };
@@ -138,8 +148,13 @@
 		65E026D05AE46EB07AB87A86 /* Secure */ = {
 			isa = PBXGroup;
 			children = (
+				A2D1FAF193358533E0DCE90A /* AccessView.swift */,
 				F06256A79054150136F54EF5 /* AuditView.swift */,
+				A2516914BB4602FBC9A74FB2 /* ComplianceDetailView.swift */,
 				78B6506524528A9EA5B4E029 /* ComplianceView.swift */,
+				3F2ABAE080E33AD1A8D443E0 /* ImageScanView.swift */,
+				560361648E7180B3808E2B10 /* PolicyViews.swift */,
+				6A33914BFBFFA0E74B616F15 /* SecurityDestinations.swift */,
 			);
 			path = Secure;
 			sourceTree = "<group>";
@@ -233,21 +248,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				693A87E032F662C86E340C3C /* AccessView.swift in Sources */,
 				82788CD1E7200D5FC1170BFC /* AlertsView.swift in Sources */,
 				D99D3ED89099DD886AD43ECB /* AppModel.swift in Sources */,
 				0F8BA7AFBA1DB788C1C86C33 /* AuditView.swift in Sources */,
 				0F5C895A677CF6CE4F04B1F2 /* BackupsView.swift in Sources */,
+				8CB9F0AD9E19A6B73742BD1B /* ComplianceDetailView.swift in Sources */,
 				20CBD7697DFAA22DA0583477 /* ComplianceView.swift in Sources */,
 				282BC17DD56F53880D09D94A /* CostView.swift in Sources */,
 				EA21C9F077EFF2E64519B72D /* Destinations.swift in Sources */,
+				D89848AA9095236EEE518C00 /* ImageScanView.swift in Sources */,
 				4D02F62B86B54D9E7492473E /* Loader.swift in Sources */,
 				03FC1FB1025D6A17B47516BF /* MachinesView.swift in Sources */,
 				C11AB6707E17CC9AD863C0ED /* MenuBarView.swift in Sources */,
 				FC0428FD638A3E8E95F45FBB /* MetricChart.swift in Sources */,
 				855BB9EB41D6F638E70F2B1A /* OverviewView.swift in Sources */,
+				B4A582FBE51D4EC9769B5549 /* PolicyViews.swift in Sources */,
 				1D486022553CB3BB2610C633 /* RespondDestinations.swift in Sources */,
 				E106512EA684FD07AA1692A6 /* RespondViews.swift in Sources */,
 				0D74E984717DE48E731305A2 /* RootView.swift in Sources */,
+				3438FA78AC656654FB8DA5C5 /* SecurityDestinations.swift in Sources */,
 				A618DB9CF8A52785AE216065 /* SnapshotsView.swift in Sources */,
 				192E75C81988EDE4759B40D0 /* StorageView.swift in Sources */,
 				4F16BC25612093D20B93C5C5 /* VMDepthViews.swift in Sources */,
