@@ -87,6 +87,16 @@ extension ZeusClient {
         return ConsoleSession(connection: URLSessionWebSocketConnection(task: webSocketSession.webSocketTask(with: req)))
     }
 
+    /// Graphical console: creates a `vnc` session, then connects `/ws/vnc/{ns}/{name}?console_session=`.
+    /// The dashboard (noVNC) sends no subprotocol on this route, only the session token, so none is offered.
+    /// Never connected to a real VM; see `RFBMachine`.
+    public func openGraphicalConsole(of vm: VM) async throws -> RFBSession {
+        let token = try await createConsoleSession(namespace: vm.namespace, name: vm.name, mode: "vnc")
+        var req = try webSocketRequest(path: ["vnc", vm.namespace, vm.name], query: Self.serialRequestQuery(token: token))
+        req.setValue(nil, forHTTPHeaderField: "Sec-WebSocket-Protocol")
+        return RFBSession(connection: URLSessionWebSocketConnection(task: webSocketSession.webSocketTask(with: req)))
+    }
+
     /// Cluster pod terminal: `/ws/terminal?namespace=&pod=&container=`.
     public func openPodTerminal(namespace: String, pod: String, container: String?) throws -> ConsoleSession {
         let req = try webSocketRequest(path: ["terminal"], query: Self.terminalQuery(namespace: namespace, pod: pod, container: container))
@@ -146,11 +156,17 @@ public protocol WebSocketConnection: Sendable {
     func close()
 }
 
-final class URLSessionWebSocketConnection: WebSocketConnection, @unchecked Sendable {
+/// A connection that can also send binary frames (RFB is a binary protocol).
+public protocol BinaryWebSocketConnection: WebSocketConnection {
+    func send(binary: Data) async throws
+}
+
+final class URLSessionWebSocketConnection: BinaryWebSocketConnection, @unchecked Sendable {
     private let task: URLSessionWebSocketTask
     init(task: URLSessionWebSocketTask) { self.task = task }
     func resume() { task.resume() }
     func send(_ text: String) async throws { try await task.send(.string(text)) }
+    func send(binary: Data) async throws { try await task.send(.data(binary)) }
     func receive() async throws -> WebSocketFrame {
         switch try await task.receive() {
         case .string(let s): .text(s)
