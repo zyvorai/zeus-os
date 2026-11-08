@@ -27,13 +27,15 @@ final class TerminalModel {
                 self.session = s
                 self.state = .connected
                 for await event in s.events {
+                    guard !Task.isCancelled else { return }   // a newer connect() owns the state now
                     switch event {
                     case .output(let d): self.buffer.feed(d)
                     case .closed(let why): self.state = .closed(why)
                     }
                 }
-                if self.state == .connected { self.state = .closed(nil) }
+                if !Task.isCancelled, self.state == .connected { self.state = .closed(nil) }
             } catch is CancellationError {
+            } catch where Task.isCancelled {
             } catch ZeusError.server(let status, let message) where status == 403 {
                 self?.state = .closed(message.isEmpty ? "Your role or console policy doesn't allow this session." : message)
             } catch {
