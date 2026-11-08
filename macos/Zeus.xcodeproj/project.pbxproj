@@ -80,6 +80,7 @@
 		EA21C9F077EFF2E64519B72D /* Destinations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03917729189B3A420C850010 /* Destinations.swift */; };
 		F3B90961C2FDDDB3B6F1BB54 /* ObserveDestinations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784303EB6AC51002E56245F7 /* ObserveDestinations.swift */; };
 		F9C23AF0263FCF6F6381DF0C /* DetailDestinations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94360FF913FD4BCFB98BFEA9 /* DetailDestinations.swift */; };
+		FB56119533089CBB645EDB44 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 870D9022D3212FF9629E219C /* Assets.xcassets */; };
 		FC0428FD638A3E8E95F45FBB /* MetricChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9158914EC3539A4F3C742EC8 /* MetricChart.swift */; };
 /* End PBXBuildFile section */
 
@@ -128,6 +129,7 @@
 		7E8EABAC84732794C454EB56 /* ConsoleDestinations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsoleDestinations.swift; sourceTree = "<group>"; };
 		83522E998C7D75D5A46F6D2E /* AlertsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertsView.swift; sourceTree = "<group>"; };
 		8686FDDBC66E13BFC244BCFF /* StorageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageView.swift; sourceTree = "<group>"; };
+		870D9022D3212FF9629E219C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8A9166DB9DC1756E703C7623 /* SnapshotsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotsView.swift; sourceTree = "<group>"; };
 		8AF808919BF64769F49911DB /* DetailViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViews.swift; sourceTree = "<group>"; };
 		9158914EC3539A4F3C742EC8 /* MetricChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricChart.swift; sourceTree = "<group>"; };
@@ -242,6 +244,7 @@
 			children = (
 				83522E998C7D75D5A46F6D2E /* AlertsView.swift */,
 				A7B0774CDE942A26ED1503CD /* AppModel.swift */,
+				870D9022D3212FF9629E219C /* Assets.xcassets */,
 				03917729189B3A420C850010 /* Destinations.swift */,
 				25E1C969DB50D5D7736093C2 /* JSONTable.swift */,
 				29C76870188E00765CE45993 /* Loader.swift */,
@@ -446,6 +449,7 @@
 			buildConfigurationList = F1F4FE5BB48A9EA524F33892 /* Build configuration list for PBXNativeTarget "Zeus" */;
 			buildPhases = (
 				E89A79603D2E3570A3DAB27D /* Sources */,
+				453C1C8D2A160AFCE2DB2279 /* Resources */,
 				D2B89632F54A465E78921B95 /* Frameworks */,
 			);
 			buildRules = (
@@ -495,6 +499,17 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		453C1C8D2A160AFCE2DB2279 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FB56119533089CBB645EDB44 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		E89A79603D2E3570A3DAB27D /* Sources */ = {
@@ -587,6 +602,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
@@ -597,6 +613,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = dev.zyvor.zeus;
 				PRODUCT_NAME = Zeus;
 				SDKROOT = macosx;
@@ -730,6 +747,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
@@ -740,6 +758,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = dev.zyvor.zeus;
 				PRODUCT_NAME = Zeus;
 				SDKROOT = macosx;
