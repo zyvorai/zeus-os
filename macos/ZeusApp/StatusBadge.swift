@@ -19,6 +19,16 @@ struct StatusBadge: View {
         return .unknown
     }
 
+    /// "ErrorUnschedulable" reads better as "Error Unschedulable": split a lowercase-to-uppercase boundary.
+    static func display(_ status: String) -> String {
+        var out = "", previous: Character?
+        for c in status {
+            if let p = previous, p.isLowercase, c.isUppercase { out.append(" ") }
+            out.append(c); previous = c
+        }
+        return out
+    }
+
     private var symbol: String {
         switch Self.kind(of: status) {
         case .good: "checkmark.circle.fill"
@@ -43,7 +53,7 @@ struct StatusBadge: View {
     var body: some View {
         // Icon carries the tint; the text stays in primary ink so it keeps full contrast in both appearances.
         Label {
-            Text(status)
+            Text(Self.display(status))
         } icon: {
             Image(systemName: symbol).foregroundStyle(tint).frame(width: 16)
         }

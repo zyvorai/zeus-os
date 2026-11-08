@@ -92,3 +92,13 @@ struct SnapshotTests {
         try shoot("jsontable", size: CGSize(width: 900, height: 420)) { JSONTable(rows: Fixtures.jsonRows) }
     }
 }
+
+@MainActor
+struct StatusBadgeTests {
+    @Test func splitsRunTogetherWords() {
+        #expect(StatusBadge.display("ErrorUnschedulable") == "Error Unschedulable")
+        #expect(StatusBadge.display("NotReady") == "Not Ready")
+        #expect(StatusBadge.display("Running") == "Running")
+        #expect(StatusBadge.display("CPU") == "CPU")
+    }
+}
