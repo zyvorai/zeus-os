@@ -1,0 +1,9 @@
+Copyright (c) 2026 ZyvorAI Labs Private Limited. All rights reserved.
+
+Zeus OS is distributed under the Zeus OS EULA. This repository contains
+binaries, images, a Helm chart, documentation and the Mac app in macos/. No
+open-source license is granted to any of it, and the EULA text will be added
+before the first release. Until then, no rights are granted beyond viewing the
+repository and evaluating published builds.
+
+Commercial licensing and permissions: sales@zyvor.dev
