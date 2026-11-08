@@ -34,20 +34,20 @@ struct AccessView: View {
                         TableColumn("Name", value: \.name)
                         TableColumn("Scope") { Text($0.isClusterRole ? "Cluster" : ($0.namespace ?? "—")) }
                         TableColumn("Rules") { Text($0.rulesCount.map(String.init) ?? "—") }.width(60)
-                    }
+                    }.emptyState(data.roles.filter { match([$0.name, $0.namespace]) }.count, searching: !search.isEmpty, none: "No roles")
                 case .bindings:
                     Table(data.bindings.filter { match([$0.name, $0.roleName, $0.namespace]) }) {
                         TableColumn("Name", value: \.name)
                         TableColumn("Scope") { Text($0.isClusterBinding ? "Cluster" : ($0.namespace ?? "—")) }
                         TableColumn("Role") { Text([$0.roleKind, $0.roleName].compactMap { $0 }.joined(separator: " ")) }
                         TableColumn("Subjects") { Text($0.subjectsCount.map(String.init) ?? "—") }.width(70)
-                    }
+                    }.emptyState(data.bindings.filter { match([$0.name, $0.roleName, $0.namespace]) }.count, searching: !search.isEmpty, none: "No bindings")
                 case .accounts:
                     Table(data.accounts.filter { match([$0.name, $0.namespace]) }) {
                         TableColumn("Name", value: \.name)
                         TableColumn("Namespace", value: \.namespace)
                         TableColumn("Secrets") { Text($0.secretsCount.map(String.init) ?? "—") }.width(70)
-                    }
+                    }.emptyState(data.accounts.filter { match([$0.name, $0.namespace]) }.count, searching: !search.isEmpty, none: "No service accounts")
                 case .findings:
                     findings(data.analysis)
                 }
