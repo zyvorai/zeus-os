@@ -31,6 +31,7 @@
 		4D02F62B86B54D9E7492473E /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C76870188E00765CE45993 /* Loader.swift */; };
 		4EDE0E66FCBF2AD6C6868D9B /* SchedDestinations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E242329F78F1E43117030C /* SchedDestinations.swift */; };
 		4F16BC25612093D20B93C5C5 /* VMDepthViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C95E9529F209D8F283BC5E8 /* VMDepthViews.swift */; };
+		5180AC2F583D52B4FADF4731 /* StatusBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE603B0569A0B5121C59800F /* StatusBadge.swift */; };
 		5437CDD7A1C837EA546D8172 /* FinOpsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A2830F528CC837EE6CB8FC /* FinOpsView.swift */; };
 		5F6B97ECAEB6801EDF467080 /* OpsActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C983ECAB5A19E74FBC23AA7 /* OpsActions.swift */; };
 		64B250617906D55C5F78DC7A /* SLOEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE49DC3F71468B5DE6C0E30D /* SLOEditor.swift */; };
@@ -144,6 +145,7 @@
 		B412C00F6AB1E4BE441227B2 /* TailDeliveryViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TailDeliveryViews.swift; sourceTree = "<group>"; };
 		B87BFF36BADC4F106E4DA47D /* VMManage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMManage.swift; sourceTree = "<group>"; };
 		BB47515E905887300FA8175E /* VMMetricsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMMetricsView.swift; sourceTree = "<group>"; };
+		BE603B0569A0B5121C59800F /* StatusBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBadge.swift; sourceTree = "<group>"; };
 		C37F045EB89C55ECD9D5072E /* NetworkViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkViews.swift; sourceTree = "<group>"; };
 		D33FFEECE04BFC832047B83D /* OverviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewView.swift; sourceTree = "<group>"; };
 		D34D5AB7D8FA7292DC1E25A2 /* MachinesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MachinesView.swift; sourceTree = "<group>"; };
@@ -246,6 +248,7 @@
 				9158914EC3539A4F3C742EC8 /* MetricChart.swift */,
 				D33FFEECE04BFC832047B83D /* OverviewView.swift */,
 				0408D024D46186E7ABFE8320 /* RootView.swift */,
+				BE603B0569A0B5121C59800F /* StatusBadge.swift */,
 				BB47515E905887300FA8175E /* VMMetricsView.swift */,
 				56DFDC04C993555B2A0B20A3 /* ZeusApp.swift */,
 				B24135CB96B2C7A8C60ED2DD /* Automation */,
@@ -552,6 +555,7 @@
 				DD1028551E039DC3D22FF366 /* Settings.swift in Sources */,
 				A618DB9CF8A52785AE216065 /* SnapshotsView.swift in Sources */,
 				6D35C9B13423B29A6EC56E68 /* SpotlightIndexer.swift in Sources */,
+				5180AC2F583D52B4FADF4731 /* StatusBadge.swift in Sources */,
 				80692FD9B250A37EF406B3EF /* StorageActions.swift in Sources */,
 				192E75C81988EDE4759B40D0 /* StorageView.swift in Sources */,
 				DF3F743F183422869929F030 /* TailDeliveryDestinations.swift in Sources */,

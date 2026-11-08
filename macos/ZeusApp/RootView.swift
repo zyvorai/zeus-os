@@ -19,6 +19,21 @@ struct LoginView: View {
     @State private var remember = true
 
     var body: some View {
+        VStack(spacing: 0) {
+            VStack(spacing: 6) {
+                Image(systemName: "bolt.horizontal.circle.fill")
+                    .font(.system(size: 48)).foregroundStyle(.tint)
+                Text("Zeus").font(.largeTitle.weight(.semibold))
+                Text("Sign in to your server").font(.callout).foregroundStyle(.secondary)
+            }
+            .padding(.top, 24).accessibilityElement(children: .combine)
+            form
+        }
+        .frame(width: 440)
+        .task { if let first = model.profiles.first { await model.resume(first) } }
+    }
+
+    private var form: some View {
         Form {
             if !model.profiles.isEmpty {
                 Section("Saved servers") {
@@ -43,18 +58,25 @@ struct LoginView: View {
                 SecureField("Password", text: $pass)
                 Toggle("Remember in Keychain", isOn: $remember)
             }
-            if let e = model.error { Text(e).foregroundStyle(.red) }
-            if let n = model.notice { Text(n).foregroundStyle(.orange) }
-            Button("Sign In") {
-                guard let u = URL(string: url) else { return }
-                Task { await model.signIn(name: name, url: u, username: user, password: pass, remember: remember) }
+            if let e = model.error {
+                Label(e, systemImage: "exclamationmark.triangle.fill").foregroundStyle(.red)
             }
-            .keyboardShortcut(.defaultAction)
-            .disabled(user.isEmpty || pass.isEmpty || model.isLoading)
+            if let n = model.notice {
+                Label(n, systemImage: "info.circle.fill").foregroundStyle(.orange)
+            }
+            HStack {
+                if model.isLoading { ProgressView().controlSize(.small) }
+                Spacer()
+                Button("Sign In") {
+                    guard let u = URL(string: url) else { return }
+                    Task { await model.signIn(name: name, url: u, username: user, password: pass, remember: remember) }
+                }
+                .buttonStyle(.borderedProminent).controlSize(.large)
+                .keyboardShortcut(.defaultAction)
+                .disabled(user.isEmpty || pass.isEmpty || model.isLoading)
+            }
         }
         .formStyle(.grouped)
-        .frame(width: 440).padding()
-        .task { if let first = model.profiles.first { await model.resume(first) } }
     }
 
     /// Saved token first; if it is gone or rejected, prefill the form for a password.
@@ -141,8 +163,9 @@ struct MainView: View {
         }
         .toolbar {
             ToolbarItem(placement: .status) { LiveStatusView() }
-            ToolbarItem { Button("Refresh", systemImage: "arrow.clockwise") { Task { await model.refresh() } } }
-            ToolbarItem { Button("Sign Out", systemImage: "rectangle.portrait.and.arrow.right") { model.signOut() } }
+            ToolbarItem { Button("Refresh", systemImage: "arrow.clockwise") { Task { await model.refresh() } }.help("Refresh (⌘R)") }
+            ToolbarSpacer(.fixed)       // keep Sign Out apart from the everyday Refresh
+            ToolbarItem { Button("Sign Out", systemImage: "rectangle.portrait.and.arrow.right") { model.signOut() }.help("Sign out and forget this session") }
         }
         .background { sectionShortcuts }
     }
@@ -163,14 +186,21 @@ struct AccountFooter: View {
 
     var body: some View {
         if let p = model.active {
-            VStack(alignment: .leading, spacing: 2) {
-                Text(p.name).font(.callout.weight(.medium)).lineLimit(1)
-                Text("\(p.username) · \(model.session?.role ?? "viewer")")
-                    .font(.caption).foregroundStyle(.secondary).lineLimit(1)
+            VStack(spacing: 0) {
+                Divider()
+                HStack(spacing: 10) {
+                    Image(systemName: "person.crop.circle.fill").font(.title2).foregroundStyle(.secondary)
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text(p.name).font(.callout.weight(.medium)).lineLimit(1)
+                        Text("\(p.username) · \(model.session?.role ?? "viewer")")
+                            .font(.caption).foregroundStyle(.secondary).lineLimit(1)
+                    }
+                    Spacer(minLength: 0)
+                }
+                .padding(.horizontal, 14).padding(.vertical, 10)
+                .accessibilityElement(children: .combine)
             }
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .padding(.horizontal, 14).padding(.vertical, 10)
-            .accessibilityElement(children: .combine)
+            .background(.bar)
         }
     }
 }
@@ -181,7 +211,11 @@ struct LiveStatusView: View {
 
     var body: some View {
         HStack(spacing: 6) {
-            Circle().fill(color).frame(width: 8, height: 8)
+            if case .retrying = model.liveState {
+                Image(systemName: "exclamationmark.triangle.fill").foregroundStyle(.orange)
+            } else {
+                Circle().fill(color).frame(width: 8, height: 8)
+            }
             if case .retrying = model.liveState {
                 Text("Reconnecting…")
             } else if let t = model.lastUpdated {

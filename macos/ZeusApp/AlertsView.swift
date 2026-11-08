@@ -60,23 +60,27 @@ struct AlertsView: View {
             TableColumn("Severity", value: \.severityRank) { a in
                 SeverityLabel(severity: a.severity)       // icon + text, never color alone
             }
-            .width(min: 90, ideal: 100)
-            TableColumn("Rule", value: \.ruleName)
-            TableColumn("Resource", value: \.resourceName)
-            TableColumn("Namespace", value: \.namespace)
-            TableColumn("Value") { a in
+            .width(min: 100, ideal: 110)
+            TableColumn("Rule", value: \.ruleName).width(min: 140, ideal: 220)
+            TableColumn("Resource", value: \.resourceName).width(min: 110, ideal: 150)
+            TableColumn("Namespace", value: \.namespace).width(min: 90, ideal: 120)
+            TableColumn("Value / Limit") { a in
                 Text("\(a.currentValue.formatted(.number.precision(.fractionLength(0...2)))) / \(a.thresholdValue.formatted(.number.precision(.fractionLength(0...2))))")
                     .monospacedDigit()
             }
-            TableColumn("Seen") { Text("\($0.count)×").monospacedDigit() }.width(50)
+            .width(min: 90, ideal: 110)
+            TableColumn("Seen") { Text("\($0.count)×").monospacedDigit() }.width(min: 44, ideal: 54)
             TableColumn("Fired", value: \.firedAt) { Text($0.firedAt, style: .relative) }
+                .width(min: 100, ideal: 130)
             TableColumn("State") { a in
                 if model.busyAlerts.contains(a.id) { ProgressView().controlSize(.small) }
-                else {
-                    Text(a.acknowledged ? "Acknowledged" : "Open")
-                        .foregroundStyle(a.acknowledged ? .secondary : .primary)
+                else if a.acknowledged {
+                    Label("Acknowledged", systemImage: "checkmark.circle").foregroundStyle(.secondary)
+                } else {
+                    Label("Open", systemImage: "circle.dotted")
                 }
             }
+            .width(min: 110, ideal: 130)
         }
         .searchable(text: $search)
         .overlay { if rows.isEmpty { ContentUnavailableView.search(text: search) } }
@@ -126,11 +130,20 @@ struct SeverityLabel: View {
     let severity: String
 
     var body: some View {
+        // Icon is tinted, text stays primary (better contrast in dark mode); fixed icon width keeps labels aligned.
         switch severity.lowercased() {
-        case "critical": Label("Critical", systemImage: "exclamationmark.octagon.fill").foregroundStyle(.red)
-        case "warning": Label("Warning", systemImage: "exclamationmark.triangle.fill").foregroundStyle(.orange)
-        case "info": Label("Info", systemImage: "info.circle.fill").foregroundStyle(.blue)
-        default: Label(severity.capitalized, systemImage: "questionmark.circle").foregroundStyle(.secondary)
+        case "critical": label("Critical", "exclamationmark.octagon.fill", .red)
+        case "warning": label("Warning", "exclamationmark.triangle.fill", .orange)
+        case "info": label("Info", "info.circle.fill", .blue)
+        default: label(severity.capitalized, "questionmark.circle", .secondary)
+        }
+    }
+
+    private func label(_ title: String, _ symbol: String, _ tint: Color) -> some View {
+        Label {
+            Text(title)
+        } icon: {
+            Image(systemName: symbol).foregroundStyle(tint).frame(width: 16)
         }
     }
 }

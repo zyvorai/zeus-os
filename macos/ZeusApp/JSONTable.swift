@@ -39,9 +39,10 @@ struct JSONTable: View {
                 ContentUnavailableView.search(text: search)
             } else {
                 Table(of: IndexedRow.self, selection: $selection) {
-                    TableColumn("") { Text("\($0.id + 1)").foregroundStyle(.tertiary) }.width(36)
+                    TableColumn("") { Text("\($0.id + 1)").foregroundStyle(.tertiary).monospacedDigit() }.width(36)
                     TableColumnForEach(columns, id: \.self) { key in
-                        TableColumn(key.replacing("_", with: " ").capitalized) { Text($0.row[key]?.string ?? "—").lineLimit(1) }
+                        TableColumn(key.replacing("_", with: " ").capitalized) { Self.cell($0.row[key]?.string, key: key) }
+                            .width(min: 80, ideal: Self.isTimestampKey(key) ? 140 : 120)
                     }
                 } rows: {
                     ForEach(shown, id: \.index) { TableRow(IndexedRow(id: $0.index, row: $0.row)) }
@@ -54,6 +55,22 @@ struct JSONTable: View {
                 List { JSONOutline(value: rows[i]) }.inspectorColumnWidth(min: 260, ideal: 340)
             }
         }
+    }
+
+    private static let statusKeys: Set<String> = ["status", "phase", "state"]
+
+    private static func isTimestampKey(_ key: String) -> Bool {
+        key.hasSuffix("_at") || key.hasSuffix("_time") || key.hasSuffix("_run") || key == "timestamp" || key == "created"
+    }
+
+    /// Status-like columns get an icon, ISO timestamps read as dates, everything else stays plain text.
+    @ViewBuilder private static func cell(_ text: String?, key: String) -> some View {
+        if let text {
+            if statusKeys.contains(key) { StatusBadge(status: text) }
+            else if text.count >= 19, text.contains("T"), let date = try? Date(text, strategy: .iso8601) {
+                Text(date, format: .dateTime.month(.abbreviated).day().hour().minute()).lineLimit(1)
+            } else { Text(text).lineLimit(1) }
+        } else { Text("—").foregroundStyle(.tertiary) }
     }
 
     struct IndexedRow: Identifiable { let id: Int; let row: JSONValue }
