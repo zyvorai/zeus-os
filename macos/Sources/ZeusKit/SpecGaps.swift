@@ -93,6 +93,9 @@ public struct BudgetValidationError: Error, Sendable, Equatable {
     init(_ m: String) { message = m }
 }
 
+/// Spec `TestChannelRequest`: `message` is required, so a bodyless POST would be rejected.
+struct ChannelTestBody: Encodable { let message: String }
+
 struct HelmRollbackBody: Encodable { let revision: Int }
 
 extension ZeusClient {
@@ -111,7 +114,7 @@ extension ZeusClient {
 
     /// `POST /notifications/channels/{id}/test`: asks the server to deliver a test message through the channel.
     public func testNotificationChannel(id: String) async throws {
-        try await post("notifications", "channels", id, "test")
+        try await post("notifications", "channels", id, "test", body: ChannelTestBody(message: "Test message from Zeus for macOS"))
     }
 }
 

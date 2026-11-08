@@ -98,6 +98,7 @@ private final class GapRecorder: URLProtocol, @unchecked Sendable {
     @Test func channelTestPostsToChannel() async throws {
         try await client.testNotificationChannel(id: "c/1")
         #expect(method == "POST" && url == "https://zeus.test/api/v1/notifications/channels/c%2F1/test")
+        #expect((json?["message"] as? String)?.isEmpty == false)
     }
 
     @Test func helmInstallSendsGivenObject() async throws {
