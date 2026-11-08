@@ -15,6 +15,9 @@ struct ContainmentsView: View {
     @State private var pending: Pending?
     @State private var extending = false
     @State private var busy = false
+    /// The server can't list containments, so the ids this Mac has created or looked up are remembered here
+    /// (ids only, newest first) and re-read on open.
+    @AppStorage("containments.ids") private var savedIDs = ""
 
     enum Pending: Identifiable {
         case release(Containment), rollBack(Containment)
@@ -29,6 +32,7 @@ struct ContainmentsView: View {
             detail.frame(minWidth: 320)
         }
         .navigationTitle("Containments")
+        .task { await restore() }
         .toolbar {
             if model.canWrite { ToolbarItem { Button("Contain Workload…", systemImage: "lock.shield") { creating = true } } }
         }
@@ -130,6 +134,27 @@ struct ContainmentsView: View {
     private func remember(_ c: Containment) {
         if let i = items.firstIndex(where: { $0.id == c.id }) { items[i] = c } else { items.insert(c, at: 0) }
         selection = c.id
+        savedIDs = Self.encode(Self.merged([c.id], into: Self.decode(savedIDs)))
+    }
+
+    /// Re-reads remembered containments. One the server no longer has (404) is dropped from the list.
+    private func restore() async {
+        guard items.isEmpty else { return }
+        var keep: [String] = []
+        for id in Self.decode(savedIDs) {
+            do { let c = try await client.containment(id: id); items.append(c); keep.append(id) }
+            catch ZeusError.server(let status, _) where status == 404 { }
+            catch { keep.append(id) }
+        }
+        savedIDs = Self.encode(keep)
+    }
+
+    static func decode(_ s: String) -> [String] { s.split(separator: "\n").map(String.init) }
+    static func encode(_ ids: [String]) -> String { ids.joined(separator: "\n") }
+    /// New ids go first; duplicates are removed; the list is capped so it can't grow forever.
+    static func merged(_ new: [String], into old: [String], limit: Int = 50) -> [String] {
+        var seen = Set<String>()
+        return Array((new + old).filter { seen.insert($0).inserted }.prefix(limit))
     }
 
     private func create(_ r: ContainmentRequest) async -> String? {

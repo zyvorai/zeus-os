@@ -102,3 +102,12 @@ struct StatusBadgeTests {
         #expect(StatusBadge.display("CPU") == "CPU")
     }
 }
+
+@MainActor
+struct ContainmentMemoryTests {
+    @Test func mergesNewestFirstWithoutDuplicates() {
+        #expect(ContainmentsView.merged(["c"], into: ["a", "c", "b"]) == ["c", "a", "b"])
+        #expect(ContainmentsView.merged(["n"], into: ["a", "b"], limit: 2) == ["n", "a"])
+        #expect(ContainmentsView.decode(ContainmentsView.encode(["a", "b"])) == ["a", "b"])
+    }
+}
