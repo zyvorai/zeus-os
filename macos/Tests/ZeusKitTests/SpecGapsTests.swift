@@ -99,4 +99,21 @@ private final class GapRecorder: URLProtocol, @unchecked Sendable {
         try await client.testNotificationChannel(id: "c/1")
         #expect(method == "POST" && url == "https://zeus.test/api/v1/notifications/channels/c%2F1/test")
     }
+
+    @Test func helmInstallSendsGivenObject() async throws {
+        try await client.helmInstall(try ZeusClient.parseJSONObject(#"{"name":"x","chart":"nginx"}"#))
+        #expect(method == "POST" && url == "https://zeus.test/api/v1/helm/releases")
+        #expect(json?["chart"] as? String == "nginx")
+    }
+
+    @Test func helmUpgradeTargetsRelease() async throws {
+        let r = try JSONDecoder().decode(HelmRelease.self, from: Data(#"{"name":"nginx","namespace":"web"}"#.utf8))
+        try await client.helmUpgrade(r, try ZeusClient.parseJSONObject(#"{"version":"2"}"#))
+        #expect(url == "https://zeus.test/api/v1/helm/releases/web/nginx/upgrade" && json?["version"] as? String == "2")
+    }
+
+    @Test func rejectsNonObjectJSON() {
+        #expect(throws: BudgetValidationError.self) { try ZeusClient.parseJSONObject("[1]") }
+        #expect(throws: BudgetValidationError.self) { try ZeusClient.parseJSONObject("nope") }
+    }
 }

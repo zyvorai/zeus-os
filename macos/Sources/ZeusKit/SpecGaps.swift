@@ -114,3 +114,22 @@ extension ZeusClient {
         try await post("notifications", "channels", id, "test")
     }
 }
+
+// Helm install and upgrade take a free-form JSON body in the server's OpenAPI document, so there is no typed
+// contract to build a form from. The app sends the object the user writes, after checking it parses as one.
+extension ZeusClient {
+    /// Parses user-written JSON; only objects are valid bodies.
+    public static func parseJSONObject(_ text: String) throws -> JSONValue {
+        guard let value = try? JSONDecoder().decode(JSONValue.self, from: Data(text.utf8)), case .object = value
+        else { throw BudgetValidationError("Enter a JSON object, for example {\"name\": …}.") }
+        return value
+    }
+
+    /// `POST /helm/releases`.
+    public func helmInstall(_ body: JSONValue) async throws { try await post("helm", "releases", body: body) }
+
+    /// `POST /helm/releases/{namespace}/{name}/upgrade`.
+    public func helmUpgrade(_ r: HelmRelease, _ body: JSONValue) async throws {
+        try await post("helm", "releases", r.namespace ?? "default", r.name, "upgrade", body: body)
+    }
+}

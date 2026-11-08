@@ -172,6 +172,8 @@ struct HelmView: View {
     @State private var rollbackTarget: HelmRevision?
     @State private var rollbackFailure: String?
     @State private var uninstalling: HelmRelease?
+    @State private var installing = false
+    @State private var upgrading: HelmRelease?
     @State private var loader: Loader<[HelmRelease]>
     @State private var selection: HelmRelease.ID?
     @State private var history: [HelmRevision] = []
@@ -201,6 +203,7 @@ struct HelmView: View {
                     .frame(minHeight: 160)
                     .contextMenu(forSelectionType: HelmRelease.ID.self) { ids in
                         if model.canWrite, let r = releases.first(where: { ids.contains($0.id) }) {
+                            Button("Upgrade…", systemImage: "arrow.up.circle") { upgrading = r }
                             Button("Uninstall…", systemImage: "trash", role: .destructive) { uninstalling = r }
                         }
                     }
@@ -209,7 +212,24 @@ struct HelmView: View {
             }
         }
         .navigationTitle("Helm")
-        .toolbar { ToolbarItem { Button("Reload", systemImage: "arrow.clockwise") { Task { await loader.reload() } } } }
+        .toolbar {
+            if model.canWrite { ToolbarItem { Button("Install…", systemImage: "plus") { installing = true } } }
+            ToolbarItem { Button("Reload", systemImage: "arrow.clockwise") { Task { await loader.reload() } } }
+        }
+        .sheet(isPresented: $installing) {
+            HelmJSONSheet(title: "Install a Helm release",
+                          message: "The server accepts a free-form JSON object here. Enter exactly what your Zeus OS expects.") { body in
+                do { try await client.helmInstall(body); await loader.reload(); return nil }
+                catch { return describe(error, "install the release") }
+            }
+        }
+        .sheet(item: $upgrading) { r in
+            HelmJSONSheet(title: "Upgrade \(r.name)",
+                          message: "Sends a free-form JSON object to the upgrade endpoint.") { body in
+                do { try await client.helmUpgrade(r, body); await loader.reload(); return nil }
+                catch { return describe(error, "upgrade the release") }
+            }
+        }
         .task { loader.start() }
         .onDisappear { loader.stop() }
         .task(id: selection) { await loadHistory() }
