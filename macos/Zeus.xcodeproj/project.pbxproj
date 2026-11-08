@@ -16,6 +16,7 @@
 		0F8BA7AFBA1DB788C1C86C33 /* AuditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06256A79054150136F54EF5 /* AuditView.swift */; };
 		12BDB724294C1D224FEFCCF1 /* ZeusKit in Frameworks */ = {isa = PBXBuildFile; productRef = 496B17285E6FC4BCF75FD40B /* ZeusKit */; };
 		17732345D24E50975715E406 /* IdentityViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B1838FD0A4ACB1B90704A6 /* IdentityViews.swift */; };
+		1814D0BE9491E99CE2B02107 /* HelmJSONSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AC9E18AEC78545A4D2D9C1 /* HelmJSONSheet.swift */; };
 		192E75C81988EDE4759B40D0 /* StorageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8686FDDBC66E13BFC244BCFF /* StorageView.swift */; };
 		1970980CDE6ACDC63CFB58F3 /* BudgetEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F738BA510E804074C6FD0DF /* BudgetEditor.swift */; };
 		1C7EE932259374CB2FD7D34F /* AutomationViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E12D4A461C05709687D2AC0 /* AutomationViews.swift */; };
@@ -110,6 +111,7 @@
 		582ED6B5F8AD664E37399273 /* MachineIntents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MachineIntents.swift; sourceTree = "<group>"; };
 		58D70D0244FD331139262AFE /* ChannelEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelEditor.swift; sourceTree = "<group>"; };
 		5E64F20F98B256363EFEB60E /* CapacityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapacityView.swift; sourceTree = "<group>"; };
+		61AC9E18AEC78545A4D2D9C1 /* HelmJSONSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelmJSONSheet.swift; sourceTree = "<group>"; };
 		64E242329F78F1E43117030C /* SchedDestinations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedDestinations.swift; sourceTree = "<group>"; };
 		66FD3E85B371A4F4AE2F3D50 /* AlertRuleEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertRuleEditor.swift; sourceTree = "<group>"; };
 		6A33914BFBFFA0E74B616F15 /* SecurityDestinations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityDestinations.swift; sourceTree = "<group>"; };
@@ -368,6 +370,7 @@
 			children = (
 				F9DD1328005B1CCF93583E90 /* AutomationDestinations.swift */,
 				1E12D4A461C05709687D2AC0 /* AutomationViews.swift */,
+				61AC9E18AEC78545A4D2D9C1 /* HelmJSONSheet.swift */,
 				2C983ECAB5A19E74FBC23AA7 /* OpsActions.swift */,
 			);
 			path = Automation;
@@ -518,6 +521,7 @@
 				B3AE8193E9E3371E95BD5B42 /* DetailViews.swift in Sources */,
 				77ECC94EFB18C5A5D606AA19 /* EventsView.swift in Sources */,
 				5437CDD7A1C837EA546D8172 /* FinOpsView.swift in Sources */,
+				1814D0BE9491E99CE2B02107 /* HelmJSONSheet.swift in Sources */,
 				99D9C1EB76868B69BA51CF24 /* IdentityDestinations.swift in Sources */,
 				17732345D24E50975715E406 /* IdentityViews.swift in Sources */,
 				D89848AA9095236EEE518C00 /* ImageScanView.swift in Sources */,
