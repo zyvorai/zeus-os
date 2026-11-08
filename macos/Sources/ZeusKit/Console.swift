@@ -182,10 +182,12 @@ public final class ConsoleSession: Sendable {
     public enum Event: Sendable, Equatable { case output(Data), closed(String?) }
 
     private let connection: any WebSocketConnection
+    private let userClosed = ManagedAtomicFlag()
     public let events: AsyncStream<Event>
 
     public init(connection: any WebSocketConnection) {
         self.connection = connection
+        let userClosed = self.userClosed
         events = AsyncStream { continuation in
             let pump = Task {
                 connection.resume()
@@ -198,7 +200,7 @@ public final class ConsoleSession: Sendable {
                     }
                     continuation.yield(.closed(nil))
                 } catch {
-                    continuation.yield(.closed(Task.isCancelled ? nil : error.localizedDescription))
+                    continuation.yield(.closed(Task.isCancelled || userClosed.value ? nil : error.localizedDescription))
                 }
                 continuation.finish()
             }
@@ -207,7 +209,15 @@ public final class ConsoleSession: Sendable {
     }
 
     public func send(_ text: String) async throws { try await connection.send(text) }
-    public func close() { connection.close() }
+    /// A local close ends the receive with a transport error; that is not reported as a failure.
+    public func close() { userClosed.set(); connection.close() }
+}
+
+final class ManagedAtomicFlag: @unchecked Sendable {
+    private let lock = NSLock()
+    private var flag = false
+    var value: Bool { lock.withLock { flag } }
+    func set() { lock.withLock { flag = true } }
 }
 
 // MARK: Terminal screen model

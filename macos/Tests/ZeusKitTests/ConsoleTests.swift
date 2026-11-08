@@ -151,3 +151,23 @@ private final class FakeConnection: WebSocketConnection, @unchecked Sendable {
     s.close()
     #expect(fake.closed)
 }
+
+private final class ClosableConnection: WebSocketConnection, @unchecked Sendable {
+    private let lock = NSLock()
+    private var cont: CheckedContinuation<WebSocketFrame, Error>?
+    func resume() {}
+    func send(_ text: String) async throws {}
+    func receive() async throws -> WebSocketFrame {
+        try await withCheckedThrowingContinuation { c in lock.withLock { cont = c } }
+    }
+    func close() { lock.withLock { cont?.resume(throwing: URLError(.networkConnectionLost)); cont = nil } }
+}
+
+@Test func localCloseIsNotReportedAsAnError() async throws {
+    let s = ConsoleSession(connection: ClosableConnection())
+    try await Task.sleep(for: .milliseconds(100))
+    s.close()
+    var last: ConsoleSession.Event?
+    for await e in s.events { last = e }
+    #expect(last == .closed(nil))
+}
