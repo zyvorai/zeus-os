@@ -559,6 +559,15 @@ swift test                        # ZeusKit tests (API client, models, profiles,
 
 The client library lives in `macos/Sources/ZeusKit` and the app in `macos/ZeusApp`.
 
+**Preview the UI without a window server** (CI, SSH, agents): a test renders key screens from hand-written fixture data (no server, no credentials) to PNGs in light and dark:
+
+```bash
+cd macos
+ZEUS_SNAPSHOT_DIR=/tmp/zeus-shots swift test --filter ZeusAppSnapshotTests
+```
+
+Without `ZEUS_SNAPSHOT_DIR` those tests do nothing. The sidebar and toolbar come out blank (they need real window chrome); the detail screens render fully.
+
 ## Security and identity
 
 - Authentication is on by default; local, LDAP, SAML and OIDC sign-in, plus [SCIM v2](docs/SCIM.md) provisioning and [WebAuthn](docs/WEBAUTHN.md) security keys.

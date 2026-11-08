@@ -24,7 +24,7 @@ final class Loader<T: Sendable> {
         } catch ZeusError.server(let status, let message) where status == 403 {
             phase = .failed(message.isEmpty ? "Your role can't view this." : message)
         } catch {
-            phase = .failed("Couldn't load. Check the connection and try again.")
+            phase = .failed("Check the connection and try again.")
         }
     }
 
@@ -56,8 +56,8 @@ struct LoadStateView<T: Sendable, Content: View>: View {
             content(value)
                 .safeAreaInset(edge: .top, spacing: 0) {
                     if case .failed(let message) = loader.phase {
-                        Label("Showing the last data loaded. \(message)", systemImage: "exclamationmark.triangle")
-                            .font(.caption).foregroundStyle(.orange)
+                        Label("Couldn't refresh. Showing the last data loaded. \(message)", systemImage: "exclamationmark.triangle.fill")
+                            .font(.callout).foregroundStyle(.orange)
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .padding(.horizontal, 12).padding(.vertical, 6).background(.bar)
                     }
@@ -66,7 +66,7 @@ struct LoadStateView<T: Sendable, Content: View>: View {
             switch loader.phase {
             case .failed(let message):
                 ContentUnavailableView {
-                    Label("Couldn't load", systemImage: "exclamationmark.triangle")
+                    Label("Couldn't load", systemImage: "exclamationmark.triangle.fill").symbolRenderingMode(.multicolor)
                 } description: { Text(message) } actions: {
                     Button("Try Again") { Task { await loader.reload() } }
                 }

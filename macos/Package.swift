@@ -9,5 +9,7 @@ let package = Package(
         .executableTarget(name: "ZeusApp", dependencies: ["ZeusKit"], path: "ZeusApp"),
         .target(name: "ZeusKit"),
         .testTarget(name: "ZeusKitTests", dependencies: ["ZeusKit"]),
+        // Renders key screens to PNG from fixtures for design review; see Tests/ZeusAppSnapshotTests.
+        .testTarget(name: "ZeusAppSnapshotTests", dependencies: ["ZeusApp", "ZeusKit"]),
     ]
 )

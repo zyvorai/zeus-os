@@ -25,14 +25,13 @@ struct MachinesView: View {
 
     var body: some View {
         Table(rows, selection: $selection, sortOrder: $sort) {
-            TableColumn("Name", value: \.name)
-            TableColumn("Status", value: \.status) { vm in
-                Label(vm.status, systemImage: "circle.fill")
-                    .foregroundStyle(vm.status == "Running" ? .green : .secondary)
-            }
-            TableColumn("Namespace", value: \.namespace)
-            TableColumn("Node") { Text($0.node ?? "—") }
-            TableColumn("Age") { Text($0.age ?? "—") }
+            TableColumn("Name", value: \.name).width(min: 140, ideal: 200)
+            TableColumn("Status", value: \.status) { StatusBadge(status: $0.status) }
+                .width(min: 120, ideal: 160)
+            TableColumn("Namespace", value: \.namespace).width(min: 90, ideal: 130)
+            TableColumn("Node") { Text($0.node ?? "—").foregroundStyle($0.node == nil ? .tertiary : .primary) }
+                .width(min: 80, ideal: 110)
+            TableColumn("Age") { Text($0.age ?? "—").monospacedDigit() }.width(min: 50, ideal: 70)
         }
         .contextMenu(forSelectionType: VM.ID.self) { ids in
             if let vm = model.vms.first(where: { ids.contains($0.id) }) {
@@ -78,7 +77,7 @@ struct VMInspector: View {
         Form {
             LabeledContent("Name", value: vm.name)
             LabeledContent("Namespace", value: vm.namespace)
-            LabeledContent("Status", value: vm.status)
+            LabeledContent("Status") { StatusBadge(status: vm.status) }
             LabeledContent("Node", value: vm.node ?? "—")
             LabeledContent("Memory", value: vm.memoryGi.map { "\($0) GiB" } ?? "—")
             LabeledContent("Security", value: vm.securityScore.map(String.init) ?? "—")
