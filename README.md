@@ -515,7 +515,7 @@ A native macOS client for a running Zeus OS server, built with SwiftUI. It talks
 - **Machines**: sortable, searchable table with an inspector showing CPU, memory, network and disk history (15 minute, 1 hour and 6 hour ranges).
 - **Start, stop and restart** for editor and admin roles; stop and restart ask first. Viewers get a read-only app.
 - **Alerts**: table of active alerts with severity, resource, value against threshold and state. Editors and admins can acknowledge one or several at once.
-- **Alerting and SLO writes** (editors and admins): resolve alerts; create, edit and delete alert rules; create email (SMTP) notification channels, enable or disable them, and delete channels; create SLOs. Channel passwords are typed into a secure field, sent once and never shown again, and the app has no "send test" button. Not yet in the app: channel types other than email (the server's dashboard has no channel-creation form to take the format from) and SLO delete (the server has no such route).
+- **Alerting and SLO writes** (editors and admins): resolve alerts; create, edit and delete alert rules; create email (SMTP) notification channels, enable or disable them, and delete channels; create SLOs. Channel passwords are typed into a secure field, sent once and never shown again, and channels can be tested with a confirmed "Send Test" action. Not yet in the app: channel types other than email (the server's dashboard has no channel-creation form to take the format from) and SLO delete (the server has no such route).
 - **Snapshots**: list, take (optionally freezing guest filesystems) and delete VM snapshots. **Backups**: Velero schedules, VM backups and totals, read-only for now.
 - **Cost**: modelled monthly and daily cost, a per-machine table, a cost-by-component chart, and savings, from your configured price model (estimates, not invoices).
 - **Capacity**: current usage against thresholds, projected utilisation chart and forecasts. **Optimization**: right-sizing recommendations. **FinOps**: unit prices (editable by editors and admins), recorded cost history, budgets (list, create, edit and delete; cluster, tenant or namespace scope, alert thresholds and notification channels).
@@ -540,13 +540,20 @@ A native macOS client for a running Zeus OS server, built with SwiftUI. It talks
 - A menu bar item with machines running and active alert count.
 - Live updates by polling (every 5 seconds in front, slower behind, with backoff when the server is unreachable).
 
-**Not yet**: consoles and keyboard shortcuts for switching sections. Notifications, Shortcuts actions and the trust prompt are new and have only been unit-tested and compiled, not yet exercised end to end.
 - **Scheduling and cluster policy, read-only**: five grouped screens, each with a picker over related feeds. **Placement** (affinity rules and violations, pod affinities, node taints, pod tolerations, topology manager), **Classes & Budgets** (priority classes, runtime classes, pod disruption budgets), **Quotas & Governance** (quotas, allocations, resource pools, tagging), **Autoscaling** (HPA, VPA, cluster autoscaling, forecasts) and **Devices & Hosts** (device plugins, GPUs, host groups). Priority classes and disruption budgets are typed tables; the rest are searchable JSON tables with a record inspector. The limit-range endpoints answer 403 for an admin on the test server, so they are not shown.
 - **Consoles**: a text-mode serial console for a running machine (from the inspector), a pod terminal, "Graphical Console…" (a native RFB/VNC client: raw and CopyRect encodings, mouse and keyboard, Ctrl+Alt+Del; editors and admins only; sessions are shared, never exclusive), and "Graphical Console in Browser" as a fallback, and read-only console access requests and JIT grants. Line-oriented only (no full-screen programs); console sessions are unit-tested only, not yet exercised against a live server. The native VNC client was only tested against a scripted fake server, never a real VM; it offers just Raw and CopyRect, so expect bandwidth-heavy updates, and it has no VNC-password or clipboard support.
-- A menu bar item with machines running and active alert count.
-- Live updates by polling (every 5 seconds in front, slower behind, with backoff when the server is unreachable).
 
-**Not yet**: certificate trust prompts. The server must present a certificate the Mac already trusts; the chart's default self-signed certificate is not accepted yet.
+**Status**: the app has no known unbuilt screens for endpoints the server documents with a usable contract. Not yet exercised against a live server: write actions, both consoles (serial and VNC), notifications, Shortcuts actions and the certificate trust prompt (unit-tested and compiled only). Not possible with the current server API: cluster cordon and drain, containment listing (the Containments screen remembers ids this Mac created), channel types other than email, and SLO delete.
+
+**Release** (needs a Developer ID Application certificate in your keychain):
+
+```sh
+macos/scripts/release.sh                       # build, sign (hardened runtime), make a signed DMG
+NOTARY_PROFILE=zeus macos/scripts/release.sh   # also notarize, staple and check with Gatekeeper
+# one-time: xcrun notarytool store-credentials zeus --apple-id you@example.com --team-id TEAMID
+```
+
+The DMG lands in `macos/dist/` (git-ignored). Without `NOTARY_PROFILE`, Gatekeeper rejects the build as unnotarized.
 
 **Build it** (macOS 27, Xcode 27, [XcodeGen](https://github.com/yonaskolb/XcodeGen)):
 
