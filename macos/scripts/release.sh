@@ -25,11 +25,15 @@ rm -rf "$OUT"; mkdir -p "$OUT"
 echo "==> Building Release signed as: $IDENTITY"
 xcodebuild -project Zeus.xcodeproj -scheme Zeus -configuration Release -derivedDataPath "$OUT/dd" \
   CODE_SIGN_STYLE=Manual CODE_SIGN_IDENTITY="$IDENTITY" DEVELOPMENT_TEAM="$TEAM" \
-  OTHER_CODE_SIGN_FLAGS="--timestamp" build | tail -1
+  OTHER_CODE_SIGN_FLAGS="--timestamp" CODE_SIGN_INJECT_BASE_ENTITLEMENTS=NO build | tail -1
 APP="$OUT/dd/Build/Products/Release/Zeus.app"
 
 echo "==> Verifying signature"
 codesign --verify --deep --strict --verbose=2 "$APP"
+# Apple rejects debuggable builds; make sure the debug entitlement didn't sneak in.
+if codesign -d --entitlements - "$APP" 2>&1 | grep -q "get-task-allow"; then
+  echo "The app carries com.apple.security.get-task-allow; Apple would reject it." >&2; exit 1
+fi
 INFO=$(codesign -dv --verbose=2 "$APP" 2>&1)
 case "$INFO" in *"(runtime)"*) ;; *) echo "Hardened runtime is off." >&2; exit 1 ;; esac
 
@@ -45,7 +49,13 @@ if [ -z "${NOTARY_PROFILE:-}" ]; then
 fi
 
 echo "==> Notarizing (this waits for Apple)"
-xcrun notarytool submit "$DMG" --keychain-profile "$NOTARY_PROFILE" --wait
+RESULT=$(xcrun notarytool submit "$DMG" --keychain-profile "$NOTARY_PROFILE" --wait 2>&1) || true
+echo "$RESULT"
+if ! printf '%s' "$RESULT" | grep -q "status: Accepted"; then
+  ID=$(printf '%s' "$RESULT" | sed -n 's/^  id: //p' | head -1)
+  echo "Notarization was not accepted. Apple's log: xcrun notarytool log $ID --keychain-profile $NOTARY_PROFILE" >&2
+  exit 1
+fi
 echo "==> Stapling"
 xcrun stapler staple "$DMG"
 xcrun stapler validate "$DMG"
