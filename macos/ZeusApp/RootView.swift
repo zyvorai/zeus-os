@@ -104,7 +104,9 @@ struct MainView: View {
     }
 
     /// Groups in order of first use, limited to entries matching the filter.
-    private var groups: [(name: String, items: [Destination])] {
+    private var groups: [(name: String, items: [Destination])] { groups(matching: filter) }
+
+    private func groups(matching filter: String) -> [(name: String, items: [Destination])] {
         var order: [String] = []
         for d in Destination.all where !order.contains(d.group) { order.append(d.group) }
         return order.compactMap { g in
@@ -147,7 +149,7 @@ struct MainView: View {
 
     /// ⌘1…⌘9 jump to the first nine screens in sidebar order.
     private var sectionShortcuts: some View {
-        ForEach(Array(Destination.all.prefix(9).enumerated()), id: \.element.id) { i, d in
+        ForEach(Array(groups(matching: "").flatMap(\.items).prefix(9).enumerated()), id: \.element.id) { i, d in
             Button(d.title) { selection = d.id }
                 .keyboardShortcut(KeyEquivalent(Character("\(i + 1)")), modifiers: .command)
                 .frame(width: 0, height: 0).opacity(0).accessibilityHidden(true)

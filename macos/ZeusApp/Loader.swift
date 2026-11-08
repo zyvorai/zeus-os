@@ -54,6 +54,14 @@ struct LoadStateView<T: Sendable, Content: View>: View {
     var body: some View {
         if let value = loader.value {
             content(value)
+                .safeAreaInset(edge: .top, spacing: 0) {
+                    if case .failed(let message) = loader.phase {
+                        Label("Showing the last data loaded. \(message)", systemImage: "exclamationmark.triangle")
+                            .font(.caption).foregroundStyle(.orange)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .padding(.horizontal, 12).padding(.vertical, 6).background(.bar)
+                    }
+                }
         } else {
             switch loader.phase {
             case .failed(let message):
@@ -64,6 +72,18 @@ struct LoadStateView<T: Sendable, Content: View>: View {
                 }
             default:
                 ProgressView().controlSize(.large).frame(maxWidth: .infinity, maxHeight: .infinity)
+            }
+        }
+    }
+}
+
+extension View {
+    /// Says why a table is empty (nothing exists vs. the search filtered everything out) instead of leaving it blank.
+    func emptyState(_ count: Int, searching: Bool, none: String, symbol: String = "tray") -> some View {
+        overlay {
+            if count == 0 {
+                if searching { ContentUnavailableView("No matches", systemImage: "magnifyingglass") }
+                else { ContentUnavailableView(none, systemImage: symbol) }
             }
         }
     }

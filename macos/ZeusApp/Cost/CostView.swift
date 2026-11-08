@@ -44,6 +44,7 @@ struct CostView: View {
                         TableColumn("Savings") { Text($0.optimizationAvailable == true ? "Available" : "—") }
                     }
                     .frame(minHeight: 220)
+                    .emptyState(rows.count, searching: !search.isEmpty, none: "No machines with cost data", symbol: "dollarsign.circle")
                     budgetNote(data)
                 }
                 .padding()

@@ -56,7 +56,7 @@ struct EventsView: View {
                 TableColumn("Expected") { Text($0.expectedValue.map { $0.formatted(.number.precision(.fractionLength(0...2))) } ?? "—") }.width(70)
                 TableColumn("Actual") { Text($0.actualValue.map { $0.formatted(.number.precision(.fractionLength(0...2))) } ?? "—") }.width(70)
                 TableColumn("Deviation") { Text($0.deviationPercent.map { "\($0.formatted(.number.precision(.fractionLength(0...1))))%" } ?? "—") }.width(80)
-                TableColumn("Confidence") { Text($0.confidenceScore.map { $0.formatted(.percent.precision(.fractionLength(0))) } ?? "—") }.width(80)
+                TableColumn("Confidence") { Text($0.confidenceScore.map { $0.formatted(.percent.precision(.fractionLength(0))) } ?? "—") }.width(min: 80, ideal: 90)
             }
         }
     }

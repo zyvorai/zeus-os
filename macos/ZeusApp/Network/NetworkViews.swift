@@ -82,8 +82,8 @@ struct NetworkOverviewView: View {
                             TableColumn("Name", value: \.name)
                             TableColumn("Namespace") { Text($0.namespace ?? "—") }
                             TableColumn("Types") { Text(($0.policyTypes ?? []).joined(separator: ", ")) }
-                            TableColumn("Ingress rules") { Text("\($0.ingressRules ?? 0)") }.width(90)
-                            TableColumn("Egress rules") { Text("\($0.egressRules ?? 0)") }.width(90)
+                            TableColumn("Ingress rules") { Text("\($0.ingressRules ?? 0)") }.width(min: 90, ideal: 100)
+                            TableColumn("Egress rules") { Text("\($0.egressRules ?? 0)") }.width(min: 90, ideal: 100)
                         }.frame(minHeight: 220)
                     }
                 }.padding()
@@ -213,7 +213,7 @@ struct CiliumView: View {
                     TableColumn("IP") { Text($0.ip ?? "—") }
                     TableColumn("State") { Text($0.state ?? "—") }.width(80)
                     TableColumn("Labels") { Text($0.appLabels.joined(separator: ", ")).lineLimit(1).help($0.appLabels.joined(separator: "\n")) }
-                }
+                }.emptyState(rows.count, searching: !search.isEmpty, none: "No Cilium endpoints")
             }.padding()
         }
         .navigationTitle("Cilium")

@@ -74,7 +74,7 @@ struct NetworkPoliciesView: View {
                         TableColumn("Types") { Text($0.policyTypes?.joined(separator: ", ") ?? "—") }
                         TableColumn("In") { Text($0.ingressRules.map(String.init) ?? "—") }.width(50)
                         TableColumn("Out") { Text($0.egressRules.map(String.init) ?? "—") }.width(50)
-                    }
+                    }.emptyState(data.k8s.filter { match([$0.name, $0.namespace, $0.podSelector]) }.count, searching: !search.isEmpty, none: "No network policies")
                 case .cilium:
                     if data.ciliumFailed {
                         ContentUnavailableView("Cilium unavailable", systemImage: "exclamationmark.triangle",
@@ -87,7 +87,7 @@ struct NetworkPoliciesView: View {
                             TableColumn("In") { Text($0.ingressRulesCount.map(String.init) ?? "—") }.width(50)
                             TableColumn("Out") { Text($0.egressRulesCount.map(String.init) ?? "—") }.width(50)
                             TableColumn("Age") { Text($0.age ?? "—") }.width(60)
-                        }
+                        }.emptyState(data.cilium.filter { match([$0.name, $0.namespace, $0.endpointSelector]) }.count, searching: !search.isEmpty, none: "No Cilium policies")
                     }
                 }
             }
