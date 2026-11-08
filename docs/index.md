@@ -8,4 +8,5 @@ The visual control plane for KubeVirt virtual machines and Kubernetes infrastruc
 - [Admin basics](customer/admin-basics.md)
 - [Enterprise SSO](customer/enterprise-sso.md)
 - [Page-by-page guides](customer/README.md)
+- [Mac app](macos.md)
 - [CLI](cli.md) · [SCIM](SCIM.md) · [WebAuthn](WEBAUTHN.md) · [Air-gapped install](AIR_GAPPED_INSTALL.md)
