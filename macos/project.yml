@@ -18,6 +18,9 @@ targets:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: dev.zyvor.zeus
         PRODUCT_NAME: Zeus
+        MARKETING_VERSION: "1.0.0"
+        CURRENT_PROJECT_VERSION: "1"
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         SWIFT_VERSION: "6.0"
         GENERATE_INFOPLIST_FILE: YES
         INFOPLIST_KEY_CFBundleDisplayName: Zeus
