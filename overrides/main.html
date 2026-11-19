@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block extrahead %}
+  {% set t = (page.title ~ " · Zeus OS docs") if page and page.title and not page.is_homepage else "Zeus OS documentation" %}
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Zeus OS">
+  <meta property="og:title" content="{{ t }}">
+  <meta property="og:description" content="{{ config.site_description }}">
+  <meta property="og:url" content="{{ page.canonical_url if page else config.site_url }}">
+  <meta property="og:image" content="https://zyvorai.github.io/zeus-os/social/og.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Zeus OS: Every VM. One control plane.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://zyvorai.github.io/zeus-os/social/og.png">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+{% endblock %}

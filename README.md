@@ -1,42 +1,65 @@
 <div align="center">
 
-<img src="docs-assets/banner.svg" alt="Zeus OS: every VM, one control plane" width="100%">
+<img src="social/og.png" alt="Zeus OS: Every VM. One control plane." width="100%">
+
+# Zeus OS
+
+### Every VM. One control plane.
+
+**The visual control plane for KubeVirt virtual machines and Kubernetes infrastructure.** A web dashboard, a terminal UI, a CLI and an API, all driven by one engine, so they always agree.
 
 [![Docs](https://img.shields.io/badge/Docs-zyvorai.github.io%2Fzeus--os-0071e3)](https://zyvorai.github.io/zeus-os/)
 [![Status](https://img.shields.io/badge/status-preview-orange)](#status)
 [![KubeVirt](https://img.shields.io/badge/KubeVirt-native-2997ff)](#why-zeus-os)
 [![Platforms](https://img.shields.io/badge/Linux-amd64%20%C2%B7%20arm64-30d158)](#install)
 [![Auth](https://img.shields.io/badge/auth-OIDC%20%C2%B7%20SAML%20%C2%B7%20LDAP%20%C2%B7%20SCIM-bf5af2)](docs/customer/enterprise-sso.md)
-[![Helm](https://img.shields.io/badge/Helm-OCI%20chart-0f1689?logo=helm&logoColor=white)](#install)
+[![Helm](https://img.shields.io/badge/Helm-OCI%20chart-0f1689?logo=helm&logoColor=white)](#install-options)
 [![License](https://img.shields.io/badge/license-Zeus%20OS%20EULA-orange)](#license)
 
-[![Documentation](https://img.shields.io/badge/Read_the_docs-0071e3?style=for-the-badge)](https://zyvorai.github.io/zeus-os/)
-
-[Client overview (PDF)](docs/Zeus-OS-Client-Overview.pdf)
-[![Features](https://img.shields.io/badge/All_146_features-000000?style=for-the-badge)](#every-feature)
-[![Quickstart](https://img.shields.io/badge/Quickstart-1d1d1f?style=for-the-badge)](#quickstart)
+[![Website](https://img.shields.io/badge/Website-0071e3?style=for-the-badge)](https://zyvorai.github.io/zeus-os/)
+[![Documentation](https://img.shields.io/badge/Read_the_docs-1d1d1f?style=for-the-badge)](https://zyvorai.github.io/zeus-os/docs/)
 [![Releases](https://img.shields.io/badge/Releases-63e6be?style=for-the-badge)](https://github.com/zyvorai/zeus-os/releases)
 
-### See every VM. Move it, secure it, cost it. From one place.
+[Client overview (PDF)](docs/Zeus-OS-Client-Overview.pdf)
 
-**The visual control plane for KubeVirt virtual machines and Kubernetes infrastructure.** A web dashboard, a terminal UI, a CLI and an API, all driven by one engine, so they always agree.
+</div>
 
-**KubeVirt-native** · **Four interfaces, one engine** · **Auth on by default** · **Multi-tenant** · **Honest about previews**
+## What it does
 
-📖 **[Read the full docs](https://zyvorai.github.io/zeus-os/)**: getting started, admin basics, enterprise SSO and a page-by-page guide.
+- **See every VM.** A visual VM command center for KubeVirt: inventory, power, consoles and a full page per machine, with a terminal UI and CLI for the same operations.
+- **Move it.** Live migration and HA/DRS balancing with cooldowns and an audit trail (the live-migration assistant is a preview; see [Features](#every-feature)).
+- **Secure it.** Authentication on by default; local, LDAP, SAML and OIDC sign-in, SCIM v2 provisioning, WebAuthn security keys, role-based access with tenant scoping.
+- **Cost it.** One price model across every cost page, recorded cost history, budgets and waste detection that starts as a dry run. Estimates, not invoices.
+- **Four interfaces, one engine.** Web dashboard, terminal UI (48+ views), CLI and API.
+- **Honest about previews.** Unknown values are shown as unknown, never as zero, and features that are only partly built carry a preview banner.
 
-🔎 **[Try the live demo](https://zeus.zyvor.dev)**: sign in as `viewer` with the password `Zeus-Live-Demo-Viewer-2026!`. It is a shared, read-only copy on a small test cluster with a few tiny VMs; you can look at everything the viewer role may see, but not change anything.
+## Install options
+
+| Option | How |
+|---|---|
+| **Helm chart** (Kubernetes) | `helm install zeus-os oci://ghcr.io/zyvorai/charts/zeus-os --version 0.3.0 --set-string config.localAuth.adminPassword=YOUR_PASSWORD`. See the [Quickstart](#quickstart). |
+| **Container image** | `ghcr.io/zyvorai/zeus-os-web`, pulled by the chart. Air-gapped clusters: [air-gapped install](docs/AIR_GAPPED_INSTALL.md). |
+| **Mac app** | A native client for a running Zeus OS server. [Zeus-1.0.0.dmg](https://github.com/zyvorai/zeus-os/releases/download/macos-v1.0.0/Zeus-1.0.0.dmg), signed with a Developer ID and notarized by Apple; requires macOS 27. See the [Mac app guide](docs/macos.md) and [below](#mac-app). |
+
+**Requirements:** a Kubernetes cluster with [KubeVirt](https://kubevirt.io) (and CDI for image import), `helm` 3.8+ and `kubectl`. Optional: Velero, Cilium, PacketWolf / Netra, an OIDC, SAML or LDAP provider.
+
+> **This repository distributes binaries, container images, the Helm chart and documentation, including the native [Mac app](#mac-app) as a notarized download. It contains no source code.**
+> <a id="status"></a>**Status: preview.** The Helm chart (`oci://ghcr.io/zyvorai/charts/zeus-os`) and the container image (`ghcr.io/zyvorai/zeus-os-web`) are public so you can try it, but there is no signed release yet: no checksums, signatures or SBOM. Watch [Releases](https://github.com/zyvorai/zeus-os/releases). Where a feature is partial, the product and its docs say so.
+
+**Try it:** the [live demo](https://zeus.zyvor.dev): sign in as `viewer` with the password `Zeus-Live-Demo-Viewer-2026!`. It is a shared, read-only copy on a small test cluster with a few tiny VMs; you can look at everything the viewer role may see, but not change anything.
+**Read:** the [full docs](https://zyvorai.github.io/zeus-os/): getting started, admin basics, enterprise SSO and a page-by-page guide.
+**Licence:** Zeus OS is distributed under the Zeus OS EULA. No open-source licence is granted ([details](#license)). **Contact:** [sales@zyvor.dev](mailto:sales@zyvor.dev).
 
 <p align="center">
 <a href="#quickstart">Quickstart</a> ·
 <a href="#what-it-does">What it does</a> ·
 <a href="#see-it">Screenshots</a> ·
 <a href="#why-zeus-os">Why</a> ·
-<a href="#every-feature">Features</a> ·
 <a href="#four-interfaces">Interfaces</a> ·
 <a href="#mac-app">Mac app</a> ·
 <a href="#security-and-identity">Security</a> ·
-<a href="#documentation">Docs</a>
+<a href="#documentation">Docs</a> ·
+<a href="#every-feature">Features</a>
 </p>
 
 <table align="center">
@@ -49,14 +72,9 @@
 </tr>
 </table>
 
-</div>
-
 ---
 
-> **This repository distributes binaries, container images, the Helm chart and documentation, including the native [Mac app](#mac-app) as a notarized download. It contains no source code.**
-> <a id="status"></a>**Status: preview.** The Helm chart (`oci://ghcr.io/zyvorai/charts/zeus-os`) and the container image (`ghcr.io/zyvorai/zeus-os-web`) are public so you can try it, but there is no signed release yet: no checksums, signatures or SBOM, and no standalone binaries. Watch [Releases](https://github.com/zyvorai/zeus-os/releases). Where a feature is partial, the product and its docs say so.
-
-## What it does
+## Capabilities
 
 ![Operate, Observe, Secure, Govern](docs-assets/capabilities.svg)
 
@@ -148,6 +166,101 @@ Authentication is on by default; `ZEUS_OS_NO_AUTH=1` is for a local trial only. 
 | Deploy URL, auth, TLS, ports | [Admin basics](docs/customer/admin-basics.md) |
 | Single sign-on | [Enterprise SSO](docs/customer/enterprise-sso.md) |
 | Air-gapped clusters | [Air-gapped install](docs/AIR_GAPPED_INSTALL.md) |
+
+## Install
+
+> The Helm chart above is the supported route today. The v0.3.0 release has a Linux amd64 tarball attached; it comes without checksum, signature or SBOM files. Other layouts below show the planned release format.
+
+```bash
+# Binary (Linux amd64 / arm64)
+curl -LO https://github.com/zyvorai/zeus-os/releases/download/v0.3.0/zeus-os-0.3.0-linux-amd64.tar.gz
+tar xzf zeus-os-0.3.0-linux-amd64.tar.gz
+```
+
+### Verify what you download
+
+Every release is planned to ship with checksums, signatures and an SBOM.
+
+```bash
+sha256sum -c SHA256SUMS
+cosign verify ghcr.io/zyvorai/zeus-os-web:<version> \
+  --certificate-identity-regexp 'https://github.com/.*/zeus-os/.*' \
+  --certificate-oidc-issuer https://token.actions.githubusercontent.com
+```
+
+## Four interfaces
+
+```bash
+zeus-os                     # terminal UI, k9s-style, 48+ views
+zeus-os-web                 # web dashboard and API on :5050
+zeus-os-cli vm list         # headless CLI (see docs/cli.md); destructive commands need --yes
+curl -H "Authorization: Bearer $TOKEN" https://zeus.example.com/api/v1/vms
+```
+
+See the [CLI reference](docs/cli.md) and the [API notes](docs/api/README.md). An OpenAPI spec, Python and Go SDKs, a Terraform provider and an Ansible collection are available for the product.
+
+## Mac app
+
+A native macOS client for a running Zeus OS server, built with SwiftUI. It talks to the same REST API as the web dashboard, so it shows what the other interfaces show. **Early preview.**
+
+**What it does today**
+
+- Sign in to one or more saved servers; the session token can optionally be stored in the Keychain.
+- **Overview**: measured cluster CPU and memory, machines running, and a node table.
+- **Machines**: sortable, searchable table with an inspector showing CPU, memory, network and disk history (15 minute, 1 hour and 6 hour ranges).
+- **Start, stop and restart** for editor and admin roles; stop and restart ask first. Viewers get a read-only app.
+- **Alerts**: table of active alerts with severity, resource, value against threshold and state. Editors and admins can acknowledge one or several at once.
+- **Alerting and SLO writes** (editors and admins): resolve alerts; create, edit and delete alert rules; create email (SMTP) notification channels, enable or disable them, and delete channels; create SLOs. Channel passwords are typed into a secure field, sent once and never shown again, and channels can be tested with a confirmed "Send Test" action. Not yet in the app: channel types other than email (the server's dashboard has no channel-creation form to take the format from) and SLO delete (the server has no such route).
+- **Snapshots**: list, take (optionally freezing guest filesystems) and delete VM snapshots. **Backups**: Velero schedules, VM backups and totals, read-only for now.
+- **Cost**: modelled monthly and daily cost, a per-machine table, a cost-by-component chart, and savings, from your configured price model (estimates, not invoices).
+- **Capacity**: current usage against thresholds, projected utilisation chart and forecasts. **Optimization**: right-sizing recommendations. **FinOps**: unit prices (editable by editors and admins), recorded cost history, budgets (list, create, edit and delete; cluster, tenant or namespace scope, alert thresholds and notification channels).
+- **Audit**: searchable event table with a warnings filter (on a stock install these are Kubernetes events). **Compliance**: score, passed and failed controls per framework.
+- **Storage**: capacity, claims, volumes and storage classes; **DR Plans**, **Velero** and **Disks & Images** lists, all read-only. Editors and admins can restore a VM backup from Backups after a confirmation (the restore request is unit-tested only, not exercised against a live server).
+- **Respond** (read-only): alert rules, notification channels (names and types only, never secrets), notification history, SLOs with error-budget gauges, incidents with cluster health, and a tenancy overview.
+- **Machine detail**: disks, guest network and OS (once the guest agent connects) and recent changes in the inspector; pause or resume, clone, clone from a snapshot and delete (each confirms); view and edit cloud-init user-data; read-only guest-agent views (OS, network, processes, users, filesystems).
+- **Security, read-only**: tap a compliance framework for control detail; **Access** (RBAC roles, bindings, service accounts, findings), **Image Scanning** (severity breakdown), **Policies** (Kyverno, admission, Gatekeeper) and **Network Policies** (Kubernetes and Cilium).
+- **Migrations**: migration list plus a live-migrate action (preflight check first, then a confirmation); **Templates** browser (templates and instance types, read-only); **VM Groups** with group start, stop and restart. The migrate and group-action requests are unit-tested only, not exercised against a live server.
+- **Machine writes** (editor and admin): a **New Machine** sheet on the Machines toolbar (from an instance type, preference and disk size via a generated KubeVirt manifest that you review before it is sent to `POST /vms`; or from a namespaced template via the instantiate endpoint; built-in templates are not offered because the API has no address for them); **multi-select** in the Machines table with bulk start, stop and restart (`/vms/bulk`, a confirmation listing the machines, and a report of which ones failed); and **label editing** in the inspector (`/vms/labels/apply`, removal asks first). These requests are unit-tested against a stubbed session only and were not exercised against a live server.
+- **Network** (read-only): overview with Multus attachments and Kubernetes policies, services with ingress and MetalLB pools, Cilium status, encryption and endpoint identities, PacketWolf VM shield status, and DNS and IPAM.
+- **Kubernetes resources** (read-only): **Workloads** (deployments, StatefulSets, DaemonSets, jobs, CronJobs), **Config** (ConfigMaps, service accounts, secrets, TLS secrets, certificates, external secrets), **VM Objects** (instances, replica sets, exports, templates) and **Cluster Resources** (storage, snapshot and ingress classes, CRDs, port forwards). Secrets show names, types and ages only; values and tokens are never decoded.
+- **System integration**: optional notification banners for new critical or warning alerts (off by default; alerts already firing at connect never notify); a Settings window (⌘,) with refresh interval, notifications, default server and "Sign out and forget"; Sign Out (⇧⌘O); Shortcuts actions to start, stop, restart and read the status of a machine (stop and restart ask for confirmation); machine names in Spotlight; and a **certificate trust prompt** for self-signed servers that shows the SHA-256 fingerprint and pins that one certificate per saved server (system validation is never disabled, and a changed certificate prompts again).
+- **Identity and platform, read-only**: users, sessions and SSO status; API token names and scopes (never values); multi-cluster fleet; nodes (with cordon state) and host hardware; plugins, log shipping and maintenance windows.
+- **Automation and delivery, read-only**: **Tasks** and scheduled operations; **Workflows** (definitions, executions, remediation playbooks); **Helm** releases with revision history; **GitOps** (Flux kustomizations, Helm releases, sources, Argo CD apps); **Delivery** (deployments, environments, pipelines, runs, change approvals). No run, apply or approve actions.
+- **Automation, delivery and storage writes** (editor and admin, each behind a confirmation that names the target; all request shapes are unit-tested only, none was exercised against a live server): run a workflow (no input), cancel a task, delete a scheduled operation, approve or reject a change approval with a comment, create a volume claim, grow a claim (never shrink), delete a volume snapshot, and create a Velero backup schedule. Not offered: scheduled-operation enable/disable and Flux reconcile (no endpoint), Argo sync (its endpoint addresses a different app list than the one shown) and Helm rollback is now offered per revision in the Helm history table (confirmation first). Budget create/edit and Helm rollback use request bodies read from the server's own dashboard bundle (the OpenAPI spec leaves them undefined); they are unit-tested for request shape only, and no write was exercised against a live server.
+- **Observe, read-only**: **Logs** (pod log tail with level and text filters, namespace error stats), **Events** (anomalies, timeline, incidents), **Topology** (nodes with their machines, plus the cluster flight recorder chart), **APM** services, **AI Center** (provider status, doctor summary, guest findings) and **Chaos** experiments. Log search and AI chat are not included because they send requests (POST).
+- **Delivery, operators, catalog and add-ons, read-only**: **Operators** (with subscriptions, catalog sources, install plans, groups), **Catalog** (apps, Helm, marketplace, blueprints, image factory), **Rollouts** (deployment strategies, progressive delivery, Kustomize, IaC), **Platform Add-ons** (NMState, Gateway API, Netra, Kryton, registry and dependency graphs) and **Lifecycle** (patch center, node lifecycle, webhooks and admission webhooks, names and events only; URLs, secrets and CA bundles are dropped on decode).
+- **Detail views**: select a node on Nodes & Hosts for an inspector with conditions, capacity against allocatable, drain status, problems and its pods; editors and admins can uncordon a cordoned node (after a confirmation; the node-cordon request is not exposed because the server's only cordon route also migrates or stops VMs). **Host Detail** (interfaces, PCI devices, services), **Workflow Runs** (steps and logs), **SLO Budgets** (error budget and history), **RBAC** (roles, bindings, your permissions), and read-only lists for image-scan policies, registries and exceptions, compliance policies and reports, Gatekeeper violations, service mesh, service registry, service dependencies, and traces, spans and exporters. The uncordon action has been unit-tested for request shape only, not run against a live server.
+- **Platform, admin and licensing, read-only**: four screens under Platform. **Platform Admin** (server status, preflight, dashboard, client config, infrastructure tree, host groups, platform profiles, Gateway API), **Licensing & Onboarding**, **ACLs & Search** (object ACLs, universal search) and **Integrations** (API versioning, GraphQL capabilities). Keys, tokens, passwords and webhook URLs are dropped when a response is decoded and never shown. Not included: SCIM (not served by the server tested), MCP (POST only) and the admin backup download (it is a full database dump).
+- **Observability, data and testing, read-only**: five screens (Metrics & Dashboards, Activity & Health with a Swift Charts heatmap, Databases, Testing, Operations) that browse custom metrics and dashboards, Prometheus resources, tracing exporters, activity and health, DB ops and data management, load-test and performance status, and backup schedules, cost, SLO management, SIEM config (secrets masked) and automation as searchable tables. Nothing starts a test, run or remediation; most lists are empty on a stock install.
+- A menu bar item with machines running and active alert count.
+- Live updates by polling (every 5 seconds in front, slower behind, with backoff when the server is unreachable).
+
+- **Scheduling and cluster policy, read-only**: five grouped screens, each with a picker over related feeds. **Placement** (affinity rules and violations, pod affinities, node taints, pod tolerations, topology manager), **Classes & Budgets** (priority classes, runtime classes, pod disruption budgets), **Quotas & Governance** (quotas, allocations, resource pools, tagging), **Autoscaling** (HPA, VPA, cluster autoscaling, forecasts) and **Devices & Hosts** (device plugins, GPUs, host groups). Priority classes and disruption budgets are typed tables; the rest are searchable JSON tables with a record inspector. The limit-range endpoints answer 403 for an admin on the test server, so they are not shown.
+- **Consoles**: a text-mode serial console for a running machine (from the inspector), a pod terminal, "Graphical Console…" (a native RFB/VNC client: raw and CopyRect encodings, mouse and keyboard, Ctrl+Alt+Del; editors and admins only; sessions are shared, never exclusive), and "Graphical Console in Browser" as a fallback, and read-only console access requests and JIT grants. Line-oriented only (no full-screen programs); console sessions are unit-tested only, not yet exercised against a live server. The native VNC client was only tested against a scripted fake server, never a real VM; it offers just Raw and CopyRect, so expect bandwidth-heavy updates, and it has no VNC-password or clipboard support.
+
+**Status**: the app has no known unbuilt screens for endpoints the server documents with a usable contract. Not yet exercised against a live server: write actions, both consoles (serial and VNC), notifications, Shortcuts actions and the certificate trust prompt (unit-tested and compiled only). Not possible with the current server API: cluster cordon and drain, containment listing (the Containments screen remembers ids this Mac created), channel types other than email, and SLO delete.
+
+## Security and identity
+
+- Authentication is on by default; local, LDAP, SAML and OIDC sign-in, plus [SCIM v2](docs/SCIM.md) provisioning and [WebAuthn](docs/WEBAUTHN.md) security keys.
+- Role-based access with tenant scoping, and an audit trail on actions.
+- Risky network changes use a preview-then-apply gate.
+- Releases are planned to ship signed, with checksums and an SBOM.
+
+Report vulnerabilities privately to **security@zyvor.dev**. See [SECURITY.md](SECURITY.md).
+
+## Documentation
+
+| Goal | Document |
+|---|---|
+| Customer docs, page by page | [docs/customer](docs/customer/README.md) |
+| Getting started | [docs/customer/getting-started.md](docs/customer/getting-started.md) |
+| Admin basics | [docs/customer/admin-basics.md](docs/customer/admin-basics.md) |
+| Enterprise SSO | [docs/customer/enterprise-sso.md](docs/customer/enterprise-sso.md) |
+| CLI | [docs/cli.md](docs/cli.md) |
+| SCIM provisioning | [docs/SCIM.md](docs/SCIM.md) |
+| WebAuthn | [docs/WEBAUTHN.md](docs/WEBAUTHN.md) |
+| Air-gapped install | [docs/AIR_GAPPED_INSTALL.md](docs/AIR_GAPPED_INSTALL.md) |
 
 ## Every feature
 
@@ -473,101 +586,6 @@ _Edge fleets, chaos experiments, performance testing, database ops, and cluster 
 | **Cilium egress gateway, BGP and Gateway API** | Manage egress gateway policies, BGP peering, L2 announcements and Gateway API resources. |
 | **Cilium encryption status** | Read-only WireGuard encryption status. |
 | **Netra integration** | Typed views over Netra observation, with leased emergency deny that needs a platform admin. |
-
-## Install
-
-> Standalone binaries are not published yet; the Helm chart above is the supported route today. The commands below show the planned layout.
-
-```bash
-# Binary (Linux amd64 / arm64)
-curl -LO https://github.com/zyvorai/zeus-os/releases/download/v<version>/zeus-os-<version>-linux-amd64.tar.gz
-tar xzf zeus-os-<version>-linux-amd64.tar.gz
-```
-
-### Verify what you download
-
-Every release is planned to ship with checksums, signatures and an SBOM.
-
-```bash
-sha256sum -c SHA256SUMS
-cosign verify ghcr.io/zyvorai/zeus-os-web:<version> \
-  --certificate-identity-regexp 'https://github.com/.*/zeus-os/.*' \
-  --certificate-oidc-issuer https://token.actions.githubusercontent.com
-```
-
-## Four interfaces
-
-```bash
-zeus-os                     # terminal UI, k9s-style, 48+ views
-zeus-os-web                 # web dashboard and API on :5050
-zeus-os-cli vm list         # headless CLI (see docs/cli.md); destructive commands need --yes
-curl -H "Authorization: Bearer $TOKEN" https://zeus.example.com/api/v1/vms
-```
-
-See the [CLI reference](docs/cli.md) and the [API notes](docs/api/README.md). An OpenAPI spec, Python and Go SDKs, a Terraform provider and an Ansible collection are available for the product.
-
-## Mac app
-
-A native macOS client for a running Zeus OS server, built with SwiftUI. It talks to the same REST API as the web dashboard, so it shows what the other interfaces show. **Early preview.**
-
-**What it does today**
-
-- Sign in to one or more saved servers; the session token can optionally be stored in the Keychain.
-- **Overview**: measured cluster CPU and memory, machines running, and a node table.
-- **Machines**: sortable, searchable table with an inspector showing CPU, memory, network and disk history (15 minute, 1 hour and 6 hour ranges).
-- **Start, stop and restart** for editor and admin roles; stop and restart ask first. Viewers get a read-only app.
-- **Alerts**: table of active alerts with severity, resource, value against threshold and state. Editors and admins can acknowledge one or several at once.
-- **Alerting and SLO writes** (editors and admins): resolve alerts; create, edit and delete alert rules; create email (SMTP) notification channels, enable or disable them, and delete channels; create SLOs. Channel passwords are typed into a secure field, sent once and never shown again, and channels can be tested with a confirmed "Send Test" action. Not yet in the app: channel types other than email (the server's dashboard has no channel-creation form to take the format from) and SLO delete (the server has no such route).
-- **Snapshots**: list, take (optionally freezing guest filesystems) and delete VM snapshots. **Backups**: Velero schedules, VM backups and totals, read-only for now.
-- **Cost**: modelled monthly and daily cost, a per-machine table, a cost-by-component chart, and savings, from your configured price model (estimates, not invoices).
-- **Capacity**: current usage against thresholds, projected utilisation chart and forecasts. **Optimization**: right-sizing recommendations. **FinOps**: unit prices (editable by editors and admins), recorded cost history, budgets (list, create, edit and delete; cluster, tenant or namespace scope, alert thresholds and notification channels).
-- **Audit**: searchable event table with a warnings filter (on a stock install these are Kubernetes events). **Compliance**: score, passed and failed controls per framework.
-- **Storage**: capacity, claims, volumes and storage classes; **DR Plans**, **Velero** and **Disks & Images** lists, all read-only. Editors and admins can restore a VM backup from Backups after a confirmation (the restore request is unit-tested only, not exercised against a live server).
-- **Respond** (read-only): alert rules, notification channels (names and types only, never secrets), notification history, SLOs with error-budget gauges, incidents with cluster health, and a tenancy overview.
-- **Machine detail**: disks, guest network and OS (once the guest agent connects) and recent changes in the inspector; pause or resume, clone, clone from a snapshot and delete (each confirms); view and edit cloud-init user-data; read-only guest-agent views (OS, network, processes, users, filesystems).
-- **Security, read-only**: tap a compliance framework for control detail; **Access** (RBAC roles, bindings, service accounts, findings), **Image Scanning** (severity breakdown), **Policies** (Kyverno, admission, Gatekeeper) and **Network Policies** (Kubernetes and Cilium).
-- **Migrations**: migration list plus a live-migrate action (preflight check first, then a confirmation); **Templates** browser (templates and instance types, read-only); **VM Groups** with group start, stop and restart. The migrate and group-action requests are unit-tested only, not exercised against a live server.
-- **Machine writes** (editor and admin): a **New Machine** sheet on the Machines toolbar (from an instance type, preference and disk size via a generated KubeVirt manifest that you review before it is sent to `POST /vms`; or from a namespaced template via the instantiate endpoint; built-in templates are not offered because the API has no address for them); **multi-select** in the Machines table with bulk start, stop and restart (`/vms/bulk`, a confirmation listing the machines, and a report of which ones failed); and **label editing** in the inspector (`/vms/labels/apply`, removal asks first). These requests are unit-tested against a stubbed session only and were not exercised against a live server.
-- **Network** (read-only): overview with Multus attachments and Kubernetes policies, services with ingress and MetalLB pools, Cilium status, encryption and endpoint identities, PacketWolf VM shield status, and DNS and IPAM.
-- **Kubernetes resources** (read-only): **Workloads** (deployments, StatefulSets, DaemonSets, jobs, CronJobs), **Config** (ConfigMaps, service accounts, secrets, TLS secrets, certificates, external secrets), **VM Objects** (instances, replica sets, exports, templates) and **Cluster Resources** (storage, snapshot and ingress classes, CRDs, port forwards). Secrets show names, types and ages only; values and tokens are never decoded.
-- **System integration**: optional notification banners for new critical or warning alerts (off by default; alerts already firing at connect never notify); a Settings window (⌘,) with refresh interval, notifications, default server and "Sign out and forget"; Sign Out (⇧⌘O); Shortcuts actions to start, stop, restart and read the status of a machine (stop and restart ask for confirmation); machine names in Spotlight; and a **certificate trust prompt** for self-signed servers that shows the SHA-256 fingerprint and pins that one certificate per saved server (system validation is never disabled, and a changed certificate prompts again).
-- **Identity and platform, read-only**: users, sessions and SSO status; API token names and scopes (never values); multi-cluster fleet; nodes (with cordon state) and host hardware; plugins, log shipping and maintenance windows.
-- **Automation and delivery, read-only**: **Tasks** and scheduled operations; **Workflows** (definitions, executions, remediation playbooks); **Helm** releases with revision history; **GitOps** (Flux kustomizations, Helm releases, sources, Argo CD apps); **Delivery** (deployments, environments, pipelines, runs, change approvals). No run, apply or approve actions.
-- **Automation, delivery and storage writes** (editor and admin, each behind a confirmation that names the target; all request shapes are unit-tested only, none was exercised against a live server): run a workflow (no input), cancel a task, delete a scheduled operation, approve or reject a change approval with a comment, create a volume claim, grow a claim (never shrink), delete a volume snapshot, and create a Velero backup schedule. Not offered: scheduled-operation enable/disable and Flux reconcile (no endpoint), Argo sync (its endpoint addresses a different app list than the one shown) and Helm rollback is now offered per revision in the Helm history table (confirmation first). Budget create/edit and Helm rollback use request bodies read from the server's own dashboard bundle (the OpenAPI spec leaves them undefined); they are unit-tested for request shape only, and no write was exercised against a live server.
-- **Observe, read-only**: **Logs** (pod log tail with level and text filters, namespace error stats), **Events** (anomalies, timeline, incidents), **Topology** (nodes with their machines, plus the cluster flight recorder chart), **APM** services, **AI Center** (provider status, doctor summary, guest findings) and **Chaos** experiments. Log search and AI chat are not included because they send requests (POST).
-- **Delivery, operators, catalog and add-ons, read-only**: **Operators** (with subscriptions, catalog sources, install plans, groups), **Catalog** (apps, Helm, marketplace, blueprints, image factory), **Rollouts** (deployment strategies, progressive delivery, Kustomize, IaC), **Platform Add-ons** (NMState, Gateway API, Netra, Kryton, registry and dependency graphs) and **Lifecycle** (patch center, node lifecycle, webhooks and admission webhooks, names and events only; URLs, secrets and CA bundles are dropped on decode).
-- **Detail views**: select a node on Nodes & Hosts for an inspector with conditions, capacity against allocatable, drain status, problems and its pods; editors and admins can uncordon a cordoned node (after a confirmation; the node-cordon request is not exposed because the server's only cordon route also migrates or stops VMs). **Host Detail** (interfaces, PCI devices, services), **Workflow Runs** (steps and logs), **SLO Budgets** (error budget and history), **RBAC** (roles, bindings, your permissions), and read-only lists for image-scan policies, registries and exceptions, compliance policies and reports, Gatekeeper violations, service mesh, service registry, service dependencies, and traces, spans and exporters. The uncordon action has been unit-tested for request shape only, not run against a live server.
-- **Platform, admin and licensing, read-only**: four screens under Platform. **Platform Admin** (server status, preflight, dashboard, client config, infrastructure tree, host groups, platform profiles, Gateway API), **Licensing & Onboarding**, **ACLs & Search** (object ACLs, universal search) and **Integrations** (API versioning, GraphQL capabilities). Keys, tokens, passwords and webhook URLs are dropped when a response is decoded and never shown. Not included: SCIM (not served by the server tested), MCP (POST only) and the admin backup download (it is a full database dump).
-- **Observability, data and testing, read-only**: five screens (Metrics & Dashboards, Activity & Health with a Swift Charts heatmap, Databases, Testing, Operations) that browse custom metrics and dashboards, Prometheus resources, tracing exporters, activity and health, DB ops and data management, load-test and performance status, and backup schedules, cost, SLO management, SIEM config (secrets masked) and automation as searchable tables. Nothing starts a test, run or remediation; most lists are empty on a stock install.
-- A menu bar item with machines running and active alert count.
-- Live updates by polling (every 5 seconds in front, slower behind, with backoff when the server is unreachable).
-
-- **Scheduling and cluster policy, read-only**: five grouped screens, each with a picker over related feeds. **Placement** (affinity rules and violations, pod affinities, node taints, pod tolerations, topology manager), **Classes & Budgets** (priority classes, runtime classes, pod disruption budgets), **Quotas & Governance** (quotas, allocations, resource pools, tagging), **Autoscaling** (HPA, VPA, cluster autoscaling, forecasts) and **Devices & Hosts** (device plugins, GPUs, host groups). Priority classes and disruption budgets are typed tables; the rest are searchable JSON tables with a record inspector. The limit-range endpoints answer 403 for an admin on the test server, so they are not shown.
-- **Consoles**: a text-mode serial console for a running machine (from the inspector), a pod terminal, "Graphical Console…" (a native RFB/VNC client: raw and CopyRect encodings, mouse and keyboard, Ctrl+Alt+Del; editors and admins only; sessions are shared, never exclusive), and "Graphical Console in Browser" as a fallback, and read-only console access requests and JIT grants. Line-oriented only (no full-screen programs); console sessions are unit-tested only, not yet exercised against a live server. The native VNC client was only tested against a scripted fake server, never a real VM; it offers just Raw and CopyRect, so expect bandwidth-heavy updates, and it has no VNC-password or clipboard support.
-
-**Status**: the app has no known unbuilt screens for endpoints the server documents with a usable contract. Not yet exercised against a live server: write actions, both consoles (serial and VNC), notifications, Shortcuts actions and the certificate trust prompt (unit-tested and compiled only). Not possible with the current server API: cluster cordon and drain, containment listing (the Containments screen remembers ids this Mac created), channel types other than email, and SLO delete.
-
-## Security and identity
-
-- Authentication is on by default; local, LDAP, SAML and OIDC sign-in, plus [SCIM v2](docs/SCIM.md) provisioning and [WebAuthn](docs/WEBAUTHN.md) security keys.
-- Role-based access with tenant scoping, and an audit trail on actions.
-- Risky network changes use a preview-then-apply gate.
-- Releases are planned to ship signed, with checksums and an SBOM.
-
-Report vulnerabilities privately to **security@zyvor.dev**. See [SECURITY.md](SECURITY.md).
-
-## Documentation
-
-| Goal | Document |
-|---|---|
-| Customer docs, page by page | [docs/customer](docs/customer/README.md) |
-| Getting started | [docs/customer/getting-started.md](docs/customer/getting-started.md) |
-| Admin basics | [docs/customer/admin-basics.md](docs/customer/admin-basics.md) |
-| Enterprise SSO | [docs/customer/enterprise-sso.md](docs/customer/enterprise-sso.md) |
-| CLI | [docs/cli.md](docs/cli.md) |
-| SCIM provisioning | [docs/SCIM.md](docs/SCIM.md) |
-| WebAuthn | [docs/WEBAUTHN.md](docs/WEBAUTHN.md) |
-| Air-gapped install | [docs/AIR_GAPPED_INSTALL.md](docs/AIR_GAPPED_INSTALL.md) |
 
 ## Part of the Zyvor platform
 

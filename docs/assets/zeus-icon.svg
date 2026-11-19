@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-label="Zeus OS">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1c1d24"/><stop offset="1" stop-color="#08090c"/></linearGradient>
+    <linearGradient id="z" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffa14a"/><stop offset="1" stop-color="#ff6a00"/></linearGradient>
+  </defs>
+  <rect width="1024" height="1024" rx="230" fill="url(#g)"/>
+  <path d="M272 288h448L464 736h288" stroke="url(#z)" stroke-width="102" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
+</svg>

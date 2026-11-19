@@ -8,7 +8,7 @@
 #   scripts/publish-docs.sh --push   # also commit and push to gh-pages
 #
 # It builds from the committed state of origin/main (not your working tree), the same way the workflow does:
-# mkdocs-material for docs/ into /docs, site/ copied to the root. mkdocs is installed into a temp virtualenv.
+# mkdocs-material (config: mkdocs.yml) for docs/ into /docs, site/ copied to the root. mkdocs is installed into a temp virtualenv.
 set -euo pipefail
 cd "$(git rev-parse --show-toplevel)"
 
@@ -21,9 +21,8 @@ echo "==> Building docs from origin/main ($SRC)"
 git worktree add -q --detach "$WORK/src" origin/main
 python3 -m venv "$WORK/venv"
 "$WORK/venv/bin/pip" install -q "mkdocs-material==9.5.*" 2>&1 | grep -vi "pip version\|upgrading pip\|notice\|should consider" || true
-printf 'site_name: Zeus OS\ndocs_dir: %s/docs\ntheme:\n  name: material\n' "$WORK/src" > "$WORK/mkdocs.yml"
 mkdir -p "$WORK/out"
-"$WORK/venv/bin/mkdocs" build -q -f "$WORK/mkdocs.yml" -d "$WORK/out/docs"
+"$WORK/venv/bin/mkdocs" build -q -f "$WORK/src/mkdocs.yml" -d "$WORK/out/docs"
 cp -R "$WORK/src/site/." "$WORK/out/"
 touch "$WORK/out/.nojekyll"
 
