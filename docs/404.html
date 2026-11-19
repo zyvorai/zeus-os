@@ -6,12 +6,14 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
+        <meta name="description" content="The visual control plane for KubeVirt virtual machines and Kubernetes infrastructure. Documentation.">
       
       
       
       
       
-      <link rel="icon" href="/assets/images/favicon.png">
+      
+      <link rel="icon" href="/zeus-os/docs/assets/zeus-icon.svg">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.50">
     
     
@@ -20,7 +22,10 @@
       
     
     
-      <link rel="stylesheet" href="/assets/stylesheets/main.a40c8224.min.css">
+      <link rel="stylesheet" href="/zeus-os/docs/assets/stylesheets/main.a40c8224.min.css">
+      
+        
+        <link rel="stylesheet" href="/zeus-os/docs/assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -39,17 +44,40 @@
       
     
     
-    <script>__md_scope=new URL("/",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("/zeus-os/docs/",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
     
     
     
+  
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Zeus OS">
+  <meta property="og:title" content="Zeus OS documentation">
+  <meta property="og:description" content="The visual control plane for KubeVirt virtual machines and Kubernetes infrastructure. Documentation.">
+  <meta property="og:url" content="https://zyvorai.github.io/zeus-os/docs/">
+  <meta property="og:image" content="https://zyvorai.github.io/zeus-os/social/og.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Zeus OS: Every VM. One control plane.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://zyvorai.github.io/zeus-os/social/og.png">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+
   </head>
   
   
-    <body dir="ltr">
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="blue">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -69,10 +97,9 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="/." title="Zeus OS" class="md-header__button md-logo" aria-label="Zeus OS" data-md-component="logo">
+    <a href="https://zyvorai.github.io/zeus-os/" title="Zeus OS" class="md-header__button md-logo" aria-label="Zeus OS" data-md-component="logo">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+  <img src="/zeus-os/docs/assets/zeus-icon.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -95,6 +122,32 @@
         </div>
       </div>
     </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
     
     
       <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
@@ -164,10 +217,9 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="/." title="Zeus OS" class="md-nav__button md-logo" aria-label="Zeus OS" data-md-component="logo">
+    <a href="https://zyvorai.github.io/zeus-os/" title="Zeus OS" class="md-nav__button md-logo" aria-label="Zeus OS" data-md-component="logo">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+  <img src="/zeus-os/docs/assets/zeus-icon.svg" alt="logo">
 
     </a>
     Zeus OS
@@ -182,7 +234,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/." class="md-nav__link">
+      <a href="/zeus-os/docs/." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -202,7 +254,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/AIR_GAPPED_INSTALL/" class="md-nav__link">
+      <a href="/zeus-os/docs/AIR_GAPPED_INSTALL/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -222,7 +274,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/CONTENT_LIBRARY/" class="md-nav__link">
+      <a href="/zeus-os/docs/CONTENT_LIBRARY/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -242,7 +294,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/EMAIL_NOTIFICATIONS/" class="md-nav__link">
+      <a href="/zeus-os/docs/EMAIL_NOTIFICATIONS/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -262,7 +314,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/FEATURES/" class="md-nav__link">
+      <a href="/zeus-os/docs/FEATURES/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -282,7 +334,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/SCIM/" class="md-nav__link">
+      <a href="/zeus-os/docs/SCIM/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -302,7 +354,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/WEBAUTHN/" class="md-nav__link">
+      <a href="/zeus-os/docs/WEBAUTHN/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -322,7 +374,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/cli/" class="md-nav__link">
+      <a href="/zeus-os/docs/cli/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -342,7 +394,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/macos/" class="md-nav__link">
+      <a href="/zeus-os/docs/macos/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -397,7 +449,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/api/" class="md-nav__link">
+      <a href="/zeus-os/docs/api/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -460,7 +512,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -481,7 +533,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/PAGE_INDEX/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/PAGE_INDEX/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -502,7 +554,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/admin-basics/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/admin-basics/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -523,7 +575,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/enterprise-sso/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/enterprise-sso/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -544,7 +596,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/getting-started/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/getting-started/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -565,7 +617,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/using-the-dashboard/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/using-the-dashboard/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -586,7 +638,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/workflows/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/workflows/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -642,7 +694,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -698,7 +750,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/centers/applications/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/centers/applications/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -719,7 +771,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/centers/approvals/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/centers/approvals/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -740,7 +792,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/centers/auth-audit/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/centers/auth-audit/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -761,7 +813,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/centers/backup-dr/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/centers/backup-dr/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -782,7 +834,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/centers/console-sessions/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/centers/console-sessions/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -803,7 +855,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/centers/developer-center/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/centers/developer-center/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -824,7 +876,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/centers/edge-center/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/centers/edge-center/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -845,7 +897,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/centers/forge/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/centers/forge/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -866,7 +918,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/centers/identity-center/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/centers/identity-center/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -887,7 +939,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/centers/infra-browser/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/centers/infra-browser/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -908,7 +960,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/centers/kubernetes/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/centers/kubernetes/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -929,7 +981,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/centers/marketplace/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/centers/marketplace/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -950,7 +1002,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/centers/migration-factory/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/centers/migration-factory/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -971,7 +1023,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/centers/onboarding/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/centers/onboarding/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -992,7 +1044,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/centers/patch-center/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/centers/patch-center/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1013,7 +1065,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/centers/plugins/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/centers/plugins/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1034,7 +1086,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/centers/reports/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/centers/reports/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1055,7 +1107,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/centers/restore-wizard/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/centers/restore-wizard/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1076,7 +1128,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/centers/support/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/centers/support/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1097,7 +1149,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/centers/tasks/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/centers/tasks/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1118,7 +1170,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/centers/time-machine/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/centers/time-machine/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1139,7 +1191,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/centers/vm-groups/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/centers/vm-groups/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1160,7 +1212,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/centers/war-room/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/centers/war-room/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1181,7 +1233,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/centers/workspace/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/centers/workspace/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1245,7 +1297,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/cluster/blueprints/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/cluster/blueprints/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1266,7 +1318,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/cluster/cilium-enterprise-networking/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/cluster/cilium-enterprise-networking/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1287,7 +1339,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/cluster/customization-profiles/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/cluster/customization-profiles/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1308,7 +1360,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/cluster/datavolumes/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/cluster/datavolumes/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1329,7 +1381,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/cluster/device-plugins/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/cluster/device-plugins/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1350,7 +1402,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/cluster/disk-manager/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/cluster/disk-manager/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1371,7 +1423,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/cluster/gpu/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/cluster/gpu/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1392,7 +1444,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/cluster/hpa/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/cluster/hpa/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1413,7 +1465,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/cluster/image-factory/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/cluster/image-factory/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1434,7 +1486,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/cluster/image-library/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/cluster/image-library/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1455,7 +1507,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/cluster/image-registry/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/cluster/image-registry/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1476,7 +1528,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/cluster/metallb-external-ips/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/cluster/metallb-external-ips/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1497,7 +1549,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/cluster/network-attachments/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/cluster/network-attachments/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1518,7 +1570,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/cluster/nodes/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/cluster/nodes/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1539,7 +1591,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/cluster/pods/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/cluster/pods/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1560,7 +1612,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/cluster/priority-classes/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/cluster/priority-classes/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1581,7 +1633,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/cluster/pvc-resize/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/cluster/pvc-resize/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1602,7 +1654,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/cluster/runtime-classes/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/cluster/runtime-classes/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1623,7 +1675,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/cluster/services/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/cluster/services/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1644,7 +1696,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/cluster/storage/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/cluster/storage/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1665,7 +1717,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/cluster/taints/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/cluster/taints/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1686,7 +1738,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/cluster/templates/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/cluster/templates/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1707,7 +1759,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/cluster/vpa/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/cluster/vpa/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1728,7 +1780,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/cluster/windows-via-kryton/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/cluster/windows-via-kryton/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1792,7 +1844,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/consoles/consolehub/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/consoles/consolehub/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1813,7 +1865,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/consoles/overview/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/consoles/overview/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1877,7 +1929,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/core/favorites/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/core/favorites/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1898,7 +1950,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/core/home/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/core/home/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1919,7 +1971,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/core/instance-types/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/core/instance-types/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1940,7 +1992,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/core/vm-compare/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/core/vm-compare/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1961,7 +2013,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/core/vm-setup/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/core/vm-setup/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1982,7 +2034,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/core/vm-workbench/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/core/vm-workbench/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2003,7 +2055,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/core/vmirs/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/core/vmirs/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2024,7 +2076,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/core/vmis/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/core/vmis/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2045,7 +2097,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/core/vms/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/core/vms/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2109,7 +2161,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/cost/budget-alerts/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/cost/budget-alerts/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2130,7 +2182,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/cost/chargeback/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/cost/chargeback/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2151,7 +2203,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/cost/cost-allocation/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/cost/cost-allocation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2172,7 +2224,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/cost/cost-estimator/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/cost/cost-estimator/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2193,7 +2245,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/cost/cost-intelligence/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/cost/cost-intelligence/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2214,7 +2266,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/cost/costs/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/cost/costs/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2235,7 +2287,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/cost/rightsizing/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/cost/rightsizing/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2256,7 +2308,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/cost/sla/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/cost/sla/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2277,7 +2329,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/cost/spot-savings/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/cost/spot-savings/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2341,7 +2393,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/more/ai-center/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/more/ai-center/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2362,7 +2414,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/more/anomaly-detector/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/more/anomaly-detector/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2383,7 +2435,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/more/api-docs/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/more/api-docs/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2404,7 +2456,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/more/api-playground/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/more/api-playground/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2425,7 +2477,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/more/argocd/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/more/argocd/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2446,7 +2498,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/more/auto-remediation/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/more/auto-remediation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2467,7 +2519,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/more/catalog/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/more/catalog/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2488,7 +2540,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/more/chaos-engineering/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/more/chaos-engineering/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2509,7 +2561,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/more/cicd/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/more/cicd/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2530,7 +2582,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/more/cilium/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/more/cilium/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2551,7 +2603,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/more/cluster-upgrade/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/more/cluster-upgrade/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2572,7 +2624,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/more/database-ops/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/more/database-ops/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2593,7 +2645,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/more/debug/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/more/debug/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2614,7 +2666,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/more/dependencies/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/more/dependencies/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2635,7 +2687,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/more/deployment-strategies/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/more/deployment-strategies/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2656,7 +2708,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/more/disaster-recovery/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/more/disaster-recovery/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2677,7 +2729,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/more/dns/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/more/dns/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2698,7 +2750,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/more/gitops/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/more/gitops/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2719,7 +2771,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/more/helm/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/more/helm/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2740,7 +2792,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/more/iac/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/more/iac/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2761,7 +2813,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/more/kernel/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/more/kernel/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2782,7 +2834,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/more/kustomize/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/more/kustomize/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2803,7 +2855,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/more/multi-cluster/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/more/multi-cluster/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2824,7 +2876,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/more/network-flow/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/more/network-flow/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2845,7 +2897,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/more/nlp-command/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/more/nlp-command/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2866,7 +2918,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/more/operators/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/more/operators/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2887,7 +2939,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/more/optimization/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/more/optimization/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2908,7 +2960,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/more/packetwolf/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/more/packetwolf/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2929,7 +2981,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/more/perf-testing/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/more/perf-testing/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2950,7 +3002,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/more/placement-advisor/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/more/placement-advisor/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2971,7 +3023,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/more/placement/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/more/placement/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2992,7 +3044,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/more/progressive-delivery/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/more/progressive-delivery/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3013,7 +3065,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/more/resource-tagging/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/more/resource-tagging/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3034,7 +3086,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/more/service-mesh-detail/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/more/service-mesh-detail/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3055,7 +3107,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/more/status-page/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/more/status-page/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3076,7 +3128,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/more/terminal/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/more/terminal/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3097,7 +3149,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/more/topology-manager/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/more/topology-manager/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3118,7 +3170,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/more/topology/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/more/topology/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3139,7 +3191,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/more/webhook-tester/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/more/webhook-tester/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3160,7 +3212,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/more/widgets/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/more/widgets/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3224,7 +3276,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/observe/alerting/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/observe/alerting/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3245,7 +3297,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/observe/apm/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/observe/apm/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3266,7 +3318,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/observe/attention/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/observe/attention/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3287,7 +3339,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/observe/capacity/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/observe/capacity/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3308,7 +3360,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/observe/containers/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/observe/containers/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3329,7 +3381,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/observe/custom-metrics/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/observe/custom-metrics/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3350,7 +3402,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/observe/events/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/observe/events/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3371,7 +3423,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/observe/forecasting/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/observe/forecasting/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3392,7 +3444,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/observe/heatmap/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/observe/heatmap/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3413,7 +3465,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/observe/host/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/observe/host/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3434,7 +3486,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/observe/incident-chat/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/observe/incident-chat/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3455,7 +3507,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/observe/incidents/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/observe/incidents/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3476,7 +3528,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/observe/logs-explorer/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/observe/logs-explorer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3497,7 +3549,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/observe/monitoring/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/observe/monitoring/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3518,7 +3570,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/observe/network-info/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/observe/network-info/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3539,7 +3591,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/observe/slo-manager/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/observe/slo-manager/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3560,7 +3612,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/observe/system-health/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/observe/system-health/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3581,7 +3633,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/observe/vm-monitor/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/observe/vm-monitor/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3645,7 +3697,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/run/autoscaler/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/run/autoscaler/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3666,7 +3718,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/run/backup-wizard/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/run/backup-wizard/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3687,7 +3739,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/run/cluster-autoscaling/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/run/cluster-autoscaling/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3708,7 +3760,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/run/migrations/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/run/migrations/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3729,7 +3781,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/run/node-drain/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/run/node-drain/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3750,7 +3802,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/run/operations/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/run/operations/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3771,7 +3823,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/run/snapshots/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/run/snapshots/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3792,7 +3844,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/run/velero/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/run/velero/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3813,7 +3865,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/run/windows-licensing/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/run/windows-licensing/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3834,7 +3886,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/run/workflows/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/run/workflows/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3898,7 +3950,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/security/admission-control/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/security/admission-control/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3919,7 +3971,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/security/affinity-rules/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/security/affinity-rules/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3940,7 +3992,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/security/certificates/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/security/certificates/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3961,7 +4013,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/security/change-approval/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/security/change-approval/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3982,7 +4034,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/security/compliance/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/security/compliance/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4003,7 +4055,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/security/external-secrets/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/security/external-secrets/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4024,7 +4076,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/security/image-scanning/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/security/image-scanning/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4045,7 +4097,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/security/opa/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/security/opa/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4066,7 +4118,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/security/pdb/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/security/pdb/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4087,7 +4139,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/security/security/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/security/security/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4108,7 +4160,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/security/tenancy/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/security/tenancy/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4129,7 +4181,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/security/users/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/security/users/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4193,7 +4245,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/settings/settings-advanced/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/settings/settings-advanced/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4214,7 +4266,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/settings/settings-ai-providers/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/settings/settings-ai-providers/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4235,7 +4287,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/settings/settings-api-access/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/settings/settings-api-access/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4256,7 +4308,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/settings/settings-appearance/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/settings/settings-appearance/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4277,7 +4329,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/settings/settings-backup-dr/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/settings/settings-backup-dr/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4298,7 +4350,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/settings/settings-general/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/settings/settings-general/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4319,7 +4371,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/settings/settings-network/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/settings/settings-network/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4340,7 +4392,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/settings/settings-security/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/settings/settings-security/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4361,7 +4413,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pages/settings/settings/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pages/settings/settings/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4433,7 +4485,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/customer/pdf/PDF_INDEX/" class="md-nav__link">
+      <a href="/zeus-os/docs/customer/pdf/PDF_INDEX/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4525,10 +4577,10 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "/", "features": [], "search": "/assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "/zeus-os/docs/", "features": [], "search": "/zeus-os/docs/assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="/assets/javascripts/bundle.60a45f97.min.js"></script>
+      <script src="/zeus-os/docs/assets/javascripts/bundle.60a45f97.min.js"></script>
       
     
   </body>
