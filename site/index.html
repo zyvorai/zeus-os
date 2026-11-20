@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<title>Zeus OS · Every VM. One control plane.</title>
+<meta name="description" content="Zeus OS: the visual control plane for KubeVirt virtual machines and Kubernetes infrastructure. A web dashboard, terminal UI, CLI and API driven by one engine. Binaries, images, Helm chart and docs.">
+<link rel="canonical" href="https://zyvorai.github.io/zeus-os/">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Zeus OS">
+<meta property="og:title" content="Zeus OS · Every VM. One control plane.">
+<meta property="og:description" content="The visual control plane for KubeVirt and Kubernetes. Dashboard, terminal UI, CLI and API, one engine. Preview.">
+<meta property="og:url" content="https://zyvorai.github.io/zeus-os/">
+<meta property="og:image" content="https://zyvorai.github.io/zeus-os/social/og.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Zeus OS: Every VM. One control plane. The window shows a real capture of the Zeus OS dashboard from a test cluster.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Zeus OS · Every VM. One control plane.">
+<meta name="twitter:description" content="The visual control plane for KubeVirt and Kubernetes. Dashboard, terminal UI, CLI and API, one engine. Preview.">
+<meta name="twitter:image" content="https://zyvorai.github.io/zeus-os/social/og.png">
+<meta name="twitter:image:alt" content="Zeus OS: Every VM. One control plane. The window shows a real capture of the Zeus OS dashboard from a test cluster.">
+<link rel="stylesheet" href="assets/landing.css">
+<style>:root{--accent-btn:#0071e3;--accent-ink:#0071e3;--accent-grad-a:#ff7a1a;--accent-grad-b:#0071e3}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--accent-ink:#2997ff}}:root[data-theme="dark"]{--accent-ink:#2997ff}</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Zeus OS","applicationCategory":"DeveloperApplication","operatingSystem":"Linux (Kubernetes), macOS (client app)","softwareVersion":"0.3.0","downloadUrl":"https://github.com/zyvorai/zeus-os/releases","url":"https://zyvorai.github.io/zeus-os/","description":"Zeus OS: the visual control plane for KubeVirt virtual machines and Kubernetes infrastructure. A web dashboard, terminal UI, CLI and API driven by one engine. Binaries, images, Helm chart and docs.","image":"https://zyvorai.github.io/zeus-os/social/og.png","publisher":{"@type":"Organization","name":"ZYVORAI LABS PRIVATE LIMITED","url":"https://zyvor.dev"},"offers":[{"@type":"Offer","name":"Zeus OS per node per year (India, incl. 18% GST)","price":"220999","priceCurrency":"INR","url":"https://zyvor.dev/buy"},{"@type":"Offer","name":"Zeus OS per node per year (outside India, excl. tax)","price":"2230","priceCurrency":"USD","url":"https://zyvor.dev/buy"}]}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav">
+  <a class="brand" href="./" aria-label="Zeus OS home"><img src="favicon.svg" width="26" height="26" alt=""><span>Zeus OS</span></a>
+  <nav aria-label="Primary"><ul><li><a href="#features">Features</a></li><li><a href="#specs">Requirements</a></li><li><a href="#start">Install</a></li><li><a href="#licence">Licence</a></li><li><a href="#faq">FAQ</a></li><li><a href="docs/">Docs</a></li></ul></nav>
+  <a class="btn small primary" href="#start">Install</a>
+</header>
+<main id="main">
+<section class="hero" aria-labelledby="top">
+  <img class="icon" src="favicon.svg" width="96" height="96" alt="Zeus OS app icon">
+  <p class="eyebrow">Zyvor · KubeVirt control plane</p>
+  <h1 id="top">Zeus OS</h1>
+  <p class="tagline">Every VM. One control plane.</p>
+  <p class="promise"><strong>See every VM. Move it, secure it, cost it. From one place.</strong> The visual control plane for KubeVirt virtual machines and Kubernetes infrastructure. A web dashboard, a terminal UI, a CLI and an API, all driven by one engine, so they always agree.</p>
+  <p class="cta"><a class="btn primary" href="#start">Install with Helm</a><a class="textlink" href="#features">See the features</a></p>
+  <p class="fine">Preview · Helm chart and container image are public · no signed release yet · Mac app: macOS 27, notarized</p>
+  <figure class="shot hero-shot"><picture><img src="assets/img/hero-img-light-1200.webp" srcset="assets/img/hero-img-light-1200.webp 1200w, assets/img/hero-img-light-1800.webp 1800w" sizes="(min-width:1080px) 1040px, 100vw" width="1920" height="1000" alt="The Zeus OS Home page in the dark theme: fleet status, an Ask Zyra brief built from signals Zeus already computed, and the headline numbers." fetchpriority="high" decoding="async"></picture><figcaption>Home, dark theme. Real capture from a Zeus OS lab: a small single-node cluster with one test VM, so counts are modest.</figcaption></figure>
+</section>
+
+<section class="band" aria-label="Overview">
+  <h2>Running KubeVirt shouldn&#x27;t mean living in kubectl and YAML.</h2>
+  <p>Zeus OS is a visual VM command center, with a terminal UI and CLI for the same operations. Unknown values are shown as unknown, never as zero, and features that are only partly built carry a preview banner.</p>
+</section>
+
+<div id="features">
+<h2 class="sr">Features</h2>
+<section class="feature" id="home" aria-labelledby="h-home"><div class="grid"><div class="copy"><p class="eyebrow">Home</p><h3 id="h-home">Your fleet, at a glance.</h3><p>Fleet status, an Ask Zyra brief built from signals Zeus already computed, and the headline numbers.</p><a class="textlink" href="docs/customer/pages/core/home/">Home, page by page</a></div><figure class="shot"><picture><img src="assets/img/home-light-1200.webp" srcset="assets/img/home-light-1200.webp 1200w, assets/img/home-light-1800.webp 1800w" sizes="(min-width:960px) 62vw, 100vw" width="1920" height="1200" alt="The Zeus OS Home page in the dark theme: a fleet summary, an Ask Zyra read-only brief with quick prompts, and a Get the highlights section." loading="lazy" decoding="async"></picture><figcaption>Home. Real capture from a Zeus OS lab: a small single-node cluster with one test VM, so counts are modest.</figcaption></figure></div></section>
+<section class="feature flip" id="machines" aria-labelledby="h-machines"><div class="grid"><div class="copy"><p class="eyebrow">Machines</p><h3 id="h-machines">Every VM, with its real console.</h3><p>Highlights, search and the one primary action on top. Each VM shows its real console screenshot (a VM with none says so, instead of drawing a fake one). Click a VM to open its own full page.</p><a class="textlink" href="docs/customer/pages/core/vms/">Machines, page by page</a></div><figure class="shot"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/img/machines-dark-1200.webp 1200w, assets/img/machines-dark-1800.webp 1800w" sizes="(min-width:960px) 62vw, 100vw"><img src="assets/img/machines-light-1200.webp" srcset="assets/img/machines-light-1200.webp 1200w, assets/img/machines-light-1800.webp 1800w" sizes="(min-width:960px) 62vw, 100vw" width="1920" height="1560" alt="The Zeus OS Machines page: highlight numbers for running, stopped, machines, vCPU and memory, and a VM card showing its live console screenshot." loading="lazy" decoding="async"></picture><figcaption>Machines. Real capture from a Zeus OS lab: a small single-node cluster with one test VM, so counts are modest.</figcaption></figure></div></section>
+<section class="feature" id="costs" aria-labelledby="h-costs"><div class="grid"><div class="copy"><p class="eyebrow">Costs</p><h3 id="h-costs">Cost, from one price model.</h3><p>Monthly spend and savings from one price model you configure, with the recorded run-rate over time. Estimates, not invoices.</p><a class="textlink" href="docs/customer/pages/cost/costs/">Costs, page by page</a></div><figure class="shot"><picture><img src="assets/img/costs-light-1200.webp" srcset="assets/img/costs-light-1200.webp 1200w" sizes="(min-width:960px) 62vw, 100vw" width="1600" height="1161" alt="The Zeus OS Costs page: monthly spend, optimisations and potential savings figures above a chart of the recorded daily run-rate for the last 30 days." loading="lazy" decoding="async"></picture><figcaption>Costs. Real capture from a Zeus OS lab: a small single-node cluster with one test VM, so counts are modest.</figcaption></figure></div></section>
+<section class="feature flip" id="security" aria-labelledby="h-security"><div class="grid"><div class="copy"><p class="eyebrow">Security</p><h3 id="h-security">Posture, scored.</h3><p>Posture score, findings by severity and compliance framework scores.</p><a class="textlink" href="docs/customer/pages/security/security/">Security, page by page</a></div><figure class="shot"><picture><img src="assets/img/security-light-1200.webp" srcset="assets/img/security-light-1200.webp 1200w" sizes="(min-width:960px) 62vw, 100vw" width="1600" height="812" alt="The Zeus OS Security page: a posture score, finding counts, a chart of findings by severity and a bar chart of compliance framework scores." loading="lazy" decoding="async"></picture><figcaption>Security. Real capture from a Zeus OS lab: a small single-node cluster with one test VM, so counts are modest.</figcaption></figure></div></section>
+<section class="feature" id="time-machine" aria-labelledby="h-time-machine"><div class="grid"><div class="copy"><p class="eyebrow">Time machine</p><h3 id="h-time-machine">Scrub the cluster back through time.</h3><p>Scrub the cluster back through recorded frames, or rewind a single VM&#x27;s lifecycle.</p><a class="textlink" href="docs/customer/pages/centers/time-machine/">Time machine, page by page</a></div><figure class="shot"><picture><img src="assets/img/time-machine-light-1200.webp" srcset="assets/img/time-machine-light-1200.webp 1200w" sizes="(min-width:960px) 62vw, 100vw" width="1600" height="1161" alt="The Zeus OS Time machine page: frames recorded, VMs tracked, sampling interval and history window, a timeline scrubber and charts of nodes ready, VMs running, VMs failed and warning events." loading="lazy" decoding="async"></picture><figcaption>Time machine. Real capture from a Zeus OS lab: a small single-node cluster with one test VM, so counts are modest.</figcaption></figure></div></section>
+<section class="feature flip" id="ai-center" aria-labelledby="h-ai-center"><div class="grid"><div class="copy"><p class="eyebrow">AI Center</p><h3 id="h-ai-center">Six advisors, evidence first.</h3><p>Six advisors (AI SRE, Migration, Security, Cost, Capacity, Network) with evidence-first analysis.</p><a class="textlink" href="docs/customer/pages/more/ai-center/">AI Center, page by page</a></div><figure class="shot"><picture><img src="assets/img/ai-center-light-1200.webp" srcset="assets/img/ai-center-light-1200.webp 1200w" sizes="(min-width:960px) 62vw, 100vw" width="1600" height="764" alt="The Zeus OS AI Center page: six advisors including AI SRE, Migration Advisor, Security Analyst, Cost Optimizer, Capacity Planner and Network Troubleshooter." loading="lazy" decoding="async"></picture><figcaption>AI Center. Real capture from a Zeus OS lab: a small single-node cluster with one test VM, so counts are modest.</figcaption></figure></div></section>
+<section class="feature" id="kubernetes" aria-labelledby="h-kubernetes"><div class="grid"><div class="copy"><p class="eyebrow">Kubernetes</p><h3 id="h-kubernetes">The container layer, one click away.</h3><p>Node readiness, pod counts and every day-2 surface for the container layer.</p><a class="textlink" href="docs/customer/pages/centers/kubernetes/">Kubernetes, page by page</a></div><figure class="shot"><picture><img src="assets/img/kubernetes-light-1200.webp" srcset="assets/img/kubernetes-light-1200.webp 1200w" sizes="(min-width:960px) 62vw, 100vw" width="1600" height="1030" alt="The Zeus OS Kubernetes page: node readiness, pod, running, pending and node counts, and a grid of cluster operations such as Pods, Services, Nodes, Templates and GitOps." loading="lazy" decoding="async"></picture><figcaption>Kubernetes. Real capture from a Zeus OS lab: a small single-node cluster with one test VM, so counts are modest.</figcaption></figure></div></section>
+</div>
+
+<section class="more" aria-labelledby="more-h">
+  <h2 id="more-h">And the rest of the platform.</h2>
+  <div class="cards"><div class="card"><h3>Four interfaces, one engine</h3><p>A web dashboard, a terminal UI, a CLI and an API all run on one engine, so they always agree. <a href="docs/cli/">CLI reference</a>.</p></div><div class="card"><h3>Consoles</h3><p>VNC and serial in the browser, native RDP and SSH through your own client.</p></div><div class="card"><h3>Live migration and DRS</h3><p>A live-migration assistant (a preview: some pre-checks are estimates and the target node is not yet passed to KubeVirt) and HA/DRS balancing from suggest-only to fully automated, with a per-VM cooldown and a history of what the engine moved and why.</p></div><div class="card"><h3>Multi-tenant</h3><p>Tenant-scoped views, quotas and role-based access.</p></div><div class="card"><h3>Identity</h3><p>Local, LDAP, SAML and OIDC sign-in, SCIM v2 provisioning and WebAuthn security keys. <a href="docs/customer/enterprise-sso/">Enterprise SSO</a>.</p></div><div class="card"><h3>Ask Zyra</h3><p>An assistant that answers from your cluster and your own docs, with citations. Private code stays out of remote models unless you allow it.</p></div><div class="card"><h3>Attention and DVR</h3><p>A ranked Attention feed, a cluster flight recorder (DVR), events and alerting.</p></div><div class="card"><h3>Every feature, one by one</h3><p>146 features across 19 groups, with the Preview and Partial ones marked. <a href="docs/FEATURES/">Read the list</a>.</p></div></div>
+</section>
+
+<section class="privacy" aria-labelledby="privacy-h">
+  <h2 id="privacy-h">Secure by default.</h2>
+  <div class="cards"><div class="card"><h3>Auth is on</h3><p>Authentication is on by default; <code>ZEUS_OS_NO_AUTH=1</code> is for a local trial only. The chart refuses to install without an admin password.</p></div><div class="card"><h3>Role-based and audited</h3><p>Role-based access with tenant scoping, and an audit trail on actions.</p></div><div class="card"><h3>Preview, then apply</h3><p>Risky network changes use a preview-then-apply gate.</p></div></div>
+</section>
+
+<section class="specs" id="specs" aria-labelledby="specs-h">
+  <h2 id="specs-h">Requirements.</h2>
+  <dl class="specs-grid"><div class="spec"><dt>Cluster</dt><dd>Kubernetes with KubeVirt<small>CDI for image import.</small></dd></div><div class="spec"><dt>Tooling</dt><dd>helm 3.8+ and kubectl<small>helm 3.8+ for OCI chart support.</small></dd></div><div class="spec"><dt>Optional</dt><dd>Integrations<small>Velero, Cilium, PacketWolf / Netra, an OIDC, SAML or LDAP provider.</small></dd></div><div class="spec"><dt>Mac app</dt><dd>macOS 27<small>Signed with a Developer ID and notarized by Apple.</small></dd></div><div class="spec"><dt>Status</dt><dd>Preview<small>The Helm chart and container image are public. There is no signed release yet.</small></dd></div><div class="spec"><dt>Licence</dt><dd>Zeus OS EULA<small>No open-source licence is granted.</small></dd></div></dl>
+  <div class="limit" role="note"><h3>Preview, stated plainly</h3><p>The Helm chart and the container image are public so you can try Zeus OS, but there is <b>no signed release yet</b>: no checksums, signatures or SBOM. Where a feature is partial, the product and its docs say so. In the Mac app, write actions, both consoles, notifications, Shortcuts actions and the certificate trust prompt have not yet been tried against a live server (they are unit-tested and compile). Details: <a href="docs/macos/">Mac app</a>.</p></div>
+</section>
+
+<section class="steps" id="start" aria-labelledby="steps-h">
+  <h2 id="steps-h">Install in three steps.</h2>
+  <ol><li><h3>Install the chart</h3><p>You need a Kubernetes cluster with KubeVirt, <code>helm</code> 3.8+ and <code>kubectl</code>. The chart pulls <code>ghcr.io/zyvorai/zeus-os-web</code> and refuses to install without an admin password.</p></li><li><h3>Open the dashboard</h3><p>It serves HTTPS out of the box with a self-signed certificate (valid ten years, reused on upgrade), so browsers warn until you bring your own.</p></li><li><h3>Sign in as admin</h3><p>Use the password you set. Authentication is on by default. Next: <a href="docs/customer/getting-started/">Getting started</a>, <a href="docs/customer/admin-basics/">Admin basics</a>.</p></li></ol>
+  <div class="sha"><p>Kubernetes (Helm, OCI)</p><pre><code>helm install zeus-os oci://ghcr.io/zyvorai/charts/zeus-os --version 0.3.0 \
+  --set-string config.localAuth.adminPassword=YOUR_PASSWORD
+kubectl port-forward svc/zeus-os 5050     # then open https://localhost:5050</code></pre></div>
+<div class="cards" style="margin-top:24px">
+<div class="card"><h3>Container image</h3><p><code>ghcr.io/zyvorai/zeus-os-web</code>. The chart pulls it for you. Air-gapped clusters: <a href="docs/AIR_GAPPED_INSTALL/">air-gapped install</a>.</p></div>
+<div class="card"><h3>Mac app</h3><p>A native SwiftUI client for a running Zeus OS server. Requires macOS 27. Signed with a Developer ID and notarized by Apple. <a href="https://github.com/zyvorai/zeus-os/releases/download/macos-v1.0.0/Zeus-1.0.0.dmg">Download Zeus-1.0.0.dmg</a> or read the <a href="docs/macos/">Mac app guide</a>.</p></div>
+<div class="card"><h3>Live demo</h3><p>Open <a href="https://zeus.zyvor.dev">zeus.zyvor.dev</a> and sign in as <code>viewer</code> with the password <code>Zeus-Live-Demo-Viewer-2026!</code>. A shared, read-only copy on a small test cluster with a few tiny VMs.</p></div>
+</div>
+<p class="cta" style="margin-top:28px"><a class="btn primary" href="https://github.com/zyvorai/zeus-os/releases">Releases</a><a class="textlink" href="docs/customer/getting-started/">Getting started</a><a class="textlink" href="Zeus-OS-Client-Overview.pdf">Client overview (PDF)</a></p>
+</section>
+
+<section class="pricing" id="licence" aria-labelledby="pricing-h">
+  <div class="inner">
+  <h2 id="pricing-h" style="text-align:left">Licence.</h2>
+  <p class="lead">Zeus OS is distributed under the Zeus OS EULA. The licence text will be added before the first release. It covers the Mac app too. No open-source licence is granted to any part of it.</p>
+<p class="lead">Price: INR 2,20,999 per node per year incl. 18% GST in India (about US$2,230 excl. tax outside India). A free 30-day trial (proof of concept) is available: write to <a href="mailto:sales@zyvor.dev?subject=Zeus%20OS%20proof%20of%20concept">sales@zyvor.dev</a>.</p>
+<p class="fine">Prices: INR incl. 18% GST in India; US dollars excl. tax elsewhere (VAT, GST or sales tax added where applicable). Pay online by UPI, card or netbanking; international cards work (charged in rupees); or request a US-dollar invoice by bank transfer. Custom pricing: contact sales@zyvor.dev.</p>
+<p class="cta"><a class="btn primary" href="https://zyvor.dev/buy" rel="noopener">Buy Zeus OS</a><a class="btn ghost" href="mailto:sales@zyvor.dev?subject=Zeus%20OS%2030-day%20trial">Start 30-day trial</a></p>
+<p class="fine">This repository distributes binaries, container images, the Helm chart and documentation. It contains no source code. Commercial licensing and permissions: <a href="mailto:sales@zyvor.dev">sales@zyvor.dev</a>. <a href="https://github.com/zyvorai/zeus-os/blob/main/LICENSE">LICENSE</a>.</p>
+  </div>
+</section>
+
+<section class="faq" id="faq" aria-labelledby="faq-h">
+  <h2 id="faq-h">Questions, answered.</h2>
+  <details><summary>Is Zeus OS ready for production?</summary><p>It is a preview. The Helm chart and the container image are public so you can try it, but there is no signed release yet. Where a feature is partial, the product and its docs say so.</p></details>
+<details><summary>What do I need to run it?</summary><p>A Kubernetes cluster with KubeVirt (and CDI for image import), plus <code>helm</code> 3.8+ and <code>kubectl</code>. Zeus OS uses KubeVirt and CDI custom resources and subresources first, rather than shelling out to <code>virtctl</code>.</p></details>
+<details><summary>Can I try it without installing?</summary><p>Yes: the live demo at <a href="https://zeus.zyvor.dev">zeus.zyvor.dev</a>, as the read-only <code>viewer</code> role. It is a shared copy on a small test cluster with a few tiny VMs.</p></details>
+<details><summary>How do users sign in?</summary><p>Local, LDAP, SAML and OIDC sign-in, with SCIM v2 provisioning and WebAuthn security keys. Authentication is on by default.</p></details>
+<details><summary>Are the costs real invoices?</summary><p>No. Cost pages use one price model that you configure and show estimates, not invoices. Unknown values are shown as unknown, never as zero.</p></details>
+<details><summary>What is the Mac app?</summary><p>A native macOS client for a running Zeus OS server, built with SwiftUI. It uses the same REST API as the web dashboard. Viewers get a read-only app; editors and admins see the write actions. It requires macOS 27. <a href="docs/macos/">Mac app guide</a>.</p></details>
+<details><summary>Is the source code available?</summary><p>No. This repository distributes binaries, container images, the Helm chart and documentation, and contains no source code. No open-source licence is granted.</p></details>
+<details><summary>How do I report a vulnerability?</summary><p>Privately, to security@zyvor.dev. See <a href="https://github.com/zyvorai/zeus-os/blob/main/SECURITY.md">SECURITY.md</a>.</p></details>
+</section>
+</main>
+<footer class="footer">
+  <p><strong>Zeus OS</strong> · Binaries, images, Helm chart and docs. No source code.</p>
+  <p class="links"><a href="docs/">Docs</a><a href="https://github.com/zyvorai/zeus-os/releases">Releases</a><a href="https://zeus.zyvor.dev">Live demo</a><a href="Zeus-OS-Client-Overview.pdf">Client overview</a><a href="https://github.com/zyvorai/zeus-os">GitHub</a><a href="https://github.com/zyvorai/zeus-os/blob/main/LICENSE">LICENSE</a><a href="https://github.com/zyvorai/zeus-os/blob/main/SECURITY.md">SECURITY</a><a href="mailto:sales@zyvor.dev">sales@zyvor.dev</a></p>
+  <p>© ZYVORAI LABS PRIVATE LIMITED · <a href="https://zyvor.dev">zyvor.dev</a> · Zeus OS EULA</p>
+</footer>
+</body>
+</html>

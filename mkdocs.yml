@@ -1,0 +1,24 @@
+# Docs site (mkdocs-material), built into /docs on the gh-pages branch by scripts/publish-docs.sh.
+# The logo and the site title link back to the landing page at the Pages root.
+site_name: Zeus OS
+site_description: The visual control plane for KubeVirt virtual machines and Kubernetes infrastructure. Documentation.
+site_url: https://zyvorai.github.io/zeus-os/docs/
+docs_dir: docs
+theme:
+  name: material
+  custom_dir: overrides
+  logo: assets/zeus-icon.svg
+  favicon: assets/zeus-icon.svg
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: white
+      accent: blue
+      toggle: {icon: material/weather-night, name: Switch to dark mode}
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: black
+      accent: blue
+      toggle: {icon: material/weather-sunny, name: Switch to light mode}
+extra:
+  homepage: https://zyvorai.github.io/zeus-os/
