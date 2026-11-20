@@ -203,6 +203,8 @@ See the [CLI reference](docs/cli.md) and the [API notes](docs/api/README.md). An
 
 A native macOS client for a running Zeus OS server, built with SwiftUI. It talks to the same REST API as the web dashboard, so it shows what the other interfaces show. **Early preview.**
 
+**Licence key (30-day trial).** The Mac app checks a signed licence key (it starts with `ZYV1.`) on your Mac against a public key built into the app; nothing is sent to Zyvor. A 30-day trial key is free from [sales@zyvor.dev](mailto:sales@zyvor.dev); the trial applies to the paid production licence and support. Enforcement is soft: nothing is disabled when a trial or licence ends, the app only shows its licence status (no key, trial with days left, licensed, expired) at the bottom of the window and under **Zeus > Licence…**.
+
 **What it does today**
 
 - Sign in to one or more saved servers; the session token can optionally be stored in the Keychain.
