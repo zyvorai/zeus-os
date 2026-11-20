@@ -48,7 +48,7 @@
 
 **Try it:** the [live demo](https://zeus.zyvor.dev): sign in as `viewer` with the password `Zeus-Live-Demo-Viewer-2026!`. It is a shared, read-only copy on a small test cluster with a few tiny VMs; you can look at everything the viewer role may see, but not change anything.
 **Read:** the [full docs](https://zyvorai.github.io/zeus-os/): getting started, admin basics, enterprise SSO and a page-by-page guide.
-**Licence:** Zeus OS is distributed under the Zeus OS EULA. No open-source licence is granted ([details](#license)). **Contact:** [sales@zyvor.dev](mailto:sales@zyvor.dev).
+**Licence:** Zeus OS is distributed under the Zeus OS EULA. No open-source licence is granted ([details](#license)). **Price:** ₹2,20,999 per node per year including GST. **Contact:** [sales@zyvor.dev](mailto:sales@zyvor.dev).
 
 <p align="center">
 <a href="#quickstart">Quickstart</a> ·
@@ -603,5 +603,7 @@ More at [zyvor.dev](https://zyvor.dev).
 ## License
 
 Zeus OS is distributed under the Zeus OS EULA. The licence text will be added before the first release. It covers the Mac app too. No open-source licence is granted to any part of it.
+
+Price: ₹2,20,999 per node per year including GST (about US$2,230 before GST). A free 30-day proof of concept is available: write to sales@zyvor.dev.
 
 <div align="center"><sub>© ZYVORAI LABS PRIVATE LIMITED</sub></div>
